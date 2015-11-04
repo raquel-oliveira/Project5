@@ -1,6 +1,7 @@
 package io;
 
 import java.awt.image.BufferedImage;
+import java.awt.image.Raster;
 import java.awt.image.DataBufferByte;
 import java.awt.image.WritableRaster;
 import java.io.File;
@@ -36,13 +37,14 @@ public class InputFiles {
 	/*
 	 *Get the byte array of an image
 	 *@param image The image to get byte data from
-	 *@return Returns the byte array of the image gived
+	 *@return Returns the byte array of the image given
 	 */
-	private byte[] get_byte_data(BufferedImage image)
+	private void get_byte_data(BufferedImage image)
 	{
-		WritableRaster raster   = image.getRaster();
-		DataBufferByte buffer = (DataBufferByte)raster.getDataBuffer();
-		return buffer.getData();
+		Raster raster   = image.getRaster();
+		raster.toString();
+		//DataBufferByte buffer = raster.getDataBuffer();
+		//return buffer.getData();
 	}
 	
 	/*
@@ -67,9 +69,9 @@ public class InputFiles {
 		byte[] c;
 		
 		i = image.getImage("obama_sprite.jpg");
-		c = image.get_byte_data(i);
+		image.get_byte_data(i);
 
-			System.out.println(c);
+		//System.out.println("bla");
 		
 	}
 	
