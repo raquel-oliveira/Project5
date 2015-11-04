@@ -42,8 +42,9 @@ public class InputFiles {
 	private void get_byte_data(BufferedImage image)
 	{
 		Raster raster   = image.getRaster();
-		DataBufferByte buffer = (DataBufferByte) raster.getDataBuffer();
-		return buffer.getData();
+		raster.toString();
+		//DataBufferByte buffer = raster.getDataBuffer();
+		//return buffer.getData();
 	}
 	
 	/*
@@ -68,9 +69,9 @@ public class InputFiles {
 		byte[] c;
 		
 		i = image.getImage("obama_sprite.jpg");
-		c = image.get_byte_data(i);
+		image.get_byte_data(i);
 
-		System.out.println(Arrays.toString(c));
+		//System.out.println("bla");
 		
 	}
 	
