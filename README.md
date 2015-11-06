@@ -1,4 +1,3 @@
----Confidential Document---
 Steganography
 =============
 
@@ -7,6 +6,7 @@ Steganography
 
 ## Requirements ##
 ------------------
+
 * Java 8
 
 ## Instalation ##
@@ -25,6 +25,6 @@ Current maintainers
 * Raquel LOPES DE OLIVEIRA (oliveira.raquel.lopes@gmail.com)
 * Xiaohan HUANG (stephanie1028han@gmail.com)
 
-This project has been sponsored by:
+This project has been sponsored by
+
  * Polytech Nice Sophia
- 
