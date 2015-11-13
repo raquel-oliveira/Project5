@@ -1,16 +1,15 @@
 package matrice;
 
 import java.awt.image.BufferedImage;
+
 import java.awt.Color;
-import java.awt.image.DataBuffer;
-import java.awt.image.DataBufferByte;
-import java.awt.image.Raster;
-import java.awt.image.SampleModel;
+
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
+import java.util.BitSet;
 
 // @author Charly
 
@@ -81,7 +80,7 @@ public class ManipMatrice {
 			}
 			z++;
 		}
-		ImageIO.write(image, "png", new File("inverse.png")); // Writes a new image in the storage
+		ImageIO.write(image, "png", new File("sortie.jpg")); // Writes a new image in the storage
 	}
 	
 	/**
@@ -131,17 +130,17 @@ public class ManipMatrice {
 		
 		for(int i = 0; i < sIn.length(); i++)
 		{
-			if(red != null)
+			if(red != null && i < sIn.length()) // Si on a selectionné la couleur Red et qu'on est pas au bout de la chaine
 			{
-				if(sIn.codePointAt(i) == 48) red[z] = 0;
+				if(sIn.codePointAt(i) == 48) red[z] = 0; // Si le caractère est un 0, on met un 0 dans le LSB de red
 				else red[z] = 1;
 			}
-			if(blue != null)
+			if(blue != null && i < sIn.length() -1)
 			{
 				if(sIn.codePointAt(++i) == 48) blue[z] = 0;
 				else blue[z] = 1;
 			} 
-			if(green != null)
+			if(green != null && i < sIn.length() -1)
 			{
 				if(sIn.codePointAt(++i) == 48) green[z] = 0;
 				else green[z] = 1;
@@ -169,7 +168,7 @@ public class ManipMatrice {
 	
 	public static void main(String[] args) throws IOException
 	{
-		/*ManipMatrice mat = new ManipMatrice("fagoon-cartman-10536.png");
+		ManipMatrice mat = new ManipMatrice("fagoon-cartman-10536.png");
 		
 		int[] red = new int[mat.getWidth() * mat.getHeight()];
 		int[] blue = new int[mat.getWidth() * mat.getHeight()];
@@ -179,14 +178,16 @@ public class ManipMatrice {
 		mat.getPixelsColor(blue, "blue");
 		mat.getPixelsColor(green, "green");
 		
-		mat.goToNegative(red, blue, green);
+		TextToBinary c = new TextToBinary();
+		String x = c.StringtoBinaryString("Bonjour");
 		
-		mat.setPixelsColor(red, blue, green);*/
+		mat.dissimulationLSB(x, red, blue, green);
 		
-		String s = "01";
+		mat.setPixelsColor(red, blue, green);
 		
-		int i = s.codePointAt(0);
-		System.out.println(i);
+		for(int i = 0; i < 100; i++)
+		{
+			System.out.println(blue[i]);
+		}
 	}
-
 }

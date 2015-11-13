@@ -1,3 +1,5 @@
+package matrice;
+
 import java.util.Arrays;
 import java.util.BitSet;
 
@@ -43,7 +45,6 @@ public class TextToBinary {
 				binary.append((val & 128) == 0 ? 0 :1);
 				val <<= 1;
 			}
-			binary.append(' ');
 		}
 		return binary.toString();
 	}
