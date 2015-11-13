@@ -7,6 +7,7 @@ import java.awt.image.DataBufferByte;
 import java.awt.image.Raster;
 import java.awt.image.SampleModel;
 import java.io.File;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
@@ -18,6 +19,10 @@ public class ManipMatrice {
 	BufferedImage image;
 	int width, height;
 	
+	/**
+	 * Constructs a BufferedImage. Get width and height from the image.
+	 * @param Path to file
+	 */
 	private ManipMatrice(String f)
 	{
 		File file = new File(f);
@@ -31,6 +36,12 @@ public class ManipMatrice {
 		height = image.getHeight();
 		width = image.getWidth();
 	}
+	
+	/**
+	 *  Fills an array of Int with Red or Blue or Green colors from each pixels
+	 * @param array to fill
+	 * @param color to choose
+	 */
 	private void getPixelsColor(int[] tab, String color)
 	{
 		int z = 0;
@@ -39,15 +50,102 @@ public class ManipMatrice {
 		{
 			for(int j = 0; j < width - 1; j++)
 			{
-				Color pxcolor= new Color(image.getRGB(j, i));
-				if(color.equals("red")) tab[z] = pxcolor.getRed();
-				if(color.equals("blue")) tab[z] = pxcolor.getBlue();
-				if(color.equals("green")) tab[z] = pxcolor.getGreen();
+				Color pxcolor= new Color(image.getRGB(j, i)); // Store in pxcolor the RGB color of the pixel(j,i)
+				if(color.equals("red")) tab[z] = pxcolor.getRed(); // Gets the Red of the color
+				if(color.equals("blue")) tab[z] = pxcolor.getBlue(); // Gets the blue
+				if(color.equals("green")) tab[z] = pxcolor.getGreen(); // Gets the green
 				z++;
 			}
 			z++;
 		}
 	}
+	
+	/**
+	 * Create a new image with the new RGB colors.
+	 * @param array red
+	 * @param array blue
+	 * @param array green
+	 * @throws IOException
+	 */
+	private void setPixelsColor(int[] red, int[] blue, int[] green) throws IOException
+	{
+		int z = 0;
+		
+		for(int i = 0; i < height - 1; i++)
+		{
+			for(int j = 0; j < width - 1; j++)
+			{
+				int rgb = new Color(red[z], green[z], blue[z]).getRGB(); // Creates a new color from the colors given to the method 
+		        image.setRGB(j, i, rgb); // Sets the pixel(j,i) with the new color
+				z++;				
+			}
+			z++;
+		}
+		ImageIO.write(image, "png", new File("inverse.png")); // Writes a new image in the storage
+	}
+	
+	/**
+	 * Make the image negative.
+	 * @param array red
+	 * @param array blue
+	 * @param array green
+	 */
+	private void goToNegative(int red[], int blue[], int green[])
+	{
+		int z = 0;
+		
+		for(int i = 0; i < width - 1; i++)
+		{
+			for(int j = 0; j < height - 1; j++) // Reverse each values of RGB arrays
+			{
+				red[z] = Math.abs(red[z] - 255);
+				blue[z] = Math.abs(blue[z] - 255); 
+				green[z] = Math.abs(green[z] - 255); 
+				z++;
+			}
+			z++;
+		}
+	}
+	
+	/**
+	 * Prints out the number of bits available for hiding. Prints out the number of bits to hide (s)
+	 * @param string to hide
+	 */
+	private void nbBitsAvailable(String s)
+	{
+		System.out.println("Nombre maximum de bits disponibles : " + (width * height * 3));
+		System.out.println("Nombre de bits à cacher : " + (s.length() * 8));
+	}
+	
+	/**
+	 * Change each bytes's last bit of RGB colors, with selection from the user of the colors.
+	 * Put null to the non-wanted array(s) color
+	 * @param array of byte from the string to hide
+	 * @param Array red
+	 * @param Array blue
+	 * @param Array green
+	 */
+	private void dissimulationLSB(String sIn, int red[], int blue[], int green[])
+	{
+		int z = 7;
+		
+		for(int i = 0; i < sIn.length(); i++)
+		{
+			if(red != null) red[z] = (int)(sIn.charAt(i)); // cast utile ?
+			if(blue != null) blue[z] = (int)(sIn.charAt(++i)); 
+			if(green != null) green[z] = (int)(sIn.charAt(++i));
+			
+			z += 8;
+		}
+		
+		
+	}
+	private boolean isNbEven(int x)
+	{
+		if(x % 2 == 0) return true;
+		return false;
+	}
+	
 	private int getWidth()
 	{
 		return width;
@@ -57,7 +155,7 @@ public class ManipMatrice {
 		return height;
 	}
 	
-	public static void main(String[] args)
+	public static void main(String[] args) throws IOException
 	{
 		ManipMatrice mat = new ManipMatrice("fagoon-cartman-10536.png");
 		
@@ -65,21 +163,13 @@ public class ManipMatrice {
 		int[] blue = new int[mat.getWidth() * mat.getHeight()];
 		int[] green = new int[mat.getWidth() * mat.getHeight()];
 		
-		int z = 0;
-		
 		mat.getPixelsColor(red, "red");
 		mat.getPixelsColor(blue, "blue");
 		mat.getPixelsColor(green, "green");
 		
-		for(int i = 0; i < mat.getWidth(); i++)
-		{
-			for(int j = 0; j < mat.getHeight(); j++)
-			{
-				System.out.println(blue[z]);
-				z++;
-			}
-			z++;
-		}
+		mat.goToNegative(red, blue, green);
+		
+		mat.setPixelsColor(red, blue, green);
 	}
 
 }
