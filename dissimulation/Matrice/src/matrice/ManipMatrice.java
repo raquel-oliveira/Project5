@@ -131,9 +131,21 @@ public class ManipMatrice {
 		
 		for(int i = 0; i < sIn.length(); i++)
 		{
-			if(red != null) red[z] = (int)(sIn.charAt(i)); // cast utile ?
-			if(blue != null) blue[z] = (int)(sIn.charAt(++i)); 
-			if(green != null) green[z] = (int)(sIn.charAt(++i));
+			if(red != null)
+			{
+				if(sIn.codePointAt(i) == 48) red[z] = 0;
+				else red[z] = 1;
+			}
+			if(blue != null)
+			{
+				if(sIn.codePointAt(++i) == 48) blue[z] = 0;
+				else blue[z] = 1;
+			} 
+			if(green != null)
+			{
+				if(sIn.codePointAt(++i) == 48) green[z] = 0;
+				else green[z] = 1;
+			}
 			
 			z += 8;
 		}
@@ -157,7 +169,7 @@ public class ManipMatrice {
 	
 	public static void main(String[] args) throws IOException
 	{
-		ManipMatrice mat = new ManipMatrice("fagoon-cartman-10536.png");
+		/*ManipMatrice mat = new ManipMatrice("fagoon-cartman-10536.png");
 		
 		int[] red = new int[mat.getWidth() * mat.getHeight()];
 		int[] blue = new int[mat.getWidth() * mat.getHeight()];
@@ -169,7 +181,12 @@ public class ManipMatrice {
 		
 		mat.goToNegative(red, blue, green);
 		
-		mat.setPixelsColor(red, blue, green);
+		mat.setPixelsColor(red, blue, green);*/
+		
+		String s = "01";
+		
+		int i = s.codePointAt(0);
+		System.out.println(i);
 	}
 
 }
