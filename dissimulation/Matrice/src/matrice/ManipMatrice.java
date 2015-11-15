@@ -1,23 +1,25 @@
 package matrice;
 
 import java.awt.image.BufferedImage;
+
 import java.awt.Color;
-import java.awt.image.DataBuffer;
-import java.awt.image.DataBufferByte;
-import java.awt.image.Raster;
-import java.awt.image.SampleModel;
+
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
+import java.util.BitSet;
 
-// @author Charly
+// @author Charly Lafon
 
 public class ManipMatrice {
 	
 	BufferedImage image;
 	int width, height;
+	int[] red;
+	int[] blue;
+	int[] green;
 	
 	/**
 	 * Constructs a BufferedImage. Get width and height from the image.
@@ -35,6 +37,9 @@ public class ManipMatrice {
 		}
 		height = image.getHeight();
 		width = image.getWidth();
+		red = new int[width * height];
+		blue = new int[width * height];
+		green = new int[width * height];
 	}
 	
 	/**
@@ -42,7 +47,7 @@ public class ManipMatrice {
 	 * @param array to fill
 	 * @param color to choose
 	 */
-	private void getPixelsColor(int[] tab, String color)
+	private void getPixelsColor(String color)
 	{
 		int z = 0;
 		
@@ -51,9 +56,9 @@ public class ManipMatrice {
 			for(int j = 0; j < width - 1; j++)
 			{
 				Color pxcolor= new Color(image.getRGB(j, i)); // Store in pxcolor the RGB color of the pixel(j,i)
-				if(color.equals("red")) tab[z] = pxcolor.getRed(); // Gets the Red of the color
-				if(color.equals("blue")) tab[z] = pxcolor.getBlue(); // Gets the blue
-				if(color.equals("green")) tab[z] = pxcolor.getGreen(); // Gets the green
+				if(color.equals("red")) red[z] = pxcolor.getRed(); // Gets the Red of the color
+				if(color.equals("blue")) blue[z] = pxcolor.getBlue(); // Gets the blue
+				if(color.equals("green")) green[z] = pxcolor.getGreen(); // Gets the green
 				z++;
 			}
 			z++;
@@ -67,7 +72,7 @@ public class ManipMatrice {
 	 * @param array green
 	 * @throws IOException
 	 */
-	private void setPixelsColor(int[] red, int[] blue, int[] green) throws IOException
+	private void setPixelsColor() throws IOException
 	{
 		int z = 0;
 		
@@ -81,7 +86,7 @@ public class ManipMatrice {
 			}
 			z++;
 		}
-		ImageIO.write(image, "png", new File("inverse.png")); // Writes a new image in the storage
+		ImageIO.write(image, "png", new File("sortie.jpg")); // Writes a new image in the storage
 	}
 	
 	/**
@@ -90,7 +95,7 @@ public class ManipMatrice {
 	 * @param array blue
 	 * @param array green
 	 */
-	private void goToNegative(int red[], int blue[], int green[])
+	private void goToNegative()
 	{
 		int z = 0;
 		
@@ -125,32 +130,30 @@ public class ManipMatrice {
 	 * @param Array blue
 	 * @param Array green
 	 */
-	private void dissimulationLSB(String sIn, int red[], int blue[], int green[])
+	private void dissimulationLSB(String sIn)
 	{
 		int z = 7;
 		
 		for(int i = 0; i < sIn.length(); i++)
 		{
-			if(red != null)
+			if(red != null && i < sIn.length()) // Si on a selectionné la couleur Red et qu'on est pas au bout de la chaine
 			{
-				if(sIn.codePointAt(i) == 48) red[z] = 0;
+				if(sIn.codePointAt(i) == 48) red[z] = 0; // Si le caractère est un 0, on met un 0 dans le LSB de red
 				else red[z] = 1;
 			}
-			if(blue != null)
-			{
-				if(sIn.codePointAt(++i) == 48) blue[z] = 0;
-				else blue[z] = 1;
-			} 
-			if(green != null)
+			if(green != null && i < sIn.length() -1)
 			{
 				if(sIn.codePointAt(++i) == 48) green[z] = 0;
 				else green[z] = 1;
+			} 
+			if(blue != null && i < sIn.length() -1)
+			{
+				if(sIn.codePointAt(++i) == 48) blue[z] = 0;
+				else blue[z] = 1;
 			}
 			
 			z += 8;
 		}
-		
-		
 	}
 	private boolean isNbEven(int x)
 	{
@@ -166,27 +169,38 @@ public class ManipMatrice {
 	{
 		return height;
 	}
+	private int[] getRedArray()
+	{
+		return red;
+	}
+	private int[] getBlueArray()
+	{
+		return blue;
+	}
+	private int[] getGreenArray()
+	{
+		return green;
+	}
 	
 	public static void main(String[] args) throws IOException
 	{
-		/*ManipMatrice mat = new ManipMatrice("fagoon-cartman-10536.png");
+		ManipMatrice mat = new ManipMatrice("jpg.2.jpg");
 		
-		int[] red = new int[mat.getWidth() * mat.getHeight()];
-		int[] blue = new int[mat.getWidth() * mat.getHeight()];
-		int[] green = new int[mat.getWidth() * mat.getHeight()];
+		mat.getPixelsColor("red");
+		mat.getPixelsColor("blue");
+		mat.getPixelsColor("green");
 		
-		mat.getPixelsColor(red, "red");
-		mat.getPixelsColor(blue, "blue");
-		mat.getPixelsColor(green, "green");
+		Dissimulation d = new Dissimulation(mat.getRedArray(), mat.getBlueArray(), mat.getGreenArray());
 		
-		mat.goToNegative(red, blue, green);
+		mat.setPixelsColor();
 		
-		mat.setPixelsColor(red, blue, green);*/
+		mat.goToNegative();
 		
-		String s = "01";
+		TextToBinary c = new TextToBinary();
+		String x = c.StringtoBinaryString("Bonjour");
 		
-		int i = s.codePointAt(0);
-		System.out.println(i);
+		//mat.dissimulationLSB(x, red, blue, green);
+		
+		// FAIRE DE L'OBJET !!!!!! FAIRE UNE CLASSE MATRICE ET LAISSER LES TABLEAUX DEDANS !
 	}
-
 }
