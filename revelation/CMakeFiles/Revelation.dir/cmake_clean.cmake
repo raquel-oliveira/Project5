@@ -1,0 +1,10 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/Revelation.dir/src/main.c.o"
+  "bin/Revelation.pdb"
+  "bin/Revelation"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C)
+  include(CMakeFiles/Revelation.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
