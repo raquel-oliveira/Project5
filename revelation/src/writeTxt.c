@@ -5,7 +5,7 @@ int main(int argc, char const *argv[])
 {
 	FILE *fp;
 	char ch;
-	if((fp = fopen("text.txt","wt+"))==NULL){
+	if((fp = fopen("../resource/text.txt","wt+"))==NULL){
 		printf("Cannot open file\n");
 		getchar();
 		exit(1);

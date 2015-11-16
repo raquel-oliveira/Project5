@@ -5,7 +5,7 @@
 #include <opencv/highgui.h>
 
 int main(int argc, char *argv[]) {
-
+    
     IplImage* img = 0;
     int height,width,step,channels;
     uchar *data;

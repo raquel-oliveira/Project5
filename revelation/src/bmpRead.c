@@ -44,7 +44,7 @@ int main(int argc, char const *argv[])
     long offset, bmpImageSize, width, height, bytesPerPixel, size, bitCount;
 	WORD c;
 
-    if((fp = fopen("image.bmp", "rb")) == NULL){
+    if((fp = fopen("../resource/image.bmp", "rb")) == NULL){
     	printf("Cannot open the file\n");
     	exit(0);
     }
