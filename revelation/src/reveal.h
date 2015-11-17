@@ -6,6 +6,6 @@
 #include <opencv/highgui.h>
 #include "image.h"
 
-void printIplImage(const IplImage* src);
+void printIplImage(const IplImage* img, CvScalar pixel );
 
 #endif
