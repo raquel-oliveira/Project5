@@ -1,16 +1,14 @@
 package matrice;
 
+import java.util.BitSet;
+
 public class Dissimulation {
 
-	int[] red;
-	int[] blue;
-	int[] green;
+	ImageRGB image;
 	
-	public Dissimulation(int[] red, int[] blue, int[] green)
+	public Dissimulation(ImageRGB image)
 	{
-		this.red = red;
-		this.blue = blue;
-		this.green = green;
+		this.image = image;
 	}
 	
 	/**
@@ -21,26 +19,26 @@ public class Dissimulation {
 	 * @param Array blue
 	 * @param Array green
 	 */
-	public void dissimulationLSB(String sIn)
+	public void dissimulationLSB(BitSet bIn)
 	{
 		int z = 7;
 		
-		for(int i = 0; i < sIn.length(); i++)
+		for(int i = 0; i < bIn.length(); i++)
 		{
-			if(red != null && i < sIn.length()) // Si on a selectionné la couleur Red et qu'on est pas au bout de la chaine
+			if(image.getRedArray() != null && i < bIn.length()) // Si on a selectionné la couleur Red et qu'on est pas au bout du BitSet
 			{
-				if(sIn.codePointAt(i) == 48) red[z] = 0; // Si le caractère est un 0, on met un 0 dans le LSB de red
-				else red[z] = 1;
+				if(!bIn.get(i)) image.getRedArray()[z] = 0; // Si le bit est false, on met un 0 dans le LSB de red
+				else image.getRedArray()[z] = 1;
 			}
-			if(green != null && i < sIn.length() -1)
+			if(image.getGreenArray() != null && i < bIn.length() -1)
 			{
-				if(sIn.codePointAt(++i) == 48) green[z] = 0;
-				else green[z] = 1;
+				if(!bIn.get(++i)) image.getGreenArray()[z] = 0;
+				else image.getGreenArray()[z] = 1;
 			} 
-			if(blue != null && i < sIn.length() -1)
+			if(image.getBlueArray() != null && i < bIn.length() -1)
 			{
-				if(sIn.codePointAt(++i) == 48) blue[z] = 0;
-				else blue[z] = 1;
+				if(!bIn.get(++i)) image.getBlueArray()[z] = 0;
+				else image.getBlueArray()[z] = 1;
 			}
 			
 			z += 8;
