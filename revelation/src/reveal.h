@@ -5,7 +5,10 @@
 #include <stdlib.h>
 #include <opencv/highgui.h>
 #include "image.h"
+#include "hiddenTxt.h"
 
-void printIplImage(const IplImage* img, CvScalar pixel );
+void print3channels(const IplImage* img, CvScalar pixel );
+
+void print1channel(const IplImage* img, CvScalar pixel );
 
 #endif
