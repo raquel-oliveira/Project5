@@ -7,8 +7,6 @@
 #include "image.h"
 #include "hiddenTxt.h"
 
-void print3channels(const IplImage* img, CvScalar pixel );
-
-void print1channel(const IplImage* img, CvScalar pixel );
+void printMatrixChannels(const IplImage* img, CvScalar pixel, int channels );
 
 #endif
