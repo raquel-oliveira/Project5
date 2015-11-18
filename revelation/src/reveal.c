@@ -1,5 +1,8 @@
 #include "reveal.h"
 
+/**
+ * Print the value of each component pixels of an image
+ */
 void printMatrixChannels(const IplImage* img, CvScalar pixel, int channels ) {
     for(int row = 0; row < img->height; row++) {
         for(int col = 0; col < img->width; col++){
@@ -18,7 +21,7 @@ void printMatrixChannels(const IplImage* img, CvScalar pixel, int channels ) {
 }
 
 /**
- * Tempory
+ * Temporary
  * Only looking the first line of a image.
  * Taking the message dissimulated in the least significant bit of red components only
  */
@@ -35,12 +38,16 @@ void reveal(const IplImage* img, CvScalar pixel){
 }
 
 /**
- * Reveal
+ * Temporary
+ * Reveal the hidden message of an image witch was
+ * dissimulated taking the least significant bit of each component of a pixel
+ *
+ * Temporary because, for now, we are managing a short message.
+ *
  */
 void revealrgb(const IplImage* img, CvScalar pixel){
     int lred, lgreen, lblue;
-    int byte;
-    int cont = 0;
+
     //for(int row = 0; row < img->height; row++) {
     for(int col = 0; col < 56/*img->width*/; col++) {
         pixel = cvGet2D(img, 0, col);
@@ -62,7 +69,7 @@ int main() {
     char* magic = "HELP"; //48 45 4C 50
 
     /*If second parameter == 1 (normal image); if == 0 (grey)*/
-    img=cvLoadImage("../resource/cavaMessage.png", 1);
+    img=cvLoadImage("../resource/secreteBonjour.png", 1);
     if(!img){
         printf("Could not load image file:");
         exit(0);
@@ -77,8 +84,8 @@ int main() {
     printf("Processing a image with %d channels\n", channels);
     //printMatrixChannels(img, pixel, channels);
 
-   //showImage(img);
-  //  reveal(img, pixel);
+    //showImage(img);
+    //reveal(img, pixel);
     revealrgb(img, pixel);
 
     return 0;

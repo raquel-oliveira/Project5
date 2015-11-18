@@ -41,6 +41,8 @@ stdio.h
 -
 stdlib.h
 -
+string.h
+-
 opencv/highgui.h
 -
 image.h
