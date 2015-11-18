@@ -12,7 +12,7 @@ public class Main {
 		Dissimulation d = new Dissimulation(img);
 		TextToBinary t = new TextToBinary();
 		
-		BitSet b = t.ChaintoBinary("Bonjour");
+		BitSet b = t.ChaintoBinary("Comment ca va ?");
 		
 		manipMat.getPixelsColor("red");
 		manipMat.getPixelsColor("blue");
@@ -21,13 +21,5 @@ public class Main {
 		d.dissimulationLSB(b);
 		
 		manipMat.setPixelsColor();
-	
-		
-		for(int i = 0; i < img.getRedArray().length; i++)
-		{
-			System.out.println(img.getRedArray()[i]);
-			System.out.println(img.getGreenArray()[i]);
-			System.out.println(img.getBlueArray()[i]);
-		}
 	}
 }
