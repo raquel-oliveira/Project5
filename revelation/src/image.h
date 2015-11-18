@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <opencv/highgui.h>
+#include <magic.h>
 
 void loadImage(const IplImage* img, const char *filename);
 

@@ -16,26 +16,23 @@ void printMatrixChannels(const IplImage* img, CvScalar pixel, int channels ) {
         printf("\n");
     }
 }
-/*
-// Temp variable for one byte from file
-char byte_current;
 
-// Grab LSB of all bytes for length specified at fgetc
-void takeLsb(FILE *file_handle, char byte_current, FILE *message_handle){
-    int size_message=fgetc(file_handle);
-    for(int i=0;i<size_message;i++) {
-        char temp_ch='\0';
-        for( int j=0;j<8;j++) {
-            temp_ch = temp_ch<<1;
-            byte_current = fgetc(file_handle);
-            int file_byte_lsb = byte_current & 1;
-            temp_ch|=file_byte_lsb;
+/**
+ * Tempory
+ * Only looking the first line of a image.
+ * Taking the message dissimulated in the least significant bit of red components only
+ */
+void reveal(const IplImage* img, CvScalar pixel){
+    int lred;
+    //for(int row = 0; row < img->height; row++) {
+        for(int col = 0; col < 176/*img->width*/; col++) {
+            pixel = cvGet2D(img, 0, col);
+            lred = get_bit(pixel.val[2], 8);
+            printf("%d", lred);
         }
-        fputc(temp_ch,message_handle);
-    }
-    fclose(message_handle);	//stream closed
-}*/
+    //}
 
+}
 
 int main() {
     IplImage *img = 0;
@@ -43,15 +40,12 @@ int main() {
     uchar *data;
     CvScalar pixel;
 
-    File *message;
-    message = "../resource/message.txt";
+    char* magic = "HELP"; //48 45 4C 50
 
-
-    //loadImage(img, "../resource/teste.png" );
     /*If second parameter == 1 (normal image); if == 0 (grey)*/
-    img=cvLoadImage("../resource/teste.png", 1);
+    img=cvLoadImage("../resource/withMessage.png", 1);
     if(!img){
-        printf("Could not load image file: %s\n", "test.png");
+        printf("Could not load image file:");
         exit(0);
     }
 
@@ -62,9 +56,10 @@ int main() {
     uchar *pImg = (uchar *)img->imageData; // setup the pointer to access img data
 
     printf("Processing a image with %d channels\n", channels);
-    printMatrixChannels(img, pixel, channels);
+    //printMatrixChannels(img, pixel, channels);
 
-    showImage(img);
+   //showImage(img);
+    reveal(img, pixel);
 
     return 0;
 }
