@@ -10,12 +10,14 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 set(SOURCE_FILES src/reveal.c)
 set(SOURCE_FILES src/image.c)
+set(SOURCE_FILES src/file.c)
 
 add_executable(
         Revelation
 
         src/reveal.c
         src/image.c
+        src/file.c
 )
 
 target_link_libraries(

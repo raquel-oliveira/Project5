@@ -6,6 +6,18 @@
 
 #IncludeRegexTransform: 
 
+/Users/Raquel/Desktop/NSA/private/revelation/src/file.c
+file.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/file.h
+
+/Users/Raquel/Desktop/NSA/private/revelation/src/file.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+
 /Users/Raquel/Desktop/NSA/private/revelation/src/image.c
 image.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/image.h
@@ -16,6 +28,8 @@ stdio.h
 stdlib.h
 -
 opencv/highgui.h
+-
+magic.h
 -
 
 /Users/Raquel/Desktop/NSA/private/revelation/src/reveal.c
@@ -31,6 +45,12 @@ opencv/highgui.h
 -
 image.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/image.h
+file.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/file.h
+
+/usr/local/include/magic.h
+sys/types.h
+-
 
 /usr/local/include/opencv/cxcore.h
 opencv2/core/core_c.h

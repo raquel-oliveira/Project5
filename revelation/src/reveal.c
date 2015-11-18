@@ -34,6 +34,25 @@ void reveal(const IplImage* img, CvScalar pixel){
 
 }
 
+/**
+ * Reveal
+ */
+void revealrgb(const IplImage* img, CvScalar pixel){
+    int lred, lgreen, lblue;
+    int byte;
+    int cont = 0;
+    //for(int row = 0; row < img->height; row++) {
+    for(int col = 0; col < 56/*img->width*/; col++) {
+        pixel = cvGet2D(img, 0, col);
+        lred = get_bit(pixel.val[2], 8);
+        lgreen = get_bit(pixel.val[1], 8);
+        lblue = get_bit(pixel.val[0], 8);
+        printf("%d%d%d",lred,lgreen,lblue);
+    }
+    //}
+
+}
+
 int main() {
     IplImage *img = 0;
     int height, width, step, channels;
@@ -43,7 +62,7 @@ int main() {
     char* magic = "HELP"; //48 45 4C 50
 
     /*If second parameter == 1 (normal image); if == 0 (grey)*/
-    img=cvLoadImage("../resource/withMessage.png", 1);
+    img=cvLoadImage("../resource/cavaMessage.png", 1);
     if(!img){
         printf("Could not load image file:");
         exit(0);
@@ -59,7 +78,8 @@ int main() {
     //printMatrixChannels(img, pixel, channels);
 
    //showImage(img);
-    reveal(img, pixel);
+  //  reveal(img, pixel);
+    revealrgb(img, pixel);
 
     return 0;
 }

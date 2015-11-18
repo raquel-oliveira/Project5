@@ -11,4 +11,6 @@ void printMatrixChannels(const IplImage* img, CvScalar pixel, int channels );
 
 void reveal(const IplImage* img, CvScalar pixel);
 
+void revealrgb(const IplImage* img, CvScalar pixel);
+
 #endif

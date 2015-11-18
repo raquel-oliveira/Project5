@@ -1,50 +1,44 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <getopt.h>
-
-#include <opencv/highgui.h>
+#include "reveal.h"
 
 int main(int argc, char *argv[]) {
-    
-    IplImage* img = 0;
-    int height,width,step,channels;
-    uchar *data;
-    int i,j,k;
 
-    // load an image
-    img=cvLoadImage("../resource/test.png", 1);
-    if(!img){
-        printf("Could not load image file: %s\n", "test.png");
-        exit(0);
-    }
+    /*int opt = 0;
 
-    // get the image data
-    height    = img->height;
-    width     = img->width;
-    step      = img->widthStep;
-    channels  = img->nChannels;
-    data      = (uchar *)img->imageData;
-    uchar *pImg = (uchar *)img->imageData; // setup the pointer to access img data
-    printf("Processing a image with %d channels\n", channels);
+    static struct option long_options[] = {
+            {"-fin", no_argument, 0,'f'},
+            {"-in", required_argument, 0, 'i'},
+            {"-out", no_argument, 0, 'o'},
+            {"-b", no_argument, 0, 'b'},
+            {"-c", no_argument, 0, 'c'},
+            {"-p", no_argument,0,'p'},
+            {"-magic", no_argument, 0, 'm'},
+            {0,0,0,0}
+    };
 
-    //If it is colorful take the 3 channels
-    if (channels > 1) {
-
-    } else if (channels == 1){
-        //Take the gray information
-    }
-
-    // create a window
-    cvNamedWindow("ImageWindow", CV_WINDOW_AUTOSIZE);
-    cvMoveWindow("ImageWindow", 100, 100);
-
-    // show the image
-    cvShowImage("ImageWindow", img );
-
-    // wait for a key
-    cvWaitKey(0);
-
-    // release the image
-    cvReleaseImage(&img );
+    int long_index = 0;
+    while((opt = getopt_long_only(argc, argv, "", long_options, &long_index)) != -1){
+        switch (opt){
+            case 'f':
+                break;
+            case 'i':
+                break;
+            case 'o':
+                break;
+            case 'b':
+                break;
+            case 'c':
+                break;
+            case 'p':
+                break;
+            case 'm':
+                break;
+            default:
+                exit(EXIT_FAILURE);
+        }
+    }*/
     return 0;
+
 }

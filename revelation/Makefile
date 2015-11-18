@@ -123,6 +123,33 @@ Revelation/fast:
 	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/build
 .PHONY : Revelation/fast
 
+src/file.o: src/file.c.o
+
+.PHONY : src/file.o
+
+# target to build an object file
+src/file.c.o:
+	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/file.c.o
+.PHONY : src/file.c.o
+
+src/file.i: src/file.c.i
+
+.PHONY : src/file.i
+
+# target to preprocess a source file
+src/file.c.i:
+	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/file.c.i
+.PHONY : src/file.c.i
+
+src/file.s: src/file.c.s
+
+.PHONY : src/file.s
+
+# target to generate assembly for a file
+src/file.c.s:
+	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/file.c.s
+.PHONY : src/file.c.s
+
 src/image.o: src/image.c.o
 
 .PHONY : src/image.o
@@ -186,6 +213,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Revelation"
+	@echo "... src/file.o"
+	@echo "... src/file.i"
+	@echo "... src/file.s"
 	@echo "... src/image.o"
 	@echo "... src/image.i"
 	@echo "... src/image.s"
