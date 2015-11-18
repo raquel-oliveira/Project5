@@ -13,7 +13,7 @@ import java.util.BitSet;
 
 // @author Charly Lafon
 
-public class ManipMatrice {
+public class ManipImage {
 	
 	ImageRGB image;
 	
@@ -21,7 +21,7 @@ public class ManipMatrice {
 	 * Constructs a BufferedImage. Get width and height from the image.
 	 * @param Path to file
 	 */
-	public ManipMatrice(ImageRGB image)
+	public ManipImage(ImageRGB image)
 	{
 		this.image = image;
 	}
@@ -35,7 +35,7 @@ public class ManipMatrice {
 	{
 		int z = 0;
 		
-		for(int i = 0; i < image.height - 1; i++)
+		for(int i = 0; i < image.getHeight() - 1; i++)
 		{
 			for(int j = 0; j < image.getWidth() - 1; j++)
 			{
@@ -70,11 +70,11 @@ public class ManipMatrice {
 			}
 			z++;
 		}
-		ImageIO.write(image.getImage(), "png", new File("jpg.2.jpg")); // Writes a new image in the storage
+		ImageIO.write(image.getImage(), "png", new File("sortie.png")); // Writes a new image in the storage
 	}
 	
 	/**
-	 * Make the image negative.
+	 * Makes the image negative.
 	 * @param array red
 	 * @param array blue
 	 * @param array green
