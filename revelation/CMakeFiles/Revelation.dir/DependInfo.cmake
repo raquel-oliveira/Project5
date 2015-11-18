@@ -4,7 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/Raquel/Desktop/NSA/private/revelation/src/main.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/Revelation.dir/src/main.c.o"
+  "/Users/Raquel/Desktop/NSA/private/revelation/src/image.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/Revelation.dir/src/image.c.o"
+  "/Users/Raquel/Desktop/NSA/private/revelation/src/reveal.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/Revelation.dir/src/reveal.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

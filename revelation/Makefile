@@ -123,32 +123,59 @@ Revelation/fast:
 	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/build
 .PHONY : Revelation/fast
 
-src/main.o: src/main.c.o
+src/image.o: src/image.c.o
 
-.PHONY : src/main.o
+.PHONY : src/image.o
 
 # target to build an object file
-src/main.c.o:
-	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/main.c.o
-.PHONY : src/main.c.o
+src/image.c.o:
+	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/image.c.o
+.PHONY : src/image.c.o
 
-src/main.i: src/main.c.i
+src/image.i: src/image.c.i
 
-.PHONY : src/main.i
+.PHONY : src/image.i
 
 # target to preprocess a source file
-src/main.c.i:
-	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/main.c.i
-.PHONY : src/main.c.i
+src/image.c.i:
+	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/image.c.i
+.PHONY : src/image.c.i
 
-src/main.s: src/main.c.s
+src/image.s: src/image.c.s
 
-.PHONY : src/main.s
+.PHONY : src/image.s
 
 # target to generate assembly for a file
-src/main.c.s:
-	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/main.c.s
-.PHONY : src/main.c.s
+src/image.c.s:
+	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/image.c.s
+.PHONY : src/image.c.s
+
+src/reveal.o: src/reveal.c.o
+
+.PHONY : src/reveal.o
+
+# target to build an object file
+src/reveal.c.o:
+	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/reveal.c.o
+.PHONY : src/reveal.c.o
+
+src/reveal.i: src/reveal.c.i
+
+.PHONY : src/reveal.i
+
+# target to preprocess a source file
+src/reveal.c.i:
+	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/reveal.c.i
+.PHONY : src/reveal.c.i
+
+src/reveal.s: src/reveal.c.s
+
+.PHONY : src/reveal.s
+
+# target to generate assembly for a file
+src/reveal.c.s:
+	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/reveal.c.s
+.PHONY : src/reveal.c.s
 
 # Help Target
 help:
@@ -159,9 +186,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Revelation"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... src/image.o"
+	@echo "... src/image.i"
+	@echo "... src/image.s"
+	@echo "... src/reveal.o"
+	@echo "... src/reveal.i"
+	@echo "... src/reveal.s"
 .PHONY : help
 
 

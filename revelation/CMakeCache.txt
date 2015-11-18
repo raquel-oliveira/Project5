@@ -197,6 +197,12 @@ OpenCV_LIB_DIR_DBG:PATH=
 OpenCV_LIB_DIR_OPT:PATH=
 
 //Value Computed by CMake
+Revelation_BINARY_DIR:STATIC=/Users/Raquel/Desktop/NSA/private/revelation
+
+//Value Computed by CMake
+Revelation_SOURCE_DIR:STATIC=/Users/Raquel/Desktop/NSA/private/revelation
+
+//Value Computed by CMake
 Revelationn_BINARY_DIR:STATIC=/Users/Raquel/Desktop/NSA/private/revelation
 
 //Value Computed by CMake
