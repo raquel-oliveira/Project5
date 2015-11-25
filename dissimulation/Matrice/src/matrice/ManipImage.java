@@ -24,7 +24,7 @@ public class ManipImage {
 	 */
 	public ManipImage(String s)
 	{
-		image = new ImageRGB(s);
+		image = new matrice.ImageRGB(s);
 	}
 	
 	/**
@@ -32,7 +32,7 @@ public class ManipImage {
 	 * @param array to fill
 	 * @param color to choose
 	 */
-	public void getPixelsColor(String color)
+	/*public void getPixelsColor(String color)
 	{
 		int z = 0;
 		
@@ -48,7 +48,7 @@ public class ManipImage {
 			}
 			z++;
 		}
-	}
+	}*/
 	
 	/**
 	 * Create a new image with the new RGB colors.
