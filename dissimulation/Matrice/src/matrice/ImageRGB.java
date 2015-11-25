@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
 
 public class ImageRGB {
 
@@ -29,10 +28,22 @@ public class ImageRGB {
 		red = new int[width * height];
 		blue = new int[width * height];
 		green = new int[width * height];
-		int z=0;
-		for(int i =0; i < height ; i++) {
-			for (int j = 0; j < width; j++) {
-				Color pxcolor = new Color(this.getImageBuff().getRGB(j,i)); // Store in pxcolor the RGB color of the pixel(j,i)
+		
+		getPixelsColor();
+	}
+	
+	/**
+	 * Get the RGB colors of each pixel
+	 */
+	public void getPixelsColor()
+	{
+		int z = 0;
+		
+		for(int i = 0; i < height - 1; i++) 
+		{
+			for (int j = 0; j < width - 1; j++) 
+			{
+				Color pxcolor = new Color(image.getRGB(j,i)); // Store in pxcolor the RGB color of the pixel(j,i)
 				red[z]= pxcolor.getRed();
 				green[z] = pxcolor.getGreen();
 				blue[z] = pxcolor.getBlue();

@@ -14,12 +14,8 @@ public class Main {
 		
 		BitSet b = t.ChaintoBinary("Comment ca va ?");
 		
-		//manipMat.getPixelsColor("red");
-		//manipMat.getPixelsColor("blue");
-		//manipMat.getPixelsColor("green");
-		
 		manipMat.dissimulationLSB(b);
 		
-		manipMat.setPixelsColor();
+		manipMat.setPixelsColor();	
 	}
 }

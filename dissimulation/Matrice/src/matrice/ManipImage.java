@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
 import java.util.BitSet;
 
 // @author Charly Lafon
@@ -23,31 +22,8 @@ public class ManipImage {
 	 */
 	public ManipImage(String s)
 	{
-		image = new matrice.ImageRGB(s);
+		image = new ImageRGB(s);
 	}
-	
-	/**
-	 *  Fills an array of Int with Red or Blue or Green colors from each pixels
-	 * @param array to fill
-	 * @param color to choose
-	 */
-	/*public void getPixelsColor(String color)
-	{
-		int z = 0;
-		
-		for(int i = 0; i < image.getHeight() - 1; i++)
-		{
-			for(int j = 0; j < image.getWidth() - 1; j++)
-			{
-				Color pxcolor= new Color(image.getImageBuff().getRGB(j, i)); // Store in pxcolor the RGB color of the pixel(j,i)
-				if(color.equals("red")) image.getRedArray()[z] = pxcolor.getRed(); // Gets the Red of the color
-				if(color.equals("blue")) image.getBlueArray()[z] = pxcolor.getBlue(); // Gets the blue
-				if(color.equals("green")) image.getGreenArray()[z] = pxcolor.getGreen(); // Gets the green
-				z++;
-			}
-			z++;
-		}
-	}*/
 	
 	/**
 	 * Create a new image with the new RGB colors.
@@ -68,7 +44,6 @@ public class ManipImage {
 		        image.getImageBuff().setRGB(j, i, rgb); // Sets the pixel(j,i) with the new color
 				z++;				
 			}
-			z++;
 		}
 		ImageIO.write(image.getImageBuff(), "png", new File("sortie.png")); // Writes a new image in the storage
 	}
@@ -108,7 +83,7 @@ public class ManipImage {
 		
 		else if (bIn.get(i) && isNbEven(array[z])) // Si le bit est true et que le LSB actuel est 0, on met à 1 le LSB de red
 		{
-			if(array[z] == 0) array[z] += 1; // Si on a le LSB = 0, on incrémente au lieu de décrémenter
+			if(array[z] == 0) array[z] += 1; // Si on a le nombre = 0, on incrémente au lieu de décrémenter
 			else array[z] -= 1;
 		}
 	}
@@ -126,5 +101,17 @@ public class ManipImage {
 	{
 		System.out.println("Nombre maximum de bits disponibles : " + (image.getWidth() * image.getHeight() * 3));
 		System.out.println("Nombre de bits à cacher : " + (s.length() * 8));
+	}
+	public int[] getRedArray()
+	{
+		return image.getRedArray();
+	}
+	public int[] getGreenArray()
+	{
+		return image.getGreenArray();
+	}
+	public int[] getBlueArray()
+	{
+		return image.getBlueArray();
 	}
 }
