@@ -46,18 +46,48 @@ void reveal(const IplImage* img, CvScalar pixel){
  *
  */
 void revealrgb(const IplImage* img, CvScalar pixel){
-    int lred, lgreen, lblue;
+    int lred, lgreen, lblue, z = 0;
+    int tab[8];
+    char resultat[65];
 
     //for(int row = 0; row < img->height; row++) {
-    for(int col = 0; col < 56/*img->width*/; col++) {
+    for(int col = 0; col < 56/*img->width*/; col++)
+    {
         pixel = cvGet2D(img, 0, col);
+        
         lred = get_bit(pixel.val[2], 8);
+        tab[z] = lred;
+        checkAndConvert(resultat, &z);
+        
+        z++;
         lgreen = get_bit(pixel.val[1], 8);
-        lblue = get_bit(pixel.val[0], 8);
-        printf("%d%d%d",lred,lgreen,lblue);
-    }
-    //}
+        tab[z] = lgreen;
+        checkAndConvert(resultat, &z);
 
+        z++;
+        lblue = get_bit(pixel.val[0], 8);
+        tab[z] = lblue;
+        checkAndConvert(resultat, &z);
+        
+        z++;
+    }
+}
+
+void checkAndConvert(char resultat[], int *z)
+{
+    if(z == 7)
+    {
+        int n = 0, j;
+        for(j = 0; j < 8; j++)
+        {
+            n += tab[j]*pow(2,8-j);
+        }
+        sprintf(resultat, "%d", n);
+        
+        printf("%s", resultat);
+        
+        z = 0;
+    }
 }
 
 int main() {
