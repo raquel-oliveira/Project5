@@ -14,8 +14,7 @@ import java.util.BitSet;
 // @author Charly Lafon
 
 public class ManipImage {
-
-
+	
 	private ImageRGB image;
 	
 	/**
@@ -71,30 +70,7 @@ public class ManipImage {
 			}
 			z++;
 		}
-		ImageIO.write(image.getImageBuff(), "png", new File("sortie2.png")); // Writes a new image in the storage
-	}
-	
-	/**
-	 * Makes the image negative.
-	 * @param array red
-	 * @param array blue
-	 * @param array green
-	 */
-	public void goToNegative()
-	{
-		int z = 0;
-		
-		for(int i = 0; i < image.getWidth() - 1; i++)
-		{
-			for(int j = 0; j < image.getHeight() - 1; j++) // Reverse each values of RGB arrays
-			{
-				image.getRedArray()[z] = Math.abs(image.getRedArray()[z] - 255);
-				image.getBlueArray()[z] = Math.abs(image.getBlueArray()[z] - 255); 
-				image.getGreenArray()[z] = Math.abs(image.getGreenArray()[z] - 255); 
-				z++;
-			}
-			z++;
-		}
+		ImageIO.write(image.getImageBuff(), "png", new File("sortie.png")); // Writes a new image in the storage
 	}
 	
 	/**
@@ -110,38 +86,36 @@ public class ManipImage {
 		{
 			if(i < bIn.length())
 			{
-				this.setProperBit(bIn,this.getImageRGB().getRedArray(), i, z);
+				setDissimulation(bIn, image.getRedArray(), i, z);
 			}
 			if(i < bIn.length() -1)
 			{
-				this.setProperBit(bIn,this.getImageRGB().getGreenArray(), ++i, z);
+				setDissimulation(bIn, image.getGreenArray(), ++i, z);
 
 			} 
 			if(i < bIn.length() -1)
 			{
-				this.setProperBit(bIn,this.getImageRGB().getBlueArray(), ++i, z);
+				setDissimulation(bIn, image.getBlueArray(), ++i, z);
 
 			}
 			
 			z++;
 		}
 	}
-	public void setProperBit(BitSet  input,int [] cctable, int i, int z){
-		if(!input.get(i) && !isNbEven(cctable[z])) cctable[z] -= 1; // Si le bit est false et que le LSB actuel est 1,on met à 0 le LSB
-		else if (input.get(i) && isNbEven(cctable[z])) // Si le bit est true et que le LSB actuel est 0, on met à 1 le LSB de red
+	public void setDissimulation(BitSet bIn, int[] array, int i, int z)
+	{
+		if(!bIn.get(i) && !isNbEven(array[z])) array[z] -= 1; // Si le bit est false et que le LSB actuel est 1,on met à 0 le LSB
+		
+		else if (bIn.get(i) && isNbEven(array[z])) // Si le bit est true et que le LSB actuel est 0, on met à 1 le LSB de red
 		{
-			if(cctable[z] == 0) cctable[z] += 1; // Si on a le LSB = 0, on incrémente au lieu de décrémenter
-			else cctable[z] -= 1;
+			if(array[z] == 0) array[z] += 1; // Si on a le LSB = 0, on incrémente au lieu de décrémenter
+			else array[z] -= 1;
 		}
 	}
 	public boolean isNbEven(int x)
 	{
 		if(x % 2 == 0) return true;
 		return false;
-	}
-
-	public ImageRGB getImageRGB(){
-		return this.image;
 	}
 	
 	/**
