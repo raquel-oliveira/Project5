@@ -8,11 +8,11 @@ import javax.swing.JOptionPane;
 
 public class ImageRGB {
 
-	BufferedImage image;
-	int width, height;
-	int[] red;
-	int[] blue;
-	int[] green;
+	private BufferedImage image;
+	private int width, height;
+	private int[] red;
+	private int[] blue;
+	private int[] green;
 	
 	public ImageRGB(String f)
 	{
@@ -30,7 +30,7 @@ public class ImageRGB {
 		blue = new int[width * height];
 		green = new int[width * height];
 	}
-	public BufferedImage getImage()
+	public BufferedImage getImageBuff()
 	{
 		return image;
 	}
@@ -38,13 +38,25 @@ public class ImageRGB {
 	{
 		return red;
 	}
+	public void setRedArray(int[] red)
+	{
+		this.red = red;
+	}
 	public int[] getBlueArray()
 	{
 		return blue;
 	}
+	public void setBlueArray(int[] blue)
+	{
+		this.blue = blue;
+	}
 	public int[] getGreenArray()
 	{
 		return green;
+	}
+	public void setGreenArray(int[] green)
+	{
+		this.green = green;
 	}
 	public int getHeight()
 	{

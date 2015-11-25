@@ -15,15 +15,15 @@ import java.util.BitSet;
 
 public class ManipImage {
 	
-	ImageRGB image;
+	private ImageRGB image;
 	
 	/**
 	 * Constructs a BufferedImage. Get width and height from the image.
 	 * @param Path to file
 	 */
-	public ManipImage(ImageRGB image)
+	public ManipImage(String s)
 	{
-		this.image = image;
+		image = new ImageRGB(s);
 	}
 	
 	/**
@@ -39,7 +39,7 @@ public class ManipImage {
 		{
 			for(int j = 0; j < image.getWidth() - 1; j++)
 			{
-				Color pxcolor= new Color(image.getImage().getRGB(j, i)); // Store in pxcolor the RGB color of the pixel(j,i)
+				Color pxcolor= new Color(image.getImageBuff().getRGB(j, i)); // Store in pxcolor the RGB color of the pixel(j,i)
 				if(color.equals("red")) image.getRedArray()[z] = pxcolor.getRed(); // Gets the Red of the color
 				if(color.equals("blue")) image.getBlueArray()[z] = pxcolor.getBlue(); // Gets the blue
 				if(color.equals("green")) image.getGreenArray()[z] = pxcolor.getGreen(); // Gets the green
@@ -65,12 +65,12 @@ public class ManipImage {
 			for(int j = 0; j < image.getWidth() - 1; j++)
 			{
 				int rgb = new Color(image.getRedArray()[z], image.getGreenArray()[z], image.getBlueArray()[z]).getRGB(); // Creates a new color from the colors given to the method 
-		        image.getImage().setRGB(j, i, rgb); // Sets the pixel(j,i) with the new color
+		        image.getImageBuff().setRGB(j, i, rgb); // Sets the pixel(j,i) with the new color
 				z++;				
 			}
 			z++;
 		}
-		ImageIO.write(image.getImage(), "png", new File("sortie.png")); // Writes a new image in the storage
+		ImageIO.write(image.getImageBuff(), "png", new File("sortie2.png")); // Writes a new image in the storage
 	}
 	
 	/**
@@ -94,6 +94,57 @@ public class ManipImage {
 			}
 			z++;
 		}
+	}
+	
+	/**
+	 * Change each bytes's last bit of RGB colors, with selection from the user of the colors.
+	 * Put null to the non-wanted array(s) color
+	 * @param Bitset from the string to hide
+	 */
+	public void dissimulationLSB(BitSet bIn)
+	{
+		int z = 0;
+		
+		for(int i = 0; i < bIn.length(); i++)
+		{
+			if(i < bIn.length())
+			{
+				if(!bIn.get(i) && !isNbEven(image.getRedArray()[z])) image.getRedArray()[z] -= 1; // Si le bit est false et que le LSB actuel est 1, 
+																								  // on met à 0 le LSB de red
+				else if (bIn.get(i) && isNbEven(image.getRedArray()[z])) // Si le bit est true et que le LSB actuel est 0, on met à 1 le LSB de red
+				{
+					if(image.getRedArray()[z] == 0) image.getRedArray()[z] += 1; // Si on a le LSB = 0, on incrémente au lieu de décrémenter
+					else image.getRedArray()[z] -= 1;
+				}
+			}
+			if(i < bIn.length() -1)
+			{
+				if(!bIn.get(++i) && !isNbEven(image.getGreenArray()[z])) image.getGreenArray()[z] -= 1; // Si le bit est false et que le LSB actuel est 1, 
+																										// on met à 0 le LSB de green
+				else if (bIn.get(i) && isNbEven(image.getGreenArray()[z])) // Si le bit est true et que le LSB actuel est 0, on met à 1 le LSB de green
+				{
+					if(image.getGreenArray()[z] == 0) image.getGreenArray()[z] += 1; // Si on a le LSB = 0, on incrémente au lieu de décrémenter
+					else image.getGreenArray()[z] -= 1;
+				}
+			} 
+			if(i < bIn.length() -1)
+			{
+				if(!bIn.get(++i) && !isNbEven(image.getBlueArray()[z])) image.getBlueArray()[z] -= 1; // Si le bit est false et que le LSB actuel est 1, 
+				  																					  // on met à 0 le LSB de blue
+				else if (bIn.get(i) && isNbEven(image.getBlueArray()[z])) // Si le bit est true et que le LSB actuel est 0, on met à 1 le LSB de blue
+				{
+					if(image.getBlueArray()[z] == 0) image.getBlueArray()[z] += 1; // Si on a le LSB = 0, on incrémente au lieu de décrémenter
+					else image.getBlueArray()[z] -= 1;
+				}
+			}
+			
+			z++;
+		}
+	}
+	public boolean isNbEven(int x)
+	{
+		if(x % 2 == 0) return true;
+		return false;
 	}
 	
 	/**
