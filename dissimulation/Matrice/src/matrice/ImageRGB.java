@@ -1,5 +1,6 @@
 package matrice;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
@@ -28,6 +29,16 @@ public class ImageRGB {
 		red = new int[width * height];
 		blue = new int[width * height];
 		green = new int[width * height];
+		int z=0;
+		for(int i =0; i < height ; i++) {
+			for (int j = 0; j < width; j++) {
+				Color pxcolor = new Color(this.getImageBuff().getRGB(j,i)); // Store in pxcolor the RGB color of the pixel(j,i)
+				red[z]= pxcolor.getRed();
+				green[z] = pxcolor.getGreen();
+				blue[z] = pxcolor.getBlue();
+				z++;
+			}
+		}
 	}
 	public BufferedImage getImageBuff()
 	{
