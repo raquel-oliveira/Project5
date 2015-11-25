@@ -21,8 +21,7 @@ public class ImageRGB {
 			image = ImageIO.read(file);
 		}
 		catch(Exception ex){
-			JOptionPane.showMessageDialog(null, 
-				"Image could not be read!","Error",JOptionPane.ERROR_MESSAGE);
+			System.out.println("Erreur de lecture de l'image");
 		}
 		height = image.getHeight();
 		width = image.getWidth();
