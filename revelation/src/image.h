@@ -22,8 +22,8 @@ void showImage(IplImage* img);
 
 int **getBlueMatrix(IplImage* img);
 
-int **getGreenMatrix(const IplImage* img);
+char **getGreenMatrix(const IplImage* img);
 
-int **getRedMatrix(const IplImage* img);
+char **getRedMatrix(const IplImage* img);
 
 #endif

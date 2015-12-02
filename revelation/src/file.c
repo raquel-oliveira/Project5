@@ -29,6 +29,17 @@ int get_bit(char the_byte,int which_bit) {
 }
 
 char intToChar(int a){
-    char c = a+ '0';
+    char c = a + '0';
+    return c;
+}
+
+char intBToChar(int a){
+    char c;
+    if (a == 0){
+        c = '0';
+    }
+    if (a == 1){
+        c = '1';
+    }
     return c;
 }

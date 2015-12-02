@@ -9,4 +9,6 @@ int get_bit(char the_byte,int which_bit);
 
 char intToChar(int a);
 
+char intBToChar(int a);
+
 #endif
