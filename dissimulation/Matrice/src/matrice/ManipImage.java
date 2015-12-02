@@ -20,9 +20,9 @@ public class ManipImage {
 	 * Constructs a BufferedImage. Get width and height from the image.
 	 * @param Path to file
 	 */
-	public ManipImage(String s)
+	public ManipImage(String in)
 	{
-		image = new ImageRGB(s);
+		image = new ImageRGB(in);
 	}
 	
 	/**
@@ -77,6 +77,7 @@ public class ManipImage {
 				
 				z++;
 			}
+			System.out.println("J'ai fais en direct");
 		}
 		else if(pattern.equals("Inverse"))
 		{
@@ -100,6 +101,7 @@ public class ManipImage {
 				
 				z--;
 			}
+			System.out.println("J'ai fais en inverse");
 		}
 		
 	}

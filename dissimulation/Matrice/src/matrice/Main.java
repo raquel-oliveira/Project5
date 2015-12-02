@@ -4,19 +4,21 @@ import java.io.IOException;
 import java.util.BitSet;
 
 public class Main {
-
-	public static void main(String[] args) throws IOException
+	
+	public static void main(String[] args) throws IOException, Throwable
 	{
-		String s = "fagoon-cartman-10536.png";
-		String sortie = "toc.png";
+		Arguments arg = new Arguments(args);
 		
-		ManipImage manipMat = new ManipImage(s);
+		String in = "fagoon-cartman-10536.png";
+		String out = "toc.png";
+		
+		ManipImage manipMat = new ManipImage(in);
 		TextToBinary t = new TextToBinary();
 		
 		BitSet b = t.ChaintoBinary("Comment ca va ?");
 		
-		manipMat.dissimulationLSB(b, "Inverse");
+		manipMat.dissimulationLSB(b, arg.getArg("pattern"));
 		
-		manipMat.setPixelsColor(sortie);	
+		manipMat.setPixelsColor(out);
 	}
 }
