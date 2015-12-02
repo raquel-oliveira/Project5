@@ -15,15 +15,14 @@ import java.util.BitSet;
 public class ManipImage {
 	
 	private ImageRGB image;
-	private String magicnumber;
 	
 	/**
 	 * Constructs a BufferedImage. Get width and height from the image.
-	 * @param s path to file
+	 * @param in path to file
 	 */
 	public ManipImage(String in)
 	{
-		image = new ImageRGB(in);
+		this.image = new ImageRGB(in);
 	}
 	
 	/**
