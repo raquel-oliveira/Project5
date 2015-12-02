@@ -88,8 +88,8 @@ int **getBlueMatrix(IplImage* img){
 /**
  * Get the values of green in each pixel of a given image
  */
-char **getGreenMatrix(const IplImage* img){
-    char **green;
+int **getGreenMatrix(const IplImage* img){
+    int **green;
     CvScalar pixel;
     green = malloc(img->height * sizeof (int *) );
     for(int row = 0; row < img->height; row++) {
@@ -106,8 +106,8 @@ char **getGreenMatrix(const IplImage* img){
 /**
  * Get the values of red in each pixel of a given image
  */
-char **getRedMatrix(const IplImage* img){
-    char **red;
+int **getRedMatrix(const IplImage* img){
+    int **red;
     CvScalar pixel;
     red = malloc(img->height * sizeof (int *) );
     for(int row = 0; row < img->height; row++) {

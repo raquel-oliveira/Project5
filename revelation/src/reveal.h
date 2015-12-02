@@ -8,6 +8,6 @@
 #include "image.h"
 #include "file.h"
 
-char* revealOneColor(int **matrixColor, int qtdbit, int height, int width );
+
 
 #endif
