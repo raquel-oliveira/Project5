@@ -20,10 +20,4 @@ int getChannels(IplImage* img);
 
 void showImage(IplImage* img);
 
-int **getBlueMatrix(IplImage* img);
-
-int **getGreenMatrix(const IplImage* img);
-
-int **getRedMatrix(const IplImage* img);
-
 #endif

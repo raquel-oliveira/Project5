@@ -123,33 +123,6 @@ Revelation/fast:
 	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/build
 .PHONY : Revelation/fast
 
-src/file.o: src/file.c.o
-
-.PHONY : src/file.o
-
-# target to build an object file
-src/file.c.o:
-	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/file.c.o
-.PHONY : src/file.c.o
-
-src/file.i: src/file.c.i
-
-.PHONY : src/file.i
-
-# target to preprocess a source file
-src/file.c.i:
-	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/file.c.i
-.PHONY : src/file.c.i
-
-src/file.s: src/file.c.s
-
-.PHONY : src/file.s
-
-# target to generate assembly for a file
-src/file.c.s:
-	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/file.c.s
-.PHONY : src/file.c.s
-
 src/image.o: src/image.c.o
 
 .PHONY : src/image.o
@@ -204,6 +177,33 @@ src/reveal.c.s:
 	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/reveal.c.s
 .PHONY : src/reveal.c.s
 
+src/util.o: src/util.c.o
+
+.PHONY : src/util.o
+
+# target to build an object file
+src/util.c.o:
+	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/util.c.o
+.PHONY : src/util.c.o
+
+src/util.i: src/util.c.i
+
+.PHONY : src/util.i
+
+# target to preprocess a source file
+src/util.c.i:
+	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/util.c.i
+.PHONY : src/util.c.i
+
+src/util.s: src/util.c.s
+
+.PHONY : src/util.s
+
+# target to generate assembly for a file
+src/util.c.s:
+	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/util.c.s
+.PHONY : src/util.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -213,15 +213,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Revelation"
-	@echo "... src/file.o"
-	@echo "... src/file.i"
-	@echo "... src/file.s"
 	@echo "... src/image.o"
 	@echo "... src/image.i"
 	@echo "... src/image.s"
 	@echo "... src/reveal.o"
 	@echo "... src/reveal.i"
 	@echo "... src/reveal.s"
+	@echo "... src/util.o"
+	@echo "... src/util.i"
+	@echo "... src/util.s"
 .PHONY : help
 
 
