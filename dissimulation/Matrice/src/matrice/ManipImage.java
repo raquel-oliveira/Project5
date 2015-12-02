@@ -32,7 +32,7 @@ public class ManipImage {
 	 * @param array green
 	 * @throws IOException
 	 */
-	public void setPixelsColor() throws IOException
+	public void setPixelsColor(String sortie) throws IOException
 	{
 		int z = 0;
 		
@@ -45,7 +45,7 @@ public class ManipImage {
 				z++;				
 			}
 		}
-		ImageIO.write(image.getImageBuff(), "png", new File("sortie.png")); // Writes a new image in the storage
+		ImageIO.write(image.getImageBuff(), "png", new File(sortie)); // Writes a new image in the storage
 	}
 	
 	/**
@@ -53,29 +53,55 @@ public class ManipImage {
 	 * Put null to the non-wanted array(s) color
 	 * @param Bitset from the string to hide
 	 */
-	public void dissimulationLSB(BitSet bIn)
-	{
-		int z = 0;
-		
-		for(int i = 0; i < bIn.length(); i++)
+	public void dissimulationLSB(BitSet bIn, String pattern)
+	{	
+		if(pattern.equals("Direct"))
 		{
-			if(i < bIn.length())
+			int z = 0;
+			for(int i = 0; i < bIn.length(); i++)
 			{
-				setDissimulation(bIn, image.getRedArray(), i, z);
+				if(i < bIn.length())
+				{
+					setDissimulation(bIn, image.getRedArray(), i, z);
+				}
+				if(i < bIn.length() -1)
+				{
+					setDissimulation(bIn, image.getGreenArray(), ++i, z);
+	
+				} 
+				if(i < bIn.length() -1)
+				{
+					setDissimulation(bIn, image.getBlueArray(), ++i, z);
+	
+				}
+				
+				z++;
 			}
-			if(i < bIn.length() -1)
-			{
-				setDissimulation(bIn, image.getGreenArray(), ++i, z);
-
-			} 
-			if(i < bIn.length() -1)
-			{
-				setDissimulation(bIn, image.getBlueArray(), ++i, z);
-
-			}
-			
-			z++;
 		}
+		else if(pattern.equals("Inverse"))
+		{
+			int z = image.getRedArray().length - 1;
+			for(int i = 0; i < bIn.length(); i++)
+			{
+				if(i < bIn.length())
+				{
+					setDissimulation(bIn, image.getRedArray(), i, z);
+				}
+				if(i < bIn.length() -1)
+				{
+					setDissimulation(bIn, image.getGreenArray(), ++i, z);
+	
+				} 
+				if(i < bIn.length() -1)
+				{
+					setDissimulation(bIn, image.getBlueArray(), ++i, z);
+	
+				}
+				
+				z--;
+			}
+		}
+		
 	}
 	public void setDissimulation(BitSet bIn, int[] array, int i, int z)
 	{
