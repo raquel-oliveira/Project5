@@ -15,10 +15,15 @@ public class Main {
 		ManipImage manipMat = new ManipImage(in);
 		TextToBinary t = new TextToBinary();
 		
-		BitSet b = t.ChaintoBinary("Comment ca va ?");
+		BitSet b = t.ChaintoBinary("Bonjour");
 		
 		manipMat.dissimulationLSB(b, arg.getArg("pattern"));
 		
 		manipMat.setPixelsColor(out);
+		
+		for(int i = manipMat.getRedArray().length - 1; i > manipMat.getRedArray().length - 100; i--)
+		{
+			System.out.print(manipMat.getRedArray()[i]);
+		}
 	}
 }

@@ -53,27 +53,47 @@ public class ManipImage {
 	 */
 	public void dissimulationLSB(BitSet bIn, String pattern)
 	{	
+		int pass = 0;
+		boolean firstTime = true;
+		
 		if(pattern.equals("Direct"))
 		{
 			int z = 0;
+			
 			for(int i = 0; i < bIn.length(); i++)
 			{
-				if(i < bIn.length())
+				if(pass == 0)
 				{
 					setDissimulation(bIn, image.getRedArray(), i, z);
-				}
-				if(i < bIn.length() -1)
-				{
-					setDissimulation(bIn, image.getGreenArray(), ++i, z);
-	
-				} 
-				if(i < bIn.length() -1)
-				{
-					setDissimulation(bIn, image.getBlueArray(), ++i, z);
-	
+					if(z == image.getRedArray().length - 1) pass = 1;
 				}
 				
-				z++;
+				else if(pass == 1)
+				{
+					if(firstTime == true)
+					{
+						z = 0;
+						firstTime = false;
+					}
+					setDissimulation(bIn, image.getGreenArray(), i, z);
+					if(z == image.getGreenArray().length - 1) 
+					{
+						pass = 2;
+						firstTime = true;
+					}
+				} 
+				
+				else if(pass == 2)
+				{
+					if(firstTime == true)
+					{
+						z = 0;
+						firstTime = false;
+					}
+					setDissimulation(bIn, image.getBlueArray(), i, z);
+				}
+				
+			    z++;
 			}
 			System.out.println("J'ai fais en direct");
 		}
@@ -82,17 +102,33 @@ public class ManipImage {
 			int z = image.getRedArray().length - 1;
 			for(int i = 0; i < bIn.length(); i++)
 			{
-				if(i < bIn.length())
+				if(pass == 0)
 				{
 					setDissimulation(bIn, image.getRedArray(), i, z);
+					if(z == 0) pass = 1;
 				}
-				if(i < bIn.length() -1)
+				else if(pass == 1)
 				{
+					if(firstTime == true)
+					{
+						z = image.getGreenArray().length - 1;
+						firstTime = false;
+					}
 					setDissimulation(bIn, image.getGreenArray(), ++i, z);
+					if(z == 0) 
+					{
+						pass = 2;
+						firstTime = true;
+					}
 	
 				} 
-				if(i < bIn.length() -1)
+				else if(pass == 2)
 				{
+					if(firstTime == true)
+					{
+						z = image.getBlueArray().length - 1;
+						firstTime = false;
+					}
 					setDissimulation(bIn, image.getBlueArray(), ++i, z);
 	
 				}
