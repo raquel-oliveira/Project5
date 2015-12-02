@@ -15,10 +15,11 @@ import java.util.BitSet;
 public class ManipImage {
 	
 	private ImageRGB image;
+	private String magicnumber;
 	
 	/**
 	 * Constructs a BufferedImage. Get width and height from the image.
-	 * @param Path to file
+	 * @param s path to file
 	 */
 	public ManipImage(String s)
 	{
@@ -27,9 +28,7 @@ public class ManipImage {
 	
 	/**
 	 * Create a new image with the new RGB colors.
-	 * @param array red
-	 * @param array blue
-	 * @param array green
+	 * @param sortie filename du fichier de sortie
 	 * @throws IOException
 	 */
 	public void setPixelsColor(String sortie) throws IOException
@@ -51,7 +50,7 @@ public class ManipImage {
 	/**
 	 * Change each bytes's last bit of RGB colors, with selection from the user of the colors.
 	 * Put null to the non-wanted array(s) color
-	 * @param Bitset from the string to hide
+	 * @param bIn BitSet of the string to hide
 	 */
 	public void dissimulationLSB(BitSet bIn, String pattern)
 	{	
@@ -121,7 +120,7 @@ public class ManipImage {
 	
 	/**
 	 * Prints out the number of bits available for hiding. Prints out the number of bits to hide (s)
-	 * @param string to hide
+	 * @param s string to hide
 	 */
 	public void nbBitsAvailable(String s)
 	{
