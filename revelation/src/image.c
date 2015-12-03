@@ -60,3 +60,4 @@ void showImage(IplImage* img){
     // release the image
     cvReleaseImage(&img );
 }
+

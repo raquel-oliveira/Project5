@@ -1,13 +1,39 @@
 #include "reveal.h"
+/**
+ *  @param img - Image to be reveal in the Direct Pattern
+ *  @param b - Quantity of bits
+ *  @param help - define de ends of the message
+ */
+uchar* revealDirect(IplImage *img, int b, char* help){
+    CvScalar pixel;
+    int lbit, channel;
+    int count = 7;
+    uchar letter = 1;
+    uchar* message = malloc(1000); //change this
+    int i = 0;
+    int flag = 0;
+    for (int row = 0; row < img->height; row++){
+        for (int col = 0; col < img->width; col++){
+            channel = cvGet2D(img, row, col).val[2]; //channel red
+            lbit = get_bit(channel, b); //red, last bit if b = 1;
+            letter = setBit(letter, count, lbit);
+            count--;
+           // if (strstr((char)message, help)!= NULL){ return message; }
+            if (count < 0){ count = 7; message[i++] = letter; }
+        }
+    }
+    return message;
+}
+
+
 
 int main() {
     IplImage *img = 0;
     int height, width, step, channels;
     uchar *data;
-    CvScalar pixel;
 
     /*If second parameter == 1 (normal image); if == 0 (grey)*/
-    img=cvLoadImage("../resource/teste.png", 1);
+    img=cvLoadImage("../resource/red1bit.png", 1);
     if(!img){
         printf("Could not load image file:");
         exit(0);
@@ -16,8 +42,14 @@ int main() {
     height    = getHeight(img);
     width     = getWidth(img);
     channels  = getChannels(img);
-    data      = (uchar *)img->imageData;
-    uchar *pImg = (uchar *)img->imageData; // setup the pointer to access img data
+
+    uchar* message = malloc(1000);
+    message = revealDirect(img,8,0);
+    int i = 0;
+    for (int i = 0; i < 21; i++){
+        printf("%c", message[i]);
+    }
+
 
 
     return 0;
