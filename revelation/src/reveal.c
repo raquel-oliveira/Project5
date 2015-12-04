@@ -4,21 +4,19 @@
  *  @param b - Quantity of bits
  *  @param help - define de ends of the message
  */
-uchar* revealDirect(IplImage *img, int b, char* help){
+uchar* revealDirect(IplImage *img, int b, char* help, uchar* message){
     CvScalar pixel;
     int lbit, channel;
     int count = 7;
     uchar letter = 1;
-    uchar* message = malloc(1000); //change this
+    message = malloc(1000); //change this
     int i = 0;
-    int flag = 0;
     for (int row = 0; row < img->height; row++){
         for (int col = 0; col < img->width; col++){
             channel = cvGet2D(img, row, col).val[2]; //channel red
             lbit = get_bit(channel, b); //red, last bit if b = 1;
             letter = setBit(letter, count, lbit);
             count--;
-           // if (strstr((char)message, help)!= NULL){ return message; }
             if (count < 0){ count = 7; message[i++] = letter; }
         }
     }
@@ -43,8 +41,8 @@ int main() {
     width     = getWidth(img);
     channels  = getChannels(img);
 
-    uchar* message = malloc(1000);
-    message = revealDirect(img,8,0);
+    uchar* message;
+    message = revealDirect(img,8,0, message);
     int i = 0;
     for (int i = 0; i < 21; i++){
         printf("%c", message[i]);
