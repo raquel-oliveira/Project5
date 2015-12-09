@@ -8,28 +8,28 @@
 int main(int argc, char *argv[])
 {
     IplImage *img = NULL;
-    int height, width, step, channels, i = 0;
+    int i = 0;
     uchar *message = malloc(SIZE_MESSAGE);
     char help[] = "HELP";
 
-    img = cvLoadImage("../resource/1bitRedDirect.png", 1); //If second parameter == 1 (normal image); if == 0 (grey)
+    img = cvLoadImage("../resource/1bitRedGreenDirect.png", 1); //If second parameter == 1 (normal image); if == 0 (grey)
 
     if(!img)
     {
         printf("Could not load image file : ");
         exit(0);
     }
-    
-    height    = getHeight(img);
-    width     = getWidth(img);
-    channels  = getChannels(img);
 
-    message = revealDirect(img, 1, help, message);
-    
-    while(message[i] != '\0')
-    {
-        printf("%c", message[i]);
-        i++;
+    int errorCode = revealDirect(img, 1, help, message);
+    switch(errorCode){
+        case 0:
+            while(message[i] != '\0')
+            {
+                printf("%c", message[i]);
+                i++;
+            }
+        case 1: exit(1); break;
+        case 2: printf("There is no magic number"); break;
     }
 
     cvReleaseImage(&img);
