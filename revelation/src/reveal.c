@@ -16,12 +16,7 @@ uchar* revealDirect(IplImage *img, int nbBits, char help[], uchar *message)
             lbit = get_bit(channel, (9 - nbBits)); //access to the bit in ascending order
             letter = setBit(letter, count, lbit);
             count--;
-            
-            if(...)
-            {
-                message = realloc(c, size);
-            }// Have to do a realloc somewhere in here
-            
+
             if (count < 0)
             {
                 count = 7;
