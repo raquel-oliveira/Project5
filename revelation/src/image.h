@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <opencv/highgui.h>
 #include <magic.h>
+#include "util.h"
 
 void loadImage(const IplImage* img, const char *filename);
 
@@ -20,10 +21,10 @@ int getChannels(IplImage* img);
 
 void showImage(IplImage* img);
 
-int **getBlueMatrix(IplImage* img);
+CvScalar* getIntensityPixel(IplImage* img);
 
-int **getGreenMatrix(const IplImage* img);
+double *redIntensity(IplImage* img);
 
-int **getRedMatrix(const IplImage* img);
+double *bits(IplImage* img);
 
 #endif

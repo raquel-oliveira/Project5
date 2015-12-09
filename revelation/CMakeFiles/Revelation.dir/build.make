@@ -105,42 +105,42 @@ CMakeFiles/Revelation.dir/src/image.c.o.provides: CMakeFiles/Revelation.dir/src/
 CMakeFiles/Revelation.dir/src/image.c.o.provides.build: CMakeFiles/Revelation.dir/src/image.c.o
 
 
-CMakeFiles/Revelation.dir/src/file.c.o: CMakeFiles/Revelation.dir/flags.make
-CMakeFiles/Revelation.dir/src/file.c.o: src/file.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Revelation.dir/src/file.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Revelation.dir/src/file.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/file.c
+CMakeFiles/Revelation.dir/src/util.c.o: CMakeFiles/Revelation.dir/flags.make
+CMakeFiles/Revelation.dir/src/util.c.o: src/util.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Revelation.dir/src/util.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Revelation.dir/src/util.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/util.c
 
-CMakeFiles/Revelation.dir/src/file.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Revelation.dir/src/file.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/file.c > CMakeFiles/Revelation.dir/src/file.c.i
+CMakeFiles/Revelation.dir/src/util.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Revelation.dir/src/util.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/util.c > CMakeFiles/Revelation.dir/src/util.c.i
 
-CMakeFiles/Revelation.dir/src/file.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Revelation.dir/src/file.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/file.c -o CMakeFiles/Revelation.dir/src/file.c.s
+CMakeFiles/Revelation.dir/src/util.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Revelation.dir/src/util.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/util.c -o CMakeFiles/Revelation.dir/src/util.c.s
 
-CMakeFiles/Revelation.dir/src/file.c.o.requires:
+CMakeFiles/Revelation.dir/src/util.c.o.requires:
 
-.PHONY : CMakeFiles/Revelation.dir/src/file.c.o.requires
+.PHONY : CMakeFiles/Revelation.dir/src/util.c.o.requires
 
-CMakeFiles/Revelation.dir/src/file.c.o.provides: CMakeFiles/Revelation.dir/src/file.c.o.requires
-	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/file.c.o.provides.build
-.PHONY : CMakeFiles/Revelation.dir/src/file.c.o.provides
+CMakeFiles/Revelation.dir/src/util.c.o.provides: CMakeFiles/Revelation.dir/src/util.c.o.requires
+	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/util.c.o.provides.build
+.PHONY : CMakeFiles/Revelation.dir/src/util.c.o.provides
 
-CMakeFiles/Revelation.dir/src/file.c.o.provides.build: CMakeFiles/Revelation.dir/src/file.c.o
+CMakeFiles/Revelation.dir/src/util.c.o.provides.build: CMakeFiles/Revelation.dir/src/util.c.o
 
 
 # Object files for target Revelation
 Revelation_OBJECTS = \
 "CMakeFiles/Revelation.dir/src/reveal.c.o" \
 "CMakeFiles/Revelation.dir/src/image.c.o" \
-"CMakeFiles/Revelation.dir/src/file.c.o"
+"CMakeFiles/Revelation.dir/src/util.c.o"
 
 # External object files for target Revelation
 Revelation_EXTERNAL_OBJECTS =
 
 bin/Revelation: CMakeFiles/Revelation.dir/src/reveal.c.o
 bin/Revelation: CMakeFiles/Revelation.dir/src/image.c.o
-bin/Revelation: CMakeFiles/Revelation.dir/src/file.c.o
+bin/Revelation: CMakeFiles/Revelation.dir/src/util.c.o
 bin/Revelation: CMakeFiles/Revelation.dir/build.make
 bin/Revelation: /usr/local/lib/libopencv_videostab.3.0.0.dylib
 bin/Revelation: /usr/local/lib/libopencv_superres.3.0.0.dylib
@@ -172,7 +172,7 @@ CMakeFiles/Revelation.dir/build: bin/Revelation
 
 CMakeFiles/Revelation.dir/requires: CMakeFiles/Revelation.dir/src/reveal.c.o.requires
 CMakeFiles/Revelation.dir/requires: CMakeFiles/Revelation.dir/src/image.c.o.requires
-CMakeFiles/Revelation.dir/requires: CMakeFiles/Revelation.dir/src/file.c.o.requires
+CMakeFiles/Revelation.dir/requires: CMakeFiles/Revelation.dir/src/util.c.o.requires
 
 .PHONY : CMakeFiles/Revelation.dir/requires
 
