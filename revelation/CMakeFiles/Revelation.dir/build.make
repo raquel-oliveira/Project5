@@ -57,9 +57,33 @@ include CMakeFiles/Revelation.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Revelation.dir/flags.make
 
+CMakeFiles/Revelation.dir/src/main.c.o: CMakeFiles/Revelation.dir/flags.make
+CMakeFiles/Revelation.dir/src/main.c.o: src/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Revelation.dir/src/main.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Revelation.dir/src/main.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/main.c
+
+CMakeFiles/Revelation.dir/src/main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Revelation.dir/src/main.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/main.c > CMakeFiles/Revelation.dir/src/main.c.i
+
+CMakeFiles/Revelation.dir/src/main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Revelation.dir/src/main.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/main.c -o CMakeFiles/Revelation.dir/src/main.c.s
+
+CMakeFiles/Revelation.dir/src/main.c.o.requires:
+
+.PHONY : CMakeFiles/Revelation.dir/src/main.c.o.requires
+
+CMakeFiles/Revelation.dir/src/main.c.o.provides: CMakeFiles/Revelation.dir/src/main.c.o.requires
+	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/main.c.o.provides.build
+.PHONY : CMakeFiles/Revelation.dir/src/main.c.o.provides
+
+CMakeFiles/Revelation.dir/src/main.c.o.provides.build: CMakeFiles/Revelation.dir/src/main.c.o
+
+
 CMakeFiles/Revelation.dir/src/reveal.c.o: CMakeFiles/Revelation.dir/flags.make
 CMakeFiles/Revelation.dir/src/reveal.c.o: src/reveal.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Revelation.dir/src/reveal.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Revelation.dir/src/reveal.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Revelation.dir/src/reveal.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/reveal.c
 
 CMakeFiles/Revelation.dir/src/reveal.c.i: cmake_force
@@ -83,7 +107,7 @@ CMakeFiles/Revelation.dir/src/reveal.c.o.provides.build: CMakeFiles/Revelation.d
 
 CMakeFiles/Revelation.dir/src/image.c.o: CMakeFiles/Revelation.dir/flags.make
 CMakeFiles/Revelation.dir/src/image.c.o: src/image.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Revelation.dir/src/image.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Revelation.dir/src/image.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Revelation.dir/src/image.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/image.c
 
 CMakeFiles/Revelation.dir/src/image.c.i: cmake_force
@@ -107,7 +131,7 @@ CMakeFiles/Revelation.dir/src/image.c.o.provides.build: CMakeFiles/Revelation.di
 
 CMakeFiles/Revelation.dir/src/util.c.o: CMakeFiles/Revelation.dir/flags.make
 CMakeFiles/Revelation.dir/src/util.c.o: src/util.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Revelation.dir/src/util.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Revelation.dir/src/util.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Revelation.dir/src/util.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/util.c
 
 CMakeFiles/Revelation.dir/src/util.c.i: cmake_force
@@ -131,6 +155,7 @@ CMakeFiles/Revelation.dir/src/util.c.o.provides.build: CMakeFiles/Revelation.dir
 
 # Object files for target Revelation
 Revelation_OBJECTS = \
+"CMakeFiles/Revelation.dir/src/main.c.o" \
 "CMakeFiles/Revelation.dir/src/reveal.c.o" \
 "CMakeFiles/Revelation.dir/src/image.c.o" \
 "CMakeFiles/Revelation.dir/src/util.c.o"
@@ -138,6 +163,7 @@ Revelation_OBJECTS = \
 # External object files for target Revelation
 Revelation_EXTERNAL_OBJECTS =
 
+bin/Revelation: CMakeFiles/Revelation.dir/src/main.c.o
 bin/Revelation: CMakeFiles/Revelation.dir/src/reveal.c.o
 bin/Revelation: CMakeFiles/Revelation.dir/src/image.c.o
 bin/Revelation: CMakeFiles/Revelation.dir/src/util.c.o
@@ -162,7 +188,7 @@ bin/Revelation: /usr/local/lib/libopencv_core.3.0.0.dylib
 bin/Revelation: /usr/local/lib/libopencv_hal.a
 bin/Revelation: /usr/local/share/OpenCV/3rdparty/lib/libippicv.a
 bin/Revelation: CMakeFiles/Revelation.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable bin/Revelation"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable bin/Revelation"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Revelation.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -170,6 +196,7 @@ CMakeFiles/Revelation.dir/build: bin/Revelation
 
 .PHONY : CMakeFiles/Revelation.dir/build
 
+CMakeFiles/Revelation.dir/requires: CMakeFiles/Revelation.dir/src/main.c.o.requires
 CMakeFiles/Revelation.dir/requires: CMakeFiles/Revelation.dir/src/reveal.c.o.requires
 CMakeFiles/Revelation.dir/requires: CMakeFiles/Revelation.dir/src/image.c.o.requires
 CMakeFiles/Revelation.dir/requires: CMakeFiles/Revelation.dir/src/util.c.o.requires
