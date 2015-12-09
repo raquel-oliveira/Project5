@@ -22,7 +22,7 @@ public class Main {
 			System.out.println("Chaine de charactères non-valide : le message contient le mot magique");
 		}
 		else {
-			message += "HELP";
+			message += mnt.hexStringtoString();
 
 			BitSet b = t.ChaintoBinary(message);
 

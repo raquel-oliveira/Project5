@@ -1,5 +1,6 @@
 package matrice;
 
+import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -59,9 +60,24 @@ public class MagicNumberTester {
         String res = "";
         String[] splitstr = this.hexString.split("\\s+");
         for(int i = 0; i < splitstr.length; i++){
-            Integer.decode()
+            char[] c =Character.toChars(Integer.decode("0x"+splitstr[i]));
+            res += Character.toString(c[0]);
         }
         return res;
+    }
+
+    public byte[] hextStringtoByteArray(){
+
+        String[] splitstr = this.hexString.split("\\s+");
+        int size = splitstr.length;
+        byte [] bytes = new byte[size];
+        int j=0;
+            for (int i = 0; i < splitstr.length; i++) {
+                byte[] b = DatatypeConverter.parseHexBinary(splitstr[i]);
+                bytes[j]=b[0];
+                j++;
+            }
+        return bytes;
     }
 
     public String getHexString(){
