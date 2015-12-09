@@ -2,43 +2,38 @@
 #include <stdlib.h>
 #include <getopt.h>
 #include "reveal.h"
+#include "util.h"
+#include "image.h"
 
-int main(int argc, char *argv[]) {
+#define SIZE_MESSAGE 100
 
-    /*int opt = 0;
-
-    static struct option long_options[] = {
-            {"-fin", no_argument, 0,'f'},
-            {"-in", required_argument, 0, 'i'},
-            {"-out", no_argument, 0, 'o'},
-            {"-b", no_argument, 0, 'b'},
-            {"-c", no_argument, 0, 'c'},
-            {"-p", no_argument,0,'p'},
-            {"-magic", no_argument, 0, 'm'},
-            {0,0,0,0}
-    };
-
-    int long_index = 0;
-    while((opt = getopt_long_only(argc, argv, "", long_options, &long_index)) != -1){
-        switch (opt){
-            case 'f':
-                break;
-            case 'i':
-                break;
-            case 'o':
-                break;
-            case 'b':
-                break;
-            case 'c':
-                break;
-            case 'p':
-                break;
-            case 'm':
-                break;
-            default:
-                exit(EXIT_FAILURE);
-        }
-    }*/
+int main(int argc, char *argv[])
+{
+    IplImage *img = NULL;
+    int height, width, step, channels, i = 0;
+    uchar *message = malloc(SIZE_MESSAGE * sizeof(uchar));
+    char help[] = "HELP";
+    
+    
+    img=cvLoadImage("../resource/red1bit.png", 1); //If second parameter == 1 (normal image); if == 0 (grey)
+    if(!img)
+    {
+        printf("Could not load image file : ");
+        exit(0);
+    }
+    
+    height    = getHeight(img);
+    width     = getWidth(img);
+    channels  = getChannels(img);
+    
+    
+    message = revealDirect(img, 1, help, message);
+    
+    while(message[i] != '\0')
+    {
+        printf("%c", message[i]);
+        i++;
+    }
+    
     return 0;
-
 }
