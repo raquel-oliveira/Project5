@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 {
     IplImage *img = NULL;
     int height, width, step, channels, i = 0;
-    uchar *message = malloc(SIZE_MESSAGE * sizeof(uchar));
+    uchar *message = malloc(SIZE_MESSAGE);
     char help[] = "HELP";
 
     img = cvLoadImage("../resource/1bitRedDirect.png", 1); //If second parameter == 1 (normal image); if == 0 (grey)
@@ -33,5 +33,7 @@ int main(int argc, char *argv[])
     }
 
     cvReleaseImage(&img);
+    free(message);
+
     return 0;
 }
