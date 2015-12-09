@@ -55,6 +55,15 @@ public class MagicNumberTester {
         return  hexcomp.contains(this.getHexString());
     }
 
+    public String hexStringtoString(){
+        String res = "";
+        String[] splitstr = this.hexString.split("\\s+");
+        for(int i = 0; i < splitstr.length; i++){
+            
+        }
+        return res;
+    }
+
     public String getHexString(){
         return this.hexString;
     }
