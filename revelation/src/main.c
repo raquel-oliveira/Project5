@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     }
     
     free(message);
-    free(img);
+    cvReleaseImage(&img);
     
     return 0;
 }
