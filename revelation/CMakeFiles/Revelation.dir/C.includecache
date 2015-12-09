@@ -20,6 +20,14 @@ opencv/highgui.h
 magic.h
 -
 
+/Users/Raquel/Desktop/NSA/private/revelation/src/main.c
+stdio.h
+-
+stdlib.h
+-
+reveal.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/reveal.h
+
 /Users/Raquel/Desktop/NSA/private/revelation/src/reveal.c
 reveal.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/reveal.h
@@ -48,6 +56,8 @@ stdio.h
 stdlib.h
 -
 string.h
+-
+opencv2/hal/defs.h
 -
 
 /usr/local/include/magic.h

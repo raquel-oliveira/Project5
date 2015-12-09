@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Revelation.dir/src/main.c.o"
   "CMakeFiles/Revelation.dir/src/reveal.c.o"
   "CMakeFiles/Revelation.dir/src/image.c.o"
   "CMakeFiles/Revelation.dir/src/util.c.o"

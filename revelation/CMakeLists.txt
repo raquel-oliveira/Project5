@@ -8,13 +8,12 @@ set(CMAKE_C_FLAGS "-std=c99 -lm")
 
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-set(SOURCE_FILES src/reveal.c)
-set(SOURCE_FILES src/image.c)
-set(SOURCE_FILES src/util.c)
+set(SOURCE_FILES src/)
 
 add_executable(
         Revelation
 
+        src/main.c
         src/reveal.c
         src/image.c
         src/util.c
