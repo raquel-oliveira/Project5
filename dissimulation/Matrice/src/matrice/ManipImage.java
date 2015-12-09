@@ -19,17 +19,19 @@ public class ManipImage {
 	
 	/**
 	 * Constructs a BufferedImage. Get width and height from the image.
-	 * @param in path to file
+	 * @param Path to file
 	 */
 	public ManipImage(String in)
 	{
-		this.image = new ImageRGB(in);
+		image = new ImageRGB(in);
 		this.magicword = "HELP";
 	}
 	
 	/**
 	 * Create a new image with the new RGB colors.
-	 * @param sortie filename du fichier de sortie
+	 * @param array red
+	 * @param array blue
+	 * @param array green
 	 * @throws IOException
 	 */
 	public void setPixelsColor(String sortie) throws IOException
@@ -51,7 +53,7 @@ public class ManipImage {
 	/**
 	 * Change each bytes's last bit of RGB colors, with selection from the user of the colors.
 	 * Put null to the non-wanted array(s) color
-	 * @param bIn BitSet of the string to hide
+	 * @param Bitset from the string to hide
 	 */
 	public void dissimulationLSB(BitSet bIn, String pattern)
 	{	
@@ -99,7 +101,7 @@ public class ManipImage {
 			}
 			System.out.println("J'ai fais en direct");
 		}
-		else if(pattern.equals("Inverse"))
+		else if(pattern.equals("Reverse"))
 		{
 			int z = image.getRedArray().length - 1;
 			for(int i = 0; i < bIn.length(); i++)
@@ -137,7 +139,7 @@ public class ManipImage {
 				
 				z--;
 			}
-			System.out.println("J'ai fais en inverse");
+			System.out.println("J'ai fais en reverse");
 		}
 		
 	}
@@ -159,7 +161,7 @@ public class ManipImage {
 	
 	/**
 	 * Prints out the number of bits available for hiding. Prints out the number of bits to hide (s)
-	 * @param s string to hide
+	 * @param string to hide
 	 */
 	public void nbBitsAvailable(String s)
 	{
@@ -178,8 +180,8 @@ public class ManipImage {
 	{
 		return image.getBlueArray();
 	}
-	public String getMagicword() {
+	public String getMagicword() 
+	{
 		return magicword;
 	}
-
 }

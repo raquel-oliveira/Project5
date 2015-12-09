@@ -7,8 +7,8 @@
 #include <opencv/highgui.h>
 #include "image.h"
 
-uchar* revealDirect(IplImage *img, int b, char* help, uchar* message);
-uchar* revealReverse(IplImage *img, int b, char* help, uchar* message);
+uchar* revealDirect(IplImage *img, int b, char help[], uchar* message);
+uchar* revealReverse(IplImage *img, int b, char help[], uchar* message);
 
 
 #endif

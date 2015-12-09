@@ -17,7 +17,8 @@ public class Main {
 		TextToBinary t = new TextToBinary();
 		MagicNumberTester mnt = new MagicNumberTester();
 
-		if(mnt.doesStringContainMN(message)){
+		if(mnt.doesStringContainMN(message))
+		{
 			System.out.println("Chaine de charactères non-valide : le message contient le mot magique");
 		}
 		else {
@@ -29,7 +30,8 @@ public class Main {
 
 			manipMat.setPixelsColor(out);
 
-			for (int i = manipMat.getRedArray().length - 1; i > manipMat.getRedArray().length - 100; i--) {
+			for (int i = manipMat.getRedArray().length - 1; i > manipMat.getRedArray().length - 100; i--) 
+			{
 				System.out.print(manipMat.getRedArray()[i]);
 			}
 		}
