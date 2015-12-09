@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 {
     IplImage *img = NULL;
     int height, width, step, channels, i = 0;
-    uchar *message = malloc(SIZE_MESSAGE * sizeof(uchar));
+    uchar *message = malloc(SIZE_MESSAGE);
     char help[] = "HELP";
     
     
@@ -34,6 +34,9 @@ int main(int argc, char *argv[])
         printf("%c", message[i]);
         i++;
     }
+    
+    free(message);
+    free(img);
     
     return 0;
 }
