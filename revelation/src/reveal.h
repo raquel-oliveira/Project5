@@ -8,6 +8,6 @@
 #include "image.h"
 #include "util.h"
 
-int revealDirect(IplImage *img, int nbBits, char help[], uchar *message);
+int revealText(IplImage *img, int nbBits, char help[], uchar *message);
 
 #endif
