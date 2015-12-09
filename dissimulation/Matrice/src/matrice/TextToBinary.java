@@ -34,8 +34,7 @@ public class TextToBinary {
 	 * This method takes a byte Array
 	 * and returns a  string.
 	 * 
-	 * 
-	 * @param BitSet
+	 * @param bs BitSet to translate.
 	 * @return text
 	 */
 	public String BinarytoString(BitSet bs){

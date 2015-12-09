@@ -58,6 +58,6 @@ void showImage(IplImage* img){
     cvWaitKey(0);
 
     // release the image
-    cvReleaseImage(&img );
+    cvReleaseImage(&img);
 }
 

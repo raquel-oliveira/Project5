@@ -15,6 +15,7 @@ import java.util.BitSet;
 public class ManipImage {
 	
 	private ImageRGB image;
+	private String magicword;
 	
 	/**
 	 * Constructs a BufferedImage. Get width and height from the image.
@@ -23,6 +24,7 @@ public class ManipImage {
 	public ManipImage(String in)
 	{
 		image = new ImageRGB(in);
+		this.magicword = "HELP";
 	}
 	
 	/**
@@ -99,7 +101,7 @@ public class ManipImage {
 			}
 			System.out.println("J'ai fais en direct");
 		}
-		else if(pattern.equals("Inverse"))
+		else if(pattern.equals("Reverse"))
 		{
 			int z = image.getRedArray().length - 1;
 			for(int i = 0; i < bIn.length(); i++)
@@ -137,7 +139,7 @@ public class ManipImage {
 				
 				z--;
 			}
-			System.out.println("J'ai fais en inverse");
+			System.out.println("J'ai fais en reverse");
 		}
 		
 	}
@@ -177,5 +179,9 @@ public class ManipImage {
 	public int[] getBlueArray()
 	{
 		return image.getBlueArray();
+	}
+	public String getMagicword() 
+	{
+		return magicword;
 	}
 }
