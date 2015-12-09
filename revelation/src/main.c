@@ -27,8 +27,12 @@ int main(int argc, char *argv[])
             {
                 printf("%c", message[i]);
                 i++;
-            }
-        case 1: exit(1); break;
+            } break;
+        case 1:
+            {
+                printf("Message out of memory");
+                exit(1);
+            }break;
         case 2: printf("There is no magic number"); break;
     }
 
