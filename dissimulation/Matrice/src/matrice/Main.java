@@ -11,19 +11,27 @@ public class Main {
 		
 		String in = "fagoon-cartman-10536.png";
 		String out = "toc.png";
+		String message = "Bonjour";
 		
 		ManipImage manipMat = new ManipImage(in);
 		TextToBinary t = new TextToBinary();
-		
-		BitSet b = t.ChaintoBinary("Bonjour");
-		
-		manipMat.dissimulationLSB(b, arg.getArg("pattern"));
-		
-		manipMat.setPixelsColor(out);
-		
-		for(int i = manipMat.getRedArray().length - 1; i > manipMat.getRedArray().length - 100; i--)
-		{
-			System.out.print(manipMat.getRedArray()[i]);
+		MagicNumberTester mnt = new MagicNumberTester();
+
+		if(mnt.doesStringContainMN(message)){
+			System.out.println("Chaine de charactères non-valide : le message contient le mot magique");
+		}
+		else {
+			message += "HELP";
+
+			BitSet b = t.ChaintoBinary(message);
+
+			manipMat.dissimulationLSB(b, arg.getArg("pattern"));
+
+			manipMat.setPixelsColor(out);
+
+			for (int i = manipMat.getRedArray().length - 1; i > manipMat.getRedArray().length - 100; i--) {
+				System.out.print(manipMat.getRedArray()[i]);
+			}
 		}
 	}
 }

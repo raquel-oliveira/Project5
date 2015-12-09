@@ -15,6 +15,7 @@ import java.util.BitSet;
 public class ManipImage {
 	
 	private ImageRGB image;
+	private String magicword;
 	
 	/**
 	 * Constructs a BufferedImage. Get width and height from the image.
@@ -23,6 +24,7 @@ public class ManipImage {
 	public ManipImage(String in)
 	{
 		this.image = new ImageRGB(in);
+		this.magicword = "HELP";
 	}
 	
 	/**
@@ -176,4 +178,8 @@ public class ManipImage {
 	{
 		return image.getBlueArray();
 	}
+	public String getMagicword() {
+		return magicword;
+	}
+
 }
