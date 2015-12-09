@@ -2,5 +2,6 @@ package matrice;
 
 public interface Pattern {
 
-	public abstract 
+	public boolean hasNext();
+	public int[] position();
 }

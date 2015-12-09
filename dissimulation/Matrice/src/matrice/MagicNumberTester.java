@@ -59,3 +59,4 @@ public class MagicNumberTester {
         return this.hexString;
     }
 }
+
