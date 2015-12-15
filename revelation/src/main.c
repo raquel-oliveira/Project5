@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     uchar *message = malloc(SIZE_MESSAGE);
     char help[] = "HELP";
 
-    img = cvLoadImage("../resource/1bitRedGreenDirect.png", 1); // Second parameter == 1 (RGB) || == 0 (GREY)
+    img = cvLoadImage("../resource/1bitRedDirect.png", 1); // Second parameter == 1 (RGB) || == 0 (GREY)
     
     if(!img)
     {

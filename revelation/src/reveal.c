@@ -34,14 +34,20 @@ int revealText(IplImage *img, int nbBits, char help[], uchar *message)
                 count = 7;
                 message[i] = letter;
                 i++;
+
             }
 
             end = strstr(message, help); // Check when "HELP" is found --> when the message ends
+
+            if (end != 0) {
+                *end = '\0';
+            }
 
             if (end != NULL) // If "HELP" has been found in message
             {
                 return 0;
             }
+
         }
     }
     
