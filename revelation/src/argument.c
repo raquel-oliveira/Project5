@@ -10,7 +10,7 @@
 #define C "-c"
 #define P "-p"
 
-char *formatIn, *fileIn, *fileOut, *nbBits, *channels, *pattern;
+
 
 void argument(int argc, char *argv[]){
 	for(int i = 0; i < argc; i++){
@@ -56,6 +56,7 @@ char * getArg(char *what){
 	}
 	
 }
+
 
 // int main(int argc, char *argv[])
 // {
