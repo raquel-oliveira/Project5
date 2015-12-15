@@ -10,30 +10,48 @@ public class Main {
 		Arguments arg = new Arguments(args);
 		
 		String in = "fagoon-cartman-10536.png";
-		String out = "toc.png";
+		String out = arg.getArg("fileOut");
 		String message = "Bonjour";
+		message += "HELP";
 		
 		ManipImage manipMat = new ManipImage(in);
 		TextToBinary t = new TextToBinary();
-		MagicNumberTester mnt = new MagicNumberTester();
+		
+		BitSet b = t.ChaintoBinary(message);
+	
+		try
+		{ 
+			manipMat.dissimulationLSB(b, arg.getArg("patte"));
+		}
+		catch(InvalidArgumentException e)
+		{
+			System.out.println(e.getMessage());
+		}
+
+		manipMat.setPixelsColor(out);
+		
+		/*for (int i = 0; i < 100; i++) 
+		{
+			System.out.print(manipMat.getRedArray()[i]);
+		}*/
+		
+		
+		/*MagicNumberTester mnt = new MagicNumberTester();
 
 		if(mnt.doesStringContainMN(message))
 		{
 			System.out.println("Chaine de charactères non-valide : le message contient le mot magique");
 		}
 		else {
-			message += mnt.hexStringtoString();
+			message += "HELP";
 
-			BitSet b = t.ChaintoBinary(message);
+			
 
 			manipMat.dissimulationLSB(b, arg.getArg("pattern"));
 
 			manipMat.setPixelsColor(out);
 
-			for (int i = manipMat.getRedArray().length - 1; i > manipMat.getRedArray().length - 100; i--) 
-			{
-				System.out.print(manipMat.getRedArray()[i]);
-			}
-		}
+			
+		}*/
 	}
 }

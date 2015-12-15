@@ -82,6 +82,6 @@ public class Arguments {
 			return metrics;
 		}
 		
-		throw new Throwable("Argument invalide");
+		throw new InvalidArgumentException("Requested argument is invalid");
 	}
 }
