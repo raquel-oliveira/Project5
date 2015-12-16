@@ -6,6 +6,7 @@
 #define SIZE_MESSAGE 100
 
 int main(int argc, char *argv[]) {
+
     IplImage *img = NULL;
     int i = 0;
     uchar *message = malloc(SIZE_MESSAGE);
@@ -16,18 +17,13 @@ int main(int argc, char *argv[]) {
     img = cvLoadImage(path, 1); // Second parameter == 1 (RGB) || == 0 (GREY)
     if (img){
         flag = checkFormat(path);
+        if (flag == -1){
+            printf("Format not accepted");
+            exit(-1);
+        }
     }else{
-        flag = 6;
-    }
-
-    //Verification of format
-    if (flag == 5){
-        printf("Format not accepted");
-        exit(5);
-    }
-    else if (flag == 6){
         printf("Could not open the file");
-        exit(6);
+        exit(-2);
     }
 
     flag = reveal(img, 1, help, message);
@@ -41,12 +37,13 @@ int main(int argc, char *argv[]) {
                 printf("\n\n");
                 break;
             
-        case 1: {
+        case -1: {
                     printf("Error while reallocating memory for message");
-                    exit(1);
+                    exit(-1);
                 } break;
             
-        case 2: printf("There is no magic number");
+        case -2: printf("There is no magic number");
+                exit(-2);
     }
 
     cvReleaseImage(&img);

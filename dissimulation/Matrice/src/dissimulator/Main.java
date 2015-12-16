@@ -11,8 +11,8 @@ public class Main {
 		
 		String in = "resources/fagoon-cartman-10536.png";
 		String out = arg.getArg("fileOut");
-		String message = "Bonjour";
-		message += "HELP";
+		String message = "Bla bla hi hi oi";
+		message += "HEL";
 		
 		ManipImage manipMat = new ManipImage(in);
 		TextToBinary t = new TextToBinary();

@@ -27,7 +27,7 @@ int reveal(IplImage *img, int nbBits, char *help, uchar *message)
                 {
                     size += SIZE_MESSAGE;
                     message = realloc(message, size);
-                    if (message == NULL) return 1; // The reallocation went wrong --> return an error code
+                    if (message == NULL) return -1; // The reallocation went wrong --> return an error code
                 }
                 count = 7;
                 message[i] = letter;
@@ -44,5 +44,5 @@ int reveal(IplImage *img, int nbBits, char *help, uchar *message)
         }
     }
 
-    return 2; // Case where "HELP" wasn't found in the hidden message
+    return -2; // Case where "HELP" wasn't found in the hidden message
 }
