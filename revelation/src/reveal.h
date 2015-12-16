@@ -8,8 +8,9 @@
 #include "image.h"
 #include "util.h"
 
-int revealText(IplImage *img, int nbBits, char help[], uchar *message);
+//int revealText(IplImage *img, int nbBits, char help[], uchar *message, int channel, int *count);
 
-//int directPattern(IplImage *img, int *channel, int nbBits, char help[], uchar *message);
+//int directPattern(IplImage *img, int nbBits, char help[], uchar *message);
+int revealText(IplImage *img, int nbBits, char help[], uchar *message);
 
 #endif

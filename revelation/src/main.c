@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
     }*/
     int *channel  = malloc(sizeof(int));
     //flag = directPattern(img, channel, atoi(getArg("nbBits")), help, message);
-   // flag = directPattern(img, channel, 1, help, message);
+    //flag = directPattern(img, 1, help, message);
     flag = revealText(img, 1, help, message);
     switch(flag){
         case 0: while(message[i] != '\0')
