@@ -11,6 +11,7 @@ public class Main {
 		
 		String in = "fagoon-cartman-10536.png";
 		String out = arg.getArg("fileOut");
+		if(out == null){out = "result.png";}
 		String message = "Bonjour";
 		message += "HELP";
 		

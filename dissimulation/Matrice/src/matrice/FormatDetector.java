@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
 
+/**
+ * Created by Paul Bertot
+ */
 
 public class FormatDetector {
     private String filetype;

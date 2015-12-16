@@ -1,9 +1,12 @@
 package matrice;
 
+import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.util.Arrays;
 
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 
 /**
@@ -20,9 +23,21 @@ public class MNTTest {
     @Test
     public void magicNumberTesterhexStringtoByteArray(){
         MagicNumberTester test = new MagicNumberTester();
-        //assertTrue(test.hextStringtoByteArray().equals("HELP".getBytes()));
-        System.out.println(Arrays.toString(test.hextStringtoByteArray()));
-        System.out.println(Arrays.toString("HELP".getBytes()));
+        byte[] arraytest = test.hextStringtoByteArray();
+        byte[] controlarray = "HELP".getBytes();
+        for(int i=0; i<arraytest.length; i++){
+            assertEquals(arraytest[i], controlarray[i]);
+        }
+
+    }
+
+    @Test
+    public void magicNumbertesterStringContainsMN(){
+        MagicNumberTester test = new MagicNumberTester();
+        assertFalse(test.doesStringContainMN("Bonjour"));
+        assertFalse(test.doesStringContainMN("BonjHE LPour"));
+        assertTrue(test.doesStringContainMN("BonHELPjour"));
+
     }
 
 
