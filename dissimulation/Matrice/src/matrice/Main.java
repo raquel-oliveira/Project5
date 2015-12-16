@@ -19,10 +19,12 @@ public class Main {
 		TextToBinary t = new TextToBinary();
 		
 		BitSet b = t.ChaintoBinary(message);
+		
+		//System.out.println(arg.getArg("message"));
 	
 		try
 		{ 
-			manipMat.dissimulationLSB(b, arg.getArg("patte"));
+			manipMat.dissimulationLSB(b, arg.getArg("pattern"));
 		}
 		catch(InvalidArgumentException e)
 		{
@@ -30,6 +32,8 @@ public class Main {
 		}
 
 		manipMat.setPixelsColor(out);
+		
+		manipMat.nbBitsImpacted(message);
 		
 		/*for (int i = 0; i < 100; i++) 
 		{

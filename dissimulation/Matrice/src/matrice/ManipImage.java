@@ -163,10 +163,10 @@ public class ManipImage {
 	 * Prints out the number of bits available for hiding. Prints out the number of bits to hide (s)
 	 * @param string to hide
 	 */
-	public void nbBitsAvailable(String s)
+	public void nbBitsImpacted(String s)
 	{
-		System.out.println("Nombre maximum de bits disponibles : " + (image.getWidth() * image.getHeight() * 3));
-		System.out.println("Nombre de bits à cacher : " + (s.length() * 8));
+		System.out.println("\nNombre maximum de bits disponibles : " + (image.getWidth() * image.getHeight() * 3));
+		System.out.println("Nombre de bits impactés : " + (s.length() * 8));
 	}
 	public int[] getRedArray()
 	{
