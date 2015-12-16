@@ -28,7 +28,6 @@ void argument(int argc, char *argv[]){
 
 char * getArg(char *what){
     if(strcmp(what,"formatIn")==0){
-        if(what == NULL) printf("Argument invalide\n");
         return formatIn;
     }
     else if(strcmp(what,"fileIn")==0){
@@ -40,7 +39,7 @@ char * getArg(char *what){
         return fileOut;
     }
     else if(strcmp(what,"nbBits")==0){
-        if(what == NULL) return "1";
+        if(what == NULL) {return "1";}
         return nbBits;
     }
     else if(strcmp(what,"pattern")==0){
@@ -53,13 +52,3 @@ char * getArg(char *what){
     }
 
 }
-
-
-// int main(int argc, char *argv[])
-// {
-// 	argument(argc,argv);
-// 	printf("%s\n", formatIn);
-// 	char *ch = getArg("formatIn");
-// 	printf("%s\n", ch);
-// 	return 0;
-// }

@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.c
+formatDetector.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.h
+
+/Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.h
+stdio.h
+-
+stdlib.h
+-
+
 /Users/Raquel/Desktop/NSA/private/revelation/src/image.c
 image.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/image.h
@@ -19,6 +29,8 @@ opencv/highgui.h
 -
 magic.h
 -
+formatDetector.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.h
 
 /Users/Raquel/Desktop/NSA/private/revelation/src/main.c
 stdio.h
@@ -27,6 +39,8 @@ stdlib.h
 -
 reveal.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/reveal.h
+formatDetector.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.h
 
 /Users/Raquel/Desktop/NSA/private/revelation/src/reveal.c
 reveal.h

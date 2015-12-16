@@ -6,6 +6,7 @@
 #define BLUE 0
 
 
+
 int revealText(IplImage *img, int nbBits, char help[], uchar *message)
 {
     int lbit, channel, count = 7, i = 0;
@@ -13,23 +14,20 @@ int revealText(IplImage *img, int nbBits, char help[], uchar *message)
     char* end = NULL;
     int size = SIZE_MESSAGE; // Size of the allocated memory for message
 
-    for (int row = 0; row < img->height; row++)
-    {
-        for (int col = 0; col < img->width; col++)
-        {
+    for (int row = 0; row < img->height; row++) {
+        for (int col = 0; col < img->width; col++) {
             channel = cvGet2D(img, row, col).val[2]; // Gets the red channel
 
             lbit = get_bit(channel, (9 - nbBits)); // Access to the last bit in ascending order
             letter = setBit(letter, count, lbit);
             count--;
-            
-            if(count < 0)
-            {
-                if(i >= size - 1) // Reallocating when the text become larger than message
+
+            if (count < 0) {
+                if (i >= size - 1) // Reallocating when the text become larger than message
                 {
                     size += SIZE_MESSAGE;
                     message = realloc(message, size);
-                    if(message == NULL) return 1; // The reallocation went wrong --> return an error code
+                    if (message == NULL) return 1; // The reallocation went wrong --> return an error code
                 }
                 count = 7;
                 message[i] = letter;
@@ -37,21 +35,14 @@ int revealText(IplImage *img, int nbBits, char help[], uchar *message)
 
             }
 
-            end = strstr(message, help); // Check when "HELP" is found --> when the message ends
+            end = strstr((char*)message, help); // Check when "HELP" is found --> when the message ends
 
             if (end != 0) {
                 *end = '\0';
-            }
-
-            if (end != NULL) // If "HELP" has been found in message
-            {
                 return 0;
             }
-
         }
     }
-    
-    if(end != NULL) free(end);
-    
+
     return 2; // Case where "HELP" wasn't found in the hidden message
 }

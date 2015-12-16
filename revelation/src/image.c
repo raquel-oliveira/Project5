@@ -1,10 +1,12 @@
 #include "image.h"
 
-void loadImage(const IplImage* img, const char *filename){
-    img = cvLoadImage(filename, 1);
-    if (!img) {
-        printf("Could not load image file");
-        exit(0);
+int loadImage(const IplImage* img, const char *filename){
+    img = cvLoadImage(filename, 1); // Second parameter == 1 (RGB) || == 0 (GREY)
+    if(img){
+        return checkFormat(filename);
+    }
+    else{
+        return 6;
     }
 }
 /*void getDataImage(const IplImage* img, int* height, int* width, int* step, int* channels, uchar* data ){

@@ -18,7 +18,6 @@ add_executable(
         src/image.c
         src/util.c
         src/formatDetector.c
-        src/argument.c
 )
 
 target_link_libraries(

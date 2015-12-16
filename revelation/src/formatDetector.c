@@ -10,7 +10,7 @@ PGM2=0x3550;
 int checkFormat(char *path){
 	FILE *file;
 	unsigned short pis[5];
-	int flag = NULL;
+	int flag = 0;
 	if((file = fopen(path,"r")) == NULL)
 		printf("can't read%s\n", path);
 	fread(pis,8,1,file);
@@ -33,7 +33,7 @@ int checkFormat(char *path){
 		flag = 4;
 	}
 	else{
-		flag = 0;
+		flag = 5;
 	}
 
 	return flag;

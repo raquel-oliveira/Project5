@@ -123,33 +123,6 @@ Revelation/fast:
 	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/build
 .PHONY : Revelation/fast
 
-src/argument.o: src/argument.c.o
-
-.PHONY : src/argument.o
-
-# target to build an object file
-src/argument.c.o:
-	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/argument.c.o
-.PHONY : src/argument.c.o
-
-src/argument.i: src/argument.c.i
-
-.PHONY : src/argument.i
-
-# target to preprocess a source file
-src/argument.c.i:
-	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/argument.c.i
-.PHONY : src/argument.c.i
-
-src/argument.s: src/argument.c.s
-
-.PHONY : src/argument.s
-
-# target to generate assembly for a file
-src/argument.c.s:
-	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/argument.c.s
-.PHONY : src/argument.c.s
-
 src/formatDetector.o: src/formatDetector.c.o
 
 .PHONY : src/formatDetector.o
@@ -294,9 +267,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Revelation"
-	@echo "... src/argument.o"
-	@echo "... src/argument.i"
-	@echo "... src/argument.s"
 	@echo "... src/formatDetector.o"
 	@echo "... src/formatDetector.i"
 	@echo "... src/formatDetector.s"

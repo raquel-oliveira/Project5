@@ -10,4 +10,6 @@
 
 int revealText(IplImage *img, int nbBits, char help[], uchar *message);
 
+//int directPattern(IplImage *img, int *channel, int nbBits, char help[], uchar *message);
+
 #endif
