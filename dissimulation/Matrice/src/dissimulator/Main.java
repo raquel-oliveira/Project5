@@ -1,4 +1,4 @@
-package matrice;
+package dissimulator;
 
 import java.io.IOException;
 import java.util.BitSet;
@@ -9,9 +9,8 @@ public class Main {
 	{
 		Arguments arg = new Arguments(args);
 		
-		String in = "fagoon-cartman-10536.png";
+		String in = "resources/fagoon-cartman-10536.png";
 		String out = arg.getArg("fileOut");
-		if(out == null){out = "result.png";}
 		String message = "Bonjour";
 		message += "HELP";
 		
@@ -22,14 +21,21 @@ public class Main {
 	
 		try
 		{ 
-			manipMat.dissimulationLSB(b, arg.getArg("patte"));
+			manipMat.dissimulationLSB(b, arg.getArg("pattern"));
 		}
 		catch(InvalidArgumentException e)
 		{
 			System.out.println(e.getMessage());
 		}
+		catch(EmptyArgumentException e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
 
 		manipMat.setPixelsColor(out);
+		
+		manipMat.nbBitsImpacted(message);
 		
 		/*for (int i = 0; i < 100; i++) 
 		{

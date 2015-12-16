@@ -1,4 +1,4 @@
-package matrice;
+package dissimulator;
 
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;

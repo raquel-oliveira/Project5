@@ -1,4 +1,4 @@
-package matrice;
+package dissimulator;
 
 public class Arguments {
 
@@ -33,27 +33,27 @@ public class Arguments {
 	{
 		if(what.equals("formatIn")) 
 		{
-			if(formatIn == null) throw new Throwable("Argument vide");
+			if(formatIn == null) throw new EmptyArgumentException("Requested argument is empty");
 			return formatIn;
 		}
 		else if(what.equals("formatOut"))
 		{
-			if(formatOut == null) throw new Throwable("Argument vide");
+			if(formatOut == null) throw new EmptyArgumentException("Requested argument is empty");
 			return formatOut;
 		}
 		else if(what.equals("fileIn"))
 		{
-			if(fileIn == null) throw new Throwable("Argument vide");
+			if(fileIn == null) throw new EmptyArgumentException("Requested argument is empty");
 			return fileIn;
 		}
 		else if(what.equals("fileOut"))
 		{
-			if(fileOut == null) throw new Throwable("Argument vide");
+			if(fileOut == null) return "output/result.png";
 			return fileOut;
 		}
 		else if(what.equals("message"))
 		{
-			if(message == null) throw new Throwable("Argument vide");
+			if(message == null) throw new EmptyArgumentException("Requested argument is empty");
 			return message;
 		}
 		else if(what.equals("nbBits"))
@@ -63,7 +63,7 @@ public class Arguments {
 		}
 		else if(what.equals("channels"))
 		{
-			if(channels == null) throw new Throwable("Argument vide");
+			if(channels == null) throw new EmptyArgumentException("Requested argument is empty");
 			return channels;
 		}
 		else if(what.equals("pattern"))
@@ -78,7 +78,7 @@ public class Arguments {
 		}
 		else if(what.equals("metrics"))
 		{
-			if(metrics == null) throw new Throwable("Argument vide");
+			if(metrics == null) throw new EmptyArgumentException("Requested argument is empty");
 			return metrics;
 		}
 		

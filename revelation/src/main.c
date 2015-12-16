@@ -11,13 +11,12 @@ int main(int argc, char *argv[]) {
     uchar *message = malloc(SIZE_MESSAGE);
     char help[] = "HELP";
     int flag = 0;
-    char *path = "../resource/1bitRedDirect.png";
-
-    //argument(argc, argv);
-    //printf("%s", getArg("fileIn"));
 
     //img = cvLoadImage(getArg("fileIn") , 1); // Second parameter == 1 (RGB) || == 0 (GREY)
-    img = cvLoadImage("../resource/1bitRedDirect.png", 1);
+    img = cvLoadImage("../../../Matrice/output/result.png", 1);
+
+
+    img = cvLoadImage("result.png", 1);
     /*flag = loadImage(img, path);
     printf("%d", flag);
     if (flag == 5){

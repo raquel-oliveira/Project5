@@ -1,4 +1,4 @@
-package matrice;
+package dissimulator;
 
 public interface Pattern {
 
