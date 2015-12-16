@@ -1,14 +1,5 @@
 #include "image.h"
 
-int loadImage(const IplImage* img, const char *filename){
-    img = cvLoadImage(filename, 1); // Second parameter == 1 (RGB) || == 0 (GREY)
-    if(img){
-        return checkFormat(filename);
-    }
-    else{
-        return 6;
-    }
-}
 /*void getDataImage(const IplImage* img, int* height, int* width, int* step, int* channels, uchar* data ){
     height = getHeight(img);
     width = getWidth(img);

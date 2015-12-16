@@ -7,8 +7,6 @@
 #include <magic.h>
 #include "formatDetector.h"
 
-int loadImage(const IplImage* img, const char *filename);
-
 //void getDataImage(const IplImage* img, int* height, int* width, int* step, int* channels, uchar* data );
 
 int getHeight(IplImage* img);

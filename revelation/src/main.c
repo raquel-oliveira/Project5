@@ -11,18 +11,25 @@ int main(int argc, char *argv[]) {
     uchar *message = malloc(SIZE_MESSAGE);
     char help[] = "HELP";
     int flag = 0;
-    img = cvLoadImage("../../dissimulation/Matrice/output/result.png", 1); // Second parameter == 1 (RGB) || == 0 (GREY)
+    char* path = "../../dissimulation/Matrice/output/result.png";
 
-    /*flag = loadImage(img, path);
-    printf("%d", flag);
+    img = cvLoadImage(path, 1); // Second parameter == 1 (RGB) || == 0 (GREY)
+    if (img){
+        flag = checkFormat(path);
+    }else{
+        flag = 6;
+    }
+
+    //Verification of format
     if (flag == 5){
         printf("Format not accepted");
         exit(5);
     }
     else if (flag == 6){
         printf("Could not open the file");
-    }*/
-    
+        exit(6);
+    }
+
     int *channel  = malloc(sizeof(int));
     //flag = directPattern(img, channel, atoi(getArg("nbBits")), help, message);
     //flag = directPattern(img, 1, help, message);
