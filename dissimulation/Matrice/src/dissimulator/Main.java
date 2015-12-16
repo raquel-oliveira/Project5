@@ -1,4 +1,4 @@
-package matrice;
+package dissimulator;
 
 import java.io.IOException;
 import java.util.BitSet;
@@ -11,7 +11,6 @@ public class Main {
 		
 		String in = "fagoon-cartman-10536.png";
 		String out = arg.getArg("fileOut");
-		if(out == null){out = "result.png";}
 		String message = "Bonjour";
 		message += "HELP";
 		
@@ -19,8 +18,6 @@ public class Main {
 		TextToBinary t = new TextToBinary();
 		
 		BitSet b = t.ChaintoBinary(message);
-		
-		//System.out.println(arg.getArg("message"));
 	
 		try
 		{ 
@@ -30,6 +27,11 @@ public class Main {
 		{
 			System.out.println(e.getMessage());
 		}
+		catch(EmptyArgumentException e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
 
 		manipMat.setPixelsColor(out);
 		

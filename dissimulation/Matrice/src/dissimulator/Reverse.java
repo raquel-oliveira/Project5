@@ -1,8 +1,7 @@
-package matrice;
+package dissimulator;
 
-public class Direct implements Pattern{
+public class Reverse implements Pattern{
 
-	
 	public int[] position()
 	{
 		int[] table = {1,2};

@@ -1,4 +1,4 @@
-package matrice;
+package dissimulator;
 
 import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;

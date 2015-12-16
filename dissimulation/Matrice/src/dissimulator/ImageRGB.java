@@ -1,4 +1,4 @@
-package matrice;
+package dissimulator;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
