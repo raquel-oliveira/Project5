@@ -123,6 +123,33 @@ Revelation/fast:
 	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/build
 .PHONY : Revelation/fast
 
+src/formatDetector.o: src/formatDetector.c.o
+
+.PHONY : src/formatDetector.o
+
+# target to build an object file
+src/formatDetector.c.o:
+	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/formatDetector.c.o
+.PHONY : src/formatDetector.c.o
+
+src/formatDetector.i: src/formatDetector.c.i
+
+.PHONY : src/formatDetector.i
+
+# target to preprocess a source file
+src/formatDetector.c.i:
+	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/formatDetector.c.i
+.PHONY : src/formatDetector.c.i
+
+src/formatDetector.s: src/formatDetector.c.s
+
+.PHONY : src/formatDetector.s
+
+# target to generate assembly for a file
+src/formatDetector.c.s:
+	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/src/formatDetector.c.s
+.PHONY : src/formatDetector.c.s
+
 src/image.o: src/image.c.o
 
 .PHONY : src/image.o
@@ -240,6 +267,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Revelation"
+	@echo "... src/formatDetector.o"
+	@echo "... src/formatDetector.i"
+	@echo "... src/formatDetector.s"
 	@echo "... src/image.o"
 	@echo "... src/image.i"
 	@echo "... src/image.s"

@@ -17,6 +17,7 @@ add_executable(
         src/reveal.c
         src/image.c
         src/util.c
+        src/formatDetector.c
 )
 
 target_link_libraries(

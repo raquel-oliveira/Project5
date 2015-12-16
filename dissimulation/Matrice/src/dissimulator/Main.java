@@ -9,7 +9,7 @@ public class Main {
 	{
 		Arguments arg = new Arguments(args);
 		
-		String in = "fagoon-cartman-10536.png";
+		String in = "resources/fagoon-cartman-10536.png";
 		String out = arg.getArg("fileOut");
 		String message = "Bonjour";
 		message += "HELP";

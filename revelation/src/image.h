@@ -5,8 +5,7 @@
 #include <stdlib.h>
 #include <opencv/highgui.h>
 #include <magic.h>
-
-void loadImage(const IplImage* img, const char *filename);
+#include "formatDetector.h"
 
 //void getDataImage(const IplImage* img, int* height, int* width, int* step, int* channels, uchar* data );
 
