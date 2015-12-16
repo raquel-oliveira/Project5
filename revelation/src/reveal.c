@@ -7,7 +7,7 @@
 
 
 
-int revealText(IplImage *img, int nbBits, char help[], uchar *message )
+int reveal(IplImage *img, int nbBits, char *help, uchar *message)
 {
     int lbit, channel, count = 7, i = 0;
     uchar letter = 1;

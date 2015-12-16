@@ -1,13 +1,5 @@
 #include "image.h"
 
-/*void getDataImage(const IplImage* img, int* height, int* width, int* step, int* channels, uchar* data ){
-    height = getHeight(img);
-    width = getWidth(img);
-    step = getStep(img);
-    channels = getChannels(img);
-    data = (uchar *) img->imageData;
-}*/
-
 /**
  * @return height of a image
  */

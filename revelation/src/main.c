@@ -30,10 +30,8 @@ int main(int argc, char *argv[]) {
         exit(6);
     }
 
-    int *channel  = malloc(sizeof(int));
-    //flag = directPattern(img, channel, atoi(getArg("nbBits")), help, message);
-    //flag = directPattern(img, 1, help, message);
-    flag = revealText(img, 1, help, message);
+    flag = reveal(img, 1, help, message);
+
     switch(flag){
         case 0: while(message[i] != '\0')
                 {
