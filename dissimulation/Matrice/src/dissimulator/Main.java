@@ -11,8 +11,13 @@ public class Main {
 		
 		String in = "resources/fagoon-cartman-10536.png";
 		String out = arg.getArg("fileOut");
+<<<<<<< HEAD:dissimulation/Matrice/src/dissimulator/Main.java
 		String message = "Bla bla hi hi oi";
 		message += "HEL";
+=======
+		String message = "Bonjour";
+		message += "HELP";
+>>>>>>> FETCH_HEAD:dissimulation/Matrice/src/dissimulator/Main.java
 		
 		ManipImage manipMat = new ManipImage(in);
 		TextToBinary t = new TextToBinary();

@@ -48,7 +48,7 @@ public class Arguments {
 		}
 		else if(what.equals("fileOut"))
 		{
-			if(fileOut == null) return "output/result.png";
+			if(fileOut == null) return "result.png";
 			return fileOut;
 		}
 		else if(what.equals("message"))
