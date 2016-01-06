@@ -2,6 +2,9 @@
 
 int get_bit(char the_byte,int which_bit)
 {
+    if (which_bit > 8 || which_bit < 1 ){
+        return -1; //Error, out of range of a byte.
+    }
     return((the_byte >> (8 - which_bit)) & 1);
 }
 

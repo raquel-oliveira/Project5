@@ -38,12 +38,17 @@ int main(int argc, char *argv[]) {
                 break;
             
         case -1: {
-                    printf("Error while reallocating memory for message");
-                    exit(-1);
-                } break;
-            
-        case -2: printf("There is no magic number");
-                exit(-2);
+            printf("Error while reallocating memory for message");
+            exit(-1);
+        } break;
+
+        case -2: {
+            printf("Error Trying to acess bit");
+            exit(-2);
+        } break;
+
+        case -3: printf("There is no magic number");
+                exit(-3);
     }
 
     cvReleaseImage(&img);

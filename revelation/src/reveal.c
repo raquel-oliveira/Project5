@@ -19,6 +19,9 @@ int reveal(IplImage *img, int nbBits, char *help, uchar *message)
             channel = cvGet2D(img, row, col).val[2]; // Gets the red channel
 
             lbit = get_bit(channel, (9 - nbBits)); // Access to the last bit in ascending order
+            if (lbit == -1) {
+                return -2;
+            }
             letter = setBit(letter, count, lbit);
             count--;
 
@@ -44,5 +47,5 @@ int reveal(IplImage *img, int nbBits, char *help, uchar *message)
         }
     }
 
-    return -2; // Case where "HELP" wasn't found in the hidden message
+    return -3; // Case where "HELP" wasn't found in the hidden message
 }
