@@ -1,12 +1,8 @@
 
-import junit.framework.TestCase;
+import dissimulator.MagicNumberTester;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
-import java.util.Arrays;
-
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.TestCase.assertTrue;
 
 /**
  * Created by Paul Bertot on 12/9/15.

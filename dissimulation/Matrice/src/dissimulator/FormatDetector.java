@@ -3,10 +3,7 @@ package dissimulator;
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Iterator;
 
 /**
@@ -25,13 +22,30 @@ public class FormatDetector {
         ImageInputStream iis = ImageIO.createImageInputStream(is);
         Iterator iter =  ImageIO.getImageReaders(iis);
         if(!iter.hasNext()){
-            filetype = null;
+            InputStream in = new FileInputStream(file);
+            char c1 = (char)readByte(in);
+            char c2 = (char)readByte(in);
+            if(c1 == 'P'){
+                if(c2 == '2' || c2 == '5')
+                    filetype="pgm";
+                else if(c2 == '3' || c2 == '6')
+                    filetype="ppm";
+            }
+            else filetype = null;
             return;
         }
         ImageReader reader = (ImageReader) iter.next();
         iis.close();
 
         filetype = reader.getFormatName();
+
+    }
+
+    public static int readByte(InputStream in)throws IOException{
+        int b = in.read();
+        if(b==-1)
+            throw new EOFException();
+        return b;
 
     }
     public String getFileType(){
