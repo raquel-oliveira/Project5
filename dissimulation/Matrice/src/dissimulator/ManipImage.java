@@ -55,7 +55,7 @@ public class ManipImage {
 	 * Put null to the non-wanted array(s) color
 	 * @param Bitset from the string to hide
 	 */
-	public void dissimulationLSB(BitSet bIn, String pattern)
+	public void dissimulationLSB(BitSet bIn, int nbBits, String pattern)
 	{	
 		int pass = 0;
 		boolean firstTime = true;
@@ -68,25 +68,37 @@ public class ManipImage {
 			{
 				if(pass == 0)
 				{
-					setDissimulation(bIn, image.getRedArray(), i, z);
+                    int j = nbBits;
+                    while(j != 0)
+                    {
+                        //System.out.println(image.getRedArray()[z]);
+                    	setDissimulation(bIn, image.getRedArray(), i++, z, j);
+                    	//System.out.println(image.getRedArray()[z]);
+                        j--;
+                    }
+                    i--; // Reseting the right i for example if nbBits = 1
 					if(z == image.getRedArray().length - 1) pass = 1;
 				}
-				
-				else if(pass == 1)
+			    else if(pass == 1)
 				{
 					if(firstTime == true)
 					{
 						z = 0;
 						firstTime = false;
 					}
-					setDissimulation(bIn, image.getGreenArray(), i, z);
+					int j = nbBits;
+					while(j != 0)
+                    {
+                        setDissimulation(bIn, image.getGreenArray(), i++, z, j);
+                        j--;
+                    }
+                    i--; // Reseting the right i for example if nbBits = 1
 					if(z == image.getGreenArray().length - 1) 
 					{
 						pass = 2;
 						firstTime = true;
 					}
 				} 
-				
 				else if(pass == 2)
 				{
 					if(firstTime == true)
@@ -94,14 +106,20 @@ public class ManipImage {
 						z = 0;
 						firstTime = false;
 					}
-					setDissimulation(bIn, image.getBlueArray(), i, z);
+					int j = nbBits;
+					while(j != 0)
+                    {
+                        setDissimulation(bIn, image.getBlueArray(), i++, z, j);
+                        j--;
+                    }
+                    i--; // Reseting the right i for example if nbBits = 1
 				}
 				
 			    z++;
 			}
 			System.out.println("J'ai fais en direct");
 		}
-		else if(pattern.equals("Reverse"))
+		/*else if(pattern.equals("Reverse"))
 		{
 			int z = image.getRedArray().length - 1;
 			for(int i = 0; i < bIn.length(); i++)
@@ -118,7 +136,7 @@ public class ManipImage {
 						z = image.getGreenArray().length - 1;
 						firstTime = false;
 					}
-					setDissimulation(bIn, image.getGreenArray(), ++i, z);
+					setDissimulation(bIn, image.getGreenArray(), i, z);
 					if(z == 0) 
 					{
 						pass = 2;
@@ -133,31 +151,55 @@ public class ManipImage {
 						z = image.getBlueArray().length - 1;
 						firstTime = false;
 					}
-					setDissimulation(bIn, image.getBlueArray(), ++i, z);
-	
+					setDissimulation(bIn, image.getBlueArray(), i, z);
 				}
 				
 				z--;
 			}
 			System.out.println("J'ai fais en reverse");
-		}
+		}*/
 		
 	}
-	public void setDissimulation(BitSet bIn, int[] array, int i, int z)
-	{
-		if(!bIn.get(i) && !isNbEven(array[z])) array[z] -= 1; // Si le bit est false et que le LSB actuel est 1,on met à 0 le LSB
-		
-		else if (bIn.get(i) && isNbEven(array[z])) // Si le bit est true et que le LSB actuel est 0, on met à 1 le LSB de red
-		{
-			if(array[z] == 0) array[z] += 1; // Si on a le nombre = 0, on incrémente au lieu de décrémenter
-			else array[z] -= 1;
-		}
-	}
+    
+    public void setDissimulation(BitSet bIn, int[] array, int i, int z, int nbOccurences)
+    { 	
+    	int[] b = getBinary8(array[z]);
+        
+        if(!bIn.get(i) && (b[8-nbOccurences] == 1)) b[8-nbOccurences] = 0; // Si le bit est false et que le bit actuel est 1,on met à 0 le bit
+            
+        else if (bIn.get(i) && (b[8-nbOccurences] == 0)) // Si le bit est true et que le LSB actuel est 0, on met à 1 le LSB de array[z]
+        {
+             b[8-nbOccurences] = 1;
+        }
+
+        int temp = 0;
+        for(int j = 0; j < 8; j++)
+        {
+            temp += b[7-j] * Math.pow(2, j);
+        }
+        array[z] = temp;
+    }
+ 
 	public boolean isNbEven(int x)
 	{
 		if(x % 2 == 0) return true;
 		return false;
 	}
+    
+    public int[] getBinary8(int a)
+    {
+        int[] b = new int[8];
+        int i = 7;
+        
+        while(a != 0)
+        {
+            b[i] = a % 2;
+            a /= 2;
+            i--;
+        }
+        
+        return b;
+    }
 	
 	/**
 	 * Prints out the number of bits available for hiding. Prints out the number of bits to hide (s)
