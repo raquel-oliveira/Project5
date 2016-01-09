@@ -16,9 +16,10 @@ public class Arguments {
 	
 	public Arguments(String[] arguments)
 	{
+		this.fd = new FormatDetector();
 		for(int i = 0; i < arguments.length ; i++)
 		{
-			this.fd = new FormatDetector();
+
 			if(arguments[i].equals("-Fin")) formatIn = arguments[i+1];
 			else if(arguments[i].equals("-Fout")) formatOut = arguments[i+1];
 			else if(arguments[i].equals("-in")) fileIn = arguments[i+1];
