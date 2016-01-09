@@ -5,13 +5,13 @@ import java.util.BitSet;
 
 public class Main {
 	
-	public static void main(String[] args) throws IOException, Throwable
+	public static void main(String[] args) throws IOException, Exception
 	{
 		Arguments arg = new Arguments(args);
 		
-		String in = "resources/fagoon-cartman-10536.png";
-		String out = arg.getArg("fileOut");
-		String message = "Bonjour";
+		String in = arg.getArg("fileIn") + ".bmp";
+		String out = arg.getArg("fileOut") + ".bmp";
+		String message = "Bonjorno";
 		message += "HELP";
 		
 		ManipImage manipMat = new ManipImage(in);
@@ -19,9 +19,18 @@ public class Main {
 		
 		BitSet b = t.ChaintoBinary(message);
 	
+		for(int k = 0; k < 10; k++)
+		{
+			for(int l = 0; l < 8; l++)
+			{
+				System.out.print(manipMat.getBinary8(manipMat.getRedArray()[k])[l]);
+			}
+			System.out.print("\n");
+		}
+		
 		try
 		{ 
-			manipMat.dissimulationLSB(b, arg.getArg("pattern"));
+			manipMat.dissimulationLSB(b, Integer.parseInt(arg.getArg("nbBits")), arg.getArg("pattern"));
 		}
 		catch(InvalidArgumentException e)
 		{
@@ -31,11 +40,18 @@ public class Main {
 		{
 			System.out.println(e.getMessage());
 		}
-		
 
 		manipMat.setPixelsColor(out);
 		
-		manipMat.nbBitsImpacted(message);
+		for(int k = 0; k < 10; k++)
+		{
+			for(int l = 0; l < 8; l++)
+			{
+				System.out.print(manipMat.getBinary8(manipMat.getRedArray()[k])[l]);
+			}
+			System.out.print("\n");
+		}
+		
 		
 		/*for (int i = 0; i < 100; i++) 
 		{

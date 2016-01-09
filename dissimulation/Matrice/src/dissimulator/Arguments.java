@@ -29,7 +29,7 @@ public class Arguments {
 			else if(arguments[i].equals("-metrics")) metrics = arguments[i+1];
 		}
 	}
-	public String getArg(String what) throws Throwable
+	public String getArg(String what) throws Exception
 	{
 		if(what.equals("formatIn")) 
 		{
