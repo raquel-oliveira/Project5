@@ -47,7 +47,7 @@ public class ManipImage {
 				z++;				
 			}
 		}
-		ImageIO.write(image.getImageBuff(), "png", new File(sortie)); // Writes a new image in the storage
+		ImageIO.write(image.getImageBuff(), "BMP", new File(sortie)); // Writes a new image in the storage
 	}
 	
 	/**
@@ -71,9 +71,7 @@ public class ManipImage {
                     int j = nbBits;
                     while(j != 0)
                     {
-                        //System.out.println(image.getRedArray()[z]);
                     	setDissimulation(bIn, image.getRedArray(), i++, z, j);
-                    	//System.out.println(image.getRedArray()[z]);
                         j--;
                     }
                     i--; // Reseting the right i for example if nbBits = 1

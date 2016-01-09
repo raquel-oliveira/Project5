@@ -9,8 +9,8 @@ public class Main {
 	{
 		Arguments arg = new Arguments(args);
 		
-		String in = "fagoon-cartman-10536.png";
-		String out = "result.png";
+		String in = arg.getArg("fileIn") + ".bmp";
+		String out = arg.getArg("fileOut") + ".bmp";
 		String message = "Bonjorno";
 		message += "HELP";
 		
@@ -30,7 +30,7 @@ public class Main {
 		
 		try
 		{ 
-			manipMat.dissimulationLSB(b, 2, arg.getArg("pattern"));
+			manipMat.dissimulationLSB(b, Integer.parseInt(arg.getArg("nbBits")), arg.getArg("pattern"));
 		}
 		catch(InvalidArgumentException e)
 		{

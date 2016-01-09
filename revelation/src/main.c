@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
         } break;
 
         case -2: {
-            printf("Error Trying to acess bit");
+            printf("Error Trying to access bit");
             exit(-2);
         } break;
 
