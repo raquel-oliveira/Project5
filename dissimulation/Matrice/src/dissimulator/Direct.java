@@ -2,15 +2,17 @@ package dissimulator;
 
 public class Direct implements Pattern{
 
-	
-	public int[] position()
+	public int nextPosition(int position)
 	{
-		int[] table = {1,2};
-		return table;
+		return ++position;
 	}
-	
-	public boolean hasNext()
+	public boolean hasNext(int position, int[] array)
 	{
+		if(position == array.length - 1) return false;
 		return true;
+	}
+	public int initializePosition(int[] array)
+	{
+		return 0;
 	}
 }

@@ -47,116 +47,78 @@ public class ManipImage {
 				z++;				
 			}
 		}
-		ImageIO.write(image.getImageBuff(), "BMP", new File(sortie)); // Writes a new image in the storage
+		ImageIO.write(image.getImageBuff(), "png", new File(sortie)); // Writes a new image in the storage
 	}
 	
 	/**
-	 * Change each bytes's last bit of RGB colors, with selection from the user of the colors.
-	 * Put null to the non-wanted array(s) color
-	 * @param Bitset from the string to hide
+	 * Change each bytes's nbBits bit(s) of RGB colors, with selection from the user of the colors.
+	 * @param bitset from the string to hide
+	 * @param nbBits number of bits to change at each byte
+	 * @param pattern which pattern to use when hiding the message
 	 */
 	public void dissimulationLSB(BitSet bIn, int nbBits, String pattern)
 	{	
+		Pattern pat; // Pattern used to navigate through the image
 		int pass = 0;
 		boolean firstTime = true;
 		
-		if(pattern.equals("Direct"))
-		{
-			int z = 0;
-			
-			for(int i = 0; i < bIn.length(); i++)
-			{
-				if(pass == 0)
-				{
-                    int j = nbBits;
-                    while(j != 0)
-                    {
-                    	setDissimulation(bIn, image.getRedArray(), i++, z, j);
-                        j--;
-                    }
-                    i--; // Reseting the right i for example if nbBits = 1
-					if(z == image.getRedArray().length - 1) pass = 1;
-				}
-			    else if(pass == 1)
-				{
-					if(firstTime == true)
-					{
-						z = 0;
-						firstTime = false;
-					}
-					int j = nbBits;
-					while(j != 0)
-                    {
-                        setDissimulation(bIn, image.getGreenArray(), i++, z, j);
-                        j--;
-                    }
-                    i--; // Reseting the right i for example if nbBits = 1
-					if(z == image.getGreenArray().length - 1) 
-					{
-						pass = 2;
-						firstTime = true;
-					}
-				} 
-				else if(pass == 2)
-				{
-					if(firstTime == true)
-					{
-						z = 0;
-						firstTime = false;
-					}
-					int j = nbBits;
-					while(j != 0)
-                    {
-                        setDissimulation(bIn, image.getBlueArray(), i++, z, j);
-                        j--;
-                    }
-                    i--; // Reseting the right i for example if nbBits = 1
-				}
-				
-			    z++;
-			}
-			System.out.println("J'ai fais en direct");
-		}
-		/*else if(pattern.equals("Reverse"))
-		{
-			int z = image.getRedArray().length - 1;
-			for(int i = 0; i < bIn.length(); i++)
-			{
-				if(pass == 0)
-				{
-					setDissimulation(bIn, image.getRedArray(), i, z);
-					if(z == 0) pass = 1;
-				}
-				else if(pass == 1)
-				{
-					if(firstTime == true)
-					{
-						z = image.getGreenArray().length - 1;
-						firstTime = false;
-					}
-					setDissimulation(bIn, image.getGreenArray(), i, z);
-					if(z == 0) 
-					{
-						pass = 2;
-						firstTime = true;
-					}
-	
-				} 
-				else if(pass == 2)
-				{
-					if(firstTime == true)
-					{
-						z = image.getBlueArray().length - 1;
-						firstTime = false;
-					}
-					setDissimulation(bIn, image.getBlueArray(), i, z);
-				}
-				
-				z--;
-			}
-			System.out.println("J'ai fais en reverse");
-		}*/
+		if(pattern.equals("Direct")) pat = new Direct();
+		else if(pattern.equals("Reverse")) pat = new Reverse();
+		else pat = new Direct(); // Put to avoid an error of non initialization of pat, but it's never the case
 		
+		int z = pat.initializePosition(image.getRedArray()); // We also could have passed the blue or green array, they all have the same size
+			
+		for(int i = 0; i < bIn.length(); i++)
+		{
+			if(pass == 0)
+			{
+                int j = nbBits;
+                while(j != 0)
+                {
+                 	setDissimulation(bIn, image.getRedArray(), i++, z, j);
+                    j--;
+                }
+                i--; // Reseting the right i for example if nbBits = 1
+				if(!pat.hasNext(z, image.getRedArray())) pass = 1;
+			}
+			else if(pass == 1)
+			{
+				if(firstTime == true)
+				{
+					z = pat.initializePosition(image.getGreenArray());
+					firstTime = false;
+				}
+				int j = nbBits;
+				while(j != 0)
+                {
+                    setDissimulation(bIn, image.getGreenArray(), i++, z, j);
+                    j--;
+                }
+                i--; // Reseting the right i for example if nbBits = 1
+				if(!pat.hasNext(z, image.getGreenArray())) 
+				{
+					pass = 2;
+					firstTime = true;
+				}
+			} 
+			else if(pass == 2)
+			{
+				if(firstTime == true)
+				{
+					z = pat.initializePosition(image.getBlueArray());
+					firstTime = false;
+				}
+				int j = nbBits;
+				while(j != 0)
+                {
+                    setDissimulation(bIn, image.getBlueArray(), i++, z, j);
+                    j--;
+                }
+                i--; // Reseting the right i for example if nbBits = 1
+			}
+				
+			z = pat.nextPosition(z);
+		}
 	}
     
     public void setDissimulation(BitSet bIn, int[] array, int i, int z, int nbOccurences)
@@ -177,12 +139,6 @@ public class ManipImage {
         }
         array[z] = temp;
     }
- 
-	public boolean isNbEven(int x)
-	{
-		if(x % 2 == 0) return true;
-		return false;
-	}
     
     public int[] getBinary8(int a)
     {

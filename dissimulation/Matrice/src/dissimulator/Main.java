@@ -9,24 +9,21 @@ public class Main {
 	{
 		Arguments arg = new Arguments(args);
 		
-		String in = arg.getArg("fileIn") + ".bmp";
-		String out = arg.getArg("fileOut") + ".bmp";
-		String message = "Bonjorno";
+		String in = arg.getArg("fileIn") + ".png";
+		String out = arg.getArg("fileOut") + ".png";
+		String message = "B";
+		
+		/*for(int g = 0; g < 18600; g++)
+		{
+			message += "k";
+		}*/
+
 		message += "HELP";
 		
 		ManipImage manipMat = new ManipImage(in);
 		TextToBinary t = new TextToBinary();
 		
 		BitSet b = t.ChaintoBinary(message);
-	
-		for(int k = 0; k < 10; k++)
-		{
-			for(int l = 0; l < 8; l++)
-			{
-				System.out.print(manipMat.getBinary8(manipMat.getRedArray()[k])[l]);
-			}
-			System.out.print("\n");
-		}
 		
 		try
 		{ 
@@ -43,13 +40,13 @@ public class Main {
 
 		manipMat.setPixelsColor(out);
 		
-		for(int k = 0; k < 10; k++)
+		for(int k = manipMat.getRedArray().length - 1; k > manipMat.getRedArray().length - 46; k--)
 		{
 			for(int l = 0; l < 8; l++)
 			{
 				System.out.print(manipMat.getBinary8(manipMat.getRedArray()[k])[l]);
 			}
-			System.out.print("\n");
+			System.out.print(" ");
 		}
 		
 		

@@ -2,6 +2,7 @@ package dissimulator;
 
 public interface Pattern {
 
-	public boolean hasNext();
-	public int[] position();
+	public int nextPosition(int position);
+	public boolean hasNext(int position, int[] array);
+	public int initializePosition(int[] array);
 }
