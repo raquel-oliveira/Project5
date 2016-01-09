@@ -11,7 +11,7 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 set(SOURCE_FILES src/)
 
 add_executable(
-        Revelation
+        Reveal
 
         src/main.c
         src/reveal.c
@@ -21,7 +21,7 @@ add_executable(
 )
 
 target_link_libraries(
-        Revelation
+        Reveal
 
         ${OpenCV_LIBS}
 )

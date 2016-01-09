@@ -16,7 +16,7 @@ int reveal(IplImage *img, int nbBits, char *help, uchar *message)
 
     for (int row = 0; row < img->height; row++) {
         for (int col = 0; col < img->width; col++) {
-            channel = cvGet2D(img, row, col).val[2]; // Gets the red channel
+            channel = cvGet2D(img, row, col).val[1]; // Gets the red channel
 
             lbit = get_bit(channel, (9 - nbBits)); // Access to the last bit in ascending order
             if (lbit == -1) {

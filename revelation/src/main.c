@@ -7,40 +7,40 @@
 
 int main(int argc, char *argv[]) {
 
-    IplImage *img = NULL; //image
-    int i = 0; //Index for the message
+    IplImage *img = NULL;
+    int i = 0;
     uchar *message = malloc(SIZE_MESSAGE);
-    char magicNumber[] = "HELP"; //default magic number
+    char help[] = "HELP";
     int flag = 0;
-    //char* path = "../../dissimulation/Matrice/output/result.png";
+//char* path = "../../dissimulation/Matrice/output/result.png";
     //char* path = "../../../test/result2bits.png";
-    char* path = "../resource/1bitRedDirect.png";
-
+    char* path = "../resource/GreCha.png";
     img = cvLoadImage(path, 1); // Second parameter == 1 (RGB) || == 0 (GREY)
     if (img){
         flag = checkFormat(path);
         if (flag == -1){
-            printf("Format not accepted\n");
+            printf("Format not accepted");
             exit(-1);
         }
     }else{
-        printf("Could not open the file\n");
+        printf("Could not open the file");
         exit(-2);
     }
 
-    flag = reveal(img, 1, magicNumber, message);
+   // flag = reveal(img, 1, help, message, 1, NULL, NULL);
+    flag = reveal(img, 1, help, message);
 
     switch(flag){
         case 0: while(message[i] != '\0')
-                {
-                    printf("%c", message[i]);
-                    i++;
-                }
-                printf("\n\n");
-                break;
-            
+            {
+                printf("%c", message[i]);
+                i++;
+            }
+            printf("\n\n");
+            break;
+
         case -1: {
-            printf("Error while reallocating memory for message\n");
+            printf("Error while reallocating memory for message");
             exit(-1);
         } break;
 
@@ -49,8 +49,8 @@ int main(int argc, char *argv[]) {
             exit(-2);
         } break;
 
-        case -3: printf("There is no magic number \n");
-                exit(-3);
+        case -3: printf("There is no magic number");
+            exit(-3);
     }
 
     cvReleaseImage(&img);

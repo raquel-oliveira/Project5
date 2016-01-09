@@ -60,39 +60,39 @@ CMAKE_SOURCE_DIR = /Users/Raquel/Desktop/NSA/private/revelation
 CMAKE_BINARY_DIR = /Users/Raquel/Desktop/NSA/private/revelation
 
 #=============================================================================
-# Target rules for target CMakeFiles/Revelation.dir
+# Target rules for target CMakeFiles/Reveal.dir
 
 # All Build rule for target.
-CMakeFiles/Revelation.dir/all:
-	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/depend
-	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target Revelation"
-.PHONY : CMakeFiles/Revelation.dir/all
+CMakeFiles/Reveal.dir/all:
+	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/depend
+	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target Reveal"
+.PHONY : CMakeFiles/Reveal.dir/all
 
 # Include target in all.
-all: CMakeFiles/Revelation.dir/all
+all: CMakeFiles/Reveal.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/Revelation.dir/rule: cmake_check_build_system
+CMakeFiles/Reveal.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles 6
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Revelation.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Reveal.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles 0
-.PHONY : CMakeFiles/Revelation.dir/rule
+.PHONY : CMakeFiles/Reveal.dir/rule
 
 # Convenience name for target.
-Revelation: CMakeFiles/Revelation.dir/rule
+Reveal: CMakeFiles/Reveal.dir/rule
 
-.PHONY : Revelation
-
-# clean rule for target.
-CMakeFiles/Revelation.dir/clean:
-	$(MAKE) -f CMakeFiles/Revelation.dir/build.make CMakeFiles/Revelation.dir/clean
-.PHONY : CMakeFiles/Revelation.dir/clean
+.PHONY : Reveal
 
 # clean rule for target.
-clean: CMakeFiles/Revelation.dir/clean
+CMakeFiles/Reveal.dir/clean:
+	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/clean
+.PHONY : CMakeFiles/Reveal.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/Reveal.dir/clean
 
 .PHONY : clean
 
