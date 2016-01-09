@@ -7,26 +7,28 @@
 
 int main(int argc, char *argv[]) {
 
-    IplImage *img = NULL;
-    int i = 0;
+    IplImage *img = NULL; //image
+    int i = 0; //Index for the message
     uchar *message = malloc(SIZE_MESSAGE);
-    char help[] = "HELP";
+    char magicNumber[] = "HELP"; //default magic number
     int flag = 0;
-    char* path = "../../dissimulation/Matrice/output/result.png";
+    //char* path = "../../dissimulation/Matrice/output/result.png";
+    //char* path = "../../../test/result2bits.png";
+    char* path = "../resource/1bitRedDirect.png";
 
     img = cvLoadImage(path, 1); // Second parameter == 1 (RGB) || == 0 (GREY)
     if (img){
         flag = checkFormat(path);
         if (flag == -1){
-            printf("Format not accepted");
+            printf("Format not accepted\n");
             exit(-1);
         }
     }else{
-        printf("Could not open the file");
+        printf("Could not open the file\n");
         exit(-2);
     }
 
-    flag = reveal(img, 1, help, message);
+    flag = reveal(img, 1, magicNumber, message);
 
     switch(flag){
         case 0: while(message[i] != '\0')
@@ -38,16 +40,16 @@ int main(int argc, char *argv[]) {
                 break;
             
         case -1: {
-            printf("Error while reallocating memory for message");
+            printf("Error while reallocating memory for message\n");
             exit(-1);
         } break;
 
         case -2: {
-            printf("Error Trying to acess bit");
+            printf("Error Trying to acess bit\n");
             exit(-2);
         } break;
 
-        case -3: printf("There is no magic number");
+        case -3: printf("There is no magic number \n");
                 exit(-3);
     }
 
