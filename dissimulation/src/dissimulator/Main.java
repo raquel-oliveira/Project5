@@ -22,6 +22,7 @@ public class Main {
         //Vérification du message pour le nombre magique
         MagicNumberTester mnt = new MagicNumberTester(arg.getArg("magic"));
 
+
 		if(message.startsWith("\"")){
 
 			message = message.substring(1, message.length()-1);
@@ -34,7 +35,6 @@ public class Main {
 
 		}
 			
-			System.out.println(message);
 		
 		ManipImage manipMat = new ManipImage(in);
         
@@ -44,6 +44,7 @@ public class Main {
 		BitSet b = t.ChaintoBinary(message);	
 		
 		channels = arg.getArg("channels");
+		
 		if(channels.equals("Red") || channels.equals("red"))
 		{
 			colors[0] = "Red";
@@ -60,6 +61,12 @@ public class Main {
 		{
 			colors[0] = "Blue";
 			if((arg.getArg("message").length() + arg.getArg("magic").length()) > (manipMat.getImage().getWidth() * manipMat.getImage().getHeight())) 
+				throw new InvalidArgumentException("Message or magic number too big");
+		}
+		else if(channels.equals("Red,Green,Blue")) 
+		{
+			colors[0] = "Red"; colors[1] = "Green"; colors[2] = "Blue";
+			if((arg.getArg("message").length() + arg.getArg("magic").length()) > (manipMat.getImage().getWidth() * 3 * manipMat.getImage().getHeight())) 
 				throw new InvalidArgumentException("Message or magic number too big");
 		}
 		else throw new InvalidArgumentException("Wrong typing of channels");
@@ -79,11 +86,11 @@ public class Main {
 
 		manipMat.setPixelsColor(out);
 		
-		/*for(int k = manipMat.getRedArray().length - 1; k > manipMat.getRedArray().length - 46; k--)
+		/*for(int k = 0; k < 10; k++)
 		{
 			for(int l = 0; l < 8; l++)
 			{
-				System.out.print(manipMat.getBinary8(manipMat.getRedArray()[k])[l]);
+				System.out.print(manipMat.getBinary8(manipMat.getGreenArray()[k])[l]);
 			}
 			System.out.print(" ");
 		}*/
