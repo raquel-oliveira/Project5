@@ -83,6 +83,7 @@ public class ManipImage {
                 i--; // Reseting the right i for example if nbBits = 1
 				if(!pat.hasNext(z, image.getRedArray())) pass = 1; // Again, the arrays Red, Green and Blue have the same size
 			}
+			
 			else if(pass == 1)
 			{
 				if(firstTime == true)
@@ -93,7 +94,9 @@ public class ManipImage {
 				int j = nbBits;
 				while(j != 0)
                 {
-                    setDissimulation(bIn, image.getGreenArray(), i++, z, j);
+					if(colors[1].equals("Red")) setDissimulation(bIn, image.getRedArray(), i++, z, j);
+                 	else if(colors[1].equals("Green")) setDissimulation(bIn, image.getGreenArray(), i++, z, j);
+                 	else setDissimulation(bIn, image.getBlueArray(), i++, z, j);
                     j--;
                 }
                 i--; // Reseting the right i for example if nbBits = 1
@@ -103,6 +106,7 @@ public class ManipImage {
 					firstTime = true;
 				}
 			} 
+			
 			else if(pass == 2)
 			{
 				if(firstTime == true)
@@ -113,7 +117,9 @@ public class ManipImage {
 				int j = nbBits;
 				while(j != 0)
                 {
-                    setDissimulation(bIn, image.getBlueArray(), i++, z, j);
+					if(colors[2].equals("Red")) setDissimulation(bIn, image.getRedArray(), i++, z, j);
+                 	else if(colors[2].equals("Green")) setDissimulation(bIn, image.getGreenArray(), i++, z, j);
+                 	else setDissimulation(bIn, image.getBlueArray(), i++, z, j);
                     j--;
                 }
                 i--; // Reseting the right i for example if nbBits = 1
