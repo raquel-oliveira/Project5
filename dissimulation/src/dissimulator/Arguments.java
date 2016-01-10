@@ -12,11 +12,13 @@ public class Arguments {
 	String pattern;
 	String magic;
 	String metrics;
+	FormatDetector fd;
 	
 	public Arguments(String[] arguments)
 	{
 		for(int i = 0; i < arguments.length ; i++)
 		{
+			this.fd = new FormatDetector();
 			if(arguments[i].equals("-Fin")) formatIn = "." + arguments[i+1];
 			else if(arguments[i].equals("-Fout")) formatOut = "." + arguments[i+1];
 			else if(arguments[i].equals("-in")) fileIn = arguments[i+1];
@@ -33,17 +35,20 @@ public class Arguments {
 	{
 		if(what.equals("formatIn")) 
 		{
-			if(formatIn == null) throw new EmptyArgumentException("Requested argument is empty");
+			if(formatIn == null){
+				fd.setFiletype(this.fileIn);
+				return fd.getFileType();
+			};
 			return formatIn;
 		}
 		else if(what.equals("formatOut"))
 		{
-			if(formatOut == null) throw new EmptyArgumentException("Requested argument is empty");
+			if(formatOut == null) return "png";
 			return formatOut;
 		}
 		else if(what.equals("fileIn"))
 		{
-			if(fileIn == null) throw new EmptyArgumentException("Requested argument is empty");
+			if(fileIn == null) throw new EmptyArgumentException("Requested input file argument is empty");
 			return fileIn;
 		}
 		else if(what.equals("fileOut"))
@@ -53,7 +58,7 @@ public class Arguments {
 		}
 		else if(what.equals("message"))
 		{
-			if(message == null) throw new EmptyArgumentException("Requested argument is empty");
+			if(message == null) throw new EmptyArgumentException("Requested message argument is empty");
 			return message;
 		}
 		else if(what.equals("nbBits"))
@@ -63,7 +68,12 @@ public class Arguments {
 		}
 		else if(what.equals("channels"))
 		{
-			if(channels == null) throw new EmptyArgumentException("Requested argument is empty");
+			if(channels == null) {
+				fd.setFiletype(fileIn);
+				String formatused = fd.getFileType();
+				if(formatused.equals("bmp")||formatused.equals("pgm")) return "Gray";
+				else return "Red, Green, Blue";
+			}
 			return channels;
 		}
 		else if(what.equals("pattern"))
@@ -78,7 +88,7 @@ public class Arguments {
 		}
 		else if(what.equals("metrics"))
 		{
-			if(metrics == null) throw new EmptyArgumentException("Requested argument is empty");
+			if(metrics == null) return null;
 			return metrics;
 		}
 		
