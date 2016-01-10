@@ -18,20 +18,23 @@ public class Main {
 
         //Vérification du message pour le nombre magique
         MagicNumberTester mnt = new MagicNumberTester(arg.getArg("magic"));
-        
-        if(mnt.doesStringContainMN(message))
-        {
-            throw new MagicNumberException("Ce message contient le nombre magique");
-        }
-        else
-        {
-            message += "HELP";
-        }
+
+		if(message.startsWith("\"")){
+
+			message = message.substring(1, message.length()-1);
+
+			if (mnt.doesStringContainMN(message)) {
+				throw new MagicNumberException("Ce message contient le nombre magique");
+			} else {
+			message += mnt.hexStringtoString();
+			}
+
+		}
 		
 		ManipImage manipMat = new ManipImage(in);
         
         //Conversion du message en BitSet.
-		TextToBinary t = new TextToBinary();
+		MessageToBinary t = new MessageToBinary();
 		BitSet b = t.ChaintoBinary(message);
 		
 		try
