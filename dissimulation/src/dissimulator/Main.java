@@ -12,16 +12,16 @@ public class Main {
 		Metrics met = new Metrics();
 		met.setTime();
 		
-        String in = arg.getArg("fileIn") + arg.getArg("formatIn");
-        String out = arg.getArg("fileOut") + arg.getArg("formatOut");
+        String in = arg.getArg("fileIn");
+        String out = arg.getArg("fileOut");
         String message = arg.getArg("message");
 
         //Vérification du message pour le nombre magique
         MagicNumberTester mnt = new MagicNumberTester(arg.getArg("magic"));
 
-		if(message.startsWith("\"")){
+		//if(message.startsWith("\"")){
 
-			message = message.substring(1, message.length()-1);
+
 
 			if (mnt.doesStringContainMN(message)) {
 				throw new MagicNumberException("Ce message contient le nombre magique");
@@ -29,13 +29,16 @@ public class Main {
 			message += mnt.hexStringtoString();
 			}
 
-		}
+		//}
 		
 		ManipImage manipMat = new ManipImage(in);
         
         //Conversion du message en BitSet.
+
 		MessageToBinary t = new MessageToBinary();
 		BitSet b = t.ChaintoBinary(message);
+
+
 		
 		try
 		{ 

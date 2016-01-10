@@ -60,7 +60,7 @@ public class MagicNumberTester {
         String res = "";
         String[] splitstr = this.hexString.split("\\s+");
         for(int i = 0; i < splitstr.length; i++){
-            char[] c =Character.toChars(Integer.decode("0x"+splitstr[i]));
+            char[] c =Character.toChars(Integer.decode("0X"+splitstr[i]));
             res += Character.toString(c[0]);
         }
         return res;

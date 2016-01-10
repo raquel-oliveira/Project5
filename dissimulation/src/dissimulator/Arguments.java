@@ -85,7 +85,7 @@ public class Arguments {
 		}
 		else if(what.equals("magic"))
 		{
-			if(magic == null) return "HELP";
+			if(magic == null) return "48 45 4C 50";
 			return magic;
 		}
 		else if(what.equals("metrics"))

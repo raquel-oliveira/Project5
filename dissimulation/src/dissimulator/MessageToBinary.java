@@ -15,7 +15,7 @@ public class MessageToBinary {
 	public  BitSet ChaintoBinary(String chaine){
 		byte[] bytes = chaine.getBytes(); 			//réccupération des bytes correspondant a la chaine de characères.
 		BitSet bs = BitSet.valueOf(bytes); 			//Passage de byte[] à BitSet (une liste de valeurs booléennes)
-		BitSet bsret = new BitSet();
+		BitSet bsret = new BitSet(chaine.length()*8);
 		int z=0;
 		for(int i=0, j=7; j<=bs.length(); i+=8, j+=8 ){ //Le bitset ne mettant pas les bits dans l'ordre naturel de lecture, on les inverse 8 par 8
 			BitSet carac = bs.get(i, j);
@@ -25,6 +25,7 @@ public class MessageToBinary {
 				z++;
 			}
 		}
+		bsret.set(chaine.length()*8);
 		return bsret;
 	}
 
