@@ -13,6 +13,7 @@ public class Main {
 		met.setTime();
 		
         String in = arg.getArg("fileIn");
+
         String out = arg.getArg("fileOut");
         String message = arg.getArg("message");
         String channels = "";
@@ -21,9 +22,9 @@ public class Main {
         //Vérification du message pour le nombre magique
         MagicNumberTester mnt = new MagicNumberTester(arg.getArg("magic"));
 
-		//if(message.startsWith("\"")){
+		if(message.startsWith("\"")){
 
-
+			message = message.substring(1, message.length()-1);
 
 			if (mnt.doesStringContainMN(message)) {
 				throw new MagicNumberException("Ce message contient le nombre magique");
@@ -31,7 +32,7 @@ public class Main {
 			message += mnt.hexStringtoString();
 			}
 
-		//}
+		}
 			
 			System.out.println(message);
 		

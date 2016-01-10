@@ -69,7 +69,7 @@ public class Arguments {
 		}
 		else if(what.equals("channels"))
 		{
-			if(channels == null) return "Red,Green,Blue";
+			if(channels == null) return "Red";
 			return channels;
 		}
 		else if(what.equals("pattern"))

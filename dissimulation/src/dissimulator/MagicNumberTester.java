@@ -60,10 +60,19 @@ public class MagicNumberTester {
 
     public String hexStringtoString(){
         String res = "";
-        String[] splitstr = this.hexString.split("\\s+");
-        for(int i = 0; i < splitstr.length; i++){
-            char[] c =Character.toChars(Integer.decode("0X"+splitstr[i]));
-            res += Character.toString(c[0]);
+        if(this.hexString.contains("\\s+")) {
+            String[] splitstr = this.hexString.split("\\s+");
+            for (int i = 0; i < splitstr.length; i++) {
+                char[] c = Character.toChars(Integer.decode("0X" + splitstr[i]));
+                res += Character.toString(c[0]);
+            }
+        }
+        else {
+            String mn = this.hexString;
+            for (int i = 0; i < mn.length(); i+=2) {
+                char[] c = Character.toChars(Integer.decode("0X" + mn.charAt(i)+mn.charAt(i+1)));
+                res += Character.toString(c[0]);
+            }
         }
         return res;
     }
