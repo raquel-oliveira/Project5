@@ -6,15 +6,13 @@
 #define SIZE_MESSAGE 100
 
 int main(int argc, char *argv[]) {
-
+    //argument(argc, argv);
     IplImage *img = NULL;
     int i = 0;
     uchar *message = malloc(SIZE_MESSAGE);
     char help[] = "HELP";
     int flag = 0;
-//char* path = "../../dissimulation/Matrice/output/result.png";
-    //char* path = "../../../test/result2bits.png";
-    char* path = "../resource/GreCha.png";
+    char* path = "/Users/Raquel/Desktop/NSA/private/revelation/resource/oi.png";
     img = cvLoadImage(path, 1); // Second parameter == 1 (RGB) || == 0 (GREY)
     if (img){
         flag = checkFormat(path);
@@ -28,7 +26,8 @@ int main(int argc, char *argv[]) {
     }
 
    // flag = reveal(img, 1, help, message, 1, NULL, NULL);
-    flag = reveal(img, 1, help, message);
+    flag = reveal(img, 1, help, message, 2, -1, -1);
+    //flag = reveal(img, 1, help, message);
 
     switch(flag){
         case 0: while(message[i] != '\0')

@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/Reveal.dir/src/formatDetector.c.o"
-  "/Users/Raquel/Desktop/NSA/private/revelation/src/image.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/Reveal.dir/src/image.c.o"
-  "/Users/Raquel/Desktop/NSA/private/revelation/src/main.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/Reveal.dir/src/main.c.o"
-  "/Users/Raquel/Desktop/NSA/private/revelation/src/reveal.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/Reveal.dir/src/reveal.c.o"
-  "/Users/Raquel/Desktop/NSA/private/revelation/src/util.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/Reveal.dir/src/util.c.o"
+  "/Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/reveal.dir/src/formatDetector.c.o"
+  "/Users/Raquel/Desktop/NSA/private/revelation/src/image.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/reveal.dir/src/image.c.o"
+  "/Users/Raquel/Desktop/NSA/private/revelation/src/main.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/reveal.dir/src/main.c.o"
+  "/Users/Raquel/Desktop/NSA/private/revelation/src/reveal.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/reveal.dir/src/reveal.c.o"
+  "/Users/Raquel/Desktop/NSA/private/revelation/src/util.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/reveal.dir/src/util.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

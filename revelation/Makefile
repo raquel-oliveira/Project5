@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Reveal
+# Target rules for targets named reveal
 
 # Build rule for target.
-Reveal: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Reveal
-.PHONY : Reveal
+reveal: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 reveal
+.PHONY : reveal
 
 # fast build rule for target.
-Reveal/fast:
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/build
-.PHONY : Reveal/fast
+reveal/fast:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/build
+.PHONY : reveal/fast
 
 src/formatDetector.o: src/formatDetector.c.o
 
@@ -129,7 +129,7 @@ src/formatDetector.o: src/formatDetector.c.o
 
 # target to build an object file
 src/formatDetector.c.o:
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/formatDetector.c.o
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/formatDetector.c.o
 .PHONY : src/formatDetector.c.o
 
 src/formatDetector.i: src/formatDetector.c.i
@@ -138,7 +138,7 @@ src/formatDetector.i: src/formatDetector.c.i
 
 # target to preprocess a source file
 src/formatDetector.c.i:
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/formatDetector.c.i
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/formatDetector.c.i
 .PHONY : src/formatDetector.c.i
 
 src/formatDetector.s: src/formatDetector.c.s
@@ -147,7 +147,7 @@ src/formatDetector.s: src/formatDetector.c.s
 
 # target to generate assembly for a file
 src/formatDetector.c.s:
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/formatDetector.c.s
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/formatDetector.c.s
 .PHONY : src/formatDetector.c.s
 
 src/image.o: src/image.c.o
@@ -156,7 +156,7 @@ src/image.o: src/image.c.o
 
 # target to build an object file
 src/image.c.o:
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/image.c.o
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/image.c.o
 .PHONY : src/image.c.o
 
 src/image.i: src/image.c.i
@@ -165,7 +165,7 @@ src/image.i: src/image.c.i
 
 # target to preprocess a source file
 src/image.c.i:
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/image.c.i
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/image.c.i
 .PHONY : src/image.c.i
 
 src/image.s: src/image.c.s
@@ -174,7 +174,7 @@ src/image.s: src/image.c.s
 
 # target to generate assembly for a file
 src/image.c.s:
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/image.c.s
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/image.c.s
 .PHONY : src/image.c.s
 
 src/main.o: src/main.c.o
@@ -183,7 +183,7 @@ src/main.o: src/main.c.o
 
 # target to build an object file
 src/main.c.o:
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/main.c.o
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/main.c.o
 .PHONY : src/main.c.o
 
 src/main.i: src/main.c.i
@@ -192,7 +192,7 @@ src/main.i: src/main.c.i
 
 # target to preprocess a source file
 src/main.c.i:
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/main.c.i
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/main.c.i
 .PHONY : src/main.c.i
 
 src/main.s: src/main.c.s
@@ -201,7 +201,7 @@ src/main.s: src/main.c.s
 
 # target to generate assembly for a file
 src/main.c.s:
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/main.c.s
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/main.c.s
 .PHONY : src/main.c.s
 
 src/reveal.o: src/reveal.c.o
@@ -210,7 +210,7 @@ src/reveal.o: src/reveal.c.o
 
 # target to build an object file
 src/reveal.c.o:
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/reveal.c.o
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/reveal.c.o
 .PHONY : src/reveal.c.o
 
 src/reveal.i: src/reveal.c.i
@@ -219,7 +219,7 @@ src/reveal.i: src/reveal.c.i
 
 # target to preprocess a source file
 src/reveal.c.i:
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/reveal.c.i
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/reveal.c.i
 .PHONY : src/reveal.c.i
 
 src/reveal.s: src/reveal.c.s
@@ -228,7 +228,7 @@ src/reveal.s: src/reveal.c.s
 
 # target to generate assembly for a file
 src/reveal.c.s:
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/reveal.c.s
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/reveal.c.s
 .PHONY : src/reveal.c.s
 
 src/util.o: src/util.c.o
@@ -237,7 +237,7 @@ src/util.o: src/util.c.o
 
 # target to build an object file
 src/util.c.o:
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/util.c.o
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/util.c.o
 .PHONY : src/util.c.o
 
 src/util.i: src/util.c.i
@@ -246,7 +246,7 @@ src/util.i: src/util.c.i
 
 # target to preprocess a source file
 src/util.c.i:
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/util.c.i
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/util.c.i
 .PHONY : src/util.c.i
 
 src/util.s: src/util.c.s
@@ -255,7 +255,7 @@ src/util.s: src/util.c.s
 
 # target to generate assembly for a file
 src/util.c.s:
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/util.c.s
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/util.c.s
 .PHONY : src/util.c.s
 
 # Help Target
@@ -266,7 +266,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... Reveal"
+	@echo "... reveal"
 	@echo "... src/formatDetector.o"
 	@echo "... src/formatDetector.i"
 	@echo "... src/formatDetector.s"

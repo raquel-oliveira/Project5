@@ -1,13 +1,18 @@
 #include "argument.h"
 
-#define FIN "-Fin"
-#define IN "-in"
-#define OUT "-out"
-#define B "-b"
-#define C "-c"
-#define P "-p"
+#define FIN "-Fin" // Format of file
+#define IN "-in" // Path of image
+#define OUT "-out" //Path of where to save the message
+#define B "-b" // Number of bits
+#define C "-c" //Channels
+#define P "-p" // Pattern
 
-char *formatIn, *fileIn, *fileOut, *nbBits, *channels, *pattern;
+char *formatIn, *fileIn, *fileOut, *channels, *pattern;
+int nbBits;
+
+//Define defaults:
+nbBits = 1;
+pattern = "direct";
 
 void argument(int argc, char *argv[]){
     for(int i = 0; i < argc; i++){
@@ -18,7 +23,7 @@ void argument(int argc, char *argv[]){
         else if(strcmp(argv[i],OUT)==0)
             fileOut = argv[i+1];
         else if(strcmp(argv[i],B)==0)
-            nbBits = argv[i+1];
+            nbBits = atoi(argv[i+1]);
         else if(strcmp(argv[i],C)==0)
             channels = argv[i+1];
         else if(strcmp(argv[i],P)==0)
@@ -43,6 +48,10 @@ char * getArg(char *what){
         return nbBits;
     }
     else if(strcmp(what,"pattern")==0){
+        if(what == NULL) return "Direct";
+        return pattern;
+    }
+    else if(strcmp(what,"channel")==0){
         if(what == NULL) return "Direct";
         return pattern;
     }
