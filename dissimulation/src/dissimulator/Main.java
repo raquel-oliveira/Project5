@@ -7,45 +7,34 @@ import java.util.BitSet;
 
 public class Main {
 	
-	public static void main(String[] args) throws IOException, Exception
-	{
-        //Récupération des arguments, et utilisation
-        Arguments arg = new Arguments(args);
+	public static void main(String[] args) throws IOException, Exception {
+		//Récupération des arguments, et utilisation
+		Arguments arg = new Arguments(args);
 		Metrics met = new Metrics();
 		met.setTime();
-		
-        String in = arg.getArg("fileIn");
-        String out = arg.getArg("fileOut");
-        String message = arg.getArg("message");
-        String channels = "";
-        String[] colors = new String[3];
 
-        //Vérification du message pour le nombre magique
-        MagicNumberTester mnt = new MagicNumberTester(arg.getArg("magic"));
+		String in = arg.getArg("fileIn");
+		String out = arg.getArg("fileOut");
+		String message = arg.getArg("message");
+		String channels = "";
+		String[] colors = new String[3];
 
-		if(message.startsWith("\"")){
-        
-			if (mnt.doesStringContainMN(message)) {
-				throw new MagicNumberException("Ce message contient le nombre magique");
-			} else {
-			message += mnt.hexStringtoString();
-			}
+		//Vérification du message pour le nombre magique
+		MagicNumberTester mnt = new MagicNumberTester(arg.getArg("magic"));
 
-		}
-
-		else if(message.endsWith(".txt")){
+		if (message.endsWith(".txt")) {
 			BufferedReader br = new BufferedReader(new FileReader(message));
-			try{
+			try {
 				StringBuilder sb = new StringBuilder();
 				String line = br.readLine();
 
-				while(line!=null){
+				while (line != null) {
 					sb.append(line);
 					sb.append("\n");
-					line= br.readLine();
+					line = br.readLine();
 				}
-				message= sb.toString();
-			}finally{
+				message = sb.toString();
+			} finally {
 				br.close();
 			}
 			if (mnt.doesStringContainMN(message)) {
@@ -54,6 +43,16 @@ public class Main {
 				message += mnt.hexStringtoString();
 			}
 		}
+		else {
+			System.out.println(message);
+			if(mnt.doesStringContainMN(message)) {
+				throw new MagicNumberException("Ce message contient le nombre magique");
+			}else{
+				message += mnt.hexStringtoString();
+			}
+		}
+
+
 		
 		ManipImage manipMat = new ManipImage(in);
         

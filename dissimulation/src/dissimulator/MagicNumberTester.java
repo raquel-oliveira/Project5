@@ -14,7 +14,7 @@ public class MagicNumberTester {
     private String hexString;
 
     public MagicNumberTester(){
-        this.hexString = "48 45 4C 50";
+        this.hexString = "48454C50";
     }
 
     public MagicNumberTester(String hexstr){
@@ -60,21 +60,24 @@ public class MagicNumberTester {
 
     public String hexStringtoString(){
         String res = "";
-        if(this.hexString.contains("\\s+")) {
+        /*if(this.hexString.contains("\\s+")) {
             String[] splitstr = this.hexString.split("\\s+");
             for (int i = 0; i < splitstr.length; i++) {
                 char[] c = Character.toChars(Integer.decode("0X" + splitstr[i]));
                 res += Character.toString(c[0]);
             }
-        }
-        else {
+            return res;
+        }*/
+
             String mn = this.hexString;
+
             for (int i = 0; i < mn.length(); i+=2) {
                 char[] c = Character.toChars(Integer.decode("0X" + mn.charAt(i)+mn.charAt(i+1)));
                 res += Character.toString(c[0]);
             }
-        }
-        return res;
+            return res;
+
+
     }
 
     public byte[] hextStringtoByteArray(){
@@ -83,7 +86,7 @@ public class MagicNumberTester {
         int size = splitstr.length;
         byte [] bytes = new byte[size];
         int j=0;
-            for (int i = 0; i < splitstr.length; i++) {
+            for (int i = 1; i < splitstr.length; i++) {
                 byte[] b = DatatypeConverter.parseHexBinary(splitstr[i]);
                 bytes[j]=b[0];
                 j++;
