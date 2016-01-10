@@ -12,25 +12,31 @@
 
 
 int check_extension(){
-    int userFormat = -1;
+    int userFormat;
+    int format = detect_format(fileIn);
+
     if (formatIn == "PNG") {
         userFormat = 1;
     }
-    else if (formatin == "BRP"){
+    else if (formatIn == "BRP"){
         userFormat = 2;
     }
-    else if (formatin == "PPM"){
+    else if (formatIn == "PPM"){
         userFormat = 3;
     }
-    else if (formatin == "PGM"){
+    else if (formatIn == "PGM"){
         userFormat = 4;
     }
-
-    if (userFormat > 4 && userFormat < 1){
-        return -1; //not a format accepted by the program
+    else if (formatIn == NULL){
+        if (format != -1){
+            return 0; // The program accept the format
+        }
+    }
+    else {
+        return -1;
     }
 
-    if (userFormat != detect_format(fileIn)){
+    if (userFormat != format){
         return -2; //Format given by the user doesn' correspont to the format of image
     }
     else{

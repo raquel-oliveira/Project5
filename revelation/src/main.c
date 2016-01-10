@@ -1,9 +1,8 @@
 #include <string.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include "arguments.h"
 #include "reveal.h"
-#include "formatDetector.h"
+#include "utils/checkFormat.h"
 
 #define FIN "-Fin" // Format of file
 #define IN "-in" // Path of image
@@ -11,11 +10,22 @@
 #define B "-b" // Number of bits
 #define C "-c" //Channels
 #define P "-p" // Pattern
+#define SIZE_MESSAGE 100
+
 
 int main(int argc, char *argv[]){
-
+    //Default arguments:
     nbBits = 1;
     pattern = "direct";
+
+    //
+    IplImage *img = NULL;
+    int flag = 0;
+    int i = 0;
+    uchar *message = malloc(SIZE_MESSAGE);
+    char magicNumber[] = "HELP";
+    char* path = "/Users/Raquel/Desktop/NSA/private/revelation/resource/oi.png";
+    //////////
 
     for(int i = 0; i < argc; i++){
         if(strcmp(argv[i],FIN)==0)
@@ -33,5 +43,33 @@ int main(int argc, char *argv[]){
         else if(strcmp(argv[i],P)==0)
             pattern = argv[i+1];
     }
+
+
+    flag = check_extension();
+    switch(flag) {
+        case 0:
+            break;
+        case -1:
+            fprintf(stderr, "%s is not a format accepted\n", formatIn);
+            exit(-1);
+        case -2:
+            fprintf(stderr, "This format it' not the format of the image\n");
+            exit(-2);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return 0;
 }
