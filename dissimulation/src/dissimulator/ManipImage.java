@@ -155,15 +155,7 @@ public class ManipImage {
         return b;
     }
 	
-	/**
-	 * Prints out the number of bits available for hiding. Prints out the number of bits to hide (s)
-	 * @param string to hide
-	 */
-	public void nbBitsImpacted(String s)
-	{
-		System.out.println("\nNombre maximum de bits disponibles : " + (image.getWidth() * image.getHeight() * 3));
-		System.out.println("Nombre de bits impactés : " + (s.length() * 8));
-	}
+	
 	public int[] getRedArray()
 	{
 		return image.getRedArray();
@@ -175,6 +167,10 @@ public class ManipImage {
 	public int[] getBlueArray()
 	{
 		return image.getBlueArray();
+	}
+	public ImageRGB getImage()
+	{
+		return image;
 	}
 	public String getMagicword() 
 	{
