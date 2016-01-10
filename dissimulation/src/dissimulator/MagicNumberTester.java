@@ -18,6 +18,8 @@ public class MagicNumberTester {
     }
 
     public MagicNumberTester(String hexstr){
+        if(hexstr.startsWith("\""))
+            hexstr = hexstr.substring(1, hexstr.length()-1);
         this.hexString = hexstr;
     }
 
