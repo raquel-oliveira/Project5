@@ -3,7 +3,7 @@ import java.util.BitSet;
 
 
 
-public class TextToBinary {
+public class MessageToBinary {
 
 	/**
 	 * This method takes a string as an argument, 
@@ -25,6 +25,11 @@ public class TextToBinary {
 				z++;
 			}
 		}
+		return bsret;
+	}
+
+	public BitSet FileToBinary(String filepath){
+		BitSet bsret = new BitSet();
 		return bsret;
 	}
 
