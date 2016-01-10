@@ -3,10 +3,8 @@
 //
 
 #include "arguments.h"
-#include <string.h>
-#include <stdio.h>
-
 
 char *formatIn, *fileIn, *fileOut, *channels, *firstChannel, *secondChannel, *thirdChannel, *pattern;
-
+//char magicNumber[];
+//char *magicNumber;
 int nbBits;

@@ -3,6 +3,7 @@
 
 CMakeFiles/reveal.dir/src/arguments.c.o: src/arguments.c
 CMakeFiles/reveal.dir/src/arguments.c.o: src/arguments.h
+CMakeFiles/reveal.dir/src/arguments.c.o: /usr/local/include/opencv2/hal/defs.h
 
 CMakeFiles/reveal.dir/src/image.c.o: src/image.c
 CMakeFiles/reveal.dir/src/image.c.o: src/image.h
@@ -182,6 +183,7 @@ CMakeFiles/reveal.dir/src/utils/checkFormat.c.o: src/arguments.h
 CMakeFiles/reveal.dir/src/utils/checkFormat.c.o: src/utils/checkFormat.c
 CMakeFiles/reveal.dir/src/utils/checkFormat.c.o: src/utils/checkFormat.h
 CMakeFiles/reveal.dir/src/utils/checkFormat.c.o: src/utils/formatDetector.h
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.o: /usr/local/include/opencv2/hal/defs.h
 
 CMakeFiles/reveal.dir/src/utils/formatDetector.c.o: src/utils/formatDetector.c
 CMakeFiles/reveal.dir/src/utils/formatDetector.c.o: src/utils/formatDetector.h
