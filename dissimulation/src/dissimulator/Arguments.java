@@ -20,8 +20,8 @@ public class Arguments {
 		this.fd = new FormatDetector();
 		for(int i = 0; i < arguments.length ; i++)
 		{
-			if(arguments[i].equals("-Fin")) formatIn = "." + arguments[i+1];
-			else if(arguments[i].equals("-Fout")) formatOut = "." + arguments[i+1];
+			if(arguments[i].equals("-Fin")) formatIn = "." + arguments[i+1].toLowerCase();
+			else if(arguments[i].equals("-Fout")) formatOut = "." + arguments[i+1].toLowerCase();
 			else if(arguments[i].equals("-in")) fileIn = arguments[i+1];
 			else if(arguments[i].equals("-out")) fileOut = arguments[i+1];
 			else if(arguments[i].equals("-msg")) message = arguments[i+1];
@@ -40,7 +40,7 @@ public class Arguments {
 			if(formatIn == null){
 				return "."+fd.getFileType().toLowerCase();
 			}
-			else if(fd.getFileType().toLowerCase() == "jpeg" && (formatIn.equals(".jpg") || formatIn.equals(".JPEG") || formatIn.equals(".jpeg") || formatIn.equals(".JPG")))
+			else if(fd.getFileType().toLowerCase().equals("jpeg") && (formatIn.equals(".jpg") || formatIn.equals(".JPEG") || formatIn.equals(".jpeg") || formatIn.equals(".JPG")))
 			{
 				return ".jpg";
 			}
@@ -52,8 +52,12 @@ public class Arguments {
 		}
 		else if(what.equals("formatOut"))
 		{
-			if(formatOut.equals("png")) return "png";
-			return formatOut;
+			fd.setFiletype(this.fileIn);
+			if(formatOut== null) return null;
+			else if(formatOut.toLowerCase().equals(fd.getFileType().toLowerCase())){
+				return formatOut;
+			}
+			else throw new InvalidArgumentException("Output format is not valid");
 		}
 		else if(what.equals("fileIn"))
 		{
