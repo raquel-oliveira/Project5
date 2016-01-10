@@ -69,13 +69,7 @@ public class Arguments {
 		}
 		else if(what.equals("channels"))
 		{
-
-			if(channels == null) {
-				fd.setFiletype(fileIn);
-				String formatused = fd.getFileType();
-				if(formatused.equals("bmp")||formatused.equals("pgm")) return "Gray";
-				else return "Red, Green, Blue";
-			}
+			if(channels == null) return "Red,Green,Blue";
 			return channels;
 		}
 		else if(what.equals("pattern"))

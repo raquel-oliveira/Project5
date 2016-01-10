@@ -56,7 +56,7 @@ public class ManipImage {
 	 * @param nbBits number of bits to change at each byte
 	 * @param pattern which pattern to use when hiding the message
 	 */
-	public void dissimulationLSB(BitSet bIn, int nbBits, String pattern)
+	public void dissimulationLSB(BitSet bIn, int nbBits, String pattern, String[] colors)
 	{	
 		Pattern pat; // Pattern used to navigate through the image
 		int pass = 0;
@@ -75,11 +75,13 @@ public class ManipImage {
                 int j = nbBits;
                 while(j != 0)
                 {
-                 	setDissimulation(bIn, image.getRedArray(), i++, z, j);
+                 	if(colors[0].equals("Red")) setDissimulation(bIn, image.getRedArray(), i++, z, j);
+                 	else if(colors[0].equals("Green")) setDissimulation(bIn, image.getGreenArray(), i++, z, j);
+                 	else setDissimulation(bIn, image.getBlueArray(), i++, z, j);
                     j--;
                 }
                 i--; // Reseting the right i for example if nbBits = 1
-				if(!pat.hasNext(z, image.getRedArray())) pass = 1;
+				if(!pat.hasNext(z, image.getRedArray())) pass = 1; // Again, the arrays Red, Green and Blue have the same size
 			}
 			else if(pass == 1)
 			{
