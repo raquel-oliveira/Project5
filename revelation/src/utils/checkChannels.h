@@ -9,5 +9,4 @@ void setChannels();
 
 numberColors(char *aux);
 
-
 #endif //REVELATIONN_CHECKCOLOR_H

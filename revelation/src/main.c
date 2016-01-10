@@ -29,7 +29,7 @@ int main(int argc, char *argv[]){
     pattern = "direct";
     fileIn = NULL;
     fileOut = NULL;
-    channels = 0;
+    channels = NULL;
     nbBits = 1;
     uchar *message = malloc(SIZE_MESSAGE);
     char magic[] = "HELP";
@@ -50,15 +50,13 @@ int main(int argc, char *argv[]){
         }
         else if(strcmp(argv[i],P)==0)
             pattern = argv[i+1];
-        else if(strcmp(argv[i],MAGIC)==0)
-            magicNumber = argv[i + 1]; //not using
+        //else if(strcmp(argv[i],MAGIC)==0)
+           // magicNumber = argv[i + 1]; //not using
        /*else{
             fprintf(stderr, "Tried to put an argument that does not exist.\n");
             exit(-1);
         }*/
     }
-
-    fileIn = "/Users/Raquel/Desktop/NSA/private/revelation/resource/1bitRED.png";
 
     if (fileIn == NULL){
         fprintf(stderr, "There is no input file.\n");
@@ -86,11 +84,7 @@ int main(int argc, char *argv[]){
         exit(-3);
     }
 
-
-    /*Checking channels*/
-
-
-   flag = reveal(img, 1, magic, message, 2, -1, -1);
+    flag = reveal(img, 1, magic, message, 2, 1, 0); //default 1 bit, red green blue
 
     switch(flag){
         case 0: while(message[i] != '\0')

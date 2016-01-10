@@ -11,7 +11,7 @@ void setChannels(){
         i++;
     }
 
-    if (channels == 0){
+    if (channels == NULL){
         firstChannel = 2;
         secondChannel = 1;
         thirdChannel = 0;

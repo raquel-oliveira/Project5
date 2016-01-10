@@ -91,6 +91,8 @@ stdlib.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.c
 utilBit.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.h
+../arguments.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/arguments.h
 
 /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.h
 stdio.h

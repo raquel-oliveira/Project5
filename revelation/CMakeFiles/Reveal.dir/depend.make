@@ -188,6 +188,7 @@ CMakeFiles/reveal.dir/src/utils/checkFormat.c.o: /usr/local/include/opencv2/hal/
 CMakeFiles/reveal.dir/src/utils/formatDetector.c.o: src/utils/formatDetector.c
 CMakeFiles/reveal.dir/src/utils/formatDetector.c.o: src/utils/formatDetector.h
 
+CMakeFiles/reveal.dir/src/utils/utilBit.c.o: src/arguments.h
 CMakeFiles/reveal.dir/src/utils/utilBit.c.o: src/utils/utilBit.c
 CMakeFiles/reveal.dir/src/utils/utilBit.c.o: src/utils/utilBit.h
 CMakeFiles/reveal.dir/src/utils/utilBit.c.o: /usr/local/include/opencv2/hal/defs.h

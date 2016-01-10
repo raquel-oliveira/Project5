@@ -10,6 +10,7 @@
 #include <opencv2/hal/defs.h>
 
 extern char *formatIn, *fileIn, *fileOut, *channels, *pattern, *magicNumber;
+//extern char magicNumber[];
 extern int firstChannel, secondChannel, thirdChannel, nbBits;
 
 #endif //REVELATIONN_ARGUMENTS_H
