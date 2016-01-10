@@ -16,16 +16,6 @@ stdio.h
 
 /Users/Raquel/Desktop/NSA/private/revelation/src/arguments.h
 
-/Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.c
-formatDetector.h
-/Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.h
-
-/Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.h
-stdio.h
--
-stdlib.h
--
-
 /Users/Raquel/Desktop/NSA/private/revelation/src/image.c
 image.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/image.h
@@ -39,13 +29,11 @@ opencv/highgui.h
 -
 magic.h
 -
-formatDetector.h
-/Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.h
+utils/formatDetector.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.h
 
 /Users/Raquel/Desktop/NSA/private/revelation/src/main.c
 string.h
--
-stdio.h
 -
 stdlib.h
 -
@@ -53,8 +41,8 @@ arguments.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/arguments.h
 reveal.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/reveal.h
-formatDetector.h
-/Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.h
+utils/checkFormat.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/checkFormat.h
 
 /Users/Raquel/Desktop/NSA/private/revelation/src/reveal.c
 reveal.h
@@ -73,6 +61,30 @@ image.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/image.h
 utils/utilBit.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.h
+
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/checkFormat.c
+checkFormat.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/checkFormat.h
+string.h
+-
+ctype.h
+-
+formatDetector.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.h
+../arguments.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/arguments.h
+
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/checkFormat.h
+
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.c
+formatDetector.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.h
+
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.h
+stdio.h
+-
+stdlib.h
+-
 
 /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.c
 utilBit.h

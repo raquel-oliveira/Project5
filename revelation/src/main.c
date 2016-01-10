@@ -24,7 +24,7 @@ int main(int argc, char *argv[]){
     int i = 0;
     uchar *message = malloc(SIZE_MESSAGE);
     char magicNumber[] = "HELP";
-    char* path = "/Users/Raquel/Desktop/NSA/private/revelation/resource/oi.png";
+
     //////////
 
     for(int i = 0; i < argc; i++){
@@ -42,20 +42,32 @@ int main(int argc, char *argv[]){
         }
         else if(strcmp(argv[i],P)==0)
             pattern = argv[i+1];
-    }
-
-
-    flag = check_extension();
-    switch(flag) {
-        case 0:
-            break;
-        case -1:
-            fprintf(stderr, "%s is not a format accepted\n", formatIn);
+        else{
+            fprintf(stderr, "Tried to put an argument that does not exist.\n");
             exit(-1);
-        case -2:
-            fprintf(stderr, "This format it' not the format of the image\n");
-            exit(-2);
+        }
+        fileIn = "/Users/Raquel/Desktop/NSA/private/revelation/resource/oi.png";
     }
+
+    img = cvLoadImage(fileIn, 1); // Second parameter == 1 (RGB) || == 0 (GREY)
+    if (img){
+        flag = check_extension();
+        switch(flag) {
+            case 0:
+                break;
+            case -1:
+                fprintf(stderr, "%s is not a format accepted\n", formatIn);
+                exit(-1);
+            case -2:
+                fprintf(stderr, "This format is not the format of the image\n");
+                exit(-2);
+        }
+    }else{
+        printf("Could not open the file");
+        exit(-3);
+    }
+
+
 
 
 

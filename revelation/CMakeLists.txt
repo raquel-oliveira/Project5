@@ -18,6 +18,7 @@ add_executable(
         src/image.c
         src/utils/utilBit.c
         src/utils/formatDetector.c
+        src/utils/checkFormat.c
         src/arguments.c
 )
 

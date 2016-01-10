@@ -8,6 +8,4 @@
 extern char *formatIn, *fileIn, *fileOut, *channels, *firstChannel, *secondChannel, *thirdChannel, *pattern;
 extern int nbBits;
 
-char * getArg(char *what);
-
 #endif //REVELATIONN_ARGUMENTS_H

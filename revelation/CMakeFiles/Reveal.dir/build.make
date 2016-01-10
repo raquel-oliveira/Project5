@@ -153,33 +153,57 @@ CMakeFiles/reveal.dir/src/utils/utilBit.c.o.provides: CMakeFiles/reveal.dir/src/
 CMakeFiles/reveal.dir/src/utils/utilBit.c.o.provides.build: CMakeFiles/reveal.dir/src/utils/utilBit.c.o
 
 
-CMakeFiles/reveal.dir/src/formatDetector.c.o: CMakeFiles/reveal.dir/flags.make
-CMakeFiles/reveal.dir/src/formatDetector.c.o: src/formatDetector.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/reveal.dir/src/formatDetector.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/reveal.dir/src/formatDetector.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.c
+CMakeFiles/reveal.dir/src/utils/formatDetector.c.o: CMakeFiles/reveal.dir/flags.make
+CMakeFiles/reveal.dir/src/utils/formatDetector.c.o: src/utils/formatDetector.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/reveal.dir/src/utils/formatDetector.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/reveal.dir/src/utils/formatDetector.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.c
 
-CMakeFiles/reveal.dir/src/formatDetector.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/reveal.dir/src/formatDetector.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.c > CMakeFiles/reveal.dir/src/formatDetector.c.i
+CMakeFiles/reveal.dir/src/utils/formatDetector.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/reveal.dir/src/utils/formatDetector.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.c > CMakeFiles/reveal.dir/src/utils/formatDetector.c.i
 
-CMakeFiles/reveal.dir/src/formatDetector.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/reveal.dir/src/formatDetector.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.c -o CMakeFiles/reveal.dir/src/formatDetector.c.s
+CMakeFiles/reveal.dir/src/utils/formatDetector.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/reveal.dir/src/utils/formatDetector.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.c -o CMakeFiles/reveal.dir/src/utils/formatDetector.c.s
 
-CMakeFiles/reveal.dir/src/formatDetector.c.o.requires:
+CMakeFiles/reveal.dir/src/utils/formatDetector.c.o.requires:
 
-.PHONY : CMakeFiles/reveal.dir/src/formatDetector.c.o.requires
+.PHONY : CMakeFiles/reveal.dir/src/utils/formatDetector.c.o.requires
 
-CMakeFiles/reveal.dir/src/formatDetector.c.o.provides: CMakeFiles/reveal.dir/src/formatDetector.c.o.requires
-	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/formatDetector.c.o.provides.build
-.PHONY : CMakeFiles/reveal.dir/src/formatDetector.c.o.provides
+CMakeFiles/reveal.dir/src/utils/formatDetector.c.o.provides: CMakeFiles/reveal.dir/src/utils/formatDetector.c.o.requires
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/formatDetector.c.o.provides.build
+.PHONY : CMakeFiles/reveal.dir/src/utils/formatDetector.c.o.provides
 
-CMakeFiles/reveal.dir/src/formatDetector.c.o.provides.build: CMakeFiles/reveal.dir/src/formatDetector.c.o
+CMakeFiles/reveal.dir/src/utils/formatDetector.c.o.provides.build: CMakeFiles/reveal.dir/src/utils/formatDetector.c.o
+
+
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.o: CMakeFiles/reveal.dir/flags.make
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.o: src/utils/checkFormat.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/reveal.dir/src/utils/checkFormat.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/reveal.dir/src/utils/checkFormat.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/utils/checkFormat.c
+
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/reveal.dir/src/utils/checkFormat.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/utils/checkFormat.c > CMakeFiles/reveal.dir/src/utils/checkFormat.c.i
+
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/reveal.dir/src/utils/checkFormat.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/utils/checkFormat.c -o CMakeFiles/reveal.dir/src/utils/checkFormat.c.s
+
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.o.requires:
+
+.PHONY : CMakeFiles/reveal.dir/src/utils/checkFormat.c.o.requires
+
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.o.provides: CMakeFiles/reveal.dir/src/utils/checkFormat.c.o.requires
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/checkFormat.c.o.provides.build
+.PHONY : CMakeFiles/reveal.dir/src/utils/checkFormat.c.o.provides
+
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.o.provides.build: CMakeFiles/reveal.dir/src/utils/checkFormat.c.o
 
 
 CMakeFiles/reveal.dir/src/arguments.c.o: CMakeFiles/reveal.dir/flags.make
 CMakeFiles/reveal.dir/src/arguments.c.o: src/arguments.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/reveal.dir/src/arguments.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/reveal.dir/src/arguments.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/reveal.dir/src/arguments.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/arguments.c
 
 CMakeFiles/reveal.dir/src/arguments.c.i: cmake_force
@@ -207,7 +231,8 @@ reveal_OBJECTS = \
 "CMakeFiles/reveal.dir/src/reveal.c.o" \
 "CMakeFiles/reveal.dir/src/image.c.o" \
 "CMakeFiles/reveal.dir/src/utils/utilBit.c.o" \
-"CMakeFiles/reveal.dir/src/formatDetector.c.o" \
+"CMakeFiles/reveal.dir/src/utils/formatDetector.c.o" \
+"CMakeFiles/reveal.dir/src/utils/checkFormat.c.o" \
 "CMakeFiles/reveal.dir/src/arguments.c.o"
 
 # External object files for target reveal
@@ -217,7 +242,8 @@ bin/reveal: CMakeFiles/reveal.dir/src/main.c.o
 bin/reveal: CMakeFiles/reveal.dir/src/reveal.c.o
 bin/reveal: CMakeFiles/reveal.dir/src/image.c.o
 bin/reveal: CMakeFiles/reveal.dir/src/utils/utilBit.c.o
-bin/reveal: CMakeFiles/reveal.dir/src/formatDetector.c.o
+bin/reveal: CMakeFiles/reveal.dir/src/utils/formatDetector.c.o
+bin/reveal: CMakeFiles/reveal.dir/src/utils/checkFormat.c.o
 bin/reveal: CMakeFiles/reveal.dir/src/arguments.c.o
 bin/reveal: CMakeFiles/reveal.dir/build.make
 bin/reveal: /usr/local/lib/libopencv_videostab.3.0.0.dylib
@@ -240,7 +266,7 @@ bin/reveal: /usr/local/lib/libopencv_core.3.0.0.dylib
 bin/reveal: /usr/local/lib/libopencv_hal.a
 bin/reveal: /usr/local/share/OpenCV/3rdparty/lib/libippicv.a
 bin/reveal: CMakeFiles/reveal.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable bin/reveal"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable bin/reveal"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/reveal.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -252,7 +278,8 @@ CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/main.c.o.requires
 CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/reveal.c.o.requires
 CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/image.c.o.requires
 CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/utils/utilBit.c.o.requires
-CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/formatDetector.c.o.requires
+CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/utils/formatDetector.c.o.requires
+CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/utils/checkFormat.c.o.requires
 CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/arguments.c.o.requires
 
 .PHONY : CMakeFiles/reveal.dir/requires

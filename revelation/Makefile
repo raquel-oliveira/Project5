@@ -150,33 +150,6 @@ src/arguments.c.s:
 	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/arguments.c.s
 .PHONY : src/arguments.c.s
 
-src/formatDetector.o: src/formatDetector.c.o
-
-.PHONY : src/formatDetector.o
-
-# target to build an object file
-src/formatDetector.c.o:
-	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/formatDetector.c.o
-.PHONY : src/formatDetector.c.o
-
-src/formatDetector.i: src/formatDetector.c.i
-
-.PHONY : src/formatDetector.i
-
-# target to preprocess a source file
-src/formatDetector.c.i:
-	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/formatDetector.c.i
-.PHONY : src/formatDetector.c.i
-
-src/formatDetector.s: src/formatDetector.c.s
-
-.PHONY : src/formatDetector.s
-
-# target to generate assembly for a file
-src/formatDetector.c.s:
-	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/formatDetector.c.s
-.PHONY : src/formatDetector.c.s
-
 src/image.o: src/image.c.o
 
 .PHONY : src/image.o
@@ -258,6 +231,60 @@ src/reveal.c.s:
 	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/reveal.c.s
 .PHONY : src/reveal.c.s
 
+src/utils/checkFormat.o: src/utils/checkFormat.c.o
+
+.PHONY : src/utils/checkFormat.o
+
+# target to build an object file
+src/utils/checkFormat.c.o:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/checkFormat.c.o
+.PHONY : src/utils/checkFormat.c.o
+
+src/utils/checkFormat.i: src/utils/checkFormat.c.i
+
+.PHONY : src/utils/checkFormat.i
+
+# target to preprocess a source file
+src/utils/checkFormat.c.i:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/checkFormat.c.i
+.PHONY : src/utils/checkFormat.c.i
+
+src/utils/checkFormat.s: src/utils/checkFormat.c.s
+
+.PHONY : src/utils/checkFormat.s
+
+# target to generate assembly for a file
+src/utils/checkFormat.c.s:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/checkFormat.c.s
+.PHONY : src/utils/checkFormat.c.s
+
+src/utils/formatDetector.o: src/utils/formatDetector.c.o
+
+.PHONY : src/utils/formatDetector.o
+
+# target to build an object file
+src/utils/formatDetector.c.o:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/formatDetector.c.o
+.PHONY : src/utils/formatDetector.c.o
+
+src/utils/formatDetector.i: src/utils/formatDetector.c.i
+
+.PHONY : src/utils/formatDetector.i
+
+# target to preprocess a source file
+src/utils/formatDetector.c.i:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/formatDetector.c.i
+.PHONY : src/utils/formatDetector.c.i
+
+src/utils/formatDetector.s: src/utils/formatDetector.c.s
+
+.PHONY : src/utils/formatDetector.s
+
+# target to generate assembly for a file
+src/utils/formatDetector.c.s:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/formatDetector.c.s
+.PHONY : src/utils/formatDetector.c.s
+
 src/utils/utilBit.o: src/utils/utilBit.c.o
 
 .PHONY : src/utils/utilBit.o
@@ -297,9 +324,6 @@ help:
 	@echo "... src/arguments.o"
 	@echo "... src/arguments.i"
 	@echo "... src/arguments.s"
-	@echo "... src/formatDetector.o"
-	@echo "... src/formatDetector.i"
-	@echo "... src/formatDetector.s"
 	@echo "... src/image.o"
 	@echo "... src/image.i"
 	@echo "... src/image.s"
@@ -309,6 +333,12 @@ help:
 	@echo "... src/reveal.o"
 	@echo "... src/reveal.i"
 	@echo "... src/reveal.s"
+	@echo "... src/utils/checkFormat.o"
+	@echo "... src/utils/checkFormat.i"
+	@echo "... src/utils/checkFormat.s"
+	@echo "... src/utils/formatDetector.o"
+	@echo "... src/utils/formatDetector.i"
+	@echo "... src/utils/formatDetector.s"
 	@echo "... src/utils/utilBit.o"
 	@echo "... src/utils/utilBit.i"
 	@echo "... src/utils/utilBit.s"

@@ -12,17 +12,6 @@ int main(int argc, char *argv[]) {
     char help[] = "HELP";
     int flag = 0;
     char* path = "/Users/Raquel/Desktop/NSA/private/revelation/resource/oi.png";
-    img = cvLoadImage(path, 1); // Second parameter == 1 (RGB) || == 0 (GREY)
-    if (img){
-        flag = checkFormat(path);
-        if (flag == -1){
-            printf("Format not accepted");
-            exit(-1);
-        }
-    }else{
-        printf("Could not open the file");
-        exit(-2);
-    }
 
    // flag = reveal(img, 1, help, message, 1, NULL, NULL);
     flag = reveal(img, 1, help, message, 2, -1, -1);

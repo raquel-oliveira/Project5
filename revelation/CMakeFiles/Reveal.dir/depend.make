@@ -4,12 +4,9 @@
 CMakeFiles/reveal.dir/src/arguments.c.o: src/arguments.c
 CMakeFiles/reveal.dir/src/arguments.c.o: src/arguments.h
 
-CMakeFiles/reveal.dir/src/formatDetector.c.o: src/formatDetector.c
-CMakeFiles/reveal.dir/src/formatDetector.c.o: src/formatDetector.h
-
-CMakeFiles/reveal.dir/src/image.c.o: src/formatDetector.h
 CMakeFiles/reveal.dir/src/image.c.o: src/image.c
 CMakeFiles/reveal.dir/src/image.c.o: src/image.h
+CMakeFiles/reveal.dir/src/image.c.o: src/utils/formatDetector.h
 CMakeFiles/reveal.dir/src/image.c.o: /usr/local/include/magic.h
 CMakeFiles/reveal.dir/src/image.c.o: /usr/local/include/opencv/cxcore.h
 CMakeFiles/reveal.dir/src/image.c.o: /usr/local/include/opencv/highgui.h
@@ -64,10 +61,11 @@ CMakeFiles/reveal.dir/src/image.c.o: /usr/local/include/opencv2/videoio.hpp
 CMakeFiles/reveal.dir/src/image.c.o: /usr/local/include/opencv2/videoio/videoio_c.h
 
 CMakeFiles/reveal.dir/src/main.c.o: src/arguments.h
-CMakeFiles/reveal.dir/src/main.c.o: src/formatDetector.h
 CMakeFiles/reveal.dir/src/main.c.o: src/image.h
 CMakeFiles/reveal.dir/src/main.c.o: src/main.c
 CMakeFiles/reveal.dir/src/main.c.o: src/reveal.h
+CMakeFiles/reveal.dir/src/main.c.o: src/utils/checkFormat.h
+CMakeFiles/reveal.dir/src/main.c.o: src/utils/formatDetector.h
 CMakeFiles/reveal.dir/src/main.c.o: src/utils/utilBit.h
 CMakeFiles/reveal.dir/src/main.c.o: /usr/local/include/magic.h
 CMakeFiles/reveal.dir/src/main.c.o: /usr/local/include/opencv/cxcore.h
@@ -122,10 +120,10 @@ CMakeFiles/reveal.dir/src/main.c.o: /usr/local/include/opencv2/video/tracking_c.
 CMakeFiles/reveal.dir/src/main.c.o: /usr/local/include/opencv2/videoio.hpp
 CMakeFiles/reveal.dir/src/main.c.o: /usr/local/include/opencv2/videoio/videoio_c.h
 
-CMakeFiles/reveal.dir/src/reveal.c.o: src/formatDetector.h
 CMakeFiles/reveal.dir/src/reveal.c.o: src/image.h
 CMakeFiles/reveal.dir/src/reveal.c.o: src/reveal.c
 CMakeFiles/reveal.dir/src/reveal.c.o: src/reveal.h
+CMakeFiles/reveal.dir/src/reveal.c.o: src/utils/formatDetector.h
 CMakeFiles/reveal.dir/src/reveal.c.o: src/utils/utilBit.h
 CMakeFiles/reveal.dir/src/reveal.c.o: /usr/local/include/magic.h
 CMakeFiles/reveal.dir/src/reveal.c.o: /usr/local/include/opencv/cxcore.h
@@ -179,6 +177,14 @@ CMakeFiles/reveal.dir/src/reveal.c.o: /usr/local/include/opencv2/video/tracking.
 CMakeFiles/reveal.dir/src/reveal.c.o: /usr/local/include/opencv2/video/tracking_c.h
 CMakeFiles/reveal.dir/src/reveal.c.o: /usr/local/include/opencv2/videoio.hpp
 CMakeFiles/reveal.dir/src/reveal.c.o: /usr/local/include/opencv2/videoio/videoio_c.h
+
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.o: src/arguments.h
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.o: src/utils/checkFormat.c
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.o: src/utils/checkFormat.h
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.o: src/utils/formatDetector.h
+
+CMakeFiles/reveal.dir/src/utils/formatDetector.c.o: src/utils/formatDetector.c
+CMakeFiles/reveal.dir/src/utils/formatDetector.c.o: src/utils/formatDetector.h
 
 CMakeFiles/reveal.dir/src/utils/utilBit.c.o: src/utils/utilBit.c
 CMakeFiles/reveal.dir/src/utils/utilBit.c.o: src/utils/utilBit.h

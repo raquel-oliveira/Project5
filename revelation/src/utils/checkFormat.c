@@ -2,8 +2,10 @@
 // Created by Raquel Lopes de Oliveira on 10/01/2016.
 //
 #include "checkFormat.h"
+#include <string.h>
+#include <ctype.h>
 #include "formatDetector.h"
-#include "arguments.h"
+#include "../arguments.h"
 
 #define PNG 1;
 #define BMP 2;
@@ -14,17 +16,23 @@
 int check_extension(){
     int userFormat;
     int format = detect_format(fileIn);
+    int i = 0;
+    while(formatIn[i])
+    {
+        formatIn[i] = toupper(formatIn[i]);
+        i++;
+    }
 
-    if (formatIn == "PNG") {
+    if (strcmp(formatIn,"PNG") == 0) {
         userFormat = 1;
     }
-    else if (formatIn == "BRP"){
+    else if (strcmp(formatIn,"BMP") == 0){
         userFormat = 2;
     }
-    else if (formatIn == "PPM"){
+    else if (strcmp(formatIn,"PPM") == 0){
         userFormat = 3;
     }
-    else if (formatIn == "PGM"){
+    else if (strcmp(formatIn,"PGM") == 0){
         userFormat = 4;
     }
     else if (formatIn == NULL){
