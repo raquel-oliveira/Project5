@@ -9,17 +9,21 @@ public class Main {
 	{
 		Arguments arg = new Arguments(args);
 		
-		String in = arg.getArg("fileIn") + ".png";
-		String out = arg.getArg("fileOut") + ".png";
-		String message = "B";
-		
-		/*for(int g = 0; g < 18600; g++)
-		{
-			message += "k";
-		}*/
+		String in = arg.getArg("fileIn") + arg.getArg("formatIn");
+		String out = arg.getArg("fileOut") + arg.getArg("formatOut");
+		String message = arg.getArg("message");
 
-		message += "HELP";
-		
+		MagicNumberTester mnt = new MagicNumberTester(arg.getArg("magic"));
+
+		if(mnt.doesStringContainMN(message))
+		{
+			throw new MagicNumberException("Ce message contient le nombre magique");
+		}
+		else {
+			message += "HELP";
+
+		}
+
 		ManipImage manipMat = new ManipImage(in);
 		TextToBinary t = new TextToBinary();
 		
@@ -50,28 +54,7 @@ public class Main {
 		}
 		
 		
-		/*for (int i = 0; i < 100; i++) 
-		{
-			System.out.print(manipMat.getRedArray()[i]);
-		}*/
-		
-		
-		/*MagicNumberTester mnt = new MagicNumberTester();
 
-		if(mnt.doesStringContainMN(message))
-		{
-			System.out.println("Chaine de charactères non-valide : le message contient le mot magique");
-		}
-		else {
-			message += "HELP";
 
-			
-
-			manipMat.dissimulationLSB(b, arg.getArg("pattern"));
-
-			manipMat.setPixelsColor(out);
-
-			
-		}*/
 	}
 }
