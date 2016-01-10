@@ -40,8 +40,9 @@ public class Arguments {
 			if(formatIn == null){
 				return "."+fd.getFileType().toLowerCase();
 			}
-			else if(fd.getFileType().toLowerCase() == "jpeg" && formatIn == ".jpg"){
-				return formatIn;
+			else if(fd.getFileType().toLowerCase() == "jpeg" && (formatIn.equals(".jpg") || formatIn.equals(".JPEG") || formatIn.equals(".jpeg") || formatIn.equals(".JPG")))
+			{
+				return ".jpg";
 			}
 			else {
 				if(!formatIn.equals("."+fd.getFileType().toLowerCase()))
@@ -51,7 +52,7 @@ public class Arguments {
 		}
 		else if(what.equals("formatOut"))
 		{
-			if(formatOut == null) return "png";
+			if(formatOut.equals("png")) return "png";
 			return formatOut;
 		}
 		else if(what.equals("fileIn"))
