@@ -7,8 +7,6 @@
 
 int main(int argc, char *argv[]) {
     int opt= 0;
-    int area = -1, perimeter = -1, breadth = -1, length =-1;
-
 
     //Specifying the expected options
     static struct option long_options[] = {
