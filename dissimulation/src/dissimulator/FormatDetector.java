@@ -8,6 +8,10 @@ import java.util.Iterator;
 
 /**
  * Created by Paul Bertot
+ *
+ * Classe détectant les formats des fichiers d'image. Cette classe est utiliser pour identifier automatiquement
+ * le format de l'image en entrée. Cette détection ne se base pas sur l'extension du fichier, et peut donc détecter
+ * un fichier dont l'extension à été modifiée.
  */
 
 public class FormatDetector {
@@ -16,12 +20,16 @@ public class FormatDetector {
     public FormatDetector(){
         this.filetype = "png";
     }
+
+
     public void setFiletype(String filename) throws IOException {
         File file = new File(filename);
         InputStream is = new FileInputStream(file);
         ImageInputStream iis = ImageIO.createImageInputStream(is);
         Iterator iter =  ImageIO.getImageReaders(iis);
         if(!iter.hasNext()){
+            //Tous les formats ne sont pas gérés par le mimetype de ImageIO. Pour les fichiers PPM et PGM,
+            //on va donc voir si les 2 premiers bytes nous permettent de les identifier.
             InputStream in = new FileInputStream(file);
             char c1 = (char)readByte(in);
             char c2 = (char)readByte(in);
@@ -37,7 +45,7 @@ public class FormatDetector {
         ImageReader reader = (ImageReader) iter.next();
         iis.close();
 
-        filetype = reader.getFormatName();
+        filetype = reader.getFormatName().toLowerCase();
 
     }
 

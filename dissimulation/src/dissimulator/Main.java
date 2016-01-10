@@ -7,12 +7,14 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException, Exception
 	{
+		//Réccupération des arguments, et utilisation
 		Arguments arg = new Arguments(args);
 		
 		String in = arg.getArg("fileIn") + arg.getArg("formatIn");
 		String out = arg.getArg("fileOut") + arg.getArg("formatOut");
 		String message = arg.getArg("message");
 
+		//Vérification du message pour le nombre magique
 		MagicNumberTester mnt = new MagicNumberTester(arg.getArg("magic"));
 
 		if(mnt.doesStringContainMN(message))
@@ -25,6 +27,8 @@ public class Main {
 		}
 
 		ManipImage manipMat = new ManipImage(in);
+
+		//Conversion du message en BitSet.
 		TextToBinary t = new TextToBinary();
 		
 		BitSet b = t.ChaintoBinary(message);
@@ -44,14 +48,14 @@ public class Main {
 
 		manipMat.setPixelsColor(out);
 		
-		for(int k = manipMat.getRedArray().length - 1; k > manipMat.getRedArray().length - 46; k--)
+		/*for(int k = manipMat.getRedArray().length - 1; k > manipMat.getRedArray().length - 46; k--)
 		{
 			for(int l = 0; l < 8; l++)
 			{
 				System.out.print(manipMat.getBinary8(manipMat.getRedArray()[k])[l]);
 			}
 			System.out.print(" ");
-		}
+		}*/
 		
 		
 
