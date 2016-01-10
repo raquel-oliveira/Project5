@@ -1,10 +1,13 @@
 package dissimulator;
 
 import java.awt.image.BufferedImage;
+import java.time.Duration;
+import java.time.Instant;
 
 public class Metrics {
 
 	long beginning, ending;
+	Instant start, end;
 	
 	/**
 	 * Prints out the number of bits available for hiding. Prints out the number of bits to hide (message)
@@ -19,12 +22,12 @@ public class Metrics {
 	
 	public void setTime()
 	{
-		beginning = System.currentTimeMillis();
+		start = Instant.now();
 	}
 	
 	public long getTime()
 	{
-		ending = System.currentTimeMillis();
-		return ending - beginning;
+		end = Instant.now();
+		return Duration.between(start, end).toMillis();
 	}
 }

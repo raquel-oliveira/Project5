@@ -59,6 +59,6 @@ public class Main {
 		}*/
 		
 		met.nbBitsImpacted(message, manipMat.getImage());
-		System.out.println("Temps d'exécution de la dissimulaition : " + met.getTime());
+		System.out.println("Temps d'exécution de la dissimulation : " + met.getTime());
 	}
 }
