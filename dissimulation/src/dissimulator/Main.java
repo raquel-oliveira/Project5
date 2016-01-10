@@ -13,7 +13,6 @@ public class Main {
 		met.setTime();
 		
         String in = arg.getArg("fileIn");
-
         String out = arg.getArg("fileOut");
         String message = arg.getArg("message");
         String channels = "";
@@ -22,19 +21,17 @@ public class Main {
         //Vérification du message pour le nombre magique
         MagicNumberTester mnt = new MagicNumberTester(arg.getArg("magic"));
 
-
-		if(message.startsWith("\"")){
-
-			message = message.substring(1, message.length()-1);
-
+		//if(message.startsWith("\"")){
+        
 			if (mnt.doesStringContainMN(message)) {
 				throw new MagicNumberException("Ce message contient le nombre magique");
 			} else {
 			message += mnt.hexStringtoString();
 			}
 
-		}
+		//}
 			
+		
 		
 		ManipImage manipMat = new ManipImage(in);
         
@@ -84,16 +81,17 @@ public class Main {
 			System.out.println(e.getMessage());
 		}
 
-		manipMat.setPixelsColor(out);
+		manipMat.setPixelsColor(out, arg.getArg("formatIn"), arg.getArg("formatOut"));
 		
-		/*for(int k = 0; k < 10; k++)
+		for(int k = 0; k < 10; k++)
 		{
 			for(int l = 0; l < 8; l++)
 			{
-				System.out.print(manipMat.getBinary8(manipMat.getGreenArray()[k])[l]);
+				System.out.print(manipMat.getBinary8(manipMat.getRedArray()[k])[l]);
 			}
 			System.out.print(" ");
-		}*/
+		}
+		
 		
 		met.nbBitsImpacted(message, manipMat.getImage());
 		System.out.println("Temps d'exécution de la dissimulation : " + met.getTime());

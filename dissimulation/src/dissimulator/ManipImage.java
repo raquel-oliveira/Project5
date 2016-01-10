@@ -34,7 +34,7 @@ public class ManipImage {
 	 * @param array green
 	 * @throws IOException
 	 */
-	public void setPixelsColor(String sortie) throws IOException
+	public void setPixelsColor(String sortie, String formatIn, String formatOut) throws IOException, Exception
 	{
 		int z = 0;
 		
@@ -47,7 +47,24 @@ public class ManipImage {
 				z++;				
 			}
 		}
-		ImageIO.write(image.getImageBuff(), "png", new File(sortie)); // Writes a new image in the storage
+		if(formatOut == null)
+		{
+			if(formatIn.equals(".png") || formatIn.equals(".PNG")) 
+				ImageIO.write(image.getImageBuff(), "png", new File(sortie)); // Writes a new image in the storage
+			else if(formatIn.equals(".bmp") || formatIn.equals(".BMP")) 
+				ImageIO.write(image.getImageBuff(), "BMP", new File(sortie)); // Writes a new image in the storage
+			else if(formatIn.equals(".jpg") || formatIn.equals(".JPG")) 
+				ImageIO.write(image.getImageBuff(), "png", new File(sortie)); // Writes a new image in the storage
+			else ImageIO.write(image.getImageBuff(), "png", new File(sortie)); // Writes a new image in the storage
+		}
+		else 
+		{
+			if(formatOut.equals(".png") || formatOut.equals(".PNG")) 
+				ImageIO.write(image.getImageBuff(), "png", new File(sortie)); // Writes a new image in the storage
+			else if(formatOut.equals(".bmp") || formatOut.equals(".BMP")) 
+				ImageIO.write(image.getImageBuff(), "BMP", new File(sortie)); // Writes a new image in the storage
+			else ImageIO.write(image.getImageBuff(), "png", new File(sortie)); // Writes a new image in the storage
+		}
 	}
 	
 	/**

@@ -55,7 +55,7 @@ public class Arguments {
 			fd.setFiletype(this.fileIn);
 			if(formatOut== null) return null;
 			else if(formatIn.equals(".jpg") || formatIn.equals(".JPEG") || formatIn.equals(".jpeg") || formatIn.equals(".JPG"))
-				throw new InvalidArgumentException("JJPEG is not a valid format for the output");
+				throw new InvalidArgumentException("JPEG is not a valid format for the output");
 			else if(formatOut.toLowerCase().equals(fd.getFileType().toLowerCase())){
 				return formatOut;
 			}
@@ -83,7 +83,7 @@ public class Arguments {
 		}
 		else if(what.equals("channels"))
 		{
-			if(channels == null) return "Red";
+			if(channels == null) return "Red,Green,Blue";
 			return channels;
 		}
 		else if(what.equals("pattern"))
