@@ -8,8 +8,6 @@ then
    cmake .
    make
    echo "-- build with success"
-   echo "-- run reveal test"
-   cd bin
 else
    echo "-- error"
 fi
