@@ -1,4 +1,4 @@
-#include "util.h"
+#include "utilBit.h"
 
 int get_bit(char the_byte,int which_bit)
 {

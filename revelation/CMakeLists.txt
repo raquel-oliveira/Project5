@@ -16,8 +16,9 @@ add_executable(
         src/main.c
         src/reveal.c
         src/image.c
-        src/util.c
-        src/formatDetector.c
+        src/utils/utilBit.c
+        src/utils/formatDetector.c
+        src/arguments.c
 )
 
 target_link_libraries(

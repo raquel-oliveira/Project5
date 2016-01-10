@@ -1,59 +1,37 @@
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "arguments.h"
 #include "reveal.h"
 #include "formatDetector.h"
 
-#define SIZE_MESSAGE 100
+#define FIN "-Fin" // Format of file
+#define IN "-in" // Path of image
+#define OUT "-out" //Path of where to save the message
+#define B "-b" // Number of bits
+#define C "-c" //Channels
+#define P "-p" // Pattern
 
-int main(int argc, char *argv[]) {
-    //argument(argc, argv);
-    IplImage *img = NULL;
-    int i = 0;
-    uchar *message = malloc(SIZE_MESSAGE);
-    char help[] = "HELP";
-    int flag = 0;
-    char* path = "/Users/Raquel/Desktop/NSA/private/revelation/resource/oi.png";
-    img = cvLoadImage(path, 1); // Second parameter == 1 (RGB) || == 0 (GREY)
-    if (img){
-        flag = checkFormat(path);
-        if (flag == -1){
-            printf("Format not accepted");
-            exit(-1);
+int main(int argc, char *argv[]){
+
+    nbBits = 1;
+    pattern = "direct";
+
+    for(int i = 0; i < argc; i++){
+        if(strcmp(argv[i],FIN)==0)
+            formatIn = argv[i+1];
+        else if(strcmp(argv[i],IN)==0)
+            fileIn = argv[i+1];
+        else if(strcmp(argv[i],OUT)==0)
+            fileOut = argv[i+1];
+        else if(strcmp(argv[i],B)==0)
+            nbBits = atoi(argv[i+1]);
+        else if(strcmp(argv[i],C)==0) {
+            channels = argv[i + 1];
+            //firstChannel = strtok(channels, ",");
         }
-    }else{
-        printf("Could not open the file");
-        exit(-2);
+        else if(strcmp(argv[i],P)==0)
+            pattern = argv[i+1];
     }
-
-   // flag = reveal(img, 1, help, message, 1, NULL, NULL);
-    flag = reveal(img, 1, help, message, 2, -1, -1);
-    //flag = reveal(img, 1, help, message);
-
-    switch(flag){
-        case 0: while(message[i] != '\0')
-            {
-                printf("%c", message[i]);
-                i++;
-            }
-            printf("\n\n");
-            break;
-
-        case -1: {
-            printf("Error while reallocating memory for message");
-            exit(-1);
-        } break;
-
-        case -2: {
-            printf("Error Trying to access bit");
-            exit(-2);
-        } break;
-
-        case -3: printf("There is no magic number");
-            exit(-3);
-    }
-
-    cvReleaseImage(&img);
-    free(message);
-
     return 0;
 }

@@ -123,6 +123,33 @@ reveal/fast:
 	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/build
 .PHONY : reveal/fast
 
+src/arguments.o: src/arguments.c.o
+
+.PHONY : src/arguments.o
+
+# target to build an object file
+src/arguments.c.o:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/arguments.c.o
+.PHONY : src/arguments.c.o
+
+src/arguments.i: src/arguments.c.i
+
+.PHONY : src/arguments.i
+
+# target to preprocess a source file
+src/arguments.c.i:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/arguments.c.i
+.PHONY : src/arguments.c.i
+
+src/arguments.s: src/arguments.c.s
+
+.PHONY : src/arguments.s
+
+# target to generate assembly for a file
+src/arguments.c.s:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/arguments.c.s
+.PHONY : src/arguments.c.s
+
 src/formatDetector.o: src/formatDetector.c.o
 
 .PHONY : src/formatDetector.o
@@ -231,32 +258,32 @@ src/reveal.c.s:
 	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/reveal.c.s
 .PHONY : src/reveal.c.s
 
-src/util.o: src/util.c.o
+src/utils/utilBit.o: src/utils/utilBit.c.o
 
-.PHONY : src/util.o
+.PHONY : src/utils/utilBit.o
 
 # target to build an object file
-src/util.c.o:
-	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/util.c.o
-.PHONY : src/util.c.o
+src/utils/utilBit.c.o:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/utilBit.c.o
+.PHONY : src/utils/utilBit.c.o
 
-src/util.i: src/util.c.i
+src/utils/utilBit.i: src/utils/utilBit.c.i
 
-.PHONY : src/util.i
+.PHONY : src/utils/utilBit.i
 
 # target to preprocess a source file
-src/util.c.i:
-	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/util.c.i
-.PHONY : src/util.c.i
+src/utils/utilBit.c.i:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/utilBit.c.i
+.PHONY : src/utils/utilBit.c.i
 
-src/util.s: src/util.c.s
+src/utils/utilBit.s: src/utils/utilBit.c.s
 
-.PHONY : src/util.s
+.PHONY : src/utils/utilBit.s
 
 # target to generate assembly for a file
-src/util.c.s:
-	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/util.c.s
-.PHONY : src/util.c.s
+src/utils/utilBit.c.s:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/utilBit.c.s
+.PHONY : src/utils/utilBit.c.s
 
 # Help Target
 help:
@@ -267,6 +294,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... reveal"
+	@echo "... src/arguments.o"
+	@echo "... src/arguments.i"
+	@echo "... src/arguments.s"
 	@echo "... src/formatDetector.o"
 	@echo "... src/formatDetector.i"
 	@echo "... src/formatDetector.s"
@@ -279,9 +309,9 @@ help:
 	@echo "... src/reveal.o"
 	@echo "... src/reveal.i"
 	@echo "... src/reveal.s"
-	@echo "... src/util.o"
-	@echo "... src/util.i"
-	@echo "... src/util.s"
+	@echo "... src/utils/utilBit.o"
+	@echo "... src/utils/utilBit.i"
+	@echo "... src/utils/utilBit.s"
 .PHONY : help
 
 

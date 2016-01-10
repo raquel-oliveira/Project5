@@ -2,8 +2,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/reveal.dir/src/main.c.o"
   "CMakeFiles/reveal.dir/src/reveal.c.o"
   "CMakeFiles/reveal.dir/src/image.c.o"
-  "CMakeFiles/reveal.dir/src/util.c.o"
+  "CMakeFiles/reveal.dir/src/utils/utilBit.c.o"
   "CMakeFiles/reveal.dir/src/formatDetector.c.o"
+  "CMakeFiles/reveal.dir/src/arguments.c.o"
   "bin/reveal.pdb"
   "bin/reveal"
 )

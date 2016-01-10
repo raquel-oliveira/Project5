@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/Users/Raquel/Desktop/NSA/private/revelation/src/arguments.c
+arguments.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/arguments.h
+string.h
+-
+stdio.h
+-
+
+/Users/Raquel/Desktop/NSA/private/revelation/src/arguments.h
+
 /Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.c
 formatDetector.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.h
@@ -33,10 +43,14 @@ formatDetector.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.h
 
 /Users/Raquel/Desktop/NSA/private/revelation/src/main.c
+string.h
+-
 stdio.h
 -
 stdlib.h
 -
+arguments.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/arguments.h
 reveal.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/reveal.h
 formatDetector.h
@@ -57,14 +71,14 @@ opencv/highgui.h
 -
 image.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/image.h
-util.h
-/Users/Raquel/Desktop/NSA/private/revelation/src/util.h
+utils/utilBit.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.h
 
-/Users/Raquel/Desktop/NSA/private/revelation/src/util.c
-util.h
-/Users/Raquel/Desktop/NSA/private/revelation/src/util.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.c
+utilBit.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.h
 
-/Users/Raquel/Desktop/NSA/private/revelation/src/util.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.h
 stdio.h
 -
 stdlib.h
