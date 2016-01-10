@@ -17,23 +17,26 @@
 #define SIZE_MESSAGE 100
 
 int main(int argc, char *argv[]){
-    //Default arguments:
-    pattern = "direct";
-   // fileIn = NULL;
-    fileIn = "/Users/Raquel/Desktop/NSA/private/revelation/resource/1bitRED.png";
-
-    fileOut = NULL;
-    nbBits = 1;
-    uchar *message = malloc(SIZE_MESSAGE);
-    char magicNumber[] = "HELP";
-    //
-    IplImage *img = NULL;
+    const char delimiter[2] = ",";
+    if (argc == 1){
+        fprintf(stderr, "Insufficient arguments.");
+        exit(-1);
+    }
     int flag = 0;
     int i = 0;
 
-    //////////
+    //Default arguments:
+    pattern = "direct";
+    fileIn = NULL;
+    fileOut = NULL;
+    channels = 0;
+    nbBits = 1;
+    uchar *message = malloc(SIZE_MESSAGE);
+    char magic[] = "HELP";
+    IplImage *img = NULL;
 
-  /* for(int i = 0; i < argc; i++){
+
+   for(int i = 0; i < argc; i++){
         if(strcmp(argv[i],FIN)==0)
             formatIn = argv[i+1];
         else if(strcmp(argv[i],IN)==0)
@@ -44,29 +47,27 @@ int main(int argc, char *argv[]){
             nbBits = atoi(argv[i+1]);
         else if(strcmp(argv[i],C)==0) {
             channels = argv[i + 1];
-            //firstChannel = strtok(channels, ",");
         }
         else if(strcmp(argv[i],P)==0)
             pattern = argv[i+1];
-        //else if(strcmp(argv[i],MAGIC)==0)
-          //  magicNumber = argv[i + 1];
-        else{
+        else if(strcmp(argv[i],MAGIC)==0)
+            magicNumber = argv[i + 1]; //not using
+       /*else{
             fprintf(stderr, "Tried to put an argument that does not exist.\n");
             exit(-1);
-        }
-        fileIn = "/Users/Raquel/Desktop/NSA/private/revelation/resource/1bitRED.png";
-        //magicNumber = "HELP";
-        printf("%i", nbBits);
+        }*/
     }
+
+    fileIn = "/Users/Raquel/Desktop/NSA/private/revelation/resource/1bitRED.png";
 
     if (fileIn == NULL){
         fprintf(stderr, "There is no input file.\n");
         exit(-1);
-    }*/
+    }
 
     img = cvLoadImage(fileIn, 1); // Second parameter == 1 (RGB) || == 0 (GREY)
     if (img){
-       /* flag = check_extension();
+        flag = check_extension();
         switch(flag) {
             case 0:
                 break;
@@ -76,15 +77,20 @@ int main(int argc, char *argv[]){
             case -2:
                 fprintf(stderr, "This format is not the format of the image\n");
                 exit(-2);
-        }*/
+            case -3:
+                fprintf(stderr, "Not a format valid\n");
+                exit(-2);
+        }
     }else{
         printf("Could not open the file");
         exit(-3);
     }
 
 
+    /*Checking channels*/
 
-    flag = reveal(img, 1, magicNumber, message, 2, -1, -1);
+
+   flag = reveal(img, 1, magic, message, 2, -1, -1);
 
     switch(flag){
         case 0: while(message[i] != '\0')
@@ -96,31 +102,19 @@ int main(int argc, char *argv[]){
             break;
 
         case -1: {
-            printf("Error while reallocating memory for message");
+            fprintf(stderr, "Error while reallocating memory for message");
             exit(-1);
         } break;
 
         case -2: {
-            printf("Error Trying to access bit");
+            fprintf(stderr, "Error Trying to access bit");
             exit(-2);
         } break;
 
-        case -3: printf("There is no magic number");
+        case -3:
+            fprintf(stderr, "There is no magic number");
             exit(-3);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     cvReleaseImage(&img);

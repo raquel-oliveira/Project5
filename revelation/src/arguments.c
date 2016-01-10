@@ -4,7 +4,5 @@
 
 #include "arguments.h"
 
-char *formatIn, *fileIn, *fileOut, *channels, *firstChannel, *secondChannel, *thirdChannel, *pattern;
-//char magicNumber[];
-//char *magicNumber;
-int nbBits;
+char *formatIn, *fileIn, *fileOut, *channels, *pattern, *magicNumber;
+int firstChannel, secondChannel, thirdChannel, nbBits;

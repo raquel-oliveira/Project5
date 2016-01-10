@@ -5,4 +5,9 @@
 #ifndef REVELATIONN_CHECKCOLOR_H
 #define REVELATIONN_CHECKCOLOR_H
 
+void setChannels();
+
+numberColors(char *aux);
+
+
 #endif //REVELATIONN_CHECKCOLOR_H

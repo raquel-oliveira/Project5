@@ -39,6 +39,9 @@ int check_extension(){
         if (format != -1){
             return 0; // The program accept the format
         }
+        else {
+            return -3; // the program doesn' accept the format
+        }
     }
     else {
         return -1;

@@ -6,8 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/reveal.dir/src/utils/formatDetector.c.o"
   "CMakeFiles/reveal.dir/src/utils/checkFormat.c.o"
   "CMakeFiles/reveal.dir/src/arguments.c.o"
-  "bin/reveal.pdb"
-  "bin/reveal"
+  "reveal.pdb"
+  "reveal"
 )
 
 # Per-language clean rules from dependency scanning.

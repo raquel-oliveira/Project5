@@ -9,9 +9,7 @@
 #include <stdio.h>
 #include <opencv2/hal/defs.h>
 
-extern char *formatIn, *fileIn, *fileOut, *channels, *firstChannel, *secondChannel, *thirdChannel, *pattern;
-//extern char magicNumber[];
-//extern char *magicNumber;
-extern int nbBits;
+extern char *formatIn, *fileIn, *fileOut, *channels, *pattern, *magicNumber;
+extern int firstChannel, secondChannel, thirdChannel, nbBits;
 
 #endif //REVELATIONN_ARGUMENTS_H
