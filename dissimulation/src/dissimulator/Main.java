@@ -10,6 +10,7 @@ public class Main {
         //Récupération des arguments, et utilisation
         Arguments arg = new Arguments(args);
 		Metrics met = new Metrics();
+		met.setTime();
 		
         String in = arg.getArg("fileIn") + arg.getArg("formatIn");
         String out = arg.getArg("fileOut") + arg.getArg("formatOut");
@@ -55,8 +56,9 @@ public class Main {
 				System.out.print(manipMat.getBinary8(manipMat.getRedArray()[k])[l]);
 			}
 			System.out.print(" ");
-		}
+		}*/
 		
-		met.nbBitsImpacted(message, manipMat.getImage());*/
+		met.nbBitsImpacted(message, manipMat.getImage());
+		System.out.println("Temps d'exécution de la dissimulaition : " + met.getTime());
 	}
 }
