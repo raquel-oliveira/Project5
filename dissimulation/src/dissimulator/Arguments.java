@@ -36,10 +36,17 @@ public class Arguments {
 	{
 		if(what.equals("formatIn")) 
 		{
+			fd.setFiletype(this.fileIn);
 			if(formatIn == null){
-				fd.setFiletype(this.fileIn);
-				return fd.getFileType();
-			};
+				return "."+fd.getFileType().toLowerCase();
+			}
+			else if(fd.getFileType().toLowerCase() == "jpeg" && formatIn == ".jpg"){
+				return formatIn;
+			}
+			else {
+				if(!formatIn.equals("."+fd.getFileType().toLowerCase()))
+					throw new InvalidArgumentException("Format argument does not match input file format");
+			}
 			return formatIn;
 		}
 		else if(what.equals("formatOut"))
