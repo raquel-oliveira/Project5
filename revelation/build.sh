@@ -1,6 +1,6 @@
 #!/bin/sh
 # to run: $ . file.sh
-file="./bash.sh"
+file="./build.sh"
 
 if [ -r $file ]
 then
