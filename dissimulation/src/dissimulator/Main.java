@@ -44,7 +44,6 @@ public class Main {
 			}
 		}
 		else {
-			System.out.println(message);
 			if(mnt.doesStringContainMN(message)) {
 				throw new MagicNumberException("Ce message contient le nombre magique");
 			}else{
