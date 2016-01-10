@@ -30,7 +30,7 @@ public class Main {
 
 				while (line != null) {
 					sb.append(line);
-					sb.append("\n");
+					sb.append("");
 					line = br.readLine();
 				}
 				message = sb.toString();
@@ -50,8 +50,6 @@ public class Main {
 				message += mnt.hexStringtoString();
 			}
 		}
-
-
 		
 		ManipImage manipMat = new ManipImage(in);
         
@@ -102,18 +100,5 @@ public class Main {
 		}
 
 		manipMat.setPixelsColor(out, arg.getArg("formatIn"), arg.getArg("formatOut"));
-		
-		for(int k = 0; k < 10; k++)
-		{
-			for(int l = 0; l < 8; l++)
-			{
-				System.out.print(manipMat.getBinary8(manipMat.getRedArray()[k])[l]);
-			}
-			System.out.print(" ");
-		}
-		
-		
-		met.nbBitsImpacted(message, manipMat.getImage());
-		System.out.println("Temps d'exécution de la dissimulation : " + met.getTime());
 	}
 }

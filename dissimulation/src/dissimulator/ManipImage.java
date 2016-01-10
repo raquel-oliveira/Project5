@@ -146,6 +146,14 @@ public class ManipImage {
 		}
 	}
     
+	/**
+	 * Hides each bits contained in bIn in the bit-code of array[z]
+	 * @param bIn
+	 * @param array
+	 * @param i bit from bIn
+	 * @param z number in the array
+	 * @param nbOccurences
+	 */
     public void setDissimulation(BitSet bIn, int[] array, int i, int z, int nbOccurences)
     { 	
     	int[] b = getBinary8(array[z]);
