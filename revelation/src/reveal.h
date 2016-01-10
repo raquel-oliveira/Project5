@@ -6,8 +6,8 @@
 #include <string.h>
 #include <opencv/highgui.h>
 #include "image.h"
-#include "util.h"
+#include "utils/utilBit.h"
 
-int reveal(IplImage *img, int nbBits, char *help, uchar *message);
+int reveal(IplImage *img, int nbBits, char *help, uchar *message, int firstColor, int secondColor, int thirdColor);
 
 #endif

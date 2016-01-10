@@ -7,45 +7,52 @@
 
 
 
-int reveal(IplImage *img, int nbBits, char *help, uchar *message)
+int reveal(IplImage *img, int nbBits, char *help, uchar *message, int firstColor, int secondColor, int thirdColor)
 {
-    int lbit, channel, count = 7, i = 0;
+    int lbit, channel, count = 7, i = 0, nbOccurences = 0, color;
     uchar letter = 1;
     char* end = NULL;
     int size = SIZE_MESSAGE; // Size of the allocated memory for message
 
-    for (int row = 0; row < img->height; row++) {
-        for (int col = 0; col < img->width; col++) {
-            channel = cvGet2D(img, row, col).val[1]; // Gets the red channel
+    while(end == NULL)
+    {
+        if(nbOccurences == 0) color = firstColor;
+        else if(nbOccurences == 1 && secondColor != -1) color = secondColor;
+        else if(nbOccurences == 2 && thirdColor != -1) color = thirdColor;
+        else return -3;
 
-            lbit = get_bit(channel, (9 - nbBits)); // Access to the last bit in ascending order
-            if (lbit == -1) {
-                return -2;
-            }
-            letter = setBit(letter, count, lbit);
-            count--;
+        for (int row = 0; row < img->height; row++) {
+            for (int col = 0; col < img->width; col++) {
+                channel = cvGet2D(img, row, col).val[color]; // Gets the red channel
 
-            if (count < 0) {
-                if (i >= size - 1) // Reallocating when the text become larger than message
-                {
-                    size += SIZE_MESSAGE;
-                    message = realloc(message, size);
-                    if (message == NULL) return -1; // The reallocation went wrong --> return an error code
+                lbit = get_bit(channel, (9 - nbBits)); // Access to the last bit in ascending order
+                if (lbit == -1) {
+                    return -2;
                 }
-                count = 7;
-                message[i] = letter;
-                i++;
+                letter = setBit(letter, count, lbit);
+                count--;
 
-            }
+                if (count < 0) {
+                    if (i >= size - 1) // Reallocating when the text become larger than message
+                    {
+                        size += SIZE_MESSAGE;
+                        message = realloc(message, size);
+                        if (message == NULL) return -1; // The reallocation went wrong --> return an error code
+                    }
+                    count = 7;
+                    message[i] = letter;
+                    i++;
 
-            end = strstr((char*)message, help); // Check when "HELP" is found --> when the message ends
+                }
 
-            if (end != NULL) { //Help was found
-                *end = '\0';
-                return 0;
+                end = strstr((char*)message, help); // Check when "HELP" is found --> when the message ends
+
+                if (end != NULL) { //Help was found
+                    *end = '\0';
+                    return 0;
+                }
             }
         }
+        nbOccurences++;
     }
-
-    return -3; // Case where "HELP" wasn't found in the hidden message
 }

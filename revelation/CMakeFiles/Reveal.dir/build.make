@@ -49,192 +49,246 @@ CMAKE_SOURCE_DIR = /Users/Raquel/Desktop/NSA/private/revelation
 CMAKE_BINARY_DIR = /Users/Raquel/Desktop/NSA/private/revelation
 
 # Include any dependencies generated for this target.
-include CMakeFiles/Reveal.dir/depend.make
+include CMakeFiles/reveal.dir/depend.make
 
 # Include the progress variables for this target.
-include CMakeFiles/Reveal.dir/progress.make
+include CMakeFiles/reveal.dir/progress.make
 
 # Include the compile flags for this target's objects.
-include CMakeFiles/Reveal.dir/flags.make
+include CMakeFiles/reveal.dir/flags.make
 
-CMakeFiles/Reveal.dir/src/main.c.o: CMakeFiles/Reveal.dir/flags.make
-CMakeFiles/Reveal.dir/src/main.c.o: src/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Reveal.dir/src/main.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Reveal.dir/src/main.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/main.c
+CMakeFiles/reveal.dir/src/main.c.o: CMakeFiles/reveal.dir/flags.make
+CMakeFiles/reveal.dir/src/main.c.o: src/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/reveal.dir/src/main.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/reveal.dir/src/main.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/main.c
 
-CMakeFiles/Reveal.dir/src/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Reveal.dir/src/main.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/main.c > CMakeFiles/Reveal.dir/src/main.c.i
+CMakeFiles/reveal.dir/src/main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/reveal.dir/src/main.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/main.c > CMakeFiles/reveal.dir/src/main.c.i
 
-CMakeFiles/Reveal.dir/src/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Reveal.dir/src/main.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/main.c -o CMakeFiles/Reveal.dir/src/main.c.s
+CMakeFiles/reveal.dir/src/main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/reveal.dir/src/main.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/main.c -o CMakeFiles/reveal.dir/src/main.c.s
 
-CMakeFiles/Reveal.dir/src/main.c.o.requires:
+CMakeFiles/reveal.dir/src/main.c.o.requires:
 
-.PHONY : CMakeFiles/Reveal.dir/src/main.c.o.requires
+.PHONY : CMakeFiles/reveal.dir/src/main.c.o.requires
 
-CMakeFiles/Reveal.dir/src/main.c.o.provides: CMakeFiles/Reveal.dir/src/main.c.o.requires
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/main.c.o.provides.build
-.PHONY : CMakeFiles/Reveal.dir/src/main.c.o.provides
+CMakeFiles/reveal.dir/src/main.c.o.provides: CMakeFiles/reveal.dir/src/main.c.o.requires
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/main.c.o.provides.build
+.PHONY : CMakeFiles/reveal.dir/src/main.c.o.provides
 
-CMakeFiles/Reveal.dir/src/main.c.o.provides.build: CMakeFiles/Reveal.dir/src/main.c.o
-
-
-CMakeFiles/Reveal.dir/src/reveal.c.o: CMakeFiles/Reveal.dir/flags.make
-CMakeFiles/Reveal.dir/src/reveal.c.o: src/reveal.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Reveal.dir/src/reveal.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Reveal.dir/src/reveal.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/reveal.c
-
-CMakeFiles/Reveal.dir/src/reveal.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Reveal.dir/src/reveal.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/reveal.c > CMakeFiles/Reveal.dir/src/reveal.c.i
-
-CMakeFiles/Reveal.dir/src/reveal.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Reveal.dir/src/reveal.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/reveal.c -o CMakeFiles/Reveal.dir/src/reveal.c.s
-
-CMakeFiles/Reveal.dir/src/reveal.c.o.requires:
-
-.PHONY : CMakeFiles/Reveal.dir/src/reveal.c.o.requires
-
-CMakeFiles/Reveal.dir/src/reveal.c.o.provides: CMakeFiles/Reveal.dir/src/reveal.c.o.requires
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/reveal.c.o.provides.build
-.PHONY : CMakeFiles/Reveal.dir/src/reveal.c.o.provides
-
-CMakeFiles/Reveal.dir/src/reveal.c.o.provides.build: CMakeFiles/Reveal.dir/src/reveal.c.o
+CMakeFiles/reveal.dir/src/main.c.o.provides.build: CMakeFiles/reveal.dir/src/main.c.o
 
 
-CMakeFiles/Reveal.dir/src/image.c.o: CMakeFiles/Reveal.dir/flags.make
-CMakeFiles/Reveal.dir/src/image.c.o: src/image.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Reveal.dir/src/image.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Reveal.dir/src/image.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/image.c
+CMakeFiles/reveal.dir/src/reveal.c.o: CMakeFiles/reveal.dir/flags.make
+CMakeFiles/reveal.dir/src/reveal.c.o: src/reveal.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/reveal.dir/src/reveal.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/reveal.dir/src/reveal.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/reveal.c
 
-CMakeFiles/Reveal.dir/src/image.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Reveal.dir/src/image.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/image.c > CMakeFiles/Reveal.dir/src/image.c.i
+CMakeFiles/reveal.dir/src/reveal.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/reveal.dir/src/reveal.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/reveal.c > CMakeFiles/reveal.dir/src/reveal.c.i
 
-CMakeFiles/Reveal.dir/src/image.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Reveal.dir/src/image.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/image.c -o CMakeFiles/Reveal.dir/src/image.c.s
+CMakeFiles/reveal.dir/src/reveal.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/reveal.dir/src/reveal.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/reveal.c -o CMakeFiles/reveal.dir/src/reveal.c.s
 
-CMakeFiles/Reveal.dir/src/image.c.o.requires:
+CMakeFiles/reveal.dir/src/reveal.c.o.requires:
 
-.PHONY : CMakeFiles/Reveal.dir/src/image.c.o.requires
+.PHONY : CMakeFiles/reveal.dir/src/reveal.c.o.requires
 
-CMakeFiles/Reveal.dir/src/image.c.o.provides: CMakeFiles/Reveal.dir/src/image.c.o.requires
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/image.c.o.provides.build
-.PHONY : CMakeFiles/Reveal.dir/src/image.c.o.provides
+CMakeFiles/reveal.dir/src/reveal.c.o.provides: CMakeFiles/reveal.dir/src/reveal.c.o.requires
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/reveal.c.o.provides.build
+.PHONY : CMakeFiles/reveal.dir/src/reveal.c.o.provides
 
-CMakeFiles/Reveal.dir/src/image.c.o.provides.build: CMakeFiles/Reveal.dir/src/image.c.o
-
-
-CMakeFiles/Reveal.dir/src/util.c.o: CMakeFiles/Reveal.dir/flags.make
-CMakeFiles/Reveal.dir/src/util.c.o: src/util.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Reveal.dir/src/util.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Reveal.dir/src/util.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/util.c
-
-CMakeFiles/Reveal.dir/src/util.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Reveal.dir/src/util.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/util.c > CMakeFiles/Reveal.dir/src/util.c.i
-
-CMakeFiles/Reveal.dir/src/util.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Reveal.dir/src/util.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/util.c -o CMakeFiles/Reveal.dir/src/util.c.s
-
-CMakeFiles/Reveal.dir/src/util.c.o.requires:
-
-.PHONY : CMakeFiles/Reveal.dir/src/util.c.o.requires
-
-CMakeFiles/Reveal.dir/src/util.c.o.provides: CMakeFiles/Reveal.dir/src/util.c.o.requires
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/util.c.o.provides.build
-.PHONY : CMakeFiles/Reveal.dir/src/util.c.o.provides
-
-CMakeFiles/Reveal.dir/src/util.c.o.provides.build: CMakeFiles/Reveal.dir/src/util.c.o
+CMakeFiles/reveal.dir/src/reveal.c.o.provides.build: CMakeFiles/reveal.dir/src/reveal.c.o
 
 
-CMakeFiles/Reveal.dir/src/formatDetector.c.o: CMakeFiles/Reveal.dir/flags.make
-CMakeFiles/Reveal.dir/src/formatDetector.c.o: src/formatDetector.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Reveal.dir/src/formatDetector.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Reveal.dir/src/formatDetector.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.c
+CMakeFiles/reveal.dir/src/image.c.o: CMakeFiles/reveal.dir/flags.make
+CMakeFiles/reveal.dir/src/image.c.o: src/image.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/reveal.dir/src/image.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/reveal.dir/src/image.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/image.c
 
-CMakeFiles/Reveal.dir/src/formatDetector.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Reveal.dir/src/formatDetector.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.c > CMakeFiles/Reveal.dir/src/formatDetector.c.i
+CMakeFiles/reveal.dir/src/image.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/reveal.dir/src/image.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/image.c > CMakeFiles/reveal.dir/src/image.c.i
 
-CMakeFiles/Reveal.dir/src/formatDetector.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Reveal.dir/src/formatDetector.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.c -o CMakeFiles/Reveal.dir/src/formatDetector.c.s
+CMakeFiles/reveal.dir/src/image.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/reveal.dir/src/image.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/image.c -o CMakeFiles/reveal.dir/src/image.c.s
 
-CMakeFiles/Reveal.dir/src/formatDetector.c.o.requires:
+CMakeFiles/reveal.dir/src/image.c.o.requires:
 
-.PHONY : CMakeFiles/Reveal.dir/src/formatDetector.c.o.requires
+.PHONY : CMakeFiles/reveal.dir/src/image.c.o.requires
 
-CMakeFiles/Reveal.dir/src/formatDetector.c.o.provides: CMakeFiles/Reveal.dir/src/formatDetector.c.o.requires
-	$(MAKE) -f CMakeFiles/Reveal.dir/build.make CMakeFiles/Reveal.dir/src/formatDetector.c.o.provides.build
-.PHONY : CMakeFiles/Reveal.dir/src/formatDetector.c.o.provides
+CMakeFiles/reveal.dir/src/image.c.o.provides: CMakeFiles/reveal.dir/src/image.c.o.requires
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/image.c.o.provides.build
+.PHONY : CMakeFiles/reveal.dir/src/image.c.o.provides
 
-CMakeFiles/Reveal.dir/src/formatDetector.c.o.provides.build: CMakeFiles/Reveal.dir/src/formatDetector.c.o
+CMakeFiles/reveal.dir/src/image.c.o.provides.build: CMakeFiles/reveal.dir/src/image.c.o
 
 
-# Object files for target Reveal
-Reveal_OBJECTS = \
-"CMakeFiles/Reveal.dir/src/main.c.o" \
-"CMakeFiles/Reveal.dir/src/reveal.c.o" \
-"CMakeFiles/Reveal.dir/src/image.c.o" \
-"CMakeFiles/Reveal.dir/src/util.c.o" \
-"CMakeFiles/Reveal.dir/src/formatDetector.c.o"
+CMakeFiles/reveal.dir/src/utils/utilBit.c.o: CMakeFiles/reveal.dir/flags.make
+CMakeFiles/reveal.dir/src/utils/utilBit.c.o: src/utils/utilBit.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/reveal.dir/src/utils/utilBit.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/reveal.dir/src/utils/utilBit.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.c
 
-# External object files for target Reveal
-Reveal_EXTERNAL_OBJECTS =
+CMakeFiles/reveal.dir/src/utils/utilBit.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/reveal.dir/src/utils/utilBit.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.c > CMakeFiles/reveal.dir/src/utils/utilBit.c.i
 
-bin/Reveal: CMakeFiles/Reveal.dir/src/main.c.o
-bin/Reveal: CMakeFiles/Reveal.dir/src/reveal.c.o
-bin/Reveal: CMakeFiles/Reveal.dir/src/image.c.o
-bin/Reveal: CMakeFiles/Reveal.dir/src/util.c.o
-bin/Reveal: CMakeFiles/Reveal.dir/src/formatDetector.c.o
-bin/Reveal: CMakeFiles/Reveal.dir/build.make
-bin/Reveal: /usr/local/lib/libopencv_videostab.3.0.0.dylib
-bin/Reveal: /usr/local/lib/libopencv_superres.3.0.0.dylib
-bin/Reveal: /usr/local/lib/libopencv_stitching.3.0.0.dylib
-bin/Reveal: /usr/local/lib/libopencv_shape.3.0.0.dylib
-bin/Reveal: /usr/local/lib/libopencv_photo.3.0.0.dylib
-bin/Reveal: /usr/local/lib/libopencv_objdetect.3.0.0.dylib
-bin/Reveal: /usr/local/lib/libopencv_hal.a
-bin/Reveal: /usr/local/lib/libopencv_calib3d.3.0.0.dylib
-bin/Reveal: /usr/local/lib/libopencv_features2d.3.0.0.dylib
-bin/Reveal: /usr/local/lib/libopencv_ml.3.0.0.dylib
-bin/Reveal: /usr/local/lib/libopencv_highgui.3.0.0.dylib
-bin/Reveal: /usr/local/lib/libopencv_videoio.3.0.0.dylib
-bin/Reveal: /usr/local/lib/libopencv_imgcodecs.3.0.0.dylib
-bin/Reveal: /usr/local/lib/libopencv_flann.3.0.0.dylib
-bin/Reveal: /usr/local/lib/libopencv_video.3.0.0.dylib
-bin/Reveal: /usr/local/lib/libopencv_imgproc.3.0.0.dylib
-bin/Reveal: /usr/local/lib/libopencv_core.3.0.0.dylib
-bin/Reveal: /usr/local/lib/libopencv_hal.a
-bin/Reveal: /usr/local/share/OpenCV/3rdparty/lib/libippicv.a
-bin/Reveal: CMakeFiles/Reveal.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable bin/Reveal"
-	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Reveal.dir/link.txt --verbose=$(VERBOSE)
+CMakeFiles/reveal.dir/src/utils/utilBit.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/reveal.dir/src/utils/utilBit.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.c -o CMakeFiles/reveal.dir/src/utils/utilBit.c.s
+
+CMakeFiles/reveal.dir/src/utils/utilBit.c.o.requires:
+
+.PHONY : CMakeFiles/reveal.dir/src/utils/utilBit.c.o.requires
+
+CMakeFiles/reveal.dir/src/utils/utilBit.c.o.provides: CMakeFiles/reveal.dir/src/utils/utilBit.c.o.requires
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/utilBit.c.o.provides.build
+.PHONY : CMakeFiles/reveal.dir/src/utils/utilBit.c.o.provides
+
+CMakeFiles/reveal.dir/src/utils/utilBit.c.o.provides.build: CMakeFiles/reveal.dir/src/utils/utilBit.c.o
+
+
+CMakeFiles/reveal.dir/src/utils/formatDetector.c.o: CMakeFiles/reveal.dir/flags.make
+CMakeFiles/reveal.dir/src/utils/formatDetector.c.o: src/utils/formatDetector.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/reveal.dir/src/utils/formatDetector.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/reveal.dir/src/utils/formatDetector.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.c
+
+CMakeFiles/reveal.dir/src/utils/formatDetector.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/reveal.dir/src/utils/formatDetector.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.c > CMakeFiles/reveal.dir/src/utils/formatDetector.c.i
+
+CMakeFiles/reveal.dir/src/utils/formatDetector.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/reveal.dir/src/utils/formatDetector.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.c -o CMakeFiles/reveal.dir/src/utils/formatDetector.c.s
+
+CMakeFiles/reveal.dir/src/utils/formatDetector.c.o.requires:
+
+.PHONY : CMakeFiles/reveal.dir/src/utils/formatDetector.c.o.requires
+
+CMakeFiles/reveal.dir/src/utils/formatDetector.c.o.provides: CMakeFiles/reveal.dir/src/utils/formatDetector.c.o.requires
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/formatDetector.c.o.provides.build
+.PHONY : CMakeFiles/reveal.dir/src/utils/formatDetector.c.o.provides
+
+CMakeFiles/reveal.dir/src/utils/formatDetector.c.o.provides.build: CMakeFiles/reveal.dir/src/utils/formatDetector.c.o
+
+
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.o: CMakeFiles/reveal.dir/flags.make
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.o: src/utils/checkFormat.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/reveal.dir/src/utils/checkFormat.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/reveal.dir/src/utils/checkFormat.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/utils/checkFormat.c
+
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/reveal.dir/src/utils/checkFormat.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/utils/checkFormat.c > CMakeFiles/reveal.dir/src/utils/checkFormat.c.i
+
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/reveal.dir/src/utils/checkFormat.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/utils/checkFormat.c -o CMakeFiles/reveal.dir/src/utils/checkFormat.c.s
+
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.o.requires:
+
+.PHONY : CMakeFiles/reveal.dir/src/utils/checkFormat.c.o.requires
+
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.o.provides: CMakeFiles/reveal.dir/src/utils/checkFormat.c.o.requires
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/checkFormat.c.o.provides.build
+.PHONY : CMakeFiles/reveal.dir/src/utils/checkFormat.c.o.provides
+
+CMakeFiles/reveal.dir/src/utils/checkFormat.c.o.provides.build: CMakeFiles/reveal.dir/src/utils/checkFormat.c.o
+
+
+CMakeFiles/reveal.dir/src/arguments.c.o: CMakeFiles/reveal.dir/flags.make
+CMakeFiles/reveal.dir/src/arguments.c.o: src/arguments.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/reveal.dir/src/arguments.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/reveal.dir/src/arguments.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/arguments.c
+
+CMakeFiles/reveal.dir/src/arguments.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/reveal.dir/src/arguments.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/arguments.c > CMakeFiles/reveal.dir/src/arguments.c.i
+
+CMakeFiles/reveal.dir/src/arguments.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/reveal.dir/src/arguments.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/arguments.c -o CMakeFiles/reveal.dir/src/arguments.c.s
+
+CMakeFiles/reveal.dir/src/arguments.c.o.requires:
+
+.PHONY : CMakeFiles/reveal.dir/src/arguments.c.o.requires
+
+CMakeFiles/reveal.dir/src/arguments.c.o.provides: CMakeFiles/reveal.dir/src/arguments.c.o.requires
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/arguments.c.o.provides.build
+.PHONY : CMakeFiles/reveal.dir/src/arguments.c.o.provides
+
+CMakeFiles/reveal.dir/src/arguments.c.o.provides.build: CMakeFiles/reveal.dir/src/arguments.c.o
+
+
+# Object files for target reveal
+reveal_OBJECTS = \
+"CMakeFiles/reveal.dir/src/main.c.o" \
+"CMakeFiles/reveal.dir/src/reveal.c.o" \
+"CMakeFiles/reveal.dir/src/image.c.o" \
+"CMakeFiles/reveal.dir/src/utils/utilBit.c.o" \
+"CMakeFiles/reveal.dir/src/utils/formatDetector.c.o" \
+"CMakeFiles/reveal.dir/src/utils/checkFormat.c.o" \
+"CMakeFiles/reveal.dir/src/arguments.c.o"
+
+# External object files for target reveal
+reveal_EXTERNAL_OBJECTS =
+
+reveal: CMakeFiles/reveal.dir/src/main.c.o
+reveal: CMakeFiles/reveal.dir/src/reveal.c.o
+reveal: CMakeFiles/reveal.dir/src/image.c.o
+reveal: CMakeFiles/reveal.dir/src/utils/utilBit.c.o
+reveal: CMakeFiles/reveal.dir/src/utils/formatDetector.c.o
+reveal: CMakeFiles/reveal.dir/src/utils/checkFormat.c.o
+reveal: CMakeFiles/reveal.dir/src/arguments.c.o
+reveal: CMakeFiles/reveal.dir/build.make
+reveal: /usr/local/lib/libopencv_videostab.3.0.0.dylib
+reveal: /usr/local/lib/libopencv_superres.3.0.0.dylib
+reveal: /usr/local/lib/libopencv_stitching.3.0.0.dylib
+reveal: /usr/local/lib/libopencv_shape.3.0.0.dylib
+reveal: /usr/local/lib/libopencv_photo.3.0.0.dylib
+reveal: /usr/local/lib/libopencv_objdetect.3.0.0.dylib
+reveal: /usr/local/lib/libopencv_hal.a
+reveal: /usr/local/lib/libopencv_calib3d.3.0.0.dylib
+reveal: /usr/local/lib/libopencv_features2d.3.0.0.dylib
+reveal: /usr/local/lib/libopencv_ml.3.0.0.dylib
+reveal: /usr/local/lib/libopencv_highgui.3.0.0.dylib
+reveal: /usr/local/lib/libopencv_videoio.3.0.0.dylib
+reveal: /usr/local/lib/libopencv_imgcodecs.3.0.0.dylib
+reveal: /usr/local/lib/libopencv_flann.3.0.0.dylib
+reveal: /usr/local/lib/libopencv_video.3.0.0.dylib
+reveal: /usr/local/lib/libopencv_imgproc.3.0.0.dylib
+reveal: /usr/local/lib/libopencv_core.3.0.0.dylib
+reveal: /usr/local/lib/libopencv_hal.a
+reveal: /usr/local/share/OpenCV/3rdparty/lib/libippicv.a
+reveal: CMakeFiles/reveal.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable reveal"
+	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/reveal.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/Reveal.dir/build: bin/Reveal
+CMakeFiles/reveal.dir/build: reveal
 
-.PHONY : CMakeFiles/Reveal.dir/build
+.PHONY : CMakeFiles/reveal.dir/build
 
-CMakeFiles/Reveal.dir/requires: CMakeFiles/Reveal.dir/src/main.c.o.requires
-CMakeFiles/Reveal.dir/requires: CMakeFiles/Reveal.dir/src/reveal.c.o.requires
-CMakeFiles/Reveal.dir/requires: CMakeFiles/Reveal.dir/src/image.c.o.requires
-CMakeFiles/Reveal.dir/requires: CMakeFiles/Reveal.dir/src/util.c.o.requires
-CMakeFiles/Reveal.dir/requires: CMakeFiles/Reveal.dir/src/formatDetector.c.o.requires
+CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/main.c.o.requires
+CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/reveal.c.o.requires
+CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/image.c.o.requires
+CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/utils/utilBit.c.o.requires
+CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/utils/formatDetector.c.o.requires
+CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/utils/checkFormat.c.o.requires
+CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/arguments.c.o.requires
 
-.PHONY : CMakeFiles/Reveal.dir/requires
+.PHONY : CMakeFiles/reveal.dir/requires
 
-CMakeFiles/Reveal.dir/clean:
-	$(CMAKE_COMMAND) -P CMakeFiles/Reveal.dir/cmake_clean.cmake
-.PHONY : CMakeFiles/Reveal.dir/clean
+CMakeFiles/reveal.dir/clean:
+	$(CMAKE_COMMAND) -P CMakeFiles/reveal.dir/cmake_clean.cmake
+.PHONY : CMakeFiles/reveal.dir/clean
 
-CMakeFiles/Reveal.dir/depend:
-	cd /Users/Raquel/Desktop/NSA/private/revelation && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/Raquel/Desktop/NSA/private/revelation /Users/Raquel/Desktop/NSA/private/revelation /Users/Raquel/Desktop/NSA/private/revelation /Users/Raquel/Desktop/NSA/private/revelation /Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/Reveal.dir/DependInfo.cmake --color=$(COLOR)
-.PHONY : CMakeFiles/Reveal.dir/depend
+CMakeFiles/reveal.dir/depend:
+	cd /Users/Raquel/Desktop/NSA/private/revelation && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/Raquel/Desktop/NSA/private/revelation /Users/Raquel/Desktop/NSA/private/revelation /Users/Raquel/Desktop/NSA/private/revelation /Users/Raquel/Desktop/NSA/private/revelation /Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/reveal.dir/DependInfo.cmake --color=$(COLOR)
+.PHONY : CMakeFiles/reveal.dir/depend
 

@@ -4,6 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int checkFormat(char *path);
+int detect_format(char *path);
 
 #endif

@@ -7,7 +7,7 @@ PPM2=0x3650,
 PGM1=0x3250,
 PGM2=0x3550;
 
-int checkFormat(char *path){
+int detect_format(char *path){
 	FILE *file;
 	unsigned short pis[5];
 	int flag;
@@ -26,7 +26,6 @@ int checkFormat(char *path){
 	//PPM
 	else if(pis[0]==PPM1 || pis[0]==PPM2){
 		flag = 3;
-		printf("This is a PPM\n");
 	}
 	//PGM
 	else if(pis[0]==PGM1 || pis[0]==PGM2){
