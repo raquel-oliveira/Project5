@@ -63,7 +63,7 @@ public class Arguments {
 		}
 		else if(what.equals("channels"))
 		{
-			if(channels == null) throw new EmptyArgumentException("Requested argument is empty");
+			if(channels == null);
 			return channels;
 		}
 		else if(what.equals("pattern"))
