@@ -7,13 +7,15 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException, Exception
 	{
-		Arguments arg = new Arguments(args);
+        //Récupération des arguments, et utilisation
+        Arguments arg = new Arguments(args);
 		Metrics met = new Metrics();
 		
         String in = arg.getArg("fileIn") + arg.getArg("formatIn");
         String out = arg.getArg("fileOut") + arg.getArg("formatOut");
         String message = arg.getArg("message");
 
+        //Vérification du message pour le nombre magique
         MagicNumberTester mnt = new MagicNumberTester(arg.getArg("magic"));
         
         if(mnt.doesStringContainMN(message))
@@ -26,8 +28,9 @@ public class Main {
         }
 		
 		ManipImage manipMat = new ManipImage(in);
+        
+        //Conversion du message en BitSet.
 		TextToBinary t = new TextToBinary();
-		
 		BitSet b = t.ChaintoBinary(message);
 		
 		try
@@ -45,7 +48,7 @@ public class Main {
 
 		manipMat.setPixelsColor(out);
 		
-		for(int k = manipMat.getRedArray().length - 1; k > manipMat.getRedArray().length - 46; k--)
+		/*for(int k = manipMat.getRedArray().length - 1; k > manipMat.getRedArray().length - 46; k--)
 		{
 			for(int l = 0; l < 8; l++)
 			{
@@ -54,6 +57,6 @@ public class Main {
 			System.out.print(" ");
 		}
 		
-		met.nbBitsImpacted(message, manipMat.getImage());
+		met.nbBitsImpacted(message, manipMat.getImage());*/
 	}
 }
