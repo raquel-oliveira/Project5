@@ -30,8 +30,6 @@ public class Main {
 			}
 
 		//}
-			
-		
 		
 		ManipImage manipMat = new ManipImage(in);
         

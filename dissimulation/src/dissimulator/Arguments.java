@@ -54,9 +54,12 @@ public class Arguments {
 		{
 			fd.setFiletype(this.fileIn);
 			if(formatOut== null) return null;
-			else if(formatIn.equals(".jpg") || formatIn.equals(".JPEG") || formatIn.equals(".jpeg") || formatIn.equals(".JPG"))
+			else if(formatOut.equals(".jpg") || formatOut.equals(".JPEG") || formatOut.equals(".jpeg") || formatOut.equals(".JPG"))
 				throw new InvalidArgumentException("JPEG is not a valid format for the output");
-			else if(formatOut.toLowerCase().equals(fd.getFileType().toLowerCase())){
+			
+			else if(fd.getFileType().toLowerCase().equals("jpeg") && (formatOut.equals(".png") || formatOut.equals(".PNG"))) 
+				return formatOut;
+			else if(formatOut.toLowerCase().contains(fd.getFileType().toLowerCase())){
 				return formatOut;
 			}
 			else throw new InvalidArgumentException("Output format is not valid");
