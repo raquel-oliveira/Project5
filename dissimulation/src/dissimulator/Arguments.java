@@ -16,8 +16,7 @@ public class Arguments {
 	
 	public Arguments(String[] arguments)
 	{
-
-		this.fd = new FormatDetector();
+		fd = new FormatDetector();
 		for(int i = 0; i < arguments.length ; i++)
 		{
 			if(arguments[i].equals("-Fin")) formatIn = "." + arguments[i+1].toLowerCase();
@@ -26,7 +25,7 @@ public class Arguments {
 			else if(arguments[i].equals("-out")) fileOut = arguments[i+1];
 			else if(arguments[i].equals("-msg")) message = arguments[i+1];
 			else if(arguments[i].equals("-b")) nbBits = arguments[i+1];
-			else if(arguments[i].equals("-c")) channels = arguments[i+1];
+			else if(arguments[i].equals("-c")) channels = arguments[i+1].toLowerCase();
 			else if(arguments[i].equals("-p")) pattern = arguments[i+1];
 			else if(arguments[i].equals("-magic")) magic = arguments[i+1];
 			else if(arguments[i].equals("-metrics")) metrics = arguments[i+1];
@@ -50,6 +49,7 @@ public class Arguments {
 			}
 			return formatIn;
 		}
+		
 		else if(what.equals("formatOut"))
 		{
 			fd.setFiletype(this.fileIn);
@@ -64,6 +64,7 @@ public class Arguments {
 			}
 			else throw new InvalidArgumentException("Output format is not valid");
 		}
+		
 		else if(what.equals("fileIn"))
 		{
 			if(fileIn == null) throw new EmptyArgumentException("Requested input file argument is empty");
@@ -86,8 +87,31 @@ public class Arguments {
 		}
 		else if(what.equals("channels"))
 		{
-			if(channels == null) return "Red,Green,Blue";
-			return channels;
+			if(channels == null) return "redgreenblue";
+			if(channels.contains(","))
+			{
+				String temp = "", retour = "";
+				for(int i = 0; i < channels.length(); i++)
+				{
+					temp += channels.charAt(i);
+					if((i == channels.length()-1) || (channels.charAt(i+1) == ','))
+					{
+						i++; // Ignoring the comma
+						if(temp.equals("red") || temp.equals("green") || temp.equals("blue"))
+						{
+							retour += temp;
+							temp = "";
+						}
+						else throw new InvalidArgumentException("Incorrect typing of color channels"); // Argument before comma is illegal
+					}
+					
+				}
+				return retour;
+			}
+			else if(channels.equals("red")) return "red";
+			else if(channels.equals("green")) return "green";
+			else if(channels.equals("blue")) return "blue";
+			else throw new InvalidArgumentException("Incorrect typing of color channels");
 		}
 		else if(what.equals("pattern"))
 		{
@@ -102,6 +126,8 @@ public class Arguments {
 		else if(what.equals("metrics"))
 		{
 			if(metrics == null) return null;
+			if(!metrics.equals("impact") && !metrics.equals("time") && !metrics.equals("histogram") && !metrics.equals("template"))
+				throw new InvalidArgumentException("Incorrect typing of metrics");
 			return metrics;
 		}
 		

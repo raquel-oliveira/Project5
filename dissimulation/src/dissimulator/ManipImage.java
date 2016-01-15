@@ -15,7 +15,6 @@ import java.util.BitSet;
 public class ManipImage {
 	
 	private ImageRGB image;
-	private String magicword;
 	
 	/**
 	 * Constructs a BufferedImage. Get width and height from the image.
@@ -24,7 +23,6 @@ public class ManipImage {
 	public ManipImage(String in)
 	{
 		image = new ImageRGB(in);
-		this.magicword = "HELP";
 	}
 	
 	/**
@@ -92,8 +90,8 @@ public class ManipImage {
                 int j = nbBits;
                 while(j != 0)
                 {
-                 	if(colors[0].equals("Red")) setDissimulation(bIn, image.getRedArray(), i++, z, j);
-                 	else if(colors[0].equals("Green")) setDissimulation(bIn, image.getGreenArray(), i++, z, j);
+                 	if(colors[0].equals("red")) setDissimulation(bIn, image.getRedArray(), i++, z, j);
+                 	else if(colors[0].equals("green")) setDissimulation(bIn, image.getGreenArray(), i++, z, j);
                  	else setDissimulation(bIn, image.getBlueArray(), i++, z, j);
                     j--;
                 }
@@ -111,8 +109,8 @@ public class ManipImage {
 				int j = nbBits;
 				while(j != 0)
                 {
-					if(colors[1].equals("Red")) setDissimulation(bIn, image.getRedArray(), i++, z, j);
-                 	else if(colors[1].equals("Green")) setDissimulation(bIn, image.getGreenArray(), i++, z, j);
+					if(colors[1].equals("red")) setDissimulation(bIn, image.getRedArray(), i++, z, j);
+                 	else if(colors[1].equals("green")) setDissimulation(bIn, image.getGreenArray(), i++, z, j);
                  	else setDissimulation(bIn, image.getBlueArray(), i++, z, j);
                     j--;
                 }
@@ -134,8 +132,8 @@ public class ManipImage {
 				int j = nbBits;
 				while(j != 0)
                 {
-					if(colors[2].equals("Red")) setDissimulation(bIn, image.getRedArray(), i++, z, j);
-                 	else if(colors[2].equals("Green")) setDissimulation(bIn, image.getGreenArray(), i++, z, j);
+					if(colors[2].equals("red")) setDissimulation(bIn, image.getRedArray(), i++, z, j);
+                 	else if(colors[2].equals("green")) setDissimulation(bIn, image.getGreenArray(), i++, z, j);
                  	else setDissimulation(bIn, image.getBlueArray(), i++, z, j);
                     j--;
                 }
@@ -188,7 +186,6 @@ public class ManipImage {
         return b;
     }
 	
-	
 	public int[] getRedArray()
 	{
 		return image.getRedArray();
@@ -204,9 +201,5 @@ public class ManipImage {
 	public ImageRGB getImage()
 	{
 		return image;
-	}
-	public String getMagicword() 
-	{
-		return magicword;
 	}
 }
