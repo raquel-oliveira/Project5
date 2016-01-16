@@ -26,7 +26,7 @@ public class Arguments {
 			else if(arguments[i].equals("-msg")) message = arguments[i+1];
 			else if(arguments[i].equals("-b")) nbBits = arguments[i+1];
 			else if(arguments[i].equals("-c")) channels = arguments[i+1].toLowerCase();
-			else if(arguments[i].equals("-p")) pattern = arguments[i+1];
+			else if(arguments[i].equals("-p")) pattern = arguments[i+1].toLowerCase();
 			else if(arguments[i].equals("-magic")) magic = arguments[i+1];
 			else if(arguments[i].equals("-metrics")) metrics = arguments[i+1];
 		}
@@ -39,7 +39,7 @@ public class Arguments {
 			if(formatIn == null){
 				return "."+fd.getFileType().toLowerCase();
 			}
-			else if(fd.getFileType().toLowerCase().equals("jpeg") && (formatIn.equals(".jpg") || formatIn.equals(".JPEG") || formatIn.equals(".jpeg") || formatIn.equals(".JPG")))
+			else if(fd.getFileType().toLowerCase().equals("jpeg") && (formatIn.equals(".jpg") || formatIn.equals(".jpeg")))
 			{
 				return ".jpg";
 			}
@@ -49,22 +49,16 @@ public class Arguments {
 			}
 			return formatIn;
 		}
-		
 		else if(what.equals("formatOut"))
 		{
 			fd.setFiletype(this.fileIn);
 			if(formatOut== null) return null;
-			else if(formatOut.equals(".jpg") || formatOut.equals(".JPEG") || formatOut.equals(".jpeg") || formatOut.equals(".JPG"))
+			else if(formatOut.equals(".jpg") || formatOut.equals(".jpeg"))
 				throw new InvalidArgumentException("JPEG is not a valid format for the output");
-			
-			else if(fd.getFileType().toLowerCase().equals("jpeg") && (formatOut.equals(".png") || formatOut.equals(".PNG"))) 
-				return formatOut;
-			else if(formatOut.toLowerCase().contains(fd.getFileType().toLowerCase())){
-				return formatOut;
-			}
+			else if(fd.getFileType().toLowerCase().equals("jpeg") && (formatOut.equals(".png"))) return formatOut;
+			else if(formatOut.contains(fd.getFileType().toLowerCase())) return formatOut;
 			else throw new InvalidArgumentException("Output format is not valid");
 		}
-		
 		else if(what.equals("fileIn"))
 		{
 			if(fileIn == null) throw new EmptyArgumentException("Requested input file argument is empty");
@@ -116,6 +110,8 @@ public class Arguments {
 		else if(what.equals("pattern"))
 		{
 			if(pattern == null) return "Direct";
+			if(!pattern.equals("direct") && !pattern.equals("reverse") && !pattern.equals("external_spiral") && !pattern.equals("internal_spiral"))
+				throw new InvalidArgumentException("Incorrect typing of metrics");
 			return pattern;
 		}
 		else if(what.equals("magic"))
