@@ -111,7 +111,7 @@ public class Arguments {
 		{
 			if(pattern == null) return "Direct";
 			if(!pattern.equals("direct") && !pattern.equals("reverse") && !pattern.equals("external_spiral") && !pattern.equals("internal_spiral"))
-				throw new InvalidArgumentException("Incorrect typing of metrics");
+				throw new InvalidArgumentException("Incorrect typing of pattern");
 			return pattern;
 		}
 		else if(what.equals("magic"))
