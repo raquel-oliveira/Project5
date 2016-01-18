@@ -88,10 +88,42 @@ int main(int argc, char *argv[]){
         }
     }
 
-
     fileIn = "Resources/1bit.png";
     //Verifications:
     setArguments();
+    if(!isCompress) {
+        flag = reveal(img, nbBits, magic, message, firstChannel, secondChannel,
+                      thirdChannel); //default 1 bit, red green blue
+        int i = 0;
+        switch (flag) {
+            case 0:
+                while (message[i] != '\0') {
+                    printf("%c", message[i]);
+                    i++;
+                }
+                printf("\n\n");
+                break;
+
+            case -1: {
+                fprintf(stderr, "Error while reallocating memory for message");
+                exit(-1);
+            }
+
+            case -2: {
+                fprintf(stderr, "Error Trying to access bit");
+                exit(-2);
+            }
+
+            case -3: {
+                fprintf(stderr, "There is no magic number");
+                exit(-3);
+            }
+        }
+    }
+    else{
+        printf("Not work with compress messages yet! \n");
+        exit(-4);
+    }
 
     cvReleaseImage(&img);
     free(message);

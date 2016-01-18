@@ -16,6 +16,7 @@
 extern char *formatIn, *fileIn, *fileOut, *channels, *pattern, *magicNumber;
 extern bool isCompress;
 extern IplImage *img;
+extern int flag;
 extern int firstChannel, secondChannel, thirdChannel, nbBits, patternInt;
 
 #endif //REVELATIONN_ARGUMENTS_H

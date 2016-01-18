@@ -6,7 +6,6 @@
 
 
 void setArguments(){
-    int flag;
     printf("----------Veryfication file in---------------------\n");
     if (fileIn == NULL){
         fprintf(stderr, "There is no input file.\n");

@@ -7,4 +7,5 @@
 char *formatIn, *fileIn, *fileOut, *channels, *pattern, *magicNumber;
 bool isCompress;
 int firstChannel, secondChannel, thirdChannel, nbBits, patternInt;
+int flag;
 IplImage *img;
