@@ -5,5 +5,7 @@
 #include "arguments.h"
 
 char *formatIn, *fileIn, *fileOut, *channels, *pattern, *magicNumber;
-//char magicNumber[];
-int firstChannel, secondChannel, thirdChannel, nbBits;
+bool isCompress;
+int firstChannel, secondChannel, thirdChannel, nbBits, patternInt;
+int flag;
+IplImage *img;

@@ -1,115 +1,129 @@
 #include <string.h>
 #include <stdlib.h>
 #include "arguments.h"
+#include "validateArguments.h"
 #include "reveal.h"
-#include "utils/checkFormat.h"
-#define RED 2
-#define GREEN 1
-#define BLUE 0
 
-#define FIN "-Fin" // Format of file
-#define IN "-in" // Path of image
-#define OUT "-out" //Path of where to save the message
-#define B "-b" // Number of bits
-#define C "-c" //Channels
-#define P "-p" // Pattern
-#define MAGIC "-magic"
+#define FIN 0
+#define IN 1
+#define OUT 2
+#define B 3
+#define C 4
+#define P 5
+#define MAGIC 6
+#define COMPRESS 7
 #define SIZE_MESSAGE 100
 
-int main(int argc, char *argv[]){
-    const char delimiter[2] = ",";
-    if (argc == 1){
-        fprintf(stderr, "Insufficient arguments.");
-        exit(-1);
-    }
-    int flag = 0;
-    int i = 0;
+//TODO: why optional argument doesn't work?
+static struct option long_options[] =
+        {
+                {"Fin", required_argument, NULL, FIN},
+                {"in", required_argument, NULL, IN},
+                {"out", required_argument, NULL, OUT},
+                {"b", required_argument, NULL, B},
+                {"c", required_argument, NULL, C},
+                {"p", required_argument, NULL, P},
+                {"magic", required_argument, NULL, MAGIC},
+                {"compress", no_argument, NULL, COMPRESS},
+                {NULL, 0, NULL, 0}
+        };
 
-    //Default arguments:
-    pattern = "direct";
+int main(int argc, char *argv[]){
+    //defaultArguments:
+    pattern = NULL;
     fileIn = NULL;
     fileOut = NULL;
     channels = NULL;
     nbBits = 1;
     uchar *message = malloc(SIZE_MESSAGE);
     char magic[] = "HELP";
-    IplImage *img = NULL;
+    img = NULL;
 
+    int long_index=0;
+    int opt = 0;
 
-   for(int i = 0; i < argc; i++){
-        if(strcmp(argv[i],FIN)==0)
-            formatIn = argv[i+1];
-        else if(strcmp(argv[i],IN)==0)
-            fileIn = argv[i+1];
-        else if(strcmp(argv[i],OUT)==0)
-            fileOut = argv[i+1];
-        else if(strcmp(argv[i],B)==0)
-            nbBits = atoi(argv[i+1]);
-        else if(strcmp(argv[i],C)==0) {
-            channels = argv[i + 1];
-        }
-        else if(strcmp(argv[i],P)==0)
-            pattern = argv[i+1];
-        //else if(strcmp(argv[i],MAGIC)==0)
-           // magicNumber = argv[i + 1]; //not using
-       /*else{
-            fprintf(stderr, "Tried to put an argument that does not exist.\n");
-            exit(-1);
-        }*/
-    }
-
-    if (fileIn == NULL){
-        fprintf(stderr, "There is no input file.\n");
-        exit(-1);
-    }
-
-    img = cvLoadImage(fileIn, 1); // Second parameter == 1 (RGB) || == 0 (GREY)
-    if (img){
-        flag = check_extension();
-        switch(flag) {
-            case 0:
+    //TODO: fix why he goes to 0(Fin) if the option is not valid.
+    while((opt = getopt_long_only(argc, argv, "" , long_options, &long_index)!= -1)){
+        printf("---------Arguments--------------------\n");
+        printf("Long index: %d \n Opt: %d \n",long_index,opt);
+        switch (long_index){
+            case FIN:
+                printf("FIN EXE: \n");
+                formatIn = optarg;
+                printf("Format in: %s \n", formatIn);
                 break;
-            case -1:
-                fprintf(stderr, "%s is not a format accepted\n", formatIn);
-                exit(-1);
-            case -2:
-                fprintf(stderr, "This format is not the format of the image\n");
-                exit(-2);
-            case -3:
-                fprintf(stderr, "Not a format valid\n");
-                exit(-2);
+            case IN:
+                printf("IN EXE: \n");
+                fileIn = optarg;
+                printf("Path in: %s \n", fileIn);
+                break;
+            case OUT:
+                printf("OUT EXE: \n");
+                fileOut = optarg;
+                printf("File Out: %s \n", fileOut);
+                break;
+            case B:
+                printf("B EXE: \n");
+                nbBits = atoi(optarg); //do a Try
+                printf("Number of bits: %d \n", nbBits);
+                break;
+            case C:
+                printf("CHANNELS EXE: \n");
+                channels = optarg;
+                printf("Channels: %s \n", channels);
+                break;
+            case P:
+                printf("P EXE: \n");
+                pattern = optarg;
+                printf("Pattern: %s \n", pattern);
+                break;
+            case MAGIC:
+                printf("MAGIC EXE: \n");
+                //magic = optarg;
+                break;
+            case COMPRESS:
+                printf("COMPRESS EXE: \n");
+                isCompress = true;
+                break;
         }
-    }else{
-        printf("Could not open the file");
-        exit(-3);
     }
 
-    flag = reveal(img, 1, magic, message, 2, 1, 0); //default 1 bit, red green blue
+    fileIn = "Resources/1bit.png";
+    //Verifications:
+    setArguments();
+    if(!isCompress) {
+        flag = reveal(img, nbBits, magic, message, firstChannel, secondChannel,
+                      thirdChannel); //default 1 bit, red green blue
+        int i = 0;
+        switch (flag) {
+            case 0:
+                while (message[i] != '\0') {
+                    printf("%c", message[i]);
+                    i++;
+                }
+                printf("\n\n");
+                break;
 
-    switch(flag){
-        case 0: while(message[i] != '\0')
-            {
-                printf("%c", message[i]);
-                i++;
+            case -1: {
+                fprintf(stderr, "Error while reallocating memory for message");
+                exit(-1);
             }
-            printf("\n\n");
-            break;
 
-        case -1: {
-            fprintf(stderr, "Error while reallocating memory for message");
-            exit(-1);
-        } break;
+            case -2: {
+                fprintf(stderr, "Error Trying to access bit");
+                exit(-2);
+            }
 
-        case -2: {
-            fprintf(stderr, "Error Trying to access bit");
-            exit(-2);
-        } break;
-
-        case -3:
-            fprintf(stderr, "There is no magic number");
-            exit(-3);
+            case -3: {
+                fprintf(stderr, "There is no magic number");
+                exit(-3);
+            }
+        }
     }
-
+    else{
+        printf("Not work with compress messages yet! \n");
+        exit(-4);
+    }
 
     cvReleaseImage(&img);
     free(message);
