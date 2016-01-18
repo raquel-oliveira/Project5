@@ -100,6 +100,32 @@ int main(int argc, char *argv[]){
         exit(-1);
     }
 
+    printf("----------Veryfication pattern--------------------\n");
+    if(pattern == NULL){
+        pattern = "DIRECT";
+    }
+    else{
+        flag = validatePattern();
+        switch (flag){
+            case -1:
+                fprintf(stderr, "Not a valid pattern\n");
+                exit(-1);
+            case 1:
+                patternInt = flag; //Direct Pattern
+                printf("Direct pattern. \n");
+                break;
+            case 2:
+                fprintf(stderr, "Inverse pattern not implemented\n");
+                exit(-2);
+            case 3:
+                fprintf(stderr, "External spiral pattern not implemented\n");
+                exit(-3);
+            case 4:
+                fprintf(stderr, "Internal spiral pattern not implemented\n");
+                exit(-4);
+        }
+    }
+
     cvReleaseImage(&img);
     free(message);
 
