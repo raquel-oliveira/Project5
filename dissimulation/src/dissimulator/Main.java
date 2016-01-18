@@ -13,7 +13,7 @@ public class Main {
 		Metrics met = new Metrics();
 		//met.setMetric(arg.getArg("metrics"));
 		MessageTreatment t = new MessageTreatment();
-
+		
 		String in = arg.getArg("fileIn");
 		String out = arg.getArg("fileOut");
 		String message = arg.getArg("message");

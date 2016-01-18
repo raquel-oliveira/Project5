@@ -37,9 +37,9 @@ public class MessageTreatment {
 	}
 	
 	/**
-	 * Gets the number of iterations of all the letters in the message
+	 * Gets the number of iterations of all the letters in the message. Sorts the string by ascending order
 	 * @param message
-	 * @return the string like this "a:2,b:0,j:3"
+	 * @return the string like this "a:2,b:1,j:3"
 	 */
 	public String getNbIterations(String message)
 	{
@@ -51,7 +51,35 @@ public class MessageTreatment {
 			character = message.charAt(0);
 			count = message.length() - message.replace(String.valueOf(character), "").length();
 			message = message.replace(String.valueOf(character), "");
-			temp += character + ":" + Integer.toString(count) + ",";
+			temp += character + ":" + Integer.toString(count);
+			if(!message.isEmpty()) temp += ",";
+		}
+		System.out.println(sortByAscendingOrder(temp));
+		return sortByAscendingOrder(temp);
+	}
+	 /**
+	  * Gets a string containing the return string of getNbIterations in order to order by ascending frequencies
+	  * @param occurences
+	  * @return occurences sorted by ascending frequencies
+	  */
+	private String sortByAscendingOrder(String occurences)
+	{
+		String temp = "", key = "";
+		int frequency = 20000, position = 0;
+		occurences = occurences.replace(",", "");
+		while(!occurences.isEmpty())
+		{
+			for(int i = 0; i < occurences.length(); i++)
+			{
+				if(occurences.charAt(i) == ':' && Character.getNumericValue(occurences.charAt(i+1)) < frequency) 
+				{
+					frequency = Character.getNumericValue(occurences.charAt(i+1));
+					position = i;
+				}
+			}
+			frequency = 20000;
+			temp += occurences.charAt(position-1) + ":" + occurences.charAt(position+1) + ",";
+			occurences = occurences.replace(occurences.charAt(position-1) + ":" + occurences.charAt(position+1), "");
 		}
 		return temp;
 	}
