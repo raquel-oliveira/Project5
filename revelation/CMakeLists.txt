@@ -16,10 +16,14 @@ add_executable(
         src/main.c
         src/reveal.c
         src/image.c
+        src/arguments.c
+        src/validateArguments.c
         src/utils/utilBit.c
         src/utils/formatDetector.c
-        src/utils/checkFormat.c
-        src/arguments.c
+        src/utils/validateFormat.c
+        src/utils/validateChannels.c
+        src/utils/validatePattern.c
+
 )
 
 target_link_libraries(

@@ -7,10 +7,16 @@
 
 #include <string.h>
 #include <stdio.h>
+#include "getopt.h"
 #include <opencv2/hal/defs.h>
+#include <opencv2/core/types_c.h>
+#include <stdbool.h>
+#include <ctype.h>
 
 extern char *formatIn, *fileIn, *fileOut, *channels, *pattern, *magicNumber;
-//extern char magicNumber[];
-extern int firstChannel, secondChannel, thirdChannel, nbBits;
+extern bool isCompress;
+extern IplImage *img;
+extern int flag;
+extern int firstChannel, secondChannel, thirdChannel, nbBits, patternInt;
 
 #endif //REVELATIONN_ARGUMENTS_H
