@@ -50,8 +50,7 @@ public class HuffmanTree {
     }
 
     public void createList(String occurences){
-        String occur = occurences.substring(1, occurences.length()-1);
-        String[] tuples = occur.split(", ");
+        String[] tuples = occurences.split(",");
         for(int i=0; i < tuples.length; i++){
             this.addNode(tuples[i]);
         }
