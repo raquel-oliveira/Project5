@@ -90,7 +90,6 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 
-
 ### NetBeans ###
 nbproject/private/
 build/
@@ -101,3 +100,4 @@ nbactions.xml
 nb-configuration.xml
 .nb-gradle/
 
+revelation/Resources/
