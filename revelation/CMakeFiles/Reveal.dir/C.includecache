@@ -82,6 +82,16 @@ stdio.h
 stdlib.h
 -
 
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/hexa.c
+hexa.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/hexa.h
+
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/hexa.h
+stdio.h
+-
+stdlib.h
+-
+
 /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.c
 utilBit.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.h
@@ -137,6 +147,8 @@ utils/validatePattern.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/utils/validatePattern.h
 utils/validateChannels.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/utils/validateChannels.h
+utils/hexa.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/hexa.h
 opencv2/imgcodecs/imgcodecs_c.h
 -
 arguments.h

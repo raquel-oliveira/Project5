@@ -116,6 +116,7 @@ CMakeFiles/reveal.dir/src/main.c.o
  /Users/Raquel/Desktop/NSA/private/revelation/src/main.c
  /Users/Raquel/Desktop/NSA/private/revelation/src/reveal.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.h
+ /Users/Raquel/Desktop/NSA/private/revelation/src/utils/hexa.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/validateChannels.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/validateFormat.h
@@ -234,6 +235,9 @@ CMakeFiles/reveal.dir/src/reveal.c.o
 CMakeFiles/reveal.dir/src/utils/formatDetector.c.o
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.c
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.h
+CMakeFiles/reveal.dir/src/utils/hexa.c.o
+ /Users/Raquel/Desktop/NSA/private/revelation/src/utils/hexa.c
+ /Users/Raquel/Desktop/NSA/private/revelation/src/utils/hexa.h
 CMakeFiles/reveal.dir/src/utils/utilBit.c.o
  /Users/Raquel/Desktop/NSA/private/revelation/src/arguments.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.c
@@ -454,6 +458,7 @@ CMakeFiles/reveal.dir/src/utils/validatePattern.c.o
 CMakeFiles/reveal.dir/src/validateArguments.c.o
  /Users/Raquel/Desktop/NSA/private/revelation/src/arguments.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.h
+ /Users/Raquel/Desktop/NSA/private/revelation/src/utils/hexa.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/validateChannels.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/validateFormat.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/validatePattern.h

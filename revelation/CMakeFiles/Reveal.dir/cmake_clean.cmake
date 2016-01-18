@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/reveal.dir/src/arguments.c.o"
   "CMakeFiles/reveal.dir/src/validateArguments.c.o"
   "CMakeFiles/reveal.dir/src/utils/utilBit.c.o"
+  "CMakeFiles/reveal.dir/src/utils/hexa.c.o"
   "CMakeFiles/reveal.dir/src/utils/formatDetector.c.o"
   "CMakeFiles/reveal.dir/src/utils/validateFormat.c.o"
   "CMakeFiles/reveal.dir/src/utils/validateChannels.c.o"

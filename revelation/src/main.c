@@ -80,7 +80,8 @@ int main(int argc, char *argv[]){
                 break;
             case MAGIC:
                 printf("MAGIC EXE: \n");
-                magic = optarg;
+                magicHexa = optarg;
+                printf("MAGIC number: %s \n", magicHexa);
                 break;
             case COMPRESS:
                 printf("COMPRESS EXE: \n");
@@ -89,7 +90,7 @@ int main(int argc, char *argv[]){
         }
     }
 
-    fileIn = "Resources/1bit.png";
+    fileIn = "Resources/1bitBuilding.png";
     //Verifications:
     setArguments();
     if(!isCompress) {

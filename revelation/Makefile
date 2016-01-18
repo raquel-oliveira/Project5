@@ -258,6 +258,33 @@ src/utils/formatDetector.c.s:
 	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/formatDetector.c.s
 .PHONY : src/utils/formatDetector.c.s
 
+src/utils/hexa.o: src/utils/hexa.c.o
+
+.PHONY : src/utils/hexa.o
+
+# target to build an object file
+src/utils/hexa.c.o:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/hexa.c.o
+.PHONY : src/utils/hexa.c.o
+
+src/utils/hexa.i: src/utils/hexa.c.i
+
+.PHONY : src/utils/hexa.i
+
+# target to preprocess a source file
+src/utils/hexa.c.i:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/hexa.c.i
+.PHONY : src/utils/hexa.c.i
+
+src/utils/hexa.s: src/utils/hexa.c.s
+
+.PHONY : src/utils/hexa.s
+
+# target to generate assembly for a file
+src/utils/hexa.c.s:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/hexa.c.s
+.PHONY : src/utils/hexa.c.s
+
 src/utils/utilBit.o: src/utils/utilBit.c.o
 
 .PHONY : src/utils/utilBit.o
@@ -417,6 +444,9 @@ help:
 	@echo "... src/utils/formatDetector.o"
 	@echo "... src/utils/formatDetector.i"
 	@echo "... src/utils/formatDetector.s"
+	@echo "... src/utils/hexa.o"
+	@echo "... src/utils/hexa.i"
+	@echo "... src/utils/hexa.s"
 	@echo "... src/utils/utilBit.o"
 	@echo "... src/utils/utilBit.i"
 	@echo "... src/utils/utilBit.s"

@@ -115,6 +115,7 @@ CMakeFiles/reveal.dir/src/main.c.o: src/image.h
 CMakeFiles/reveal.dir/src/main.c.o: src/main.c
 CMakeFiles/reveal.dir/src/main.c.o: src/reveal.h
 CMakeFiles/reveal.dir/src/main.c.o: src/utils/formatDetector.h
+CMakeFiles/reveal.dir/src/main.c.o: src/utils/hexa.h
 CMakeFiles/reveal.dir/src/main.c.o: src/utils/utilBit.h
 CMakeFiles/reveal.dir/src/main.c.o: src/utils/validateChannels.h
 CMakeFiles/reveal.dir/src/main.c.o: src/utils/validateFormat.h
@@ -233,6 +234,9 @@ CMakeFiles/reveal.dir/src/reveal.c.o: /usr/local/include/opencv2/videoio/videoio
 
 CMakeFiles/reveal.dir/src/utils/formatDetector.c.o: src/utils/formatDetector.c
 CMakeFiles/reveal.dir/src/utils/formatDetector.c.o: src/utils/formatDetector.h
+
+CMakeFiles/reveal.dir/src/utils/hexa.c.o: src/utils/hexa.c
+CMakeFiles/reveal.dir/src/utils/hexa.c.o: src/utils/hexa.h
 
 CMakeFiles/reveal.dir/src/utils/utilBit.c.o: src/arguments.h
 CMakeFiles/reveal.dir/src/utils/utilBit.c.o: src/utils/utilBit.c
@@ -453,6 +457,7 @@ CMakeFiles/reveal.dir/src/utils/validatePattern.c.o: /usr/local/include/opencv2/
 
 CMakeFiles/reveal.dir/src/validateArguments.c.o: src/arguments.h
 CMakeFiles/reveal.dir/src/validateArguments.c.o: src/utils/formatDetector.h
+CMakeFiles/reveal.dir/src/validateArguments.c.o: src/utils/hexa.h
 CMakeFiles/reveal.dir/src/validateArguments.c.o: src/utils/validateChannels.h
 CMakeFiles/reveal.dir/src/validateArguments.c.o: src/utils/validateFormat.h
 CMakeFiles/reveal.dir/src/validateArguments.c.o: src/utils/validatePattern.h
