@@ -12,6 +12,8 @@ public class Arguments {
 	String pattern;
 	String magic;
 	String metrics;
+	boolean compress;
+	boolean show;
 	FormatDetector fd;
 	
 	public Arguments(String[] arguments)
@@ -29,6 +31,8 @@ public class Arguments {
 			else if(arguments[i].equals("-p")) pattern = arguments[i+1].toLowerCase();
 			else if(arguments[i].equals("-magic")) magic = arguments[i+1];
 			else if(arguments[i].equals("-metrics")) metrics = arguments[i+1];
+			else if(arguments[i].equals("-compress")) compress = true;
+			else if(arguments[i].equals("-show")) show = true;
 		}
 	}
 	public String getArg(String what) throws Exception
@@ -93,6 +97,7 @@ public class Arguments {
 						i++; // Ignoring the comma
 						if(temp.equals("red") || temp.equals("green") || temp.equals("blue"))
 						{
+							if(retour.contains(temp)) throw new InvalidArgumentException("Typed the same color twice"); // Ex : Red,Red,Green
 							retour += temp;
 							temp = "";
 						}
@@ -125,6 +130,16 @@ public class Arguments {
 			if(!metrics.equals("impact") && !metrics.equals("time") && !metrics.equals("histogram") && !metrics.equals("template"))
 				throw new InvalidArgumentException("Incorrect typing of metrics");
 			return metrics;
+		}
+		else if(what.equals("compress"))
+		{
+			if(compress == false) return "false";
+			return "true";
+		}
+		else if(what.equals("show"))
+		{
+			if(show == false) return "false";
+			return "true";
 		}
 		
 		throw new InvalidArgumentException("Requested argument is invalid");
