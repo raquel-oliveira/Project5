@@ -55,11 +55,17 @@ void setArguments(){
     }
 
     printf("----------CheckMagicNumber--------------------\n");
-    if(magic == NULL){
-        magic = "HELP";
-        //magic = "48454C50";
+    if(magicHexa == NULL){
+        printf("----------MagicNumber NULL-------------------\n");
+        magicHexa = "48454C50";
+        printf("Hexa Magic Number: %s \n", magicHexa);
+        magic = hex_to_str(magicHexa);
+        printf("Magic Number: %s \n", magic);
+        //magic = "HELP";
     }else{
-       printf("Magic number personalized");
+        printf("Hexa Magic Number: %s \n", magicHexa);
+        magic = hex_to_str(magicHexa);
+        printf("Magic Number: %s \n", magic);
         //do the transform.
     }
 

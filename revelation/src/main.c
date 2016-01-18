@@ -36,6 +36,7 @@ int main(int argc, char *argv[]){
     channels = NULL;
     nbBits = 1;
     uchar *message = malloc(SIZE_MESSAGE);
+    magicHexa = NULL;
     magic = NULL;
     img = NULL;
 

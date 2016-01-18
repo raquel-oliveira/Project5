@@ -19,6 +19,7 @@ add_executable(
         src/arguments.c
         src/validateArguments.c
         src/utils/utilBit.c
+        src/utils/hexa.c
         src/utils/formatDetector.c
         src/utils/validateFormat.c
         src/utils/validateChannels.c
