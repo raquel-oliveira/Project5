@@ -30,11 +30,6 @@ public class MessageTreatment {
 		bsret.set(chaine.length()*8);
 		return bsret;
 	}
-
-	public BitSet FileToBinary(String filepath){
-		BitSet bsret = new BitSet();
-		return bsret;
-	}
 	
 	/**
 	 * Gets the number of iterations of all the letters in the message. Sorts the string by ascending order
