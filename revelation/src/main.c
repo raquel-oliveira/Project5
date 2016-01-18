@@ -1,6 +1,10 @@
-
-#include "getopt.h"
-#include "stdio.h"
+#include <string.h>
+#include <stdlib.h>
+#include "arguments.h"
+#include "reveal.h"
+#include "utils/validateFormat.h"
+#include "utils/validatePattern.h"
+#include "utils/validateChannels.h"
 
 #define FIN 0
 #define IN 1
@@ -10,50 +14,94 @@
 #define P 5
 #define MAGIC 6
 #define COMPRESS 7
+#define SIZE_MESSAGE 100
+
+//TODO: why optional argument doesn't work?
 static struct option long_options[] =
         {
-                {"Fin", optional_argument, NULL, FIN},
+                {"Fin", required_argument, NULL, FIN},
                 {"in", required_argument, NULL, IN},
-                {"out", optional_argument, NULL, OUT},
-                {"b", optional_argument, NULL, B},
-                {"c", optional_argument, NULL, C},
-                {"p", optional_argument, NULL, P},
-                {"magic", optional_argument, NULL, MAGIC},
+                {"out", required_argument, NULL, OUT},
+                {"b", required_argument, NULL, B},
+                {"c", required_argument, NULL, C},
+                {"p", required_argument, NULL, P},
+                {"magic", required_argument, NULL, MAGIC},
                 {"compress", no_argument, NULL, COMPRESS},
                 {NULL, 0, NULL, 0}
         };
 
-
 int main(int argc, char *argv[]){
+    //defaultArguments:
+    pattern = NULL;
+    fileIn = NULL;
+    fileOut = NULL;
+    channels = NULL;
+    nbBits = 1;
+    uchar *message = malloc(SIZE_MESSAGE);
+    char magic[] = "HELP";
+    IplImage *img = NULL;
+
     int long_index=0;
     int opt = 0;
+
+    //TODO: fix why he goes to 0(Fin) if the option is not valid.
     while((opt = getopt_long_only(argc, argv, "" , long_options, &long_index)!= -1)){
-        printf("oi");
-        printf("%d", long_index);
+        printf("---------Arguments--------------------\n");
+        printf("Long index: %d \n Opt: %d \n",long_index,opt);
         switch (long_index){
-            case FIN: printf("finn\n");
+            case FIN:
+                printf("FIN EXE: \n");
+                formatIn = optarg;
+                printf("Format in: %s \n", formatIn);
                 break;
             case IN:
-                printf("In\n");
+                printf("IN EXE: \n");
+                fileIn = optarg;
+                printf("Path in: %s \n", fileIn);
                 break;
             case OUT:
-                printf("Out\n");
+                printf("OUT EXE: \n");
+                fileOut = optarg;
+                printf("File Out: %s \n", fileOut);
                 break;
             case B:
-                printf("bbb\n");
+                printf("B EXE: \n");
+                nbBits = atoi(optarg); //do a Try
+                printf("Number of bits: %d \n", nbBits);
                 break;
             case C:
-                printf("ccc\n");
+                printf("CHANNELS EXE: \n");
+                channels = optarg;
+                printf("Channels: %s \n", channels);
                 break;
             case P:
-                printf("p\n");
+                printf("P EXE: \n");
+                pattern = optarg;
+                printf("Pattern: %s \n", pattern);
                 break;
             case MAGIC:
-                printf("magic\n");
+                printf("MAGIC EXE: \n");
+                //magic = optarg;
                 break;
             case COMPRESS:
-                printf("compress/nn");
+                printf("COMPRESS EXE: \n");
+                isCompress = true;
                 break;
         }
     }
+
+   int flag;
+
+    fileIn = "Resources/1bit.png";
+    //Verifications:
+    printf("----------Veryfication file in---------------------\n");
+    if (fileIn == NULL){
+        fprintf(stderr, "There is no input file.\n");
+        exit(-1);
+    }
+
+    cvReleaseImage(&img);
+    free(message);
+
+    return 0;
 }
