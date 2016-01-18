@@ -4,7 +4,7 @@
 
 #include "arguments.h"
 
-char *formatIn, *fileIn, *fileOut, *channels, *pattern, *magicNumber;
+char *formatIn, *fileIn, *fileOut, *channels, *pattern, *magic;
 bool isCompress;
 int firstChannel, secondChannel, thirdChannel, nbBits, patternInt;
 int flag;

@@ -13,7 +13,7 @@
 #include <stdbool.h>
 #include <ctype.h>
 
-extern char *formatIn, *fileIn, *fileOut, *channels, *pattern, *magicNumber;
+extern char *formatIn, *fileIn, *fileOut, *channels, *pattern, *magic;
 extern bool isCompress;
 extern IplImage *img;
 extern int flag;

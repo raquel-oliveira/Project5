@@ -54,6 +54,15 @@ void setArguments(){
         printf("Third Channel: %d\n", thirdChannel);
     }
 
+    printf("----------CheckMagicNumber--------------------\n");
+    if(magic == NULL){
+        magic = "HELP";
+        //magic = "48454C50";
+    }else{
+       printf("Magic number personalized");
+        //do the transform.
+    }
+
     printf("----------Veryfication format--------------------\n");
     img = cvLoadImage(fileIn, 1); // Second parameter == 1 (RGB) || == 0 (GREY)
     printf("----------Trying to load the image--------------------\n");

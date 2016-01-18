@@ -231,33 +231,6 @@ src/reveal.c.s:
 	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/reveal.c.s
 .PHONY : src/reveal.c.s
 
-src/utils/checkFormat.o: src/utils/checkFormat.c.o
-
-.PHONY : src/utils/checkFormat.o
-
-# target to build an object file
-src/utils/checkFormat.c.o:
-	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/checkFormat.c.o
-.PHONY : src/utils/checkFormat.c.o
-
-src/utils/checkFormat.i: src/utils/checkFormat.c.i
-
-.PHONY : src/utils/checkFormat.i
-
-# target to preprocess a source file
-src/utils/checkFormat.c.i:
-	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/checkFormat.c.i
-.PHONY : src/utils/checkFormat.c.i
-
-src/utils/checkFormat.s: src/utils/checkFormat.c.s
-
-.PHONY : src/utils/checkFormat.s
-
-# target to generate assembly for a file
-src/utils/checkFormat.c.s:
-	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/checkFormat.c.s
-.PHONY : src/utils/checkFormat.c.s
-
 src/utils/formatDetector.o: src/utils/formatDetector.c.o
 
 .PHONY : src/utils/formatDetector.o
@@ -312,6 +285,114 @@ src/utils/utilBit.c.s:
 	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/utilBit.c.s
 .PHONY : src/utils/utilBit.c.s
 
+src/utils/validateChannels.o: src/utils/validateChannels.c.o
+
+.PHONY : src/utils/validateChannels.o
+
+# target to build an object file
+src/utils/validateChannels.c.o:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/validateChannels.c.o
+.PHONY : src/utils/validateChannels.c.o
+
+src/utils/validateChannels.i: src/utils/validateChannels.c.i
+
+.PHONY : src/utils/validateChannels.i
+
+# target to preprocess a source file
+src/utils/validateChannels.c.i:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/validateChannels.c.i
+.PHONY : src/utils/validateChannels.c.i
+
+src/utils/validateChannels.s: src/utils/validateChannels.c.s
+
+.PHONY : src/utils/validateChannels.s
+
+# target to generate assembly for a file
+src/utils/validateChannels.c.s:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/validateChannels.c.s
+.PHONY : src/utils/validateChannels.c.s
+
+src/utils/validateFormat.o: src/utils/validateFormat.c.o
+
+.PHONY : src/utils/validateFormat.o
+
+# target to build an object file
+src/utils/validateFormat.c.o:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/validateFormat.c.o
+.PHONY : src/utils/validateFormat.c.o
+
+src/utils/validateFormat.i: src/utils/validateFormat.c.i
+
+.PHONY : src/utils/validateFormat.i
+
+# target to preprocess a source file
+src/utils/validateFormat.c.i:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/validateFormat.c.i
+.PHONY : src/utils/validateFormat.c.i
+
+src/utils/validateFormat.s: src/utils/validateFormat.c.s
+
+.PHONY : src/utils/validateFormat.s
+
+# target to generate assembly for a file
+src/utils/validateFormat.c.s:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/validateFormat.c.s
+.PHONY : src/utils/validateFormat.c.s
+
+src/utils/validatePattern.o: src/utils/validatePattern.c.o
+
+.PHONY : src/utils/validatePattern.o
+
+# target to build an object file
+src/utils/validatePattern.c.o:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/validatePattern.c.o
+.PHONY : src/utils/validatePattern.c.o
+
+src/utils/validatePattern.i: src/utils/validatePattern.c.i
+
+.PHONY : src/utils/validatePattern.i
+
+# target to preprocess a source file
+src/utils/validatePattern.c.i:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/validatePattern.c.i
+.PHONY : src/utils/validatePattern.c.i
+
+src/utils/validatePattern.s: src/utils/validatePattern.c.s
+
+.PHONY : src/utils/validatePattern.s
+
+# target to generate assembly for a file
+src/utils/validatePattern.c.s:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/validatePattern.c.s
+.PHONY : src/utils/validatePattern.c.s
+
+src/validateArguments.o: src/validateArguments.c.o
+
+.PHONY : src/validateArguments.o
+
+# target to build an object file
+src/validateArguments.c.o:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/validateArguments.c.o
+.PHONY : src/validateArguments.c.o
+
+src/validateArguments.i: src/validateArguments.c.i
+
+.PHONY : src/validateArguments.i
+
+# target to preprocess a source file
+src/validateArguments.c.i:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/validateArguments.c.i
+.PHONY : src/validateArguments.c.i
+
+src/validateArguments.s: src/validateArguments.c.s
+
+.PHONY : src/validateArguments.s
+
+# target to generate assembly for a file
+src/validateArguments.c.s:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/validateArguments.c.s
+.PHONY : src/validateArguments.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -333,15 +414,24 @@ help:
 	@echo "... src/reveal.o"
 	@echo "... src/reveal.i"
 	@echo "... src/reveal.s"
-	@echo "... src/utils/checkFormat.o"
-	@echo "... src/utils/checkFormat.i"
-	@echo "... src/utils/checkFormat.s"
 	@echo "... src/utils/formatDetector.o"
 	@echo "... src/utils/formatDetector.i"
 	@echo "... src/utils/formatDetector.s"
 	@echo "... src/utils/utilBit.o"
 	@echo "... src/utils/utilBit.i"
 	@echo "... src/utils/utilBit.s"
+	@echo "... src/utils/validateChannels.o"
+	@echo "... src/utils/validateChannels.i"
+	@echo "... src/utils/validateChannels.s"
+	@echo "... src/utils/validateFormat.o"
+	@echo "... src/utils/validateFormat.i"
+	@echo "... src/utils/validateFormat.s"
+	@echo "... src/utils/validatePattern.o"
+	@echo "... src/utils/validatePattern.i"
+	@echo "... src/utils/validatePattern.s"
+	@echo "... src/validateArguments.o"
+	@echo "... src/validateArguments.i"
+	@echo "... src/validateArguments.s"
 .PHONY : help
 
 

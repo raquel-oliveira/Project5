@@ -36,7 +36,7 @@ int main(int argc, char *argv[]){
     channels = NULL;
     nbBits = 1;
     uchar *message = malloc(SIZE_MESSAGE);
-    char magic[] = "HELP";
+    magic = NULL;
     img = NULL;
 
     int long_index=0;
@@ -79,7 +79,7 @@ int main(int argc, char *argv[]){
                 break;
             case MAGIC:
                 printf("MAGIC EXE: \n");
-                //magic = optarg;
+                magic = optarg;
                 break;
             case COMPRESS:
                 printf("COMPRESS EXE: \n");
