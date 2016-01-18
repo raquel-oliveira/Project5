@@ -12,12 +12,13 @@ public class Arguments {
 	String pattern;
 	String magic;
 	String metrics;
+	boolean compress;
+	boolean show;
 	FormatDetector fd;
 	
 	public Arguments(String[] arguments)
 	{
-
-		this.fd = new FormatDetector();
+		fd = new FormatDetector();
 		for(int i = 0; i < arguments.length ; i++)
 		{
 			if(arguments[i].equals("-Fin")) formatIn = "." + arguments[i+1].toLowerCase();
@@ -26,10 +27,12 @@ public class Arguments {
 			else if(arguments[i].equals("-out")) fileOut = arguments[i+1];
 			else if(arguments[i].equals("-msg")) message = arguments[i+1];
 			else if(arguments[i].equals("-b")) nbBits = arguments[i+1];
-			else if(arguments[i].equals("-c")) channels = arguments[i+1];
-			else if(arguments[i].equals("-p")) pattern = arguments[i+1];
+			else if(arguments[i].equals("-c")) channels = arguments[i+1].toLowerCase();
+			else if(arguments[i].equals("-p")) pattern = arguments[i+1].toLowerCase();
 			else if(arguments[i].equals("-magic")) magic = arguments[i+1];
 			else if(arguments[i].equals("-metrics")) metrics = arguments[i+1];
+			else if(arguments[i].equals("-compress")) compress = true;
+			else if(arguments[i].equals("-show")) show = true;
 		}
 	}
 	public String getArg(String what) throws Exception
@@ -40,7 +43,7 @@ public class Arguments {
 			if(formatIn == null){
 				return "."+fd.getFileType().toLowerCase();
 			}
-			else if(fd.getFileType().toLowerCase().equals("jpeg") && (formatIn.equals(".jpg") || formatIn.equals(".JPEG") || formatIn.equals(".jpeg") || formatIn.equals(".JPG")))
+			else if(fd.getFileType().toLowerCase().equals("jpeg") && (formatIn.equals(".jpg") || formatIn.equals(".jpeg")))
 			{
 				return ".jpg";
 			}
@@ -54,14 +57,10 @@ public class Arguments {
 		{
 			fd.setFiletype(this.fileIn);
 			if(formatOut== null) return null;
-			else if(formatOut.equals(".jpg") || formatOut.equals(".JPEG") || formatOut.equals(".jpeg") || formatOut.equals(".JPG"))
+			else if(formatOut.equals(".jpg") || formatOut.equals(".jpeg"))
 				throw new InvalidArgumentException("JPEG is not a valid format for the output");
-			
-			else if(fd.getFileType().toLowerCase().equals("jpeg") && (formatOut.equals(".png") || formatOut.equals(".PNG"))) 
-				return formatOut;
-			else if(formatOut.toLowerCase().contains(fd.getFileType().toLowerCase())){
-				return formatOut;
-			}
+			else if(fd.getFileType().toLowerCase().equals("jpeg") && (formatOut.equals(".png"))) return formatOut;
+			else if(formatOut.contains(fd.getFileType().toLowerCase())) return formatOut;
 			else throw new InvalidArgumentException("Output format is not valid");
 		}
 		else if(what.equals("fileIn"))
@@ -86,12 +85,38 @@ public class Arguments {
 		}
 		else if(what.equals("channels"))
 		{
-			if(channels == null) return "Red,Green,Blue";
-			return channels;
+			if(channels == null) return "redgreenblue";
+			if(channels.contains(","))
+			{
+				String temp = "", retour = "";
+				for(int i = 0; i < channels.length(); i++)
+				{
+					temp += channels.charAt(i);
+					if((i == channels.length()-1) || (channels.charAt(i+1) == ','))
+					{
+						i++; // Ignoring the comma
+						if(temp.equals("red") || temp.equals("green") || temp.equals("blue"))
+						{
+							if(retour.contains(temp)) throw new InvalidArgumentException("Typed the same color twice"); // Ex : Red,Red,Green
+							retour += temp;
+							temp = "";
+						}
+						else throw new InvalidArgumentException("Incorrect typing of color channels"); // Argument before comma is illegal
+					}
+					
+				}
+				return retour;
+			}
+			else if(channels.equals("red")) return "red";
+			else if(channels.equals("green")) return "green";
+			else if(channels.equals("blue")) return "blue";
+			else throw new InvalidArgumentException("Incorrect typing of color channels");
 		}
 		else if(what.equals("pattern"))
 		{
 			if(pattern == null) return "Direct";
+			if(!pattern.equals("direct") && !pattern.equals("reverse") && !pattern.equals("external_spiral") && !pattern.equals("internal_spiral"))
+				throw new InvalidArgumentException("Incorrect typing of pattern");
 			return pattern;
 		}
 		else if(what.equals("magic"))
@@ -102,7 +127,19 @@ public class Arguments {
 		else if(what.equals("metrics"))
 		{
 			if(metrics == null) return null;
+			if(!metrics.equals("impact") && !metrics.equals("time") && !metrics.equals("histogram") && !metrics.equals("template"))
+				throw new InvalidArgumentException("Incorrect typing of metrics");
 			return metrics;
+		}
+		else if(what.equals("compress"))
+		{
+			if(compress == false) return "false";
+			return "true";
+		}
+		else if(what.equals("show"))
+		{
+			if(show == false) return "false";
+			return "true";
 		}
 		
 		throw new InvalidArgumentException("Requested argument is invalid");
