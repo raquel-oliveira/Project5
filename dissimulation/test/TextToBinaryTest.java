@@ -1,7 +1,10 @@
-import dissimulator.MessageToBinary;
+
+import dissimulator.MessageTreatment;
 import org.junit.Test;
 
 import java.util.BitSet;
+
+
 
 import static org.junit.Assert.assertTrue;
 
@@ -12,7 +15,7 @@ public class TextToBinaryTest {
 
     @Test
     public void ChaintoBinaryTest(){
-        MessageToBinary ttb = new MessageToBinary();
+        MessageTreatment ttb = new MessageTreatment();
         BitSet bsc = new BitSet(32);
         bsc.set(1); bsc.set(4);bsc.set(9);
         bsc.set(13); bsc.set(15);bsc.set(17);
