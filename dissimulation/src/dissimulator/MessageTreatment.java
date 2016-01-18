@@ -1,4 +1,7 @@
 package dissimulator;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.BitSet;
 import java.util.HashMap;
 import java.util.Map;
@@ -84,6 +87,34 @@ public class MessageTreatment {
 		}
 		return temp;
 	}
+	
+	public String whetherFileOrText(String message, MagicNumberTester mnt) throws IOException, Exception
+	{
+		if(message.endsWith(".txt")) {
+			BufferedReader br = new BufferedReader(new FileReader(message));
+			try {
+				StringBuilder sb = new StringBuilder();
+				String line = br.readLine();
 
-
+				while (line != null) {
+					sb.append(line);
+					sb.append("");
+					line = br.readLine();
+				}
+				message = sb.toString();
+			} finally {
+				br.close();
+			}
+			if (mnt.doesStringContainMN(message))
+				throw new MagicNumberException("Le contenu de ce fichier texte contient le mot magique");
+			else message += mnt.hexStringtoString();
+		}
+		else {
+			if(mnt.doesStringContainMN(message))
+				throw new MagicNumberException("Ce message contient le nombre magique");
+			else message += mnt.hexStringtoString();
+		}
+		
+		return message;
+	}
 }

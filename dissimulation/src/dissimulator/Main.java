@@ -12,9 +12,7 @@ public class Main {
 		
 		Arguments arg = new Arguments(args);
 		Metrics met = new Metrics();
-		MessageTreatment t = new MessageTreatment();
-		
-		t.getNbIterations("Saalllut");
+		MessageTreatment msgTreatment = new MessageTreatment();
 		
 		String in = arg.getFileIn();
 		String out = arg.getFileOut();
@@ -24,40 +22,13 @@ public class Main {
 		//Vérification du message pour le nombre magique
 		MagicNumberTester mnt = new MagicNumberTester(arg.getMagic());
 
-		if (message.endsWith(".txt")) {
-			BufferedReader br = new BufferedReader(new FileReader(message));
-			try {
-				StringBuilder sb = new StringBuilder();
-				String line = br.readLine();
-
-				while (line != null) {
-					sb.append(line);
-					sb.append("");
-					line = br.readLine();
-				}
-				message = sb.toString();
-			} finally {
-				br.close();
-			}
-			if (mnt.doesStringContainMN(message)) {
-				throw new MagicNumberException("Le contenu de ce fichier texte contient le mot magique");
-			} else {
-				message += mnt.hexStringtoString();
-			}
-		}
-		else {
-			if(mnt.doesStringContainMN(message)) {
-				throw new MagicNumberException("Ce message contient le nombre magique");
-			}else{
-				message += mnt.hexStringtoString();
-			}
-		}
+		message = msgTreatment.whetherFileOrText(message, mnt);
 		
 		ManipImage manipMat = new ManipImage(in);
         
         //Conversion du message en BitSet.
 		
-		BitSet b = t.ChaintoBinary(message);
+		BitSet b = msgTreatment.ChaintoBinary(message);
 		
 		// Traitement des couleurs
 		
