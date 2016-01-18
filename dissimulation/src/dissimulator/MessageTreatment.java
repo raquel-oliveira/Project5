@@ -1,12 +1,9 @@
 package dissimulator;
 import java.io.BufferedReader;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.BitSet;
-import java.util.HashMap;
-import java.util.Map;
-
-
 
 public class MessageTreatment {
 
@@ -42,7 +39,7 @@ public class MessageTreatment {
 	/**
 	 * Gets the number of iterations of all the letters in the message. Sorts the string by ascending order
 	 * @param message
-	 * @return the string like this "a:2,b:1,j:3"
+	 * @return the string like this "a:1,b:2,j:3"
 	 */
 	public String getNbIterations(String message)
 	{
@@ -67,7 +64,7 @@ public class MessageTreatment {
 	  */
 	private String sortByAscendingOrder(String occurences)
 	{
-		String temp = "", key = "";
+		String temp = "";
 		int frequency = 20000, position = 0;
 		occurences = occurences.replace(",", "");
 		while(!occurences.isEmpty())

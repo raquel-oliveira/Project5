@@ -85,6 +85,8 @@ public class Arguments {
 	public String getNbBits() throws Exception
 	{
 		if(nbBits == null) return "1";
+		if(nbBits.length() > 1) throw new InvalidArgumentException("Number of bits too high");
+		if(!Character.isDigit(nbBits.charAt(0))) throw new InvalidArgumentException("Number of bits is not a number !");
 		return nbBits;
 	}
 	public String getChannels() throws Exception
@@ -136,14 +138,14 @@ public class Arguments {
 			throw new InvalidArgumentException("Incorrect typing of metrics");
 		return metrics;
 	}
-	public String getCompress() throws Exception
+	public boolean getCompress() throws Exception
 	{
-		if(compress == false) return "false";
-		return "true";
+		if(compress == false) return false;
+		return true;
 	}
-	public String getShow() throws Exception
+	public boolean getShow() throws Exception
 	{
-		if(show == false) return "false";
-		return "true";
+		if(show == false) return false;
+		return true;
 	}
 }
