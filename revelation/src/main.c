@@ -126,6 +126,22 @@ int main(int argc, char *argv[]){
         }
     }
 
+    printf("----------Set Channels--------------------\n");
+    if (channels == NULL){
+        firstChannel = 2;
+        secondChannel = 1;
+        thirdChannel = 0;
+        printf("First Channel: %d\n", firstChannel);
+        printf("Second Channel: %d\n", secondChannel);
+        printf("Third Channel: %d\n", thirdChannel);
+    }else{
+        //TODO: The set channels its not separating correctly
+        setChannels();
+        printf("First Channel: %d\n", firstChannel);
+        printf("Second Channel: %d\n", secondChannel);
+        printf("Third Channel: %d\n", thirdChannel);
+    }
+
     cvReleaseImage(&img);
     free(message);
 
