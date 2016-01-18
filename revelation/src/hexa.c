@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <malloc.h>
  
 char a2x(char ch)
 {
@@ -47,7 +49,7 @@ char a2x(char ch)
     return 0;
 }
 
-void hex_to_str(char hex[],char str[]){
+void hex_to_str(char *hex,char *str){
     int i;
  
     i = 0;
@@ -63,8 +65,8 @@ void hex_to_str(char hex[],char str[]){
  
 int main(int argc, char* argv[])
 {
-    char hex[] = "48454C50";
-    char string[20];
+    char *hex = "48454C50";
+    char *string = malloc(sizeof(char));
     hex_to_str(hex , string);
     
  
