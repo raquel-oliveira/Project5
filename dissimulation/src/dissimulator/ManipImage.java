@@ -26,7 +26,7 @@ public class ManipImage {
 	}
 	
 	/**
-	 * Create a new image with the new RGB colors.
+	 * Create a new image with the new RGB colors. The format depends of the formatOut wanted
 	 * @param array red
 	 * @param array blue
 	 * @param array green
@@ -98,7 +98,6 @@ public class ManipImage {
                 i--; // Reseting the right i for example if nbBits = 1
 				if(!pat.hasNext(z, image.getRedArray())) pass = 1; // Again, the arrays Red, Green and Blue have the same size
 			}
-			
 			else if(pass == 1)
 			{
 				if(firstTime == true)
@@ -121,7 +120,6 @@ public class ManipImage {
 					firstTime = true;
 				}
 			} 
-			
 			else if(pass == 2)
 			{
 				if(firstTime == true)
@@ -171,6 +169,11 @@ public class ManipImage {
         array[z] = temp;
     }
     
+    /**
+     * Gets the 8 bit representation of a number on 8 bits
+     * @param a
+     * @return an 8-sized array full of 1 and 0
+     */
     public int[] getBinary8(int a)
     {
         int[] b = new int[8];

@@ -9,18 +9,20 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException, Exception {
 		//Récupération des arguments, et utilisation
+		
 		Arguments arg = new Arguments(args);
 		Metrics met = new Metrics();
-		//met.setMetric(arg.getArg("metrics"));
 		MessageTreatment t = new MessageTreatment();
 		
-		String in = arg.getArg("fileIn");
-		String out = arg.getArg("fileOut");
-		String message = arg.getArg("message");
+		t.getNbIterations("Saalllut");
+		
+		String in = arg.getFileIn();
+		String out = arg.getFileOut();
+		String message = arg.getMessage();
 		String[] colors = new String[3];
 
 		//Vérification du message pour le nombre magique
-		MagicNumberTester mnt = new MagicNumberTester(arg.getArg("magic"));
+		MagicNumberTester mnt = new MagicNumberTester(arg.getMagic());
 
 		if (message.endsWith(".txt")) {
 			BufferedReader br = new BufferedReader(new FileReader(message));
@@ -59,7 +61,7 @@ public class Main {
 		
 		// Traitement des couleurs
 		
-		String channels = arg.getArg("channels"), temp = "";
+		String channels = arg.getChannels(), temp = "";
 		
 		for(int i = 0, cpt = 0; i < channels.length(); i++)
 		{
@@ -75,19 +77,19 @@ public class Main {
 		else if(colors[1] != null && colors[2] == null) nbColorsNotNull = 2;
 		else nbColorsNotNull = 3;
 		
-		if(((message.length() + arg.getArg("magic").length()) * 8  / Integer.parseInt(arg.getArg("nbBits"))) > 
+		if(((message.length() + arg.getMagic().length()) * 8  / Integer.parseInt(arg.getNbBits())) > 
 			(manipMat.getImage().getWidth() * nbColorsNotNull * manipMat.getImage().getHeight())) 
 			throw new InvalidArgumentException("Message + magic number do not fit in the image");
 		
 		try
 		{ 
-			manipMat.dissimulationLSB(b, Integer.parseInt(arg.getArg("nbBits")), arg.getArg("pattern"), colors);
+			manipMat.dissimulationLSB(b, Integer.parseInt(arg.getNbBits()), arg.getPattern(), colors);
 		}
 		catch(InvalidArgumentException | EmptyArgumentException e)
 		{
 			System.out.println(e.getMessage());
 		}	
 		
-		manipMat.setPixelsColor(out, arg.getArg("formatIn"), arg.getArg("formatOut"));
+		manipMat.setPixelsColor(out, arg.getFormatIn(), arg.getFormatOut());
 	}
 }

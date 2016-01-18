@@ -9,13 +9,13 @@ public class MessageTreatment {
 
 	/**
 	 * This method takes a string as an argument, 
-	 * and returns a string containing the binary values of the characters of the string. 
+	 * and returns a BitSet containing the binary values of the characters of the string. 
 	 * 
 	 * @param chaine
 	 * @return BitSet
 	 */
-	public  BitSet ChaintoBinary(String chaine){
-		byte[] bytes = chaine.getBytes(); 			//réccupération des bytes correspondant a la chaine de characères.
+	public BitSet ChaintoBinary(String chaine){
+		byte[] bytes = chaine.getBytes(); 			//récupération des bytes correspondants a la chaine de caractères.
 		BitSet bs = BitSet.valueOf(bytes); 			//Passage de byte[] à BitSet (une liste de valeurs booléennes)
 		BitSet bsret = new BitSet(chaine.length()*8);
 		int z=0;
@@ -69,7 +69,7 @@ public class MessageTreatment {
 		occurences = occurences.replace(",", "");
 		while(!occurences.isEmpty())
 		{
-			for(int i = 0; i < occurences.length(); i++)
+			for(int i = 0; i < occurences.length(); i++) // Searching for the lowest frequency
 			{
 				if(occurences.charAt(i) == ':' && Character.getNumericValue(occurences.charAt(i+1)) < frequency) 
 				{
@@ -78,8 +78,9 @@ public class MessageTreatment {
 				}
 			}
 			frequency = 20000;
-			temp += occurences.charAt(position-1) + ":" + occurences.charAt(position+1) + ",";
-			occurences = occurences.replace(occurences.charAt(position-1) + ":" + occurences.charAt(position+1), "");
+			temp += occurences.charAt(position-1) + ":" + occurences.charAt(position+1); // Ajout de x:y à temp
+			occurences = occurences.replace(occurences.charAt(position-1) + ":" + occurences.charAt(position+1), ""); // Supression de x:y dans occurences
+			if(!occurences.isEmpty()) temp += ','; // Doesn't put a comma at the end of the ordered string
 		}
 		return temp;
 	}
