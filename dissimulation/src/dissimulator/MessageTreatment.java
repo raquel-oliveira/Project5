@@ -1,9 +1,11 @@
 package dissimulator;
 import java.util.BitSet;
+import java.util.HashMap;
+import java.util.Map;
 
 
 
-public class MessageToBinary {
+public class MessageTreatment {
 
 	/**
 	 * This method takes a string as an argument, 
@@ -32,6 +34,26 @@ public class MessageToBinary {
 	public BitSet FileToBinary(String filepath){
 		BitSet bsret = new BitSet();
 		return bsret;
+	}
+	
+	/**
+	 * Gets the number of iterations of all the letters in the message
+	 * @param message
+	 * @return the string like this "a:2,b:0,j:3"
+	 */
+	public String getNbIterations(String message)
+	{
+		String temp = "";
+		char character;
+		int count = 0;
+		while(!message.isEmpty())
+		{
+			character = message.charAt(0);
+			count = message.length() - message.replace(String.valueOf(character), "").length();
+			message = message.replace(String.valueOf(character), "");
+			temp += character + ":" + Integer.toString(count) + ",";
+		}
+		return temp;
 	}
 
 

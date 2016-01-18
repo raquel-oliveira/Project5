@@ -12,6 +12,7 @@ public class Main {
 		Arguments arg = new Arguments(args);
 		Metrics met = new Metrics();
 		//met.setMetric(arg.getArg("metrics"));
+		MessageTreatment t = new MessageTreatment();
 
 		String in = arg.getArg("fileIn");
 		String out = arg.getArg("fileOut");
@@ -53,8 +54,7 @@ public class Main {
 		ManipImage manipMat = new ManipImage(in);
         
         //Conversion du message en BitSet.
-
-		MessageToBinary t = new MessageToBinary();
+		
 		BitSet b = t.ChaintoBinary(message);
 		
 		// Traitement des couleurs
