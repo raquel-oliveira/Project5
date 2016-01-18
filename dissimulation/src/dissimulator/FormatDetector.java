@@ -7,11 +7,7 @@ import java.io.*;
 import java.util.Iterator;
 
 /**
- * Created by Paul Bertot
- *
- * Classe détectant les formats des fichiers d'image. Cette classe est utiliser pour identifier automatiquement
- * le format de l'image en entrée. Cette détection ne se base pas sur l'extension du fichier, et peut donc détecter
- * un fichier dont l'extension à été modifiée.
+ * Class detecting the format of an image. This class is used to automaticaly identify the format of an input image.
  */
 
 public class FormatDetector {
