@@ -142,6 +142,43 @@ int main(int argc, char *argv[]){
         printf("Third Channel: %d\n", thirdChannel);
     }
 
+    printf("----------Veryfication format--------------------\n");
+    img = cvLoadImage(fileIn, 1); // Second parameter == 1 (RGB) || == 0 (GREY)
+    printf("----------Trying to load the image--------------------\n");
+    if (img){
+        printf("----------isImage--------------------\n");
+        if(formatIn == NULL){
+            int format = detect_format(fileIn);
+            if (format == -1){
+                fprintf(stderr, "Not possible to detect format\n");
+                exit(-1);
+            }
+            else{
+                printf("Image accepted\n");
+            }
+        }
+        else {
+            flag = validateFormat();
+            switch (flag) {
+                case 0:
+                    printf("----------Format accepted--------------------");
+                    break;
+                case -1:
+                    fprintf(stderr, "%s is not a format accepted\n", formatIn);
+                    exit(-1);
+                case -2:
+                    fprintf(stderr, "This format is not the format of the image\n");
+                    exit(-2);
+                case -3:
+                    fprintf(stderr, "Not a format valid\n");
+                    exit(-2);
+            }
+        }
+    }else{
+        printf("Could not open the file\n");
+        exit(-3);
+    }
+
     cvReleaseImage(&img);
     free(message);
 
