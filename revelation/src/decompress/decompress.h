@@ -6,10 +6,11 @@
 #define REVELATIONN_DECOMPRESS_H
 
 #include "../arguments.h"
+#include "../utils/utilBit.h"
 
 typedef struct character {
     char value;
-    int key;
+    char key;
     int sizeOfKey;
     struct Caractere *next;
 } Character;

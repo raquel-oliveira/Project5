@@ -27,13 +27,23 @@ int createDictionary() {
     dictionary->size = numberElements;
     dictionary->elements = malloc((numberElements)* sizeof(Character));
     int i = 0; int aux_elem =0;
-    for (; i < numberElements; ++i) {
+    for (; i <= numberElements; ++i) {
         dictionary->elements[i].value = getc(output);;
         printf("Value of element: %d is : %c\n", i, dictionary->elements[i].value);
         dictionary->elements[i].sizeOfKey = getc(output);
         printf("The size of element: %d is : %d\n", i, dictionary->elements[i].sizeOfKey);
-        dictionary->elements[i].key = getc(output);
-        printf("The key of element: %d is %d\n", i, dictionary->elements[i].key);
+
+        int pos = dictionary->elements[i].sizeOfKey -1;
+        int bitavwsghd;
+        c = getc(output);
+        for(int k = 1; k <= dictionary->elements[i].sizeOfKey; k++){
+            bitavwsghd = get_bit(c, k);
+            dictionary->elements[i].key = setBit(dictionary->elements[i].key,pos, bitavwsghd);
+            printf("********The element %d, get bit: %d\n", i, bitavwsghd);
+            printf("########The key of element: %d in the %d loop\n", dictionary->elements[i].key, k);
+            pos--;
+        }
+        printf("---------The key of element: %d is %c----------\n", i, dictionary->elements[i].key);
 
     }
     dictionary->valueLastByte = getc(output);
