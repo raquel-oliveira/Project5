@@ -95,28 +95,17 @@ int main(int argc, char *argv[]){
         }
     }
 
-    fileIn = "Resources/1bitBuilding.png";
+    fileIn = "Resources/direct_Green_1.png";
     //Verifications:
     setArguments();
     printf("----------Check if is compress---------------------\n");
     if(!isCompress) {
         printf("----------Is not Compress---------------------\n");
       flag = revealDirect(); //default 1 bit, red green blue
-       int i = 0;
         switch (flag) {
             case 0:
-                while (message[i] != '\0') {
-                    printf("%c", message[i]);
-                    i++;
-                }
-                printf("\n\n");
+                //worked
                 break;
-
-            case -1: {
-                fprintf(stderr, "Error while reallocating memory for message\n");
-                exit(-1);
-            }
-
             case -2: {
                 fprintf(stderr, "Error Trying to access bit\n");
                 exit(-2);
@@ -132,6 +121,19 @@ int main(int argc, char *argv[]){
     else{
         printf("Not work with compress messages yet! \n");
         exit(-4);
+    }
+
+    if(isStandard){
+        output = fopen(fileOut, "r");
+        char c;
+        if (output) {
+            while ((c = getc(output)) != EOF)
+                putchar(c);
+            fclose(output);
+        }
+    }else{
+        printf("Reveal in the path: %s", fileOut);
+        exit(1);
     }
 
     cvReleaseImage(&img);

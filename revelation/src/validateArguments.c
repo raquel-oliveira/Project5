@@ -11,6 +11,7 @@ void setArguments(){
         fprintf(stderr, "There is no input file.\n");
         exit(-1);
     }
+    printf("Path File In: %s\n", fileIn);
 
     printf("----------Veryfication Bits---------------------\n");
     if (nbBits == -1){
@@ -22,6 +23,7 @@ void setArguments(){
             exit(-1);
         }
     }
+    printf("Bits: %d\n", nbBits);
 
     printf("----------Veryfication pattern--------------------\n");
     if(pattern == NULL){
@@ -48,13 +50,14 @@ void setArguments(){
                 exit(-4);
         }
     }
+    printf("Pattern: %s\n", pattern);
 
     printf("----------Set Channels--------------------\n");
     if (channels == NULL){
         /*firstChannel = 2;//R
         secondChannel = 1; //G
         thirdChannel = 0;*/ //B
-        firstChannel = 2;
+        firstChannel = 1;
         secondChannel = -1;
         thirdChannel = -1;
         printf("First Channel: %d\n", firstChannel);
@@ -85,16 +88,19 @@ void setArguments(){
 
     printf("----------Veryfication Output--------------------\n");
     if(fileOut != NULL){
+        isStandard = false;
         output = fopen(fileOut,"r");
         if (output == NULL){
             //TODO: Change this to create the file is not exist
-            printf("This file do not exist");
+            printf("This file do not exist\n");
             exit(-1);
         }
     } else {
+        isStandard = true;
         fileOut = "output.txt";
         output = fopen(fileOut, "w");
     }
+    printf("Path OutPut: %s\n", fileOut);
 
 
     printf("----------Veryfication format--------------------\n");
