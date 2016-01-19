@@ -4,12 +4,6 @@
 
 #include "decompress.h"
 
-typedef struct {
-    Character* elements; //Change this number to the number of first byte
-    int size;
-    int valueLastByte;
-} Dictionary;
-
 int createDictionary() {
     fileOut = "Resources/exempleToDecompress"; // To Test
     output = fopen(fileOut, "r"); // To test
@@ -29,21 +23,16 @@ int createDictionary() {
     int i = 0; int aux_elem =0;
     for (; i <= numberElements; ++i) {
         dictionary->elements[i].value = getc(output);;
-        printf("Value of element: %d is : %c\n", i, dictionary->elements[i].value);
         dictionary->elements[i].sizeOfKey = getc(output);
-        printf("The size of element: %d is : %d\n", i, dictionary->elements[i].sizeOfKey);
-
         int pos = dictionary->elements[i].sizeOfKey -1;
-        int bitavwsghd;
+        int bitSet;
         c = getc(output);
         for(int k = 1; k <= dictionary->elements[i].sizeOfKey; k++){
-            bitavwsghd = get_bit(c, k);
-            dictionary->elements[i].key = setBit(dictionary->elements[i].key,pos, bitavwsghd);
-            printf("********The element %d, get bit: %d\n", i, bitavwsghd);
-            printf("########The key of element: %d in the %d loop\n", dictionary->elements[i].key, k);
+            bitSet = get_bit(c, k);
+            dictionary->elements[i].key = setBit(dictionary->elements[i].key,pos, bitSet);
             pos--;
         }
-        printf("---------The key of element: %d is %c----------\n", i, dictionary->elements[i].key);
+        printf("---------The key of element: %c is %d with size %d----------\n", dictionary->elements[i].value, dictionary->elements[i].key, dictionary->elements[i].sizeOfKey);
 
     }
     dictionary->valueLastByte = getc(output);

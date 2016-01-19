@@ -15,5 +15,11 @@ typedef struct character {
     struct Caractere *next;
 } Character;
 
+typedef struct {
+    Character* elements; //Change this number to the number of first byte
+    int size;
+    int valueLastByte;
+} Dictionary;
+
 int createDictionary();
 #endif //REVELATIONN_DECOMPRESS_H
