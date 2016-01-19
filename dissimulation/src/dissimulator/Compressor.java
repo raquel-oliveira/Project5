@@ -34,11 +34,36 @@ public class Compressor {
     }
 
     public byte[] compressMessage(String msg){
+        int padd = 0;
         String[] letters  = msg.split("(?!^)");
-        int bitlen = 0;
         byte[] ret = new byte[(letters.length+1)*8];
+        int bc =0;
+        StringBuilder sbb = new StringBuilder();
 
-
+        for(String l : letters){
+            String codl = Integer.toBinaryString(dictionnary.get(l));
+            while(codl.length()<codelength.get(l)){
+                codl = "0"+codl;
+            }
+            sbb.append(codl);
+        }
+        while(sbb.length()%8!=0){
+            sbb.append("0");
+            padd++;
+        }
+        if(padd!=0)
+            padd = 8-padd;
+        String pad = Integer.toBinaryString(padd);
+        while(pad.length()<8){
+            pad = "0"+pad;
+        }
+        sbb.insert(0, pad);
+        for(int i=0, j=8; j<=sbb.length(); i+=8, j+=8){
+            String byt = sbb.substring(i, j);
+            Byte b = (byte) Integer.parseInt(byt, 2);
+            ret[bc] = reverseByte(b);
+            bc++;
+        }
         return ret;
     }
 
