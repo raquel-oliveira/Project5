@@ -37,11 +37,10 @@ void setArguments(){
                 exit(-1);
             case 1:
                 patternInt = flag; //Direct Pattern
-                printf("Direct pattern. \n");
                 break;
             case 2:
-                fprintf(stderr, "Inverse pattern not implemented\n");
-                exit(-2);
+                patternInt = flag;
+                break;
             case 3:
                 fprintf(stderr, "External spiral pattern not implemented\n");
                 exit(-3);
