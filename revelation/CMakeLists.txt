@@ -18,6 +18,7 @@ add_executable(
         src/image.c
         src/arguments.c
         src/validateArguments.c
+        src/pattern/direct.c
         src/utils/utilBit.c
         src/utils/hexa.c
         src/utils/formatDetector.c

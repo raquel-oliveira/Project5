@@ -18,7 +18,7 @@ void setArguments(){
     }
     else{
         if(nbBits>8 || nbBits <1){
-            fprintf(stderr, "Not possible to reveal a message with this number of bits\n");
+            fprintf(stderr, "Not possible to pattern a message with this number of bits\n");
             exit(-1);
         }
     }
@@ -87,12 +87,13 @@ void setArguments(){
     if(fileOut != NULL){
         output = fopen(fileOut,"r");
         if (output == NULL){
+            //TODO: Change this to create the file is not exist
             printf("This file do not exist");
             exit(-1);
         }
     } else {
         fileOut = "output.txt";
-        fopen(fileOut, "w");
+        output = fopen(fileOut, "w");
     }
 
 

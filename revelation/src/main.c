@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "arguments.h"
 #include "validateArguments.h"
+#include "pattern/direct.h"
 #include "reveal.h"
 
 #define FIN 0
@@ -89,7 +90,7 @@ int main(int argc, char *argv[]){
                 isCompress = true;
                 break;
             default:
-                //TODO: try to take it off the message: reveal: unrecognized option"
+                //TODO: try to take it off the message: pattern: unrecognized option"
                 printf("Not a recognized argument\n");
                 exit(-1);
         }
@@ -101,7 +102,7 @@ int main(int argc, char *argv[]){
     printf("----------Check if is compress---------------------\n");
     if(!isCompress) {
         printf("----------Is not Compress---------------------\n");
-   /*    flag = reveal(img, nbBits, magic, message, firstChannel, secondChannel,
+      flag = revealDirect(img, nbBits, magic, firstChannel, secondChannel,
                       thirdChannel); //default 1 bit, red green blue
        int i = 0;
         switch (flag) {
@@ -127,7 +128,7 @@ int main(int argc, char *argv[]){
                 fprintf(stderr, "There is no magic number");
                 exit(-3);
             }
-        }*/
+        }
     }
     else{
         printf("Not work with compress messages yet! \n");
