@@ -9,3 +9,4 @@ bool isCompress;
 int firstChannel, secondChannel, thirdChannel, nbBits, patternInt;
 int flag;
 IplImage *img;
+FILE * output;

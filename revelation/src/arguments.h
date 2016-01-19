@@ -18,5 +18,5 @@ extern bool isCompress;
 extern IplImage *img;
 extern int flag;
 extern int firstChannel, secondChannel, thirdChannel, nbBits, patternInt;
-
+extern FILE * output;
 #endif //REVELATIONN_ARGUMENTS_H

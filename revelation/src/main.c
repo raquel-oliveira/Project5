@@ -30,15 +30,16 @@ static struct option long_options[] =
 
 int main(int argc, char *argv[]){
     //defaultArguments:
-    pattern = NULL;
+    pattern = NULL; //"direct";
     fileIn = NULL;
     fileOut = NULL;
-    channels = NULL;
-    nbBits = 1;
+    channels = NULL;// "Red,Green,Blue";
+    nbBits = -1; //1;
     uchar *message = malloc(SIZE_MESSAGE);
-    magicHexa = NULL;
-    magic = NULL;
+    magicHexa = NULL; //"48454C50";
+    magic = NULL; //"HELP";
     img = NULL;
+    isCompress = false;
 
     int long_index=0;
     int opt = 0;
@@ -87,16 +88,22 @@ int main(int argc, char *argv[]){
                 printf("COMPRESS EXE: \n");
                 isCompress = true;
                 break;
+            default:
+                //TODO: try to take it off the message: reveal: unrecognized option"
+                printf("Not a recognized argument\n");
+                exit(-1);
         }
     }
 
-    fileIn = "Resources/1bitBuilding.png";
+    fileIn = "Resources/direct_Green_1.png";
     //Verifications:
     setArguments();
+    printf("----------Check if is compress---------------------\n");
     if(!isCompress) {
-        flag = reveal(img, nbBits, magic, message, firstChannel, secondChannel,
+        printf("----------Is not Compress---------------------\n");
+   /*    flag = reveal(img, nbBits, magic, message, firstChannel, secondChannel,
                       thirdChannel); //default 1 bit, red green blue
-        int i = 0;
+       int i = 0;
         switch (flag) {
             case 0:
                 while (message[i] != '\0') {
@@ -120,7 +127,7 @@ int main(int argc, char *argv[]){
                 fprintf(stderr, "There is no magic number");
                 exit(-3);
             }
-        }
+        }*/
     }
     else{
         printf("Not work with compress messages yet! \n");

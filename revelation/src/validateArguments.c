@@ -12,6 +12,17 @@ void setArguments(){
         exit(-1);
     }
 
+    printf("----------Veryfication Bits---------------------\n");
+    if (nbBits == -1){
+        nbBits = 1;
+    }
+    else{
+        if(nbBits>8 || nbBits <1){
+            fprintf(stderr, "Not possible to reveal a message with this number of bits\n");
+            exit(-1);
+        }
+    }
+
     printf("----------Veryfication pattern--------------------\n");
     if(pattern == NULL){
         pattern = "DIRECT";
@@ -40,9 +51,12 @@ void setArguments(){
 
     printf("----------Set Channels--------------------\n");
     if (channels == NULL){
-        firstChannel = 2;
-        secondChannel = 1;
-        thirdChannel = 0;
+        /*firstChannel = 2;//R
+        secondChannel = 1; //G
+        thirdChannel = 0;*/ //B
+        firstChannel = 1;
+        secondChannel = -1;
+        thirdChannel = -1;
         printf("First Channel: %d\n", firstChannel);
         printf("Second Channel: %d\n", secondChannel);
         printf("Third Channel: %d\n", thirdChannel);
@@ -68,6 +82,19 @@ void setArguments(){
         printf("Magic Number: %s \n", magic);
         //do the transform.
     }
+
+    printf("----------Veryfication Output--------------------\n");
+    if(fileOut != NULL){
+        output = fopen(fileOut,"r");
+        if (output == NULL){
+            printf("This file do not exist");
+            exit(-1);
+        }
+    } else {
+        fileOut = "output.txt";
+        fopen(fileOut, "w");
+    }
+
 
     printf("----------Veryfication format--------------------\n");
     img = cvLoadImage(fileIn, 1); // Second parameter == 1 (RGB) || == 0 (GREY)
