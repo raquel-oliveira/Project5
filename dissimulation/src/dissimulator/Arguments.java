@@ -35,7 +35,7 @@ public class Arguments {
 			else if(arguments[i].equals("-c")) channels = arguments[i+1].toLowerCase();
 			else if(arguments[i].equals("-p")) pattern = arguments[i+1].toLowerCase();
 			else if(arguments[i].equals("-magic")) magic = arguments[i+1];
-			else if(arguments[i].equals("-metrics")) metrics = arguments[i+1];
+			else if(arguments[i].equals("-metrics")) metrics = arguments[i+1].toLowerCase();
 			else if(arguments[i].equals("-compress")) compress = true;
 			else if(arguments[i].equals("-show")) show = true;
 		}

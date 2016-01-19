@@ -6,10 +6,11 @@ import java.util.BitSet;
 public class Main {
 	
 	public static void main(String[] args) throws IOException, Exception {
-		//Récupération des arguments, et utilisation
+		//Getting of arguments
 		
 		Arguments arg = new Arguments(args);
 		Metrics met = new Metrics();
+		if(arg.getMetrics().equals("time"))  met.setTime();
 		MessageTreatment msgTreatment = new MessageTreatment();
 		
 		String in = arg.getFileIn();
@@ -17,18 +18,23 @@ public class Main {
 		String message = arg.getMessage();
 		String[] colors = new String[3];
 
-		//Vérification du message pour le nombre magique
+		//Checking the message for the magic number
 		MagicNumberTester mnt = new MagicNumberTester(arg.getMagic());
 
 		message = msgTreatment.whetherFileOrText(message, mnt);
 		
+		// Compressing the message
+		if(arg.getMetrics().equals("compression_time")) met.setTime();
+		if(arg.getCompress()) msgTreatment.getNbIterations(message);
+		
+		if(arg.getMetrics().equals("compression_time")) met.getTime();
 		ManipImage manipMat = new ManipImage(in);
         
-        //Conversion du message en BitSet.
+        //From message to BitSet
 		
 		BitSet b = msgTreatment.ChaintoBinary(message);
 		
-		// Traitement des couleurs
+		// Colors treatment
 		
 		String channels = arg.getChannels(), temp = "";
 		
@@ -60,5 +66,7 @@ public class Main {
 		}	
 		
 		manipMat.setPixelsColor(out, arg.getFormatIn(), arg.getFormatOut());
+		if(arg.getMetrics().equals("impact"))  met.nbBitsImpacted(message, nbColorsNotNull, manipMat.getImage());
+		else if(arg.getMetrics().equals("time"))  met.getTime();
 	}
 }
