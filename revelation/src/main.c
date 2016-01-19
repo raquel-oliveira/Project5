@@ -4,6 +4,7 @@
 #include "validateArguments.h"
 #include "pattern/direct.h"
 #include "pattern/reverse.h"
+#include "decompress/decompress.h"
 
 #define FIN 0
 #define IN 1
@@ -95,8 +96,9 @@ int main(int argc, char *argv[]){
                 exit(-1);
         }
     }
-
-    fileIn = "Resources/direct_Green_1.png";
+    int aa = createDictionary();
+    /*if (aa == 0) exit(0);
+    fileIn = "Resources/1bitRedJOAO.png";
     //Verifications:
     setArguments();
     printf("----------Check if is compress---------------------\n");
@@ -151,6 +153,6 @@ int main(int argc, char *argv[]){
 
     cvReleaseImage(&img);
     free(message);
-
+    */
     return 0;
 }

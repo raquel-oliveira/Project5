@@ -10,6 +10,7 @@ int reveal(int initialRow, int finalRow, int initialWidth, int finalWidth) {
     char* end = NULL;
     int sizeMagic = strlen(magic);
     char* message = malloc(sizeMagic * sizeof(uchar));
+    FILE * temp;
     output = fopen(fileOut, "w+");
     while(end == NULL)
     {
@@ -61,4 +62,5 @@ int reveal(int initialRow, int finalRow, int initialWidth, int finalWidth) {
         }
         nbOccurences++;
     }
+    return 1;
 }
