@@ -54,7 +54,7 @@ void setArguments(){
         /*firstChannel = 2;//R
         secondChannel = 1; //G
         thirdChannel = 0;*/ //B
-        firstChannel = 1;
+        firstChannel = 2;
         secondChannel = -1;
         thirdChannel = -1;
         printf("First Channel: %d\n", firstChannel);

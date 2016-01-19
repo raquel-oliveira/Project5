@@ -3,7 +3,6 @@
 #include "arguments.h"
 #include "validateArguments.h"
 #include "pattern/direct.h"
-#include "reveal.h"
 
 #define FIN 0
 #define IN 1
@@ -96,14 +95,13 @@ int main(int argc, char *argv[]){
         }
     }
 
-    fileIn = "Resources/direct_Green_1.png";
+    fileIn = "Resources/1bitBuilding.png";
     //Verifications:
     setArguments();
     printf("----------Check if is compress---------------------\n");
     if(!isCompress) {
         printf("----------Is not Compress---------------------\n");
-      flag = revealDirect(img, nbBits, magic, firstChannel, secondChannel,
-                      thirdChannel); //default 1 bit, red green blue
+      flag = revealDirect(); //default 1 bit, red green blue
        int i = 0;
         switch (flag) {
             case 0:
@@ -115,17 +113,18 @@ int main(int argc, char *argv[]){
                 break;
 
             case -1: {
-                fprintf(stderr, "Error while reallocating memory for message");
+                fprintf(stderr, "Error while reallocating memory for message\n");
                 exit(-1);
             }
 
             case -2: {
-                fprintf(stderr, "Error Trying to access bit");
+                fprintf(stderr, "Error Trying to access bit\n");
                 exit(-2);
             }
 
             case -3: {
-                fprintf(stderr, "There is no magic number");
+                unlink(fileOut);
+                fprintf(stderr, "There is no magic number\n");
                 exit(-3);
             }
         }
