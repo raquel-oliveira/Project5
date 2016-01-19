@@ -10,7 +10,6 @@ int reveal(int initialRow, int finalRow, int initialWidth, int finalWidth) {
     char* end = NULL;
     int sizeMagic = strlen(magic);
     char* message = malloc(sizeMagic * sizeof(uchar));
-
     output = fopen(fileOut, "w+");
     while(end == NULL)
     {
@@ -39,6 +38,7 @@ int reveal(int initialRow, int finalRow, int initialWidth, int finalWidth) {
                     message[i] = letter;
                     i++;
                     if(i > sizeMagic-1){
+                        //TODO: It's jumping fot multiples of size of magicNumber. Change this!!!!!!!
                         i = 0;
 
                         end = strstr(message, magic); // Check if magic number is found --> when the message ends
