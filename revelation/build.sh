@@ -4,6 +4,7 @@ file="./build.sh"
 
 if [ -r $file ]
 then
+	make clean
    echo "-- build the module"
    cmake .
    make
