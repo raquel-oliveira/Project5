@@ -28,6 +28,7 @@ void setArguments(){
     printf("----------Veryfication pattern--------------------\n");
     if(pattern == NULL){
         pattern = "DIRECT";
+        patternInt = 1;
     }
     else{
         flag = validatePattern();

@@ -3,6 +3,7 @@
 #include "arguments.h"
 #include "validateArguments.h"
 #include "pattern/direct.h"
+#include "pattern/reverse.h"
 
 #define FIN 0
 #define IN 1
@@ -101,10 +102,33 @@ int main(int argc, char *argv[]){
     printf("----------Check if is compress---------------------\n");
     if(!isCompress) {
         printf("----------Is not Compress---------------------\n");
-      flag = revealDirect(); //default 1 bit, red green blue
+        printf("%d", patternInt);
+        flag = patternInt;
+        switch (flag){
+            case 1: //is direct
+                printf("STARTING REVEAL DIRECT\n");
+                flag = revealDirect();
+              break;
+            case 2: //Is reverse
+                printf("STARTING REVEAL REVERSE\n");
+                flag = revealReverse();
+                break;
+        }
         switch (flag) {
             case 0:
-                //worked
+                printf("CASE OK\n");
+                if(isStandard){
+                    output = fopen(fileOut, "r");
+                    char c;
+                    if (output) {
+                        while ((c = getc(output)) != EOF)
+                            putchar(c);
+                        fclose(output);
+                    }
+                }else{
+                    printf("Reveal in the path: %s", fileOut);
+                    exit(1);
+                }
                 break;
             case -2: {
                 fprintf(stderr, "Error Trying to access bit\n");
@@ -123,18 +147,7 @@ int main(int argc, char *argv[]){
         exit(-4);
     }
 
-    if(isStandard){
-        output = fopen(fileOut, "r");
-        char c;
-        if (output) {
-            while ((c = getc(output)) != EOF)
-                putchar(c);
-            fclose(output);
-        }
-    }else{
-        printf("Reveal in the path: %s", fileOut);
-        exit(1);
-    }
+
 
     cvReleaseImage(&img);
     free(message);
