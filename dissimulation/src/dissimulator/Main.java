@@ -66,6 +66,7 @@ public class Main {
 		}	
 		
 		manipMat.setPixelsColor(out, arg.getFormatIn(), arg.getFormatOut());
+		
 		if(arg.getMetrics().equals("impact"))  met.nbBitsImpacted(message, nbColorsNotNull, manipMat.getImage());
 		else if(arg.getMetrics().equals("time"))  met.getTime();
 	}
