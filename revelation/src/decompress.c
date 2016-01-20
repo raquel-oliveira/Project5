@@ -11,6 +11,7 @@ typedef struct t_table /* liste simplement chaînee ordonnée */
   struct t_table * suivant; /* Pointeur vers l'élément suivant */
 }*Table;
 
+// division the string binary every length of 8
 char ** split_with_length(char *in){
 	int count = 0;
 
@@ -22,14 +23,15 @@ char ** split_with_length(char *in){
 	for( ; *in ; in = in + 8){
 		strncpy(out[count],in,8);
 		//printf("%s\n", in);
-		printf("%d\n",count );
-		printf("%s\n", out[count]);
+		//printf("%d\n",count );
+		//printf("%s\n", out[count]);
 		count++;
 	}
 	return out;
 			
 }
 
+//transform a string binary to a integer decimal
 int btd(char *s){
 	int number = 0;
 	int i,n = 0;
@@ -45,18 +47,22 @@ Table creer_table(void)
   return NULL; /* Simple, isn't it? */
 }
 
+// add element at the head of a table
 void ajout_table(Table *table, char word, char *code){
 	Table tmp = malloc(sizeof(struct t_table));
+	tmp->code = malloc(sizeof(char));
 	//printf("sssssss\n");
 	tmp->word = word;
 	//printf("sssssss\n");
-	tmp->code = strdup(code);
+	//tmp->code = strdup(code);
+	strcpy(tmp->code,code);
 	//printf("sssssss\n");
 	tmp->suivant = *table;
 	*table = tmp;
 	//printf("sssssss\n");
 }
 
+//get the dictionary of the symbols
 Table getDic(char *in){
 	char **out = split_with_length(in);
 	char word;
@@ -76,6 +82,7 @@ Table getDic(char *in){
 
 		word = btd(c1);
 		strncpy(code,c3,btd(c2));
+		code[btd(c2)] = '\0';
 		//printf("%c : %s\n", word, code);
 		//printf("\n");
 		ajout_table(&table,word,code);
@@ -93,6 +100,7 @@ void imprimer_table(Table table)
 }
 
 
+//get the string which stock message
 char * getString(char *in){
 	//Table dic = getDic(in);
 	int nmblast,sizeIn,start,end,lenstr;
@@ -115,38 +123,79 @@ char * getString(char *in){
 	return string;
 }
 
-// char * decompress(char *in){
-// 	Table dic = getDic(in);
-// 	char * string = getString(in);
-// }
+// judge if s1 contained in prefix of s2
+int strcontain(char *s1, char *s2){
+	int len1 = strlen(s1);
+	int len2 = strlen(s2);
+	int contain = 0;
+	if(len1 <= len2){
+		for(int i = 0; i < len1 ; i++){
+			if(s1[i] == s2[i])
+				contain = 1;	
+			else return 0;
+		}
+	}
+	return contain;
+}
 
+//decompress the message
+char * decompress(char *in){
+	Table table = getDic(in);
+	Table pre;
+	imprimer_table(table);
+	char word, *code;
+	int contain,count = 0;
+	char * result = malloc(sizeof(char));
+	char * string = getString(in);
+	printf("%s\n", string);
+	while(*string){
+		//printf("%c  ", *string);
+		//string++;
+		for(pre = table ; pre ; pre = pre->suivant){
+			word = pre->word;
+			code = pre->code;
+			//printf("%c\n", word);
+			//printf("%s\n", code);
+			//printf("%s\n",string);
+			contain = strcontain(code,string);
+			//printf("%d\n", contain);
+			if(contain == 1){
+				string = string + strlen(code);
+				result[count] = word;
+				//printf("%s\n", result);
+				count++;
+			}
+			
+		}	
+	}
+
+	return result;
+}
 
 
 int main(int argc, char const *argv[])
 {
-	char *in = "00000001011001000000001000000000011001010000001001000000000001000001000100010000";
-                                                                              //000100010001
-	Table table = getDic(in);
-	imprimer_table(table);
+	//00000100
+	//01100100 00000010 00000000
+	//01100101 00000010 01000000
+	//01100011 00000011 10000000
+	//01100010 00000011 10100000
+	//01100001 00000010 11000000
+	//00000101
+	//11111010 00110000 11011011 10001000
 
-	char *string = getString(in);
-	printf("%s\n", string);
-	printf("%d\n", strlen(string));
-	printf("\n");
-	
-	//char **out = split_with_length(in);
-	//printf("%d\n", sizeof(out));
-	// int i = 0;
-	// while(i < 4){
-	// 	printf("%s\n", out[i]);
-	// 	i++;
-	// }
+	char *in = "000001000110010000000010000000000110010100000010010000000110001100000011100000000110001000000011101000000110000100000010110000000000010111111010001100001101101110001000";
+    char *result = decompress(in);
+	printf("%s\n", result);
 
-	// int b = btd("01100100");
-	// char c = b;
-	// printf("%d\n", b);
-	// printf("%c\n", c);
-	
+    //printf("%d\n", strlen(in));
+	// Table table = getDic(in);
+	// imprimer_table(table);
+
+	// char *string = getString(in);
+	// printf("%s\n", string);
+	// printf("%d\n", strlen(string));
+	// printf("\n");
 
 	return 0;
 }
