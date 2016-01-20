@@ -98,19 +98,7 @@ int main(int argc, char *argv[]){
                 exit(-1);
         }
     }
-    fileOut = "Resources/exempleToDecompress"; // To Test
-    output = fopen(fileOut, "r");
-    Dictionary *a ;
-    a = createDictionary(output);
-    if (a == -1){
-        printf("Dictionary not created\n");
-        exit(EXIT_FAILURE);
-    }
-    /*FILE *oi;
-    oi = fopen("tempMessageNotDecode.txt", "r");
-    int b = decompress(a,output);*/
 
-    /*if (aa == 0) exit(0);
     fileIn = "Resources/1bitRedJOAO.png";
     //Verifications:
     setArguments();
@@ -158,14 +146,29 @@ int main(int argc, char *argv[]){
         }
     }
     else{
-        printf("Not work with compress messages yet! \n");
+        fileOut = "Resources/Compress/dictionaryAndMessage"; // To Test
+        output = fopen(fileOut, "r");
+        Dictionary *a ;
+        a = createDictionary(output);
+        if (a == NULL){
+            printf("Dictionary not created\n Could not open the file \n");
+            exit(EXIT_FAILURE);
+        }
+
+        int k;
+        FILE * out;
+        out = fopen("Resources/Compress/onlyMessage", "r");
+        k = decompress(a,out);
+        if(k == 0){
+            printf("Worked \n");
+            exit(0);
+        }
+        //printf("Not work with compress messages yet! \n");
         exit(-4);
     }
 
 
-
-    cvReleaseImage(&img);
-    free(message);
-    */
+    //cvReleaseImage(&img);
+    //free(message);
     return 0;
 }

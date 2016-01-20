@@ -54,22 +54,15 @@ void setArguments(){
 
     printf("----------Set Channels--------------------\n");
     if (channels == NULL){
-        /*firstChannel = 2;//R
-        secondChannel = 1; //G
-        thirdChannel = 0;*/ //B
         firstChannel = 2;
-        secondChannel = -1;
-        thirdChannel = -1;
-        printf("First Channel: %d\n", firstChannel);
-        printf("Second Channel: %d\n", secondChannel);
-        printf("Third Channel: %d\n", thirdChannel);
+        secondChannel = 1;
+        thirdChannel = 0;
     }else{
-        //TODO: The set channels its not separating correctly
         setChannels();
-        printf("First Channel: %d\n", firstChannel);
-        printf("Second Channel: %d\n", secondChannel);
-        printf("Third Channel: %d\n", thirdChannel);
     }
+    printf("First Channel: %d\n", firstChannel);
+    printf("Second Channel: %d\n", secondChannel);
+    printf("Third Channel: %d\n", thirdChannel);
 
     printf("----------CheckMagicNumber--------------------\n");
     if(magicHexa == NULL){
