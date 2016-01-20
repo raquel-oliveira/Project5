@@ -13,14 +13,6 @@ public class Main {
 		Arguments arg = new Arguments(args);
 		Metrics met = new Metrics();
 		if(arg.getMetrics().equals("time"))  met.setTime();
-		
-		HashMap<String, Integer> a = new HashMap<>();
-		HashMap<String, Integer> c = new HashMap<>();
-		a.put("g", 0);
-		c.put("g", 4);
-		a.put("c", 2);
-		c.put("c", 3);
-		met.getDictionary(a, c, "blablablatatata");
 		MessageTreatment msgTreatment = new MessageTreatment();
 		
 		String in = arg.getFileIn();
@@ -39,6 +31,21 @@ public class Main {
 			if(mnt.doesStringContainMN(message))
 				throw new MagicNumberException("Ce message contient le nombre magique");
 			else message += mnt.hexStringtoString();
+		}
+		else
+		{
+			PredefinedDictionnary dict = new PredefinedDictionnary();
+			Compressor compressor = new Compressor(dict.getDicoCode(), dict.getDicoLength());
+			byte[] array1 = compressor.messageCompression(message);
+			byte[] array2 = mnt.mnCompressionBArray();
+			
+			
+			for(int k = 0, cpt = 0; k < bitset.length; k++, cpt++)
+			{
+				if(bitset.get(k)) System.out.print("1");
+				else System.out.print("0");
+				if(cpt%8 == 0) System.out.print(" ");
+			}
 		}
 		
 		// Compressing the message
