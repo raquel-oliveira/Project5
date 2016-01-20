@@ -5,6 +5,8 @@
 #include "pattern/direct.h"
 #include "pattern/reverse.h"
 #include "decompress/decompress.h"
+#include "decompress/dictionary.h"
+
 
 #define FIN 0
 #define IN 1

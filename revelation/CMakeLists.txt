@@ -20,6 +20,8 @@ add_executable(
         src/pattern/reveal.c
         src/pattern/direct.c
         src/pattern/reverse.c
+        src/decompress/decompress.c
+        src/decompress/dictionary.c
         src/utils/utilBit.c
         src/utils/hexa.c
         src/utils/formatDetector.c
