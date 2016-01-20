@@ -23,17 +23,29 @@ public class Compressor {
         this.msg = s;
     }
 
+    public int getMdc(){
+        return this.mdc;
+    }
+
+    public void setMdc(int n){
+        this.mdc = n;
+    }
+
+    public String getMsg(){
+        return this.msg;
+    }
+
     public byte[] compressDictionnary(){
         int i=0;
-        String[] letters = this.msg.split("(?!^)");
+        String[] letters = this.getMsg().split("(?!^)");
         Set<String> uniquelet = new LinkedHashSet<String>();
         for(String s : letters){
             uniquelet.add(s);
         }
-        this.mdc = uniquelet.size();
+        this.setMdc(uniquelet.size());
         byte symb = reverseByte(this.integerToByte(uniquelet.size()-1));
 
-        byte[] b = new byte[this.mdc*3+1];
+        byte[] b = new byte[this.getMdc()*3+1];
         b[i++] = symb;
 
 
@@ -56,7 +68,7 @@ public class Compressor {
     public byte[] compressMessage(){
         int padd = 0;
         String[] letters  = this.msg.split("(?!^)");
-        byte[] ret = new byte[letters.length+1];
+        byte[] ret = new byte[compMessageByteNb(letters)+1];
         int bc =0;
         StringBuilder sbb = new StringBuilder();
 
@@ -99,6 +111,18 @@ public class Compressor {
             }
         }
         return ret;
+    }
+
+    public int compMessageByteNb(String[] characs){
+        int bits =0;
+        int bytes = 0;
+        for(String c : characs){
+            bits = bits+codelength.get(c);
+        }
+        if (bits%8 !=0)
+            bytes = (bits/8)+1;
+        else bytes = bits/8;
+        return bytes;
     }
 
 
