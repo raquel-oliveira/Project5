@@ -14,7 +14,7 @@
 #include <ctype.h>
 
 extern char *formatIn, *fileIn, *fileOut, *channels, *pattern, *magic, *magicHexa;
-extern bool isCompress, isStandard;
+extern bool isCompress, isStandard, isShow;
 extern IplImage *img;
 extern int flag;
 extern int firstChannel, secondChannel, thirdChannel, nbBits, patternInt;

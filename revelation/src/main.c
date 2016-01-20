@@ -16,6 +16,7 @@
 #define P 5
 #define MAGIC 6
 #define COMPRESS 7
+#define SHOW 8
 #define SIZE_MESSAGE 100
 
 //TODO: why optional argument doesn't work?
@@ -29,11 +30,11 @@ static struct option long_options[] =
                 {"p", required_argument, NULL, P},
                 {"magic", required_argument, NULL, MAGIC},
                 {"compress", no_argument, NULL, COMPRESS},
+                {"show", no_argument, NULL, SHOW},
                 {NULL, 0, NULL, 0}
         };
 
 int main(int argc, char *argv[]){
-    //defaultArguments:
     pattern = NULL; //"direct";
     fileIn = NULL;
     fileOut = NULL;
@@ -44,14 +45,12 @@ int main(int argc, char *argv[]){
     magic = NULL; //"HELP";
     img = NULL;
     isCompress = false;
+    isShow = false;
 
     int long_index=0;
     int opt = 0;
-
     //TODO: fix why he goes to 0(Fin) if the option is not valid.
     while((opt = getopt_long_only(argc, argv, "" , long_options, &long_index)!= -1)){
-        printf("---------Arguments--------------------\n");
-        printf("Long index: %d \n Opt: %d \n",long_index,opt);
         switch (long_index){
             case FIN:
                 printf("FIN EXE: \n");
@@ -92,6 +91,10 @@ int main(int argc, char *argv[]){
                 printf("COMPRESS EXE: \n");
                 isCompress = true;
                 break;
+            case SHOW:
+                printf("SHOW EXE: \n");
+                isShow = true;
+                break;
             default:
                 //TODO: try to take it off the message: pattern: unrecognized option"
                 printf("Not a recognized argument\n");
@@ -102,50 +105,56 @@ int main(int argc, char *argv[]){
     fileIn = "Resources/1bitRedJOAO.png";
     //Verifications:
     setArguments();
+    printf("----------Make reveal--------------------\n");
+   /* printf("%d", patternInt);
+    flag = patternInt;
+    switch (flag){
+        case 1: //is direct
+            printf("STARTING REVEAL DIRECT\n");
+            flag = revealDirect();
+            break;
+        case 2: //Is reverse
+            printf("STARTING REVEAL REVERSE\n");
+            flag = revealReverse();
+            break;
+    }
+    switch (flag) {
+        case 0:
+            printf("CASE OK\n");
+            if(isStandard){
+                output = fopen(fileOut, "r");
+                char c;
+                if (output) {
+                    while ((c = getc(output)) != EOF)
+                        putchar(c);
+                    fclose(output);
+                }
+            }else{
+                printf("Reveal in the path: %s", fileOut);
+                exit(1);
+            }
+            break;
+        case -2: {
+            fprintf(stderr, "Error Trying to access bit\n");
+            exit(-2);
+        }
+
+        case -3: {
+            unlink(fileOut);
+            fprintf(stderr, "There is no magic number\n");
+            exit(-3);
+        }
+    }*/
+    printf("END REVEAL\n");
+
     printf("----------Check if is compress---------------------\n");
     if(!isCompress) {
-        printf("----------Is not Compress---------------------\n");
-        printf("%d", patternInt);
-        flag = patternInt;
-        switch (flag){
-            case 1: //is direct
-                printf("STARTING REVEAL DIRECT\n");
-                flag = revealDirect();
-              break;
-            case 2: //Is reverse
-                printf("STARTING REVEAL REVERSE\n");
-                flag = revealReverse();
-                break;
-        }
-        switch (flag) {
-            case 0:
-                printf("CASE OK\n");
-                if(isStandard){
-                    output = fopen(fileOut, "r");
-                    char c;
-                    if (output) {
-                        while ((c = getc(output)) != EOF)
-                            putchar(c);
-                        fclose(output);
-                    }
-                }else{
-                    printf("Reveal in the path: %s", fileOut);
-                    exit(1);
-                }
-                break;
-            case -2: {
-                fprintf(stderr, "Error Trying to access bit\n");
-                exit(-2);
-            }
+        printf("----------Is not compress---------------------\n");
 
-            case -3: {
-                unlink(fileOut);
-                fprintf(stderr, "There is no magic number\n");
-                exit(-3);
-            }
-        }
     }
     else{
+        printf("----------Is compress---------------------\n");
+
         fileOut = "Resources/Compress/dictionaryAndMessage"; // To Test
         output = fopen(fileOut, "r");
         Dictionary *a ;
@@ -161,10 +170,13 @@ int main(int argc, char *argv[]){
         k = decompress(a,out);
         if(k == 0){
             printf("Worked \n");
-            exit(0);
+           // exit(0);
         }
-        //printf("Not work with compress messages yet! \n");
-        exit(-4);
+        if(isShow){
+            printf("-----------SHOW DICTIONARY---------\n");
+            printDictionary(a);
+        }
+       // free(a); free(output);
     }
 
 

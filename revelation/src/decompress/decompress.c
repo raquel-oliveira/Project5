@@ -15,7 +15,7 @@ int decompress(Dictionary* d, FILE* onlyMessage){ //put file in the assignature
     int aux =1; // Auxiliar to take the bit of the byte
 
     buffer = setBit(buffer, count, get_bit(byteM, aux)); //First buffer setted
-    count++; //As the firt bit was setted, the count is 1 because use one bit of the byte
+    count++; //As the first bit was setted, the count is 1 because use one bit of the byte
 
     //TODO: Don't go to the whole message. Look the size of the number of bits used in the last byte
     while(!feof(onlyMessage)){
@@ -44,5 +44,4 @@ int decompress(Dictionary* d, FILE* onlyMessage){ //put file in the assignature
     }
     //TODO: Delete the variable file OnlyMessage
     return 0;
-
 }
