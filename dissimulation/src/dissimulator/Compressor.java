@@ -1,6 +1,8 @@
 package dissimulator;
 
 import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 /**
  * Created by Paul Bertot on 1/19/16.
@@ -9,18 +11,35 @@ public class Compressor {
 
     private HashMap<String, Integer> dictionnary;
     private HashMap<String, Integer> codelength;
+    private String msg;
+    private int mdc;
 
     public Compressor(HashMap<String, Integer> dic, HashMap<String, Integer> cl){
         this.dictionnary = dic;
         this.codelength = cl;
     }
 
+    public void setMessage(String s){
+        this.msg = s;
+    }
+
     public byte[] compressDictionnary(){
-        byte[] b = new byte[this.dictionnary.size()*3+100];
         int i=0;
-        byte symb = reverseByte(this.integerToByte(dictionnary.size()-1));
+        String[] letters = this.msg.split("(?!^)");
+        Set<String> uniquelet = new LinkedHashSet<String>();
+        for(String s : letters){
+            uniquelet.add(s);
+        }
+        this.mdc = uniquelet.size();
+        byte symb = reverseByte(this.integerToByte(uniquelet.size()-1));
+
+        byte[] b = new byte[this.mdc*3+1];
         b[i++] = symb;
-        for(String s : this.dictionnary.keySet()){
+
+
+
+        for(String s : uniquelet){
+
             byte letter = reverseByte(s.getBytes()[0]);
             byte cl = reverseByte(this.integerToByte(codelength.get(s)));
             byte temp = (byte) (this.integerToByte(dictionnary.get(s))<<(8-codelength.get(s)));
@@ -30,6 +49,7 @@ public class Compressor {
             b[i++] = cl;
             b[i++] = dic;
         }
+
         return b;
     }
 
@@ -67,15 +87,15 @@ public class Compressor {
         return ret;
     }
 
-    public byte[] groupMessage(byte[] dic,byte[] msg){
-        byte[] ret = new byte[dic.length+msg.length];
-        for(int i=0; i<dic.length; i++){
-            if(dic[i]!=0 || i==0)
-                ret[i]=dic[i];
+    public byte[] groupByteArray(byte[] b1,byte[] b2){
+        byte[] ret = new byte[b1.length+b2.length];
+        for(int i=0; i<b1.length; i++){
+            if(b1[i]!=0 || i==0)
+                ret[i]=b1[i];
         }
-        for(int j=0; j<msg.length;j++){
-            if(msg[j]!=0){
-                ret[j+dic.length]= msg[j];
+        for(int j=0; j<b2.length;j++){
+            if(b2[j]!=0){
+                ret[j+b1.length]= b2[j];
             }
         }
         return ret;
