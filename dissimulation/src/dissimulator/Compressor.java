@@ -67,6 +67,20 @@ public class Compressor {
         return ret;
     }
 
+    public byte[] groupMessage(byte[] dic,byte[] msg){
+        byte[] ret = new byte[dic.length+msg.length];
+        for(int i=0; i<dic.length; i++){
+            if(dic[i]!=0 || i==0)
+                ret[i]=dic[i];
+        }
+        for(int j=0; j<msg.length;j++){
+            if(msg[j]!=0){
+                ret[j+dic.length]= msg[j];
+            }
+        }
+        return ret;
+    }
+
 
     public Byte integerToByte(int i){
         Byte ret = Byte.valueOf(i+"");
