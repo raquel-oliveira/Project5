@@ -7,6 +7,7 @@
 
 #include "../arguments.h"
 #include "../utils/utilBit.h"
+#include <stdio.h>
 
 typedef struct character {
     char value;
@@ -41,6 +42,6 @@ int getSizeOfKey(Dictionary* d, int index);
 
 void setSizeOfKey(Dictionary* d, int index, int size);
 
-int createDictionary();
+Dictionary* createDictionary(FILE* afterReveal);
 
 #endif //REVELATIONN_DICTIONARY_H

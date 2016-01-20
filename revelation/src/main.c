@@ -98,7 +98,18 @@ int main(int argc, char *argv[]){
                 exit(-1);
         }
     }
-    int aa = createDictionary();
+    fileOut = "Resources/exempleToDecompress"; // To Test
+    output = fopen(fileOut, "r");
+    Dictionary *a ;
+    a = createDictionary(output);
+    if (a == -1){
+        printf("Dictionary not created\n");
+        exit(EXIT_FAILURE);
+    }
+    /*FILE *oi;
+    oi = fopen("tempMessageNotDecode.txt", "r");
+    int b = decompress(a,output);*/
+
     /*if (aa == 0) exit(0);
     fileIn = "Resources/1bitRedJOAO.png";
     //Verifications:
