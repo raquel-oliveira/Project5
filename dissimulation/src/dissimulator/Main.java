@@ -17,18 +17,26 @@ public class Main {
 		String out = arg.getFileOut();
 		String message = arg.getMessage();
 		String[] colors = new String[3];
+		ManipImage manipMat = new ManipImage(in);
 
 		//Checking the message for the magic number
 		MagicNumberTester mnt = new MagicNumberTester(arg.getMagic());
 
 		message = msgTreatment.whetherFileOrText(message, mnt);
 		
+		if(!arg.getCompress())
+		{
+			if(mnt.doesStringContainMN(message))
+				throw new MagicNumberException("Ce message contient le nombre magique");
+			else message += mnt.hexStringtoString();
+		}
+		System.out.println(msgTreatment.getNbIterations(message));
+		
 		// Compressing the message
 		if(arg.getMetrics().equals("compression_time")) met.setTime();
 		if(arg.getCompress()) msgTreatment.getNbIterations(message);
 		
 		if(arg.getMetrics().equals("compression_time")) met.getTime();
-		ManipImage manipMat = new ManipImage(in);
         
         //From message to BitSet
 		

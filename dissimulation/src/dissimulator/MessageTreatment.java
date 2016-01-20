@@ -45,11 +45,10 @@ public class MessageTreatment {
 		{
 			character = message.charAt(0);
 			count = message.length() - message.replace(String.valueOf(character), "").length();
-			message = message.replace(String.valueOf(character), "");
+			message = message.replace(String.valueOf(character), "");  // Erase every 'a' for example
 			temp += character + ":" + Integer.toString(count);
 			if(!message.isEmpty()) temp += ",";
 		}
-		System.out.println(sortByAscendingOrder(temp));
 		return sortByAscendingOrder(temp);
 	}
 	 /**
@@ -97,14 +96,6 @@ public class MessageTreatment {
 			} finally {
 				br.close();
 			}
-			if (mnt.doesStringContainMN(message))
-				throw new MagicNumberException("Le contenu de ce fichier texte contient le mot magique");
-			else message += mnt.hexStringtoString();
-		}
-		else {
-			if(mnt.doesStringContainMN(message))
-				throw new MagicNumberException("Ce message contient le nombre magique");
-			else message += mnt.hexStringtoString();
 		}
 		
 		return message;
