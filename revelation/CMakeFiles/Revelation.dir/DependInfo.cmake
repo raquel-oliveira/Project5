@@ -7,7 +7,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/Raquel/Desktop/NSA/private/revelation/src/formatDetector.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/Revelation.dir/src/formatDetector.c.o"
   "/Users/Raquel/Desktop/NSA/private/revelation/src/image.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/Revelation.dir/src/image.c.o"
   "/Users/Raquel/Desktop/NSA/private/revelation/src/main.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/Revelation.dir/src/main.c.o"
-  "/Users/Raquel/Desktop/NSA/private/revelation/src/reveal.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/Revelation.dir/src/reveal.c.o"
+  "/Users/Raquel/Desktop/NSA/private/revelation/src/pattern.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/Revelation.dir/src/pattern.c.o"
   "/Users/Raquel/Desktop/NSA/private/revelation/src/util.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/Revelation.dir/src/util.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")

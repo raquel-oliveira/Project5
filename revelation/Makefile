@@ -150,6 +150,60 @@ src/arguments.c.s:
 	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/arguments.c.s
 .PHONY : src/arguments.c.s
 
+src/decompress/decompress.o: src/decompress/decompress.c.o
+
+.PHONY : src/decompress/decompress.o
+
+# target to build an object file
+src/decompress/decompress.c.o:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/decompress/decompress.c.o
+.PHONY : src/decompress/decompress.c.o
+
+src/decompress/decompress.i: src/decompress/decompress.c.i
+
+.PHONY : src/decompress/decompress.i
+
+# target to preprocess a source file
+src/decompress/decompress.c.i:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/decompress/decompress.c.i
+.PHONY : src/decompress/decompress.c.i
+
+src/decompress/decompress.s: src/decompress/decompress.c.s
+
+.PHONY : src/decompress/decompress.s
+
+# target to generate assembly for a file
+src/decompress/decompress.c.s:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/decompress/decompress.c.s
+.PHONY : src/decompress/decompress.c.s
+
+src/decompress/dictionary.o: src/decompress/dictionary.c.o
+
+.PHONY : src/decompress/dictionary.o
+
+# target to build an object file
+src/decompress/dictionary.c.o:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/decompress/dictionary.c.o
+.PHONY : src/decompress/dictionary.c.o
+
+src/decompress/dictionary.i: src/decompress/dictionary.c.i
+
+.PHONY : src/decompress/dictionary.i
+
+# target to preprocess a source file
+src/decompress/dictionary.c.i:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/decompress/dictionary.c.i
+.PHONY : src/decompress/dictionary.c.i
+
+src/decompress/dictionary.s: src/decompress/dictionary.c.s
+
+.PHONY : src/decompress/dictionary.s
+
+# target to generate assembly for a file
+src/decompress/dictionary.c.s:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/decompress/dictionary.c.s
+.PHONY : src/decompress/dictionary.c.s
+
 src/image.o: src/image.c.o
 
 .PHONY : src/image.o
@@ -204,32 +258,86 @@ src/main.c.s:
 	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/main.c.s
 .PHONY : src/main.c.s
 
-src/reveal.o: src/reveal.c.o
+src/pattern/direct.o: src/pattern/direct.c.o
 
-.PHONY : src/reveal.o
+.PHONY : src/pattern/direct.o
 
 # target to build an object file
-src/reveal.c.o:
-	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/reveal.c.o
-.PHONY : src/reveal.c.o
+src/pattern/direct.c.o:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/pattern/direct.c.o
+.PHONY : src/pattern/direct.c.o
 
-src/reveal.i: src/reveal.c.i
+src/pattern/direct.i: src/pattern/direct.c.i
 
-.PHONY : src/reveal.i
+.PHONY : src/pattern/direct.i
 
 # target to preprocess a source file
-src/reveal.c.i:
-	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/reveal.c.i
-.PHONY : src/reveal.c.i
+src/pattern/direct.c.i:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/pattern/direct.c.i
+.PHONY : src/pattern/direct.c.i
 
-src/reveal.s: src/reveal.c.s
+src/pattern/direct.s: src/pattern/direct.c.s
 
-.PHONY : src/reveal.s
+.PHONY : src/pattern/direct.s
 
 # target to generate assembly for a file
-src/reveal.c.s:
-	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/reveal.c.s
-.PHONY : src/reveal.c.s
+src/pattern/direct.c.s:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/pattern/direct.c.s
+.PHONY : src/pattern/direct.c.s
+
+src/pattern/reveal.o: src/pattern/reveal.c.o
+
+.PHONY : src/pattern/reveal.o
+
+# target to build an object file
+src/pattern/reveal.c.o:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/pattern/reveal.c.o
+.PHONY : src/pattern/reveal.c.o
+
+src/pattern/reveal.i: src/pattern/reveal.c.i
+
+.PHONY : src/pattern/reveal.i
+
+# target to preprocess a source file
+src/pattern/reveal.c.i:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/pattern/reveal.c.i
+.PHONY : src/pattern/reveal.c.i
+
+src/pattern/reveal.s: src/pattern/reveal.c.s
+
+.PHONY : src/pattern/reveal.s
+
+# target to generate assembly for a file
+src/pattern/reveal.c.s:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/pattern/reveal.c.s
+.PHONY : src/pattern/reveal.c.s
+
+src/pattern/reverse.o: src/pattern/reverse.c.o
+
+.PHONY : src/pattern/reverse.o
+
+# target to build an object file
+src/pattern/reverse.c.o:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/pattern/reverse.c.o
+.PHONY : src/pattern/reverse.c.o
+
+src/pattern/reverse.i: src/pattern/reverse.c.i
+
+.PHONY : src/pattern/reverse.i
+
+# target to preprocess a source file
+src/pattern/reverse.c.i:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/pattern/reverse.c.i
+.PHONY : src/pattern/reverse.c.i
+
+src/pattern/reverse.s: src/pattern/reverse.c.s
+
+.PHONY : src/pattern/reverse.s
+
+# target to generate assembly for a file
+src/pattern/reverse.c.s:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/pattern/reverse.c.s
+.PHONY : src/pattern/reverse.c.s
 
 src/utils/formatDetector.o: src/utils/formatDetector.c.o
 
@@ -432,15 +540,27 @@ help:
 	@echo "... src/arguments.o"
 	@echo "... src/arguments.i"
 	@echo "... src/arguments.s"
+	@echo "... src/decompress/decompress.o"
+	@echo "... src/decompress/decompress.i"
+	@echo "... src/decompress/decompress.s"
+	@echo "... src/decompress/dictionary.o"
+	@echo "... src/decompress/dictionary.i"
+	@echo "... src/decompress/dictionary.s"
 	@echo "... src/image.o"
 	@echo "... src/image.i"
 	@echo "... src/image.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/reveal.o"
-	@echo "... src/reveal.i"
-	@echo "... src/reveal.s"
+	@echo "... src/pattern/direct.o"
+	@echo "... src/pattern/direct.i"
+	@echo "... src/pattern/direct.s"
+	@echo "... src/pattern/reveal.o"
+	@echo "... src/pattern/reveal.i"
+	@echo "... src/pattern/reveal.s"
+	@echo "... src/pattern/reverse.o"
+	@echo "... src/pattern/reverse.i"
+	@echo "... src/pattern/reverse.s"
 	@echo "... src/utils/formatDetector.o"
 	@echo "... src/utils/formatDetector.i"
 	@echo "... src/utils/formatDetector.s"

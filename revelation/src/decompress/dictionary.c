@@ -47,47 +47,69 @@ Dictionary* createDictionary(FILE* afterReveal) {
     FILE *outputFinal;
     outputFinal = fopen("realfinal.txt", "w+");
 
-    uchar AII = getc(afterReveal);
-    printf("The first byte tooken as char is: %c\n", AII);
-    printf("The first byte tooken was int is: %d\n", AII);
+   // while(afterReveal!=EOF){
+        uchar byteM = getc(afterReveal);
+        uchar toCheck;
+        int contador = 0;
+        int aux =1;
 
-    int contador = 0;
-    printf("First bit is %d\n", get_bit(AII, 1));
-    uchar toCheck = setBit(toCheck, 0, get_bit(AII, 1));
-    contador++;
-    printf("toCheck is as int : %d\n\n", toCheck);
-
-    toCheck = setBit(toCheck, 1, get_bit(AII, 2));
-    contador++;
-    printf("Second bit is %d\n", get_bit(AII, 2));
-    printf("toCheck is as int : %d\n\n", toCheck);
-
-
-    printf("toCheck is in char: %c\n", toCheck);
-    printf("toCheck is as int : %d\n", toCheck);
-    for(int i = 0; i < getSize(dictionary); i++){
-        printf("----- Loop for %c \n", getValue(dictionary, i));
-        if(contador == getSizeOfKey(dictionary, i)){
-            printf("Same size \n");
-            char aa = getKey(dictionary, i);
-            printf("KEY OF THIS CARACTER IS: %d\n", aa);
-            if(toCheck == aa){
-                printf("Equal with %c\n", getValue(dictionary, i));
-                printf("Because tocheck: %d is equal to %d\n", toCheck, aa);
-                if (outputFinal!=NULL)
-                {
-                    char bla = getValue(dictionary, i);
-                    fputs (&bla,outputFinal);
+        toCheck = setBit(toCheck, contador, get_bit(byteM, aux)); //check if here is actually contador+1;
+    printf("Took the %d element of the byte\n", aux);
+        contador++;
+    int endOfFile;
+    //for(int j = 0; j < 30; j++) {
+    while(!feof(afterReveal)){
+        int oi = 1;
+        printf("----------NEW LOOP ON THE DICTIONARY---------------\n");
+        printf("*****----------This is the %d loop in in the dictionary to check the value %d\n-------------", oi++, toCheck);
+        for(int i = 0; i < getSize(dictionary); i++) {
+            printf("--------Testing with the value: %c----------\n", getValue(dictionary, i));
+            if ((contador) == getSizeOfKey(dictionary, i)) {
+                printf("Contador == %d\n", contador);
+                printf("Same size \n");
+                if(toCheck == getKey(dictionary, i)){
+                    printf("Equal with %c\n", getValue(dictionary, i));
+                    contador = 0;
+                    toCheck = 0;
+                    if (outputFinal!=NULL)
+                    {
+                        char bla = getValue(dictionary, i);
+                        fputs (&bla,outputFinal);
+                        printf("Wrote in the file the letter %c\n", bla);
+                    }
+                    printf("Contador == %d\n", contador);
+                }
+                else{
+                    printf("Not is the same\n");
+                    printf("Contador == %d\n", contador);
                 }
             }
-            else{
-                printf("Nor equal\n");
+            else {
+                printf("Not match with the size\n");
             }
         }
-        else{
-            printf("Not the same size\n");
+
+        if(aux == 8){
+            printf("Take a new byte");
+            aux = 0;
+            byteM = getc(afterReveal);
+            printf("NEW BYTE\n");
         }
+    toCheck = toCheck << 1;
+    printf("toCheck after the decalage as int : %d\n", toCheck);
+        aux++;
+        printf("Took the %d element of the byte\n", aux);
+        printf("Set the bit %d in the last bit:\n", get_bit(byteM, aux));
+    toCheck = setBit(toCheck, 0, get_bit(byteM, aux));
+    printf("toCheck after set the new bit s as int : %d\n", toCheck);
+    contador++;
+    printf("Contador == %d\n", contador);
+
     }
+
+
+
+  //  }
     return dictionary;
 
 }

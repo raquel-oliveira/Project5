@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Revelation.dir/src/main.c.o"
-  "CMakeFiles/Revelation.dir/src/reveal.c.o"
+  "CMakeFiles/Revelation.dir/src/pattern.c.o"
   "CMakeFiles/Revelation.dir/src/image.c.o"
   "CMakeFiles/Revelation.dir/src/util.c.o"
   "CMakeFiles/Revelation.dir/src/formatDetector.c.o"
