@@ -4,81 +4,45 @@
 
 #include "decompress.h"
 
-int decompress(Dictionary* d, FILE* onlymessage){ //put file in the assignature
-
-    printf("Inicial decompress\n");
+int decompress(Dictionary* d, FILE* onlyMessage){ //put file in the assignature
+    //Create output file
     FILE *outputFinal;
-    outputFinal = fopen("realfinal.txt", "w+");
-    if (!onlymessage){ //to test
-        printf("No message to decode \n");
-        return -1; //to test
-        //exit(EXIT_FAILURE);
-    }
-    else{
-        char c = getc(onlymessage);
-        printf("The first byte tooken was: %c\n", c);
-        printf("The first byte tooken was: %d\n", c);
+    outputFinal = fopen("messageDecode.txt", "w+");
 
-        c = getc(onlymessage);
-        printf("The Second byte tooken was: %c\n", c);
-        printf("The Second byte tooken was: %d\n", c);
+    uchar byteM = getc(onlyMessage); //Taking the first byte
+    uchar buffer;
+    int count = 0; // Count of number of bits used
+    int aux =1; // Auxiliar to take the bit of the byte
 
-        int contador = 0;
-        printf("First bit is %d\n", get_bit(c, 1));
-        char toCheck = setBit(toCheck, 7, get_bit(c, 1));
-        contador++;
+    buffer = setBit(buffer, count, get_bit(byteM, aux)); //First buffer setted
+    count++; //As the firt bit was setted, the count is 1 because use one bit of the byte
 
-
-        toCheck = setBit(toCheck, 6, get_bit(c, 2));
-        contador++;
-        printf("Second bit is %d\n", get_bit(c, 2));
-
-        toCheck = setBit(toCheck, 5, get_bit(c, 3));
-        contador++;
-        printf("Third bit is %d\n", get_bit(c, 3));
-
-        toCheck = setBit(toCheck, 4, get_bit(c, 4));
-        contador++;
-        printf("4th bit is %d\n", get_bit(c, 4));
-
-        toCheck = setBit(toCheck, 3, get_bit(c, 5));
-        contador++;
-        printf("5th bit is %d\n", get_bit(c, 5));
-
-        toCheck = setBit(toCheck, 2, get_bit(c, 6));
-        contador++;
-        printf("6th bit is %d\n", get_bit(c, 6));
-
-        toCheck = setBit(toCheck, 1, get_bit(c, 7));
-        contador++;
-        printf("7h bit is %d\n", get_bit(c, 7));
-
-        toCheck = setBit(toCheck,0 , get_bit(c, 8));
-        contador++;
-        printf("8th bit is %d\n", get_bit(c, 8));
-
-        printf("toCheck is: %c\n", toCheck);
-        for(int i = 0; i < getSize(d); i++){
-            printf("----- Loop for %c \n", getValue(d, i));
-            if(contador == getSizeOfKey(d, i)){
-                printf("Same size \n");
-                char aa = getKey(d, i);
-                if(strcmp(&toCheck, &aa)){
-                    printf("Equal with %c\n", getValue(d, i));
+    //TODO: Don't go to the whole message. Look the size of the number of bits used in the last byte
+    while(!feof(onlyMessage)){
+        for(int i = 0; i < getSize(d); i++) { // Make a loop in the dictionary
+            if ((count) == getSizeOfKey(d, i)) { // Checking if the caracter has the same size of the buffer
+                if(buffer == getKey(d, i)){ // If the key is the same of the buffer, write in the file
                     if (outputFinal!=NULL)
                     {
                         char bla = getValue(d, i);
                         fputs (&bla,outputFinal);
                     }
+                    count = 0;
+                    buffer = 0;
                 }
-                else{
-                    printf("Nor equal\n");
-                }
-            }
-            else{
-                printf("Not the same size\n");
             }
         }
 
+        if(aux == 8){ // if he setted the 8th element of the actual byte he will took a new byte
+            aux = 0;
+            byteM = getc(onlyMessage);
+        }
+        buffer = buffer << 1; //Decalage
+        aux++;
+        buffer = setBit(buffer, 0, get_bit(byteM, aux)); // set the next element of the byte in the last bit of the buffer
+        count++;
     }
+    //TODO: Delete the variable file OnlyMessage
+    return 0;
+
 }
