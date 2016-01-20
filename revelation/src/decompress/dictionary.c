@@ -86,7 +86,7 @@ void setSizeOfKey(Dictionary* d, int index, int size){
 
 void printDictionary(Dictionary* d){
     for (int i = 0; i < getSize(d); ++i) {
-        printf("%x : ", getValue(d, i));
+        printf("0x%x : ", getValue(d, i));
         int siz = getSizeOfKey(d, i);
         for(siz = getSizeOfKey(d, i); siz > 0; siz--){
             printf("%d", get_bit(getKey(d,i),(9-siz)));
