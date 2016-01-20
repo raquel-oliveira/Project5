@@ -97,5 +97,15 @@ public class MagicNumberTester {
     public String getHexString(){
         return this.hexString;
     }
+
+    public byte[] mnCompressionBArray(){
+        byte[] bytes = this.hextStringtoByteArray();
+        byte[] ret = new byte[bytes.length];
+        for(int i=0; i < bytes.length; i++){
+            byte br = Compressor.reverseByte(bytes[i]);
+            ret[i] = br;
+        }
+        return ret;
+    }
 }
 

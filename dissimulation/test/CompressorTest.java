@@ -25,6 +25,7 @@ public class CompressorTest {
         BitSet bmsg = BitSet.valueOf(msg);
 
         assertEquals(ctrl, bmsg);
+        assertEquals(6,msg.length);
 
     }
 }
