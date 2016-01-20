@@ -2,6 +2,8 @@ package dissimulator;
 
 import java.io.IOException;
 import java.util.BitSet;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
 	
@@ -11,6 +13,14 @@ public class Main {
 		Arguments arg = new Arguments(args);
 		Metrics met = new Metrics();
 		if(arg.getMetrics().equals("time"))  met.setTime();
+		
+		HashMap<String, Integer> a = new HashMap<>();
+		HashMap<String, Integer> c = new HashMap<>();
+		a.put("g", 0);
+		c.put("g", 4);
+		a.put("c", 2);
+		c.put("c", 3);
+		met.getDictionary(a, c, "blablablatatata");
 		MessageTreatment msgTreatment = new MessageTreatment();
 		
 		String in = arg.getFileIn();
@@ -30,7 +40,6 @@ public class Main {
 				throw new MagicNumberException("Ce message contient le nombre magique");
 			else message += mnt.hexStringtoString();
 		}
-		System.out.println(msgTreatment.getNbIterations(message));
 		
 		// Compressing the message
 		if(arg.getMetrics().equals("compression_time")) met.setTime();

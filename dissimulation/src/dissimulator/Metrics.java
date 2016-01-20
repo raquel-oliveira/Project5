@@ -3,11 +3,14 @@ package dissimulator;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.BitSet;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Metrics {
 
 	long beginning, ending;
 	Instant start, end;
+	MagicNumberTester mnt = new MagicNumberTester();
 
 	/**
 	 * Prints out the number of bits available for hiding. Prints out the number of bits to hide (message)
@@ -31,7 +34,7 @@ public class Metrics {
 	public void getTime()
 	{
 		end = Instant.now();
-		System.out.println(Duration.between(start, end).toMillis());
+		System.out.println("Time consumed by the dissimulation : " + Duration.between(start, end).toMillis());
 	}
 	
 	/**
@@ -40,11 +43,44 @@ public class Metrics {
 	 */
 	public void getCompressionSavings(String originalMessage, BitSet compressedMessage)
 	{
-		int sizeOriginal = originalMessage.length() * 8;
-		int sizeCompressed = compressedMessage.length();
+		double sizeOriginal = originalMessage.length() * 8;
+		double sizeCompressed = compressedMessage.length();
 		
-		int sizeSaved = 1 - (sizeCompressed/sizeOriginal)*100;
+		double sizeSaved = 1 - (sizeCompressed/sizeOriginal)*100;
 		
-		System.out.println("Saved space with compression : " + sizeSaved + "%");
+		if(sizeSaved > 0) System.out.println("Saved space with compression : " + sizeSaved + "%");
+		else System.out.println("The compression was a bad idea ! Saved space with compression : " + sizeSaved + "%");
+	}
+	
+	public void getDictionary(HashMap<String, Integer> dicoCode, HashMap<String, Integer> dicoLength, String messageCompressed)
+	{
+		for (Map.Entry<String, Integer> mapEntry : dicoCode.entrySet()) 
+		{
+	       String valueDictionary = Integer.toBinaryString(mapEntry.getValue());
+	       
+	       int length = dicoLength.get(mapEntry.getKey());
+	       if(valueDictionary.length() != length)
+	       {
+	    	   StringBuilder temp = new StringBuilder(valueDictionary);
+	    	   temp = temp.reverse();
+	    	   while(temp.length() != length)
+	    	   {
+	    		   temp = temp.append('0');
+	    	   }
+	    	   temp = temp.reverse();
+	    	   valueDictionary = temp.toString();
+	       }
+	       byte[] array = mapEntry.getKey().getBytes();
+	       String hexCode = mnt.toHexString(array);
+	       System.out.println("0x" + hexCode + ": " + valueDictionary);
+	    }
+		byte[] binaryMessage = messageCompressed.getBytes();
+		for(int i = 0, cpt = 0; i < binaryMessage.length; i++, cpt++)
+	    {
+			String binaryString = String.format("%8s", Integer.toBinaryString(binaryMessage[i] & 0xFF)).replace(' ', '0');
+			System.out.print(binaryString);
+			System.out.print(" ");
+	    }
+		System.out.print("\n");
 	}
 }
