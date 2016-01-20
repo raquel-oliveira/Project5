@@ -68,27 +68,24 @@ void setArguments(){
     if(magicHexa == NULL){
         printf("----------MagicNumber NULL-------------------\n");
         magicHexa = "48454C50";
-        printf("Hexa Magic Number: %s \n", magicHexa);
-        magic = hex_to_str(magicHexa);
-        printf("Magic Number: %s \n", magic);
-        //magic = "HELP";
+        magic = hex_to_str(magicHexa); // magic = "HELP"
     }else{
-        printf("Hexa Magic Number: %s \n", magicHexa);
         magic = hex_to_str(magicHexa);
-        printf("Magic Number: %s \n", magic);
-        //do the transform.
     }
+    printf("Hexa Magic Number: %s \n", magicHexa);
+    printf("Magic Number: %s \n", magic);
 
     printf("----------Veryfication Output--------------------\n");
     if(fileOut != NULL){
+        printf("File out not null\n");
         isStandard = false;
-        output = fopen(fileOut,"r");
-        if (output == NULL){
-            //TODO: Change this to create the file is not exist
-            printf("This file do not exist\n");
-            exit(-1);
-        }
-    } else {
+        output = fopen(fileOut,"wb"); //a because 'r' needs to exist
+        printf("File created? \n");
+        fclose(output);
+        printf("Close file \n");
+    }
+    else {
+        printf("File out null\n");
         isStandard = true;
         fileOut = "output.txt";
         output = fopen(fileOut, "w");
