@@ -38,14 +38,22 @@ public class Main {
 			Compressor compressor = new Compressor(dict.getDicoCode(), dict.getDicoLength());
 			byte[] array1 = compressor.messageCompression(message);
 			byte[] array2 = mnt.mnCompressionBArray();
+			byte[] finalArray = Compressor.groupByteArray(array1, array2);
 			
+			for(int k = 0; k < finalArray.length; k++)
+			{
+				String binaryString = String.format("%8s", Integer.toBinaryString(finalArray[k] & 0xFF)).replace(' ', '0');
+				System.out.print(binaryString);
+				System.out.print(" ");
+			}
+			System.out.print("\n");
 			
-			for(int k = 0, cpt = 0; k < bitset.length; k++, cpt++)
+			/*for(int k = 0, cpt = 0; k < bitset.length; k++, cpt++)
 			{
 				if(bitset.get(k)) System.out.print("1");
 				else System.out.print("0");
 				if(cpt%8 == 0) System.out.print(" ");
-			}
+			}*/
 		}
 		
 		// Compressing the message
