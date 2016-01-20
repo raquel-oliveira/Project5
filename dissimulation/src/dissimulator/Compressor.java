@@ -53,10 +53,10 @@ public class Compressor {
         return b;
     }
 
-    public byte[] compressMessage(String msg){
+    public byte[] compressMessage(){
         int padd = 0;
-        String[] letters  = msg.split("(?!^)");
-        byte[] ret = new byte[(letters.length+1)*8];
+        String[] letters  = this.msg.split("(?!^)");
+        byte[] ret = new byte[letters.length+1];
         int bc =0;
         StringBuilder sbb = new StringBuilder();
 
@@ -87,7 +87,7 @@ public class Compressor {
         return ret;
     }
 
-    public byte[] groupByteArray(byte[] b1,byte[] b2){
+    public static byte[] groupByteArray(byte[] b1,byte[] b2){
         byte[] ret = new byte[b1.length+b2.length];
         for(int i=0; i<b1.length; i++){
             if(b1[i]!=0 || i==0)
@@ -115,5 +115,13 @@ public class Compressor {
             in = (byte) (in >> 1);
         }
         return out;
+    }
+
+    public byte[] messageCompression(String message){
+        this.setMessage(message);
+        byte[] dictionnary = this.compressDictionnary();
+        byte[] msg = this.compressMessage();
+        byte[] retour = groupByteArray(dictionnary,msg);
+        return retour;
     }
 }
