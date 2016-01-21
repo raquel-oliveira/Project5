@@ -14,6 +14,7 @@ public class Main {
 		Metrics met = new Metrics();
 		if(arg.getMetrics().equals("time"))  met.setTime();
 		MessageTreatment msgTreatment = new MessageTreatment();
+		BitSet bitsetMessage = null;
 		
 		String in = arg.getFileIn();
 		String out = arg.getFileOut();
@@ -39,21 +40,19 @@ public class Main {
 			byte[] array1 = compressor.messageCompression(message);
 			byte[] array2 = mnt.mnCompressionBArray();
 			byte[] finalArray = Compressor.groupByteArray(array1, array2);
+			BitSet compressed = BitSet.valueOf(array1);
+			compressed.set(array1.length*8);
 			
-			for(int k = 0; k < finalArray.length; k++)
+			for(int k = 0, cpt = 0; k < compressed.length(); k++, cpt++)
 			{
-				String binaryString = String.format("%8s", Integer.toBinaryString(finalArray[k] & 0xFF)).replace(' ', '0');
-				System.out.print(binaryString);
-				System.out.print(" ");
-			}
-			System.out.print("\n");
-			
-			/*for(int k = 0, cpt = 0; k < bitset.length; k++, cpt++)
-			{
-				if(bitset.get(k)) System.out.print("1");
+				if(cpt%8 == 0 && cpt !=0) System.out.print(" ");
+				if(compressed.get(k)) System.out.print("1");
 				else System.out.print("0");
-				if(cpt%8 == 0) System.out.print(" ");
-			}*/
+				
+			}
+			System.out.println("\n");
+			
+			bitsetMessage = compressed;
 		}
 		
 		// Compressing the message
@@ -64,7 +63,7 @@ public class Main {
         
         //From message to BitSet
 		
-		BitSet b = msgTreatment.ChaintoBinary(message);
+		if(!arg.getCompress()) bitsetMessage = msgTreatment.ChaintoBinary(message);
 		
 		// Colors treatment
 		
@@ -90,7 +89,7 @@ public class Main {
 		
 		try
 		{ 
-			manipMat.dissimulationLSB(b, Integer.parseInt(arg.getNbBits()), arg.getPattern(), colors);
+			manipMat.dissimulationLSB(bitsetMessage, Integer.parseInt(arg.getNbBits()), arg.getPattern(), colors);
 		}
 		catch(InvalidArgumentException | EmptyArgumentException e)
 		{
