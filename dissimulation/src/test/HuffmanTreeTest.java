@@ -1,3 +1,4 @@
+package test;
 import dissimulator.HuffmanTree;
 import org.junit.Test;
 

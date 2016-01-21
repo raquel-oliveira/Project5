@@ -1,4 +1,4 @@
-
+package test;
 import dissimulator.MagicNumberTester;
 import org.junit.Test;
 

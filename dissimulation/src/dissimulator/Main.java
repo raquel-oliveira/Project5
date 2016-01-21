@@ -35,13 +35,15 @@ public class Main {
 		}
 		else
 		{
+			if(arg.getMetrics().equals("compression_time")) met.setTime();
+			System.out.println(msgTreatment.getNbIterations(message));
 			PredefinedDictionnary dict = new PredefinedDictionnary();
 			Compressor compressor = new Compressor(dict.getDicoCode(), dict.getDicoLength());
 			byte[] array1 = compressor.messageCompression(message);
 			byte[] array2 = mnt.mnCompressionBArray();
 			byte[] finalArray = Compressor.groupByteArray(array1, array2);
-			BitSet compressed = BitSet.valueOf(array1);
-			compressed.set(array1.length*8);
+			BitSet compressed = BitSet.valueOf(finalArray);
+			compressed.set(finalArray.length*8);
 			
 			for(int k = 0, cpt = 0; k < compressed.length(); k++, cpt++)
 			{
@@ -53,14 +55,9 @@ public class Main {
 			System.out.println("\n");
 			
 			bitsetMessage = compressed;
+			if(arg.getMetrics().equals("compression_time")) met.getTime();
 		}
 		
-		// Compressing the message
-		if(arg.getMetrics().equals("compression_time")) met.setTime();
-		if(arg.getCompress()) msgTreatment.getNbIterations(message);
-		
-		if(arg.getMetrics().equals("compression_time")) met.getTime();
-        
         //From message to BitSet
 		
 		if(!arg.getCompress()) bitsetMessage = msgTreatment.ChaintoBinary(message);
@@ -100,5 +97,11 @@ public class Main {
 		
 		if(arg.getMetrics().equals("impact"))  met.nbBitsImpacted(message, nbColorsNotNull, manipMat.getImage());
 		else if(arg.getMetrics().equals("time"))  met.getTime();
+		else if(arg.getMetrics().equals("compression_savings"))
+		{
+			double sizeSaved = met.getCompressionSavings(message, bitsetMessage);
+			if(sizeSaved > 0) System.out.println("Saved space with compression : " + sizeSaved + "%");
+			else System.out.println("The compression was a bad idea ! Saved space with compression : " + sizeSaved + " %");
+		}
 	}
 }
