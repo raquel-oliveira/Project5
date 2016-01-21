@@ -155,40 +155,23 @@ int main(int argc, char *argv[]){
     else{
         printf("----------Is compress---------------------\n");
 
+        fileOut = "messageDecode.txt";
         //output = fopen("Resources/Compress/dictionaryAndMessage", "r");
-        //output = fopen("Resources/Compress/7aComplete", "r");
+        output = fopen("Resources/Compress/7aComplete", "r");
         //output = fopen("Resources/Compress/arbCompEquilibreComplete", "r");
         //output = fopen("Resources/Compress/messageTestComplete", "r");
-        output = fopen("Resources/Compress/charly", "r");
-        //fileOut = "Resources/Compress/dictionaryAndMessage";
-        //output = fopen(fileOut, "r");
+        //output = fopen("Resources/Compress/charly", "r");
 
-        Dictionary *a ;
-        a = createDictionary(output);
-        if (a == NULL){
-            printf("Dictionary not created\n Could not open the file \n");
-            exit(EXIT_FAILURE);
-        }
-
-       /* FILE * afterDic;
-        afterDic = fopen("afterDic.txt", "r");*/
-
-        FILE * out;
+        Dictionary *d ;
         int k;
-        out = fopen("afterDic.txt", "r");
-        //out = fopen("Resources/Compress/onlyMessage", "r");
-        //out = fopen("Resources/Compress/7aJustMessage", "r");
-        //out = fopen("Resources/Compress/arbCompEquilibreJustMessage", "r");
-        //out = fopen("Resources/Compress/messageTestJustMessage", "r");
-       // out = fopen("Resources/Compress/charlyOnlyMessage", "r");
-        k = decompress(a,out);
+        k = decompress(output, fileOut, d);
         if(k == 0){
             printf("Decompress finished \n");
            // exit(0);
         }
         if(isShow){
             printf("-----------SHOW DICTIONARY---------\n");
-            printDictionary(a);
+            printDictionary(d);
         }
        // free(a); free(output);
     }

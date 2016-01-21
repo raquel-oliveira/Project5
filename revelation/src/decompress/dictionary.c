@@ -30,20 +30,6 @@ Dictionary* createDictionary(FILE* afterReveal) {
     }
     setQtdOfLastByte(dictionary, getc(output));
    // printf("The last byte will use %d number of bits\n", getQtdBitsOfLastByte(dictionary) );
-
-    //TODO: Create a temp file to save only the message. TO be deleted after decoded
-   FILE * afterDic;
-    afterDic = fopen("afterDic.txt", "w+");
-    char ch;
-    while( ( ch = fgetc(afterReveal) ) != EOF ){
-        fputc(ch, afterDic);
-    }
-
-    printf("Created the file after Dictionary \n");
-    fclose(afterDic); //close after write
-    fclose(afterReveal);
-   // unlink(afterReval); //delete file after reveal*/
-
     return dictionary;
 
 }

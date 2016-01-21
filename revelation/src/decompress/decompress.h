@@ -10,6 +10,6 @@
 #include "../utils/utilBit.h"
 #include <stdio.h>
 
-int decompress(Dictionary* d, FILE* onlymessage);
+int decompress(FILE* afterReveal, char* fileOut, Dictionary *d);
 
 #endif //REVELATIONN_DECOMPRESS_H
