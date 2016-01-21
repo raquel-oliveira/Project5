@@ -104,9 +104,9 @@ int main(int argc, char *argv[]){
 
     fileIn = "Resources/1bitRedJOAO.png";
     //Verifications:
-    setArguments();
-    printf("----------Make reveal--------------------\n");
+   // setArguments();
    /* printf("%d", patternInt);
+    printf("----------Make reveal--------------------\n");
     flag = patternInt;
     switch (flag){
         case 1: //is direct
