@@ -11,10 +11,24 @@ void setArguments(){
         fprintf(stderr, "There is no input file.\n");
         exit(-1);
     }
+    printf("Path File In: %s\n", fileIn);
+
+    printf("----------Veryfication Bits---------------------\n");
+    if (nbBits == -1){
+        nbBits = 1;
+    }
+    else{
+        if(nbBits>8 || nbBits <1){
+            fprintf(stderr, "Not possible to pattern a message with this number of bits\n");
+            exit(-1);
+        }
+    }
+    printf("Bits: %d\n", nbBits);
 
     printf("----------Veryfication pattern--------------------\n");
     if(pattern == NULL){
         pattern = "DIRECT";
+        patternInt = 1;
     }
     else{
         flag = validatePattern();
@@ -24,11 +38,10 @@ void setArguments(){
                 exit(-1);
             case 1:
                 patternInt = flag; //Direct Pattern
-                printf("Direct pattern. \n");
                 break;
             case 2:
-                fprintf(stderr, "Inverse pattern not implemented\n");
-                exit(-2);
+                patternInt = flag;
+                break;
             case 3:
                 fprintf(stderr, "External spiral pattern not implemented\n");
                 exit(-3);
@@ -37,22 +50,48 @@ void setArguments(){
                 exit(-4);
         }
     }
+    printf("Pattern: %s\n", pattern);
 
     printf("----------Set Channels--------------------\n");
     if (channels == NULL){
         firstChannel = 2;
         secondChannel = 1;
         thirdChannel = 0;
-        printf("First Channel: %d\n", firstChannel);
-        printf("Second Channel: %d\n", secondChannel);
-        printf("Third Channel: %d\n", thirdChannel);
     }else{
-        //TODO: The set channels its not separating correctly
         setChannels();
-        printf("First Channel: %d\n", firstChannel);
-        printf("Second Channel: %d\n", secondChannel);
-        printf("Third Channel: %d\n", thirdChannel);
     }
+    printf("First Channel: %d\n", firstChannel);
+    printf("Second Channel: %d\n", secondChannel);
+    printf("Third Channel: %d\n", thirdChannel);
+
+    printf("----------CheckMagicNumber--------------------\n");
+    if(magicHexa == NULL){
+        printf("----------MagicNumber NULL-------------------\n");
+        magicHexa = "48454C50";
+        magic = hex_to_str(magicHexa); // magic = "HELP"
+    }else{
+        magic = hex_to_str(magicHexa);
+    }
+    printf("Hexa Magic Number: %s \n", magicHexa);
+    printf("Magic Number: %s \n", magic);
+
+    printf("----------Veryfication Output--------------------\n");
+    if(fileOut != NULL){
+        printf("File out not null\n");
+        isStandard = false;
+        output = fopen(fileOut,"wb"); //a because 'r' needs to exist
+        printf("File created? \n");
+        fclose(output);
+        printf("Close file \n");
+    }
+    else {
+        printf("File out null\n");
+        isStandard = true;
+        fileOut = "output.txt";
+        output = fopen(fileOut, "w");
+    }
+    printf("Path OutPut: %s\n", fileOut);
+
 
     printf("----------Veryfication format--------------------\n");
     img = cvLoadImage(fileIn, 1); // Second parameter == 1 (RGB) || == 0 (GREY)

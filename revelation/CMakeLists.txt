@@ -14,11 +14,16 @@ add_executable(
         reveal
 
         src/main.c
-        src/reveal.c
         src/image.c
         src/arguments.c
         src/validateArguments.c
+        src/pattern/reveal.c
+        src/pattern/direct.c
+        src/pattern/reverse.c
+        src/decompress/decompress.c
+        src/decompress/dictionary.c
         src/utils/utilBit.c
+        src/utils/hexa.c
         src/utils/formatDetector.c
         src/utils/validateFormat.c
         src/utils/validateChannels.c

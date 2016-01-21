@@ -7,30 +7,32 @@
 void setChannels(){
     const char delimiter[2] = ",";
     int i = 0;
+    char *aux;
+
     while(channels[i])
     {
         channels[i] = toupper(channels[i]);
         i++;
     }
 
-    char *aux;
-    aux = strtok(channels, delimiter);
     //TODO: reuse the code.
+    aux = strtok(channels, delimiter);
     if (aux != NULL) {
         firstChannel = numberColors(aux);
         aux = strtok(NULL, delimiter);
     } else{
         firstChannel = -1;
     }
+
     if (aux != NULL) {
         secondChannel = numberColors(aux);
         aux = strtok(NULL, delimiter);
     } else{
         secondChannel = -1;
     }
+
     if (aux != NULL) {
         thirdChannel = numberColors(aux);
-        aux = strtok(NULL, delimiter);
     } else{
         thirdChannel = -1;
     }
@@ -38,13 +40,13 @@ void setChannels(){
 }
 
 int numberColors(char *aux){
-    if (strcmp(aux, "RED" )){
+    if (!strcmp(aux, "RED")){
         return 2;
     }
-    else if (strcmp(aux, "GREEN" )){
+    else if (!strcmp(aux, "GREEN" )){
         return 1;
     }
-    else  if (strcmp(aux, "BLUE" )){
+    else  if (!strcmp(aux, "BLUE" )){
         return 0;
     }
     else {

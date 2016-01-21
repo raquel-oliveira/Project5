@@ -10,7 +10,7 @@ int validatePattern() {
     if (strcmp(pattern,"DIRECT") == 0) {
         return 1;
     }
-    else if (strcmp(pattern,"INVERSE") == 0) {
+    else if (strcmp(pattern,"REVERSE") == 0) {
         return 2;
     }
     if (strcmp(pattern,"EXTERNAL_SPIRAL") == 0) {

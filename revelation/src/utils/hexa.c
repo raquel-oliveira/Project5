@@ -1,7 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <malloc.h>
- 
+#include "hexa.h"
+
 char a2x(char ch)
 {
     switch(ch)
@@ -49,28 +47,15 @@ char a2x(char ch)
     return 0;
 }
 
-void hex_to_str(char *hex,char *str){
-    int i;
- 
-    i = 0;
-    while(hex[i])
-    {
+char* hex_to_str(char *hex) {
+    char* str = malloc(sizeof(char));
+    int i = 0;
+
+    while (hex[i]) {
         str[i >> 1] = (a2x(hex[i]) << 4) | a2x(hex[i + 1]);
         i += 2;
     }
     str[i >> 1] = '\0';
 
-
-}
- 
-int main(int argc, char* argv[])
-{
-    char *hex = "48454C50";
-    char *string = malloc(sizeof(char));
-    hex_to_str(hex , string);
-    
- 
-    printf("%s\n", string);
- 
-    return 0;
+    return str;
 }

@@ -8,6 +8,7 @@
 #include "utils/validateFormat.h"
 #include "utils/validatePattern.h"
 #include "utils/validateChannels.h"
+#include "utils/hexa.h"
 #include <opencv2/imgcodecs/imgcodecs_c.h>
 #include "arguments.h"
 
