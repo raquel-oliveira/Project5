@@ -54,21 +54,12 @@ public class MagicNumberTester {
     }
 
     public boolean doesStringContainMN(String message){
-        String hexcomp = this.toHexString(message.getBytes());
-        return  hexcomp.contains(this.getHexString());
+        String mnstring = this.hexStringtoString();
+        return  message.contains(mnstring);
     }
 
     public String hexStringtoString(){
         String res = "";
-        /*if(this.hexString.contains("\\s+")) {
-            String[] splitstr = this.hexString.split("\\s+");
-            for (int i = 0; i < splitstr.length; i++) {
-                char[] c = Character.toChars(Integer.decode("0X" + splitstr[i]));
-                res += Character.toString(c[0]);
-            }
-            return res;
-        }*/
-
             String mn = this.hexString;
 
             for (int i = 0; i < mn.length(); i+=2) {
