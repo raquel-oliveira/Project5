@@ -82,7 +82,11 @@ public class MagicNumberTester {
 
     public byte[] hextStringtoByteArray(){
 
-        String[] splitstr = this.hexString.split("\\s+");
+        String[] splitstr = new String[4];
+        for(int i= 0; i < 8; i=i+2){
+            int j = i+2;
+            splitstr[i/2] = this.hexString.substring(i,j);
+        }
         int size = splitstr.length;
         byte [] bytes = new byte[size];
         int j=0;
