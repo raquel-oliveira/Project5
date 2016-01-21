@@ -54,21 +54,12 @@ public class MagicNumberTester {
     }
 
     public boolean doesStringContainMN(String message){
-        String hexcomp = this.toHexString(message.getBytes());
-        return  hexcomp.contains(this.getHexString());
+        String mnstring = this.hexStringtoString();
+        return  message.contains(mnstring);
     }
 
     public String hexStringtoString(){
         String res = "";
-        /*if(this.hexString.contains("\\s+")) {
-            String[] splitstr = this.hexString.split("\\s+");
-            for (int i = 0; i < splitstr.length; i++) {
-                char[] c = Character.toChars(Integer.decode("0X" + splitstr[i]));
-                res += Character.toString(c[0]);
-            }
-            return res;
-        }*/
-
             String mn = this.hexString;
 
             for (int i = 0; i < mn.length(); i+=2) {
@@ -81,12 +72,15 @@ public class MagicNumberTester {
     }
 
     public byte[] hextStringtoByteArray(){
-
-        String[] splitstr = this.hexString.split("\\s+");
+        String[] splitstr = new String[4];
+        for(int i= 0; i < 8; i=i+2){
+            int j = i+2;
+            splitstr[i/2] = this.hexString.substring(i,j);
+        }
         int size = splitstr.length;
         byte [] bytes = new byte[size];
         int j=0;
-            for (int i = 1; i < splitstr.length; i++) {
+            for (int i = 0; i < splitstr.length; i++) {
                 byte[] b = DatatypeConverter.parseHexBinary(splitstr[i]);
                 bytes[j]=b[0];
                 j++;

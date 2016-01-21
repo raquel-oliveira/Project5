@@ -1,5 +1,6 @@
 package dissimulator;
 
+import java.text.DecimalFormat;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.BitSet;
@@ -41,17 +42,25 @@ public class Metrics {
 	 * Calculates then prints out the space saved by the compression. The result may be below zero, showing that the compression
 	 * was not useful.
 	 */
-	public void getCompressionSavings(String originalMessage, BitSet compressedMessage)
+	public double getCompressionSavings(String originalMessage, BitSet compressedMessage)
 	{
 		double sizeOriginal = originalMessage.length() * 8;
 		double sizeCompressed = compressedMessage.length();
-		
 		double sizeSaved = 1 - (sizeCompressed/sizeOriginal)*100;
 		
-		if(sizeSaved > 0) System.out.println("Saved space with compression : " + sizeSaved + "%");
-		else System.out.println("The compression was a bad idea ! Saved space with compression : " + sizeSaved + "%");
+		DecimalFormat df = new DecimalFormat("########.00"); 
+		String str = df.format(sizeSaved); 
+		sizeSaved = Double.parseDouble(str.replace(',', '.'));
+		
+		return sizeSaved;
 	}
 	
+	/**
+	 * 
+	 * @param dicoCode
+	 * @param dicoLength
+	 * @param messageCompressed
+	 */
 	public void getDictionary(HashMap<String, Integer> dicoCode, HashMap<String, Integer> dicoLength, String messageCompressed)
 	{
 		for (Map.Entry<String, Integer> mapEntry : dicoCode.entrySet()) 

@@ -1,4 +1,4 @@
-
+package test;
 import dissimulator.MessageTreatment;
 import org.junit.Test;
 

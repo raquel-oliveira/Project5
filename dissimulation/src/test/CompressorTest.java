@@ -1,4 +1,6 @@
+package test;
 import dissimulator.Compressor;
+
 import dissimulator.PredefinedDictionnary;
 import org.junit.Test;
 

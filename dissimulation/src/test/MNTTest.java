@@ -1,6 +1,9 @@
-
+package test;
 import dissimulator.MagicNumberTester;
 import org.junit.Test;
+
+import java.util.BitSet;
+
 import static org.junit.Assert.*;
 
 
@@ -11,7 +14,7 @@ public class MNTTest {
 
     @Test
     public void magicNumberTesterhexStringtoStringTest(){
-        MagicNumberTester test = new MagicNumberTester("48 45 4C 50");
+        MagicNumberTester test = new MagicNumberTester();
         assertTrue(test.hexStringtoString().equals("HELP"));
     }
 
