@@ -24,7 +24,6 @@ public class MetricsTests {
 		String originalMessage = "abc";
 		BitSet compressedMessage = new BitSet();
 		compressedMessage.set(41);
-		System.out.println(compressedMessage.length());
 		
 		double sizeSaved = met.getCompressionSavings(originalMessage, compressedMessage);
 		assertTrue(sizeSaved < 0);
