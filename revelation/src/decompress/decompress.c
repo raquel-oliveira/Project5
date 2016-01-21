@@ -5,6 +5,7 @@
 #include "decompress.h"
 
 int decompress(FILE* afterReveal, char* fileOut, Dictionary *d){ //put file in the assignature
+    printf("---- Starting to decompres-----\n");
     int flagDictionary = createDictionary(afterReveal, d);
     if (flagDictionary > -1 ){
         printf("Worked dictionary \n");
@@ -37,7 +38,7 @@ int decompress(FILE* afterReveal, char* fileOut, Dictionary *d){ //put file in t
     while(!end){
         for(int i = 0; i < getSize(d); i++) { // Make a loop in the dictionary
             if ((count) == getSizeOfKey(d, i)) { // Checking if the caracter has the same size of the buffer
-                if(buffer == getKey(d, i)){ // If the key is the same of the buffer, write in the file
+                if(buffer == (int)getKey(d, i, 0)){ // If the key is the same of the buffer, write in the file
                     if (outputFinal!=NULL)
                     {
                         char caract = getValue(d, i);

@@ -11,7 +11,7 @@
 
 typedef struct character {
     char value;
-    char key;
+    char* key;
     int sizeOfKey;
     struct Caractere *next;
 } Character;
@@ -34,9 +34,9 @@ char getValue(Dictionary* d, int index);
 
 void setValue(Dictionary* d, int index, char valuee);
 
-char getKey(Dictionary* d, int index);
+char* getKey(Dictionary* d, int index, int indexKey);
 
-void setKey(Dictionary* d, int index, char keey);
+void setKey(Dictionary* d, int index, char keey, int indexKey);
 
 int getSizeOfKey(Dictionary* d, int index);
 
