@@ -53,7 +53,6 @@ int decompress(Dictionary* d, FILE* onlyMessage){ //put file in the assignature
             aux++; //TODO: change the aux=0;aux++; TO aux=1; ?
             if(isEOF){
                 if(aux < (max+1)){ //max or max+1? TODO: Use test to check. Exemple: QtdOfLastByte = 1;
-                    printf("is end\n");
                     fclose(outputFinal);
                     end = true;
                     break; //This break its necessary?

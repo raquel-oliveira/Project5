@@ -13,7 +13,7 @@ Dictionary* createDictionary(FILE* afterReveal) {
     char c = getc(output);
     int numberElements = c; // First byte in a integer
     setSize(dictionary, (numberElements+1));
-    printf("The number of elements is: %d\n", dictionary->size);
+   // printf("The number of elements is: %d\n", dictionary->size);
     dictionary->elements = malloc((numberElements)* sizeof(Character));
     for (int i = 0; i < getSize(dictionary); ++i) {
         setValue(dictionary, i, getc(afterReveal));
@@ -26,20 +26,23 @@ Dictionary* createDictionary(FILE* afterReveal) {
             setKey(dictionary, i, setBit(getKey(dictionary, i),pos, bitSet));
             pos--;
         }
-        printf("---------The key of element: %c is %d with size %d----------\n", getValue(dictionary, i), getKey(dictionary, i), getSizeOfKey(dictionary, i));
+       // printf("---------The key of element: %c is %d with size %d----------\n", getValue(dictionary, i), getKey(dictionary, i), getSizeOfKey(dictionary, i));
     }
     setQtdOfLastByte(dictionary, getc(output));
-    printf("The last byte will use %d number of bits\n", getQtdBitsOfLastByte(dictionary) );
-    //TODO: Create a temp file to save only the message
-    /*FILE *temp = fopen("tempMessageNotDecode.txt", "a");
-    char mes;
-    for (int i = 0; i < 1; i++){ //to test
-        mes = getc(afterReveal);
-        if (afterReveal!=NULL)
-        {
-            fputs (&mes,temp);
-        }
-    }*/
+   // printf("The last byte will use %d number of bits\n", getQtdBitsOfLastByte(dictionary) );
+
+    //TODO: Create a temp file to save only the message. TO be deleted after decoded
+   FILE * afterDic;
+    afterDic = fopen("afterDic.txt", "w+");
+    char ch;
+    while( ( ch = fgetc(afterReveal) ) != EOF ){
+        fputc(ch, afterDic);
+    }
+
+    printf("Created the file after Dictionary \n");
+    fclose(afterDic); //close after write
+    fclose(afterReveal);
+   // unlink(afterReval); //delete file after reveal*/
 
     return dictionary;
 

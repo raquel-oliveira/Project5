@@ -68,7 +68,7 @@ int main(int argc, char *argv[]){
                 printf("File Out: %s \n", fileOut);
                 break;
             case B:
-                printf("B EXE: \n");
+                //printf("B EXE: \n");
                 nbBits = atoi(optarg); //do a Try
                 printf("Number of bits: %d \n", nbBits);
                 break;
@@ -88,11 +88,11 @@ int main(int argc, char *argv[]){
                 printf("MAGIC number: %s \n", magicHexa);
                 break;
             case COMPRESS:
-                printf("COMPRESS EXE: \n");
+               // printf("COMPRESS EXE: \n");
                 isCompress = true;
                 break;
             case SHOW:
-                printf("SHOW EXE: \n");
+                //printf("SHOW EXE: \n");
                 isShow = true;
                 break;
             default:
@@ -156,10 +156,12 @@ int main(int argc, char *argv[]){
         printf("----------Is compress---------------------\n");
 
         //output = fopen("Resources/Compress/dictionaryAndMessage", "r");
-        output = fopen("Resources/Compress/7aComplete", "r");
-        //output = fopen("Resources/Compress/arbCompDesequilibreComplete", "r");
+        //output = fopen("Resources/Compress/7aComplete", "r");
         //output = fopen("Resources/Compress/arbCompEquilibreComplete", "r");
         //output = fopen("Resources/Compress/messageTestComplete", "r");
+        output = fopen("Resources/Compress/charly", "r");
+        //fileOut = "Resources/Compress/dictionaryAndMessage";
+        //output = fopen(fileOut, "r");
 
         Dictionary *a ;
         a = createDictionary(output);
@@ -168,16 +170,20 @@ int main(int argc, char *argv[]){
             exit(EXIT_FAILURE);
         }
 
-        int k;
+       /* FILE * afterDic;
+        afterDic = fopen("afterDic.txt", "r");*/
+
         FILE * out;
+        int k;
+        out = fopen("afterDic.txt", "r");
         //out = fopen("Resources/Compress/onlyMessage", "r");
-        out = fopen("Resources/Compress/7aJustMessage", "r");
-        //out = fopen("Resources/Compress/arbCompDesequilibreJustMessage", "r");
+        //out = fopen("Resources/Compress/7aJustMessage", "r");
         //out = fopen("Resources/Compress/arbCompEquilibreJustMessage", "r");
         //out = fopen("Resources/Compress/messageTestJustMessage", "r");
+       // out = fopen("Resources/Compress/charlyOnlyMessage", "r");
         k = decompress(a,out);
         if(k == 0){
-            printf("Worked \n");
+            printf("Decompress finished \n");
            // exit(0);
         }
         if(isShow){
