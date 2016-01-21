@@ -4,12 +4,11 @@
 
 #include "dictionary.h"
 
-Dictionary* createDictionary(FILE* afterReveal) {
+int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
     if (!afterReveal){
-        return NULL;
+        return -1;
     }
 
-    Dictionary *dictionary = malloc(sizeof(Dictionary));
     char c = getc(output);
     int numberElements = c; // First byte in a integer
     setSize(dictionary, (numberElements+1));
@@ -27,7 +26,7 @@ Dictionary* createDictionary(FILE* afterReveal) {
         }
     }
     setQtdOfLastByte(dictionary, getc(output));
-    return dictionary;
+    return 0;
 
 }
 
@@ -70,12 +69,11 @@ void setSizeOfKey(Dictionary* d, int index, int size){
     d->elements[index].sizeOfKey = size;
 }
 
-void printDictionary(Dictionary* d){
-    for (int i = 0; i < getSize(d); ++i) {
-        printf("0x%x : ", getValue(d, i));
-        int siz = getSizeOfKey(d, i);
-        for(siz = getSizeOfKey(d, i); siz > 0; siz--){
-            printf("%d", get_bit(getKey(d,i),(9-siz)));
+void printDictionary(Dictionary d){
+    for (int i = 0; i < getSize(&d); ++i) {
+        printf("0x%x : ", getValue(&d, i));
+        for(int siz = getSizeOfKey(&d, i); siz > 0; siz--){
+            printf("%d", get_bit(getKey(&d,i),(9-siz)));
         }
         printf("\n");
     }

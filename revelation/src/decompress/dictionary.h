@@ -42,8 +42,8 @@ int getSizeOfKey(Dictionary* d, int index);
 
 void setSizeOfKey(Dictionary* d, int index, int size);
 
-Dictionary* createDictionary(FILE* afterReveal);
+int createDictionary(FILE* afterReveal, Dictionary* dictionary);
 
-void printDictionary(Dictionary* d);
+void printDictionary(Dictionary d);
 
 #endif //REVELATIONN_DICTIONARY_H

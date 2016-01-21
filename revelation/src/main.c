@@ -162,7 +162,7 @@ int main(int argc, char *argv[]){
         //output = fopen("Resources/Compress/messageTestComplete", "r");
         output = fopen("Resources/Compress/charly", "r");
 
-        Dictionary *d ;
+        Dictionary *d = malloc(sizeof(Dictionary));
         int k;
         k = decompress(output, fileOut, d);
         if(k == 0){
@@ -171,7 +171,7 @@ int main(int argc, char *argv[]){
         }
         if(isShow){
             printf("-----------SHOW DICTIONARY---------\n");
-            printDictionary(d);
+            printDictionary(*d);
         }
        // free(a); free(output);
     }

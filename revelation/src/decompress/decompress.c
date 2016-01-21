@@ -5,15 +5,18 @@
 #include "decompress.h"
 
 int decompress(FILE* afterReveal, char* fileOut, Dictionary *d){ //put file in the assignature
-
-    d = createDictionary(afterReveal);
-
-    if (d == NULL){
-        printf("Dictionary not created\n Could not open the file \n");
+    int flagDictionary = createDictionary(afterReveal, d);
+    if (flagDictionary > -1 ){
+        printf("Worked dictionary \n");
+    }
+    else{
+        fprintf(stderr, "Dictionary not created or Could not open the file \n");
         exit(EXIT_FAILURE);
     }
+
     //Create output file
     FILE *outputFinal;
+    printf("Create file\n");
     outputFinal = fopen(fileOut, "w+");
 
     uchar lastByte = getc(afterReveal); //Taking the first byte
