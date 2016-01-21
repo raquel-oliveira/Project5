@@ -1,6 +1,9 @@
 
 import dissimulator.MagicNumberTester;
 import org.junit.Test;
+
+import java.util.BitSet;
+
 import static org.junit.Assert.*;
 
 
@@ -32,13 +35,6 @@ public class MNTTest {
         assertFalse(test.doesStringContainMN("Bonjour"));
         assertFalse(test.doesStringContainMN("BonjHE LPour"));
         assertTrue(test.doesStringContainMN("BonHELPjour"));
-
-    }
-
-    @Test
-    public void magicNumberToByteArrayTest(){
-        MagicNumberTester test = new MagicNumberTester();
-        byte[] ba = test.hextStringtoByteArray();
 
     }
 

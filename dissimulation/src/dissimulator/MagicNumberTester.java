@@ -81,7 +81,6 @@ public class MagicNumberTester {
     }
 
     public byte[] hextStringtoByteArray(){
-
         String[] splitstr = new String[4];
         for(int i= 0; i < 8; i=i+2){
             int j = i+2;
@@ -90,7 +89,7 @@ public class MagicNumberTester {
         int size = splitstr.length;
         byte [] bytes = new byte[size];
         int j=0;
-            for (int i = 1; i < splitstr.length; i++) {
+            for (int i = 0; i < splitstr.length; i++) {
                 byte[] b = DatatypeConverter.parseHexBinary(splitstr[i]);
                 bytes[j]=b[0];
                 j++;
