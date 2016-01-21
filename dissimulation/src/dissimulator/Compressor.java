@@ -35,6 +35,14 @@ public class Compressor {
         return this.msg;
     }
 
+
+    /**
+     * This method compresses the dictionnary part of the message. This part of the message contains
+     * the number of different symbols -1, and for each character, a byte representing the charater, the length of the
+     * code used for the compression of this character and the code itself.
+     *
+     * @return a byte array containing the first part of the message (number of symbols + coding for each symbol)
+     */
     public byte[] compressDictionnary(){
         int i=0;
         String[] letters = this.getMsg().split("(?!^)");
@@ -65,6 +73,13 @@ public class Compressor {
         return b;
     }
 
+    /**
+     * This method compresses the content of the message (-msg option). It creates a byte array where the first one
+     * indicates the number of bits used in the last byte (you can obtain the padding by substraction),
+     * followed by the compressed message (with each letter replaced by its code).
+     *
+     * @return a byte array representing the byte array for the message part.
+     */
     public byte[] compressMessage(){
         int padd = 0;
         String[] letters  = this.msg.split("(?!^)");
@@ -99,6 +114,16 @@ public class Compressor {
         return ret;
     }
 
+    /**
+     * This method appends 2 byte arrays passed as arguments of the method. In the context of this application,
+     * it is used to regroup the dictionnary part of the message with the compressed version of the message
+     * (from compressDictionnary() and compressMessage() respectively), as well as the full message with the
+     * Magic Number to create an intelligible message for the reveal tools.
+     *
+     * @param b1 the byte array that you want to be first in the new byte array
+     * @param b2 the byte array you want to have in second position in the new byte array
+     * @return a byte array containing b1 and b2, inb that order
+     */
     public static byte[] groupByteArray(byte[] b1,byte[] b2){
         byte[] ret = new byte[b1.length+b2.length];
         for(int i=0; i<b1.length; i++){
@@ -113,6 +138,13 @@ public class Compressor {
         return ret;
     }
 
+    /**
+     * This method counts the number of bytes that would be used by the raw compressed message
+     * (ie without any of the bytes representing the dictionnary, the number of symbols, or the padding at the end of the message)
+     *
+     * @param characs the message as an array of String.
+     * @return a number of bytes for the compressed message.
+     */
     public int compMessageByteNb(String[] characs){
         int bits =0;
         int bytes = 0;
@@ -125,12 +157,25 @@ public class Compressor {
         return bytes;
     }
 
-
+    /**
+     * A simple method that converts an integer in a byte
+     * @param i the integer to convert.
+     * @return the byte result of the conversion.
+     */
     public Byte integerToByte(int i){
         Byte ret = Byte.valueOf(i+"");
         return ret;
     }
 
+    /**
+     * A method that inverts the byte in argument. The base program uses BitSets to dissimulate the message.
+     * One problem that appears is that the valueOf(Byte[]) method of BitSet passes values in little endian
+     * (with the least significant bit first). For example, 01100010 becomes 01000110. To solve this,
+     * we invert the bytes so that BitSet puts them in the correct way (big endian)
+     *
+     * @param in the byte to invert
+     * @return the inverted byte.
+     */
     public static byte reverseByte(byte in){
         byte out = 0;
         for(int ii=0; ii < 8; ii++){
@@ -141,6 +186,11 @@ public class Compressor {
         return out;
     }
 
+    /**
+     * This method regroups compressDictionnary() and compressMessage() into a single method call, for lisibility.
+     * @param message the mesage to have compressed
+     * @return the compressed message, with its dictionnary
+     */
     public byte[] messageCompression(String message){
         this.setMessage(message);
         byte[] dictionnary = this.compressDictionnary();
