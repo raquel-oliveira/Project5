@@ -81,7 +81,7 @@ public class ManipImage {
 		
 		int z = pat.initializePosition(image.getRedArray()); // We also could have passed the blue or green array, they all have the same size
 			
-		for(int i = 0; i < bIn.length(); i++)
+		for(int i = 0; i < bIn.length() - 1; i++)
 		{
 			if(pass == 0)
 			{
