@@ -13,7 +13,6 @@ Dictionary* createDictionary(FILE* afterReveal) {
     char c = getc(output);
     int numberElements = c; // First byte in a integer
     setSize(dictionary, (numberElements+1));
-   // printf("The number of elements is: %d\n", dictionary->size);
     dictionary->elements = malloc((numberElements)* sizeof(Character));
     for (int i = 0; i < getSize(dictionary); ++i) {
         setValue(dictionary, i, getc(afterReveal));
@@ -26,10 +25,8 @@ Dictionary* createDictionary(FILE* afterReveal) {
             setKey(dictionary, i, setBit(getKey(dictionary, i),pos, bitSet));
             pos--;
         }
-       // printf("---------The key of element: %c is %d with size %d----------\n", getValue(dictionary, i), getKey(dictionary, i), getSizeOfKey(dictionary, i));
     }
     setQtdOfLastByte(dictionary, getc(output));
-   // printf("The last byte will use %d number of bits\n", getQtdBitsOfLastByte(dictionary) );
     return dictionary;
 
 }

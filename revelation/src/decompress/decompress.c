@@ -7,7 +7,6 @@
 int decompress(FILE* afterReveal, char* fileOut, Dictionary *d){ //put file in the assignature
 
     d = createDictionary(afterReveal);
-    printDictionary(d);
 
     if (d == NULL){
         printf("Dictionary not created\n Could not open the file \n");
@@ -18,10 +17,9 @@ int decompress(FILE* afterReveal, char* fileOut, Dictionary *d){ //put file in t
     outputFinal = fopen(fileOut, "w+");
 
     uchar lastByte = getc(afterReveal); //Taking the first byte
-
     uchar currentByte = lastByte; //Update the current byte to the first one
-    printf("Current byyte: %d\n", currentByte);
     lastByte = getc(afterReveal); // Taking the second byte
+
     uchar buffer = 0; //Buffer to check with the keys in the dictionary
     int count = 0; // Count of number of bits used in the buffer
     int aux = 1; // Auxiliar to take the bit of the byte (postition)
@@ -31,23 +29,16 @@ int decompress(FILE* afterReveal, char* fileOut, Dictionary *d){ //put file in t
 
     //Iniciatialization of buffer
     buffer = setBit(buffer, count, get_bit(currentByte, aux)); //First buffer setted
-    printf("buffer\n");
     count++; //As the first bit was setted, the count is 1 because use one bit of the byte
-    printf("count %d\n", count);
 
     while(!end){
-        printf("Not end\n");
         for(int i = 0; i < getSize(d); i++) { // Make a loop in the dictionary
-            printf("Loop in the dictionary\n");
             if ((count) == getSizeOfKey(d, i)) { // Checking if the caracter has the same size of the buffer
-                printf("Same size\n");
                 if(buffer == getKey(d, i)){ // If the key is the same of the buffer, write in the file
-                    printf("------------Same key to %c \n", getValue(d, i));
                     if (outputFinal!=NULL)
                     {
-                        char bla = getValue(d, i);
-                        fputs (&bla,outputFinal);
-                        printf("%c\n", getValue(d, i));
+                        char caract = getValue(d, i);
+                        fputs (&caract,outputFinal);
                     }
                     else{
                         fprintf(stderr, "Problem with the file?\n");
@@ -55,13 +46,8 @@ int decompress(FILE* afterReveal, char* fileOut, Dictionary *d){ //put file in t
                     }
                     count = 0;
                     buffer = 0;
-                    printf("buffer\n");
-                }
-                else{
-                    printf("------------%d not the Same key to %c : %d\n", buffer, getValue(d, i), getKey(d,i));
                 }
             }
-            printf("count %d\n", count);
         }
         if(feof(afterReveal)){
             max = getQtdBitsOfLastByte(d);
@@ -87,9 +73,7 @@ int decompress(FILE* afterReveal, char* fileOut, Dictionary *d){ //put file in t
         }
 
         buffer = buffer << 1; //Decalage to set the new last bit
-        printf("buffer\n");
         buffer = setBit(buffer, 0, get_bit(currentByte, aux)); // set the next element of the byte in the last bit of the buffer
-        printf("buffer\n");
         count++;
 
     }

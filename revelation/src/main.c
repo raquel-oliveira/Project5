@@ -144,8 +144,8 @@ int main(int argc, char *argv[]){
             fprintf(stderr, "There is no magic number\n");
             exit(-3);
         }
-    }*/
-    printf("END REVEAL\n");
+    }
+    printf("END REVEAL\n");*/
 
     printf("----------Check if is compress---------------------\n");
     if(!isCompress) {
@@ -157,10 +157,10 @@ int main(int argc, char *argv[]){
 
         fileOut = "messageDecode.txt";
         //output = fopen("Resources/Compress/dictionaryAndMessage", "r");
-        output = fopen("Resources/Compress/7aComplete", "r");
+        //output = fopen("Resources/Compress/7aComplete", "r");
         //output = fopen("Resources/Compress/arbCompEquilibreComplete", "r");
         //output = fopen("Resources/Compress/messageTestComplete", "r");
-        //output = fopen("Resources/Compress/charly", "r");
+        output = fopen("Resources/Compress/charly", "r");
 
         Dictionary *d ;
         int k;
