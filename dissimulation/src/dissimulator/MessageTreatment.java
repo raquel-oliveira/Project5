@@ -1,21 +1,21 @@
 package dissimulator;
+import java.io.BufferedReader;
+
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.BitSet;
-import java.util.HashMap;
-import java.util.Map;
-
-
 
 public class MessageTreatment {
 
 	/**
 	 * This method takes a string as an argument, 
-	 * and returns a string containing the binary values of the characters of the string. 
+	 * and returns a BitSet containing the binary values of the characters of the string. 
 	 * 
 	 * @param chaine
 	 * @return BitSet
 	 */
-	public  BitSet ChaintoBinary(String chaine){
-		byte[] bytes = chaine.getBytes(); 			//réccupération des bytes correspondant a la chaine de characères.
+	public BitSet ChaintoBinary(String chaine){
+		byte[] bytes = chaine.getBytes(); 			//récupération des bytes correspondants a la chaine de caractères.
 		BitSet bs = BitSet.valueOf(bytes); 			//Passage de byte[] à BitSet (une liste de valeurs booléennes)
 		BitSet bsret = new BitSet(chaine.length()*8);
 		int z=0;
@@ -30,16 +30,11 @@ public class MessageTreatment {
 		bsret.set(chaine.length()*8);
 		return bsret;
 	}
-
-	public BitSet FileToBinary(String filepath){
-		BitSet bsret = new BitSet();
-		return bsret;
-	}
 	
 	/**
 	 * Gets the number of iterations of all the letters in the message. Sorts the string by ascending order
 	 * @param message
-	 * @return the string like this "a:2,b:1,j:3"
+	 * @return the string like this "a:1,b:2,j:3"
 	 */
 	public String getNbIterations(String message)
 	{
@@ -50,11 +45,10 @@ public class MessageTreatment {
 		{
 			character = message.charAt(0);
 			count = message.length() - message.replace(String.valueOf(character), "").length();
-			message = message.replace(String.valueOf(character), "");
+			message = message.replace(String.valueOf(character), "");  // Erase every 'a' for example
 			temp += character + ":" + Integer.toString(count);
 			if(!message.isEmpty()) temp += ",";
 		}
-		System.out.println(sortByAscendingOrder(temp));
 		return sortByAscendingOrder(temp);
 	}
 	 /**
@@ -64,12 +58,12 @@ public class MessageTreatment {
 	  */
 	private String sortByAscendingOrder(String occurences)
 	{
-		String temp = "", key = "";
+		String temp = "";
 		int frequency = 20000, position = 0;
 		occurences = occurences.replace(",", "");
 		while(!occurences.isEmpty())
 		{
-			for(int i = 0; i < occurences.length(); i++)
+			for(int i = 0; i < occurences.length(); i++) // Searching for the lowest frequency
 			{
 				if(occurences.charAt(i) == ':' && Character.getNumericValue(occurences.charAt(i+1)) < frequency) 
 				{
@@ -78,11 +72,32 @@ public class MessageTreatment {
 				}
 			}
 			frequency = 20000;
-			temp += occurences.charAt(position-1) + ":" + occurences.charAt(position+1) + ",";
-			occurences = occurences.replace(occurences.charAt(position-1) + ":" + occurences.charAt(position+1), "");
+			temp += occurences.charAt(position-1) + ":" + occurences.charAt(position+1); // Ajout de x:y à temp
+			occurences = occurences.replace(occurences.charAt(position-1) + ":" + occurences.charAt(position+1), ""); // Supression de x:y dans occurences
+			if(!occurences.isEmpty()) temp += ','; // Doesn't put a comma at the end of the ordered string
 		}
 		return temp;
 	}
+	
+	public String whetherFileOrText(String message, MagicNumberTester mnt) throws IOException, Exception
+	{
+		if(message.endsWith(".txt")) {
+			BufferedReader br = new BufferedReader(new FileReader(message));
+			try {
+				StringBuilder sb = new StringBuilder();
+				String line = br.readLine();
 
-
+				while (line != null) {
+					sb.append(line);
+					sb.append("");
+					line = br.readLine();
+				}
+				message = sb.toString();
+			} finally {
+				br.close();
+			}
+		}
+		
+		return message;
+	}
 }

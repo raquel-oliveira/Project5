@@ -14,6 +14,10 @@ public class ImageRGB {
 	private int[] blue;
 	private int[] green;
 	
+	/**
+	 * Read the image with the path f. Constructs the Red, Green and Blue arrays
+	 * @param f path to the image to read
+	 */
 	public ImageRGB(String f)
 	{
 		File file = new File(f);
@@ -33,7 +37,7 @@ public class ImageRGB {
 	}
 	
 	/**
-	 * Get the RGB colors of each pixel
+	 * Gets the RGB colors of each pixel and put them in the corresponding arrays
 	 */
 	public void getPixelsColor()
 	{
@@ -59,25 +63,13 @@ public class ImageRGB {
 	{
 		return red;
 	}
-	public void setRedArray(int[] red)
-	{
-		this.red = red;
-	}
 	public int[] getBlueArray()
 	{
 		return blue;
 	}
-	public void setBlueArray(int[] blue)
-	{
-		this.blue = blue;
-	}
 	public int[] getGreenArray()
 	{
 		return green;
-	}
-	public void setGreenArray(int[] green)
-	{
-		this.green = green;
 	}
 	public int getHeight()
 	{

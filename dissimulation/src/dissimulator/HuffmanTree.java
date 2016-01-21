@@ -1,41 +1,66 @@
 package dissimulator;
 
 /**
- * Created by paul Bertot on 1/18/16.
+ * Created by Paul Bertot on 1/18/16.
  */
+import java.util.HashMap;
 import java.util.LinkedList;
 
 
 public class HuffmanTree {
-    private LinkedList<String> tree;
+    /**
+     * nodes : Linkedlist contaning the couple "character:frequency"
+     * tree : String containing the tree as an expression following the format (exp1,exp2).
+     */
+    private LinkedList<String> nodes;
+    private String tree;
 
     public HuffmanTree(){
-        this.tree = new LinkedList<String>();
+        this.nodes = new LinkedList<String>();
     }
 
-    public LinkedList<String> getTree(){
+    public String getTree(){
         return this.tree;
     }
 
+    public void setTree(String s){
+        this.tree = s;
+    }
+
+    public LinkedList<String> getNodes(){
+        return this.nodes;
+    }
+
+    /**
+     * This method adds a String representing a couple character:frequency while respecting the order by frequency
+     *
+     * @param node String representin ga character and its frequency, expected to be "x:y" where x is the character
+     *             and y is the frequency value (integer).
+     */
     public void addNode(String node){
         int index = 0;
         String[] nodeS = node.split(":");
         int occ = Integer.parseInt(nodeS[1]);
-        if(!this.getTree().isEmpty()){
-            for (String n : this.getTree()){
+        if(!this.getNodes().isEmpty()){
+            for (String n : this.getNodes()){
                 String[] nS = n.split(":");
                 if (occ >= Integer.parseInt(nS[1]))
                     index++;
             }
-            this.getTree().add(index, node);
+            this.getNodes().add(index, node);
         }
-        else this.getTree().add(node);
+        else this.getNodes().add(node);
     }
 
+    /**
+     * This method fuses the first 2 nodes of the nodes LinkedList.
+     * Fusing means that the character will be saved as a couple, and will look like (n1,n2):x
+     * where n1 and n2 will be characters (or couples such as (a,b)) and x will be the addition of the two frequencies.
+     */
     public void fuseNodes(){
         StringBuilder sb = new StringBuilder("(,)");
-        String n1 = this.getTree().get(0);
-        String n2 = this.getTree().get(1);
+        String n1 = this.getNodes().get(0);
+        String n2 = this.getNodes().get(1);
         String[] n1split = n1.split(":");
         String[] n2split = n2.split(":");
 
@@ -45,16 +70,77 @@ public class HuffmanTree {
         sb.insert(n1split[0].length()+2, n2split[0]);
         sb.append(":"+occ);
         this.addNode(sb.toString());
-        this.getTree().remove();
-        this.getTree().remove();
+        this.getNodes().remove();
+        this.getNodes().remove();
     }
 
+    /**
+     * Fills the nodes LinkedList with the "character:frequency" strings, ordered by their frequency (from lowest to highest)
+     * This is intended to be used as initia;isation for the nodes LinkedList
+     * @param occurences String representing the frequencies of the letters in the message.
+     *                   The format expected is the same as the return value of getNbIterations from MessageTreatment
+     *                   example => "a:2,b:1,j:3"
+     */
+
     public void createList(String occurences){
-        String[] tuples = occurences.split(",");
+        String occur = occurences.substring(1, occurences.length()-1);
+        String[] tuples = occur.split(", ");
         for(int i=0; i < tuples.length; i++){
             this.addNode(tuples[i]);
         }
 
+    }
+
+    /**
+     * This method determines which coma should be used for the splitting of the String during the recursivity;
+     * It is used to avoid miscutting the String sent as parameter, and create a correct dictionnary.
+     * @param s The string to be analysed, the format expected is exp1,exp2
+     *          where exp1 and exp2 can be a single character, or a couple of expressions => (exp3,exp4)
+     * @return Returns the position of the coma that is not inside a set of parentheses, which will allow us
+     * to cut the s expression into two elements, left and right, to simulate the tree.
+     */
+    public int comaPosition(String s){
+        int pos =0;
+        int alt = 0;
+        for(int i=0; i< s.length(); i++){
+            if(s.charAt(i)=='(')
+                alt++;
+            else if (s.charAt(i) ==')')
+                alt--;
+            else if(s.charAt(i) == ',' && alt ==0)
+                pos = i;
+        }
+        return pos;
+    }
+
+
+    /**
+     * Method that fills the dictionnary
+     * @return a Hashmap<K, V> where K is a string representing a character,
+     * and V is the code for this character, as an integer.
+     **/
+    public HashMap<String, Integer> getCodes(){
+        HashMap<String, Integer> hm = new HashMap<String, Integer>();
+        this.getCodes(hm, this.getTree(), 0);
+
+        return hm;
+    }
+
+    /**
+     * Internal method to recursively determine the code value for each characetr in the message string
+     * @param hash The HashMap that contains the dictinnary
+     * @param node Either a character or an expression of the following format => (exp1,exp2).
+     *             The first node is expected to be the String parameteer, once it has been initialized with
+     *             the proper value (the String representing the tree once every node has been fused).
+     * @param value The value of the key.
+     */
+    private void getCodes(HashMap<String, Integer> hash, String node, int value){
+        if (node.length()>1){
+            node = node.substring(1, node.length()-1);
+            this.getCodes(hash, node.substring(0, this.comaPosition(node)), value*2+0);
+            this.getCodes(hash, node.substring(this.comaPosition(node)+1, node.length()), value*2+1);
+        }
+        else hash.put(node, value);
     }
 
 

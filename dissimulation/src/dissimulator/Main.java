@@ -1,65 +1,74 @@
 package dissimulator;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.BitSet;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
 	
 	public static void main(String[] args) throws IOException, Exception {
-		//Récupération des arguments, et utilisation
+		//Getting of arguments
+		
 		Arguments arg = new Arguments(args);
 		Metrics met = new Metrics();
-		//met.setMetric(arg.getArg("metrics"));
-		MessageTreatment t = new MessageTreatment();
+		if(arg.getMetrics().equals("time"))  met.setTime();
+		MessageTreatment msgTreatment = new MessageTreatment();
 		
-		String in = arg.getArg("fileIn");
-		String out = arg.getArg("fileOut");
-		String message = arg.getArg("message");
+		String in = arg.getFileIn();
+		String out = arg.getFileOut();
+		String message = arg.getMessage();
 		String[] colors = new String[3];
-
-		//Vérification du message pour le nombre magique
-		MagicNumberTester mnt = new MagicNumberTester(arg.getArg("magic"));
-
-		if (message.endsWith(".txt")) {
-			BufferedReader br = new BufferedReader(new FileReader(message));
-			try {
-				StringBuilder sb = new StringBuilder();
-				String line = br.readLine();
-
-				while (line != null) {
-					sb.append(line);
-					sb.append("");
-					line = br.readLine();
-				}
-				message = sb.toString();
-			} finally {
-				br.close();
-			}
-			if (mnt.doesStringContainMN(message)) {
-				throw new MagicNumberException("Le contenu de ce fichier texte contient le mot magique");
-			} else {
-				message += mnt.hexStringtoString();
-			}
-		}
-		else {
-			if(mnt.doesStringContainMN(message)) {
-				throw new MagicNumberException("Ce message contient le nombre magique");
-			}else{
-				message += mnt.hexStringtoString();
-			}
-		}
-		
 		ManipImage manipMat = new ManipImage(in);
+
+		//Checking the message for the magic number
+		MagicNumberTester mnt = new MagicNumberTester(arg.getMagic());
+
+		message = msgTreatment.whetherFileOrText(message, mnt);
+		
+		if(!arg.getCompress())
+		{
+			if(mnt.doesStringContainMN(message))
+				throw new MagicNumberException("Ce message contient le nombre magique");
+			else message += mnt.hexStringtoString();
+		}
+		else
+		{
+			PredefinedDictionnary dict = new PredefinedDictionnary();
+			Compressor compressor = new Compressor(dict.getDicoCode(), dict.getDicoLength());
+			byte[] array1 = compressor.messageCompression(message);
+			byte[] array2 = mnt.mnCompressionBArray();
+			byte[] finalArray = Compressor.groupByteArray(array1, array2);
+			
+			for(int k = 0; k < finalArray.length; k++)
+			{
+				String binaryString = String.format("%8s", Integer.toBinaryString(finalArray[k] & 0xFF)).replace(' ', '0');
+				System.out.print(binaryString);
+				System.out.print(" ");
+			}
+			System.out.print("\n");
+			
+			/*for(int k = 0, cpt = 0; k < bitset.length; k++, cpt++)
+			{
+				if(bitset.get(k)) System.out.print("1");
+				else System.out.print("0");
+				if(cpt%8 == 0) System.out.print(" ");
+			}*/
+		}
+		
+		// Compressing the message
+		if(arg.getMetrics().equals("compression_time")) met.setTime();
+		if(arg.getCompress()) msgTreatment.getNbIterations(message);
+		
+		if(arg.getMetrics().equals("compression_time")) met.getTime();
         
-        //Conversion du message en BitSet.
+        //From message to BitSet
 		
-		BitSet b = t.ChaintoBinary(message);
+		BitSet b = msgTreatment.ChaintoBinary(message);
 		
-		// Traitement des couleurs
+		// Colors treatment
 		
-		String channels = arg.getArg("channels"), temp = "";
+		String channels = arg.getChannels(), temp = "";
 		
 		for(int i = 0, cpt = 0; i < channels.length(); i++)
 		{
@@ -75,19 +84,22 @@ public class Main {
 		else if(colors[1] != null && colors[2] == null) nbColorsNotNull = 2;
 		else nbColorsNotNull = 3;
 		
-		if(((message.length() + arg.getArg("magic").length()) * 8  / Integer.parseInt(arg.getArg("nbBits"))) > 
+		if(((message.length() + arg.getMagic().length()) * 8  / Integer.parseInt(arg.getNbBits())) > 
 			(manipMat.getImage().getWidth() * nbColorsNotNull * manipMat.getImage().getHeight())) 
 			throw new InvalidArgumentException("Message + magic number do not fit in the image");
 		
 		try
 		{ 
-			manipMat.dissimulationLSB(b, Integer.parseInt(arg.getArg("nbBits")), arg.getArg("pattern"), colors);
+			manipMat.dissimulationLSB(b, Integer.parseInt(arg.getNbBits()), arg.getPattern(), colors);
 		}
 		catch(InvalidArgumentException | EmptyArgumentException e)
 		{
 			System.out.println(e.getMessage());
 		}	
 		
-		manipMat.setPixelsColor(out, arg.getArg("formatIn"), arg.getArg("formatOut"));
+		manipMat.setPixelsColor(out, arg.getFormatIn(), arg.getFormatOut());
+		
+		if(arg.getMetrics().equals("impact"))  met.nbBitsImpacted(message, nbColorsNotNull, manipMat.getImage());
+		else if(arg.getMetrics().equals("time"))  met.getTime();
 	}
 }
