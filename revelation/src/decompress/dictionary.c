@@ -37,8 +37,8 @@ int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
         printf("Doing malloc in the char* key of this element\n");
         dictionary->elements->key = malloc(nbBytesKey*(sizeof(char)));// Malloc the number of bytes
         printf("Did the malloc\n");
-        printf("----Start loop in the number of bytes-----\n");
-        for (int j = 0; j < nbBytesKey; ++j) { //Loop to the number of bytes
+        printf("----Start loop for %d times ( number of bytes)-----\n", nbBytesKey);
+        for (int j = 0; j < nbBytesKey; j++) { //Loop to the number of bytes
             printf("---- Starting lopp in the %d byte-----\n", j+1);
             int qtdBits = (getSizeOfKey(dictionary, i));  // Ex = 3
             printf("The quantity of bits left is%d\n", qtdBits);
@@ -51,9 +51,11 @@ int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
                 printf("K is %d \n", k);
                 while(qtdBits!=0){ // 3
                     bitToSet = get_bit(c, k);
-                    printf("The bit to set is %d, tooked from the byte in the position %d", bitToSet, k);
+                    printf("The bit to set is %d, tooked from the byte in the position %d\n", bitToSet, k);
                     printf("Try to set in the dictionary\n");
-                    setKey(dictionary, i, setBit((uchar)getKey(dictionary, i, 0),qtdBits-1, bitToSet), 0);
+                    printf("element in the dictionary i = %d,\n Set the bit = %d, in the position %d,",i, bitToSet, qtdBits-1);
+                    //TODO: set key!!!!
+                    //setKey(dictionary, i, setBit((uchar)getKey(dictionary, i, 0),qtdBits-1, bitToSet), 0);
                     printf("Putted in the dictionary\n");
                     qtdBits--;
                     printf("The quantity of bits left is%d\n", qtdBits);
