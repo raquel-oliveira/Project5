@@ -156,10 +156,10 @@ int main(int argc, char *argv[]){
         printf("----------Is compress---------------------\n");
 
         //output = fopen("Resources/Compress/dictionaryAndMessage", "r");
-        //output = fopen("Resources/Compress/7aComplete", "r");
+        output = fopen("Resources/Compress/7aComplete", "r");
         //output = fopen("Resources/Compress/arbCompDesequilibreComplete", "r");
         //output = fopen("Resources/Compress/arbCompEquilibreComplete", "r");
-        output = fopen("Resources/Compress/messageTestComplete", "r");
+        //output = fopen("Resources/Compress/messageTestComplete", "r");
 
         Dictionary *a ;
         a = createDictionary(output);
@@ -171,10 +171,10 @@ int main(int argc, char *argv[]){
         int k;
         FILE * out;
         //out = fopen("Resources/Compress/onlyMessage", "r");
-        //out = fopen("Resources/Compress/7aJustMessage", "r");
+        out = fopen("Resources/Compress/7aJustMessage", "r");
         //out = fopen("Resources/Compress/arbCompDesequilibreJustMessage", "r");
         //out = fopen("Resources/Compress/arbCompEquilibreJustMessage", "r");
-        out = fopen("Resources/Compress/messageTestJustMessage", "r");
+        //out = fopen("Resources/Compress/messageTestJustMessage", "r");
         k = decompress(a,out);
         if(k == 0){
             printf("Worked \n");
