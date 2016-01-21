@@ -43,7 +43,7 @@ int reveal(int initialRow, int finalRow, int initialWidth, int finalWidth) {
                         //TODO: It's jumping fot multiples of size of magicNumber. Change this!!!!!!!
                         i = 0;
 
-                        m = message
+                        m = message;
                         end = strstr(m, magic); // Check if magic number is found --> when the message ends
 
                         if (end != NULL) { //Magic Number was found
