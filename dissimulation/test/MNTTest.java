@@ -35,5 +35,12 @@ public class MNTTest {
 
     }
 
+    @Test
+    public void magicNumberToByteArrayTest(){
+        MagicNumberTester test = new MagicNumberTester();
+        byte[] ba = test.hextStringtoByteArray();
+
+    }
+
 
 }
