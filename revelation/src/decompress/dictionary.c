@@ -24,22 +24,22 @@ int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
 
         setQtdByte(dictionary,i, (sizeOfKey/8)+((sizeOfKey%8==0)?0:1)); // Set the numbers of bytes takin into account the number of bits
         int nbBytesKey = getQtdByte(dictionary, i); //Variable auxiliar no number of bytes
-        printf("0x%x : ", getValue(dictionary, i));
-        printf("--------Qtd bytes: %d\n", nbBytesKey);
+        //printf("0x%x : ", getValue(dictionary, i));
+        //printf("--------Qtd bytes: %d\n", nbBytesKey);
         (dictionary->elements)[i].key = malloc(nbBytesKey*(sizeof(uchar)));// Malloc the number of bytes needed
         if(dictionary->elements[i].key == NULL) /*printf("ERRO NO MALLOC\n");*/ return -2;
 
         qtdBits = (getSizeOfKey(dictionary, i));
-        printf("Qtd bits: %d\n", qtdBits);
+        //printf("Qtd bits: %d\n", qtdBits);
         qtdBitsLeft = qtdBits;
         int f = 0;
         while (nbBytesKey != 0){
-            printf("Qtd bytes in the ? loop %d.\n", getQtdByte(dictionary, i));
+         //   printf("Qtd bytes in the ? loop %d.\n", getQtdByte(dictionary, i));
             if(nbBytesKey > 1) {
-                printf("Nb maior que 1\n");
+           //     printf("Nb maior que 1\n");
                 qtdBitsLeft = qtdBits - 8;
                 qtdBits = 8;
-                printf("Qtd bits using now %d in the ? loop, qtd of bits left: %d.\n", qtdBits, qtdBitsLeft);
+             //   printf("Qtd bits using now %d in the ? loop, qtd of bits left: %d.\n", qtdBits, qtdBitsLeft);
             }
             else{
                 qtdBits = qtdBitsLeft;
@@ -59,13 +59,13 @@ int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
             }
 
             setKey(dictionary,i, aux,f);
-            printf("set key %d in the byte %d\n",getKey(dictionary, i)[f], f+1);
+            //printf("set key %d in the byte %d\n",getKey(dictionary, i)[f], f+1);
             nbBytesKey--;
             f++;
-            printf("%d\n", getKey(dictionary,i)[f]);
+            //printf("%d\n", getKey(dictionary,i)[f]);
 
         }
-        printf("\n\n");
+        //printf("\n\n");
     }
     setQtdOfLastByte(dictionary, getc(output));
 

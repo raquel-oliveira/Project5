@@ -8,7 +8,7 @@ int decompress(FILE* afterReveal, char* fileOut, Dictionary *d){ //put file in t
     printf("---- Starting create dictionary-----\n");
     int flagDictionary = createDictionary(afterReveal, d);
     if (flagDictionary < 0 ){
-        fprintf(stderr, "Dictionary not created or Could not open the file \n");
+        //fprintf(stderr, "Dictionary not created or Could not open the file \n");
         return flagDictionary;
         //exit(EXIT_FAILURE);
     }
