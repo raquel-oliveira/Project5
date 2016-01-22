@@ -16,57 +16,77 @@ int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
     printf("---- Inicitialization of variables-----\n");
     int nbBytesKey = 0;
     printf("Taking first byte\n");
-    char c = getc(output);
-    int numberElements = c; // First byte in a integer
-    printf("Set number of elements in the dictionary:\n");
-    setSize(dictionary, (numberElements+1));
-    printf("Malloc the number of element in the dictionary:\n");
+    uchar c = getc(output);
+    uchar zero = 0;
+    int numberElements = c + 1; // First byte in a integer
+    printf("Set number of elements in the dictionary: ");
+    setSize(dictionary, (numberElements));
+    printf("%d \n", getSize(dictionary));
+    printf("Malloc the number of element in the dictionary: %d\n", numberElements);
     dictionary->elements = malloc((numberElements)* sizeof(Character));
-
-    for (int i = 0; i < getSize(dictionary); ++i) {
-        printf("---- Creating the %d element in the dictionary-----\n", i+1);
-        printf("Set value.");
+    int qtdBits;
+    for (int i = 0; i < getSize(dictionary); i++) {
+        qtdBits = 0;
+        printf("--------------- Creating the %d element in the dictionary----------------\n", i+1);
+       // printf("Set value.");
         setValue(dictionary, i, getc(afterReveal)); //Set value of the caractere
-        printf("Value of the key is %c as char and %d as integer\n", getValue(dictionary, i), getValue(dictionary, i));
-        printf("Set size of the key.");
+       // printf("Value of the key is %c as char and %d as integer\n", getValue(dictionary, i), getValue(dictionary, i));
+        //printf("Set size of the key.");
         setSizeOfKey(dictionary, i, getc(afterReveal)); // Set size of key
         printf("Size of the key is: %d\n", getSizeOfKey(dictionary, i));
-        printf("Starting get the number of bytes of this key: -----");
+        //printf("Starting get the number of bytes of this key: -----");
         nbBytesKey = (getSizeOfKey(dictionary, i)/8)+1; //Get Number of bytes used to the key
-        printf("The number byte of the key is %d\n", nbBytesKey);
-        printf("Doing malloc in the char* key of this element\n");
+        //printf("The number byte of the key is %d\n", nbBytesKey);
+        //printf("Doing malloc in the char* key of this element\n");
         dictionary->elements->key = malloc(nbBytesKey*(sizeof(char)));// Malloc the number of bytes
-        printf("Did the malloc\n");
+        if(dictionary->elements->key == NULL){
+            printf("ERRO NO MALLOC\n");
+        }
+        else printf("Did the malloc\n");
         printf("----Start loop for %d times ( number of bytes)-----\n", nbBytesKey);
+
         for (int j = 0; j < nbBytesKey; j++) { //Loop to the number of bytes
-            printf("---- Starting lopp in the %d byte-----\n", j+1);
-            int qtdBits = (getSizeOfKey(dictionary, i));  // Ex = 3
-            printf("The quantity of bits left is%d\n", qtdBits);
+          //  printf("---- Starting lopp in the %d byte-----\n", j+1);
+            qtdBits = (getSizeOfKey(dictionary, i));  // Ex = 3
+           // printf("The quantity of bits left is%d\n", qtdBits);
             int bitToSet = 0; //variable to take the bit from the byte
+            printf("%d", nbBytesKey);
+            uchar aux = 0;
             while (nbBytesKey != 0){ //1
-                printf("Taking byte to set in the dictionary.");
+
+            //    printf("Taking byte to set in the dictionary.");
                 c = getc(afterReveal); //took first byte
-                printf("The byte took was %c as char and %d as integer\n", c, c);
+            //    printf("The byte took was %c as char and %d as integer\n", c, c);
                 int k = 1; //inicial to take from the byte
-                printf("K is %d \n", k);
+            //    printf("K is %d \n", k);
                 while(qtdBits!=0){ // 3
                     bitToSet = get_bit(c, k);
-                    printf("The bit to set is %d, tooked from the byte in the position %d\n", bitToSet, k);
-                    printf("Try to set in the dictionary\n");
-                    printf("element in the dictionary i = %d,\n Set the bit = %d, in the position %d,",i, bitToSet, qtdBits-1);
-                    //TODO: set key!!!!
-                    //setKey(dictionary, i, setBit((uchar)getKey(dictionary, i, 0),qtdBits-1, bitToSet), 0);
-                    printf("Putted in the dictionary\n");
+            //        printf("The bit to set is %d, tooked from the byte in the position %d\n", bitToSet, k);
+            //        printf("Try to set in the dictionary\n");
+            //        printf("element in the dictionary i = %d,\n Set the bit = %d, in the position %d,",i, bitToSet, qtdBits-1);
+            //        printf("Create AUX:.");
+                    aux = setBit(aux, qtdBits-1, bitToSet);
+            //        printf("Aux = %d as int or %c as char \n", aux, aux);
+            //        printf("Putted in the dictionary\n");
                     qtdBits--;
-                    printf("The quantity of bits left is%d\n", qtdBits);
+            //        printf("aaaa The quantity of bits left is%d\n", qtdBits);
                     k++;
-                    printf("K is %d \n", k);
+            //        printf("K is %d \n", k);
                 }
+                /*printf("setei");
+                printf("de verdade %s \n", getKey(dictionary,i,0));*/
+                printf("Botando o valor na estrutura\n");
+               // dictionary->elements[i].key[0] = aux; //TODO: problema para acessar o elemento
+                //setKey(*dictionary, i, aux, 0);
+                printf("botei\n");
                 nbBytesKey--;
+                printf("Final number of key is %d \n", nbBytesKey);
             }
         }
+        printf("fim\n");
     }
     setQtdOfLastByte(dictionary, getc(output));
+    printf("%d\n", getQtdBitsOfLastByte(dictionary));
     return 0;
 
 }
@@ -94,12 +114,12 @@ void setValue(Dictionary* d, int index, char valuee){
     d->elements[index].value = valuee;
 }
 
-char* getKey(Dictionary* d, int index, int indexKey){
-    return d->elements[index].key;
+uchar* getKey(Dictionary* d, int index, int indexKey){
+    return &d->elements[index].key[indexKey];
 }
 
-void setKey(Dictionary* d, int index, char keey, int indexKey){
-    d->elements[index].key[indexKey] = keey;
+void setKey(Dictionary d, int index, uchar keey, int indexKey){
+    d.elements[index].key[indexKey] = keey;
 }
 
 int getSizeOfKey(Dictionary* d, int index){
