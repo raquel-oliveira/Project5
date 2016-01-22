@@ -14,7 +14,7 @@ int decompress(FILE* afterReveal, char* fileOut, Dictionary *d){ //put file in t
         fprintf(stderr, "Dictionary not created or Could not open the file \n");
         exit(EXIT_FAILURE);
     }
-/*
+
     //Create output file
     FILE *outputFinal;
     printf("Create file\n");
@@ -38,7 +38,7 @@ int decompress(FILE* afterReveal, char* fileOut, Dictionary *d){ //put file in t
     while(!end){
         for(int i = 0; i < getSize(d); i++) { // Make a loop in the dictionary
             if ((count) == getSizeOfKey(d, i)) { // Checking if the caracter has the same size of the buffer
-                if(buffer == (int)getKey(d, i, 0)){ // If the key is the same of the buffer, write in the file
+                if(buffer == (int)getKey(d, i)[0]){ // If the key is the same of the buffer, write in the file
                     if (outputFinal!=NULL)
                     {
                         char caract = getValue(d, i);
@@ -80,7 +80,7 @@ int decompress(FILE* afterReveal, char* fileOut, Dictionary *d){ //put file in t
         buffer = setBit(buffer, 0, get_bit(currentByte, aux)); // set the next element of the byte in the last bit of the buffer
         count++;
 
-    }*/
+    }
 
     return 0;
 }

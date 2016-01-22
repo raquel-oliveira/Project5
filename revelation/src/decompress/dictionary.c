@@ -136,14 +136,11 @@ void setSizeOfKey(Dictionary* d, int index, int size){
 }
 
 void printDictionary(Dictionary* d){
-    for (int i = 0; i < getSize(d); ++i) {
+    for (int i = 0; i < getSize(d); i++) {
         printf("0x%x : ", getValue(d, i));
-        int oo =getSizeOfKey(d, i);
-       /* for(int j = 1; j < 9; j++){
-            printf("%d", get_bit((uchar)getKey(&d,i, 0),j));
-        }*/
-        printf("EEEEEE %d:%d", oo,getKey(d,i)[0]);
-
+        for( int j = getSizeOfKey(d, i); j >0 ; j--){
+            printf("%d", get_bit(getKey(&d,i),(9-j)));
+        }
         printf("\n");
     }
 }
