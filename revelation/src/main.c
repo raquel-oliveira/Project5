@@ -157,10 +157,10 @@ int main(int argc, char *argv[]){
 
         fileOut = "messageDecode.txt";
         //output = fopen("Resources/Compress/dictionaryAndMessage", "r");
-        //output = fopen("Resources/Compress/7aComplete", "r");
+        output = fopen("Resources/Compress/7aComplete", "r");
         //output = fopen("Resources/Compress/arbCompEquilibreComplete", "r");
         //output = fopen("Resources/Compress/messageTestComplete", "r");
-        output = fopen("Resources/Compress/charly", "r");
+        //output = fopen("Resources/Compress/charly", "r");
 
         Dictionary *d = malloc(sizeof(Dictionary));
         int k;

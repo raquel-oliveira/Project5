@@ -36,7 +36,6 @@ public class Main {
 		else
 		{
 			if(arg.getMetrics().equals("compression_time")) met.setTime();
-			System.out.println(msgTreatment.getNbIterations(message));
 			PredefinedDictionnary dict = new PredefinedDictionnary();
 			Compressor compressor = new Compressor(dict.getDicoCode(), dict.getDicoLength());
 			byte[] array1 = compressor.messageCompression(message);
@@ -45,7 +44,7 @@ public class Main {
 			BitSet compressed = BitSet.valueOf(finalArray);
 			compressed.set(finalArray.length*8);
 			
-			for(int k = 0, cpt = 0; k < compressed.length(); k++, cpt++)
+			for(int k = 0, cpt = 0; k < compressed.length() - 1; k++, cpt++)
 			{
 				if(cpt%8 == 0 && cpt !=0) System.out.print(" ");
 				if(compressed.get(k)) System.out.print("1");
@@ -56,6 +55,7 @@ public class Main {
 			
 			bitsetMessage = compressed;
 			if(arg.getMetrics().equals("compression_time")) met.getTime();
+			if(arg.getShow()) met.getDictionary(dict.getDicoCode(), dict.getDicoLength(), bitsetMessage);
 		}
 		
         //From message to BitSet
