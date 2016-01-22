@@ -26,6 +26,14 @@ public class HuffmanTree {
         return this.tree;
     }
 
+    public HashMap<String, Integer> getDictionnary(){
+        return this.dictionnary;
+    }
+
+    public HashMap<String, Integer> getCodelength(){
+        return this.codelength;
+    }
+
     public void setTree(String s){
         this.tree = s;
     }
@@ -78,12 +86,16 @@ public class HuffmanTree {
     }
 
     /**
-     * This method does a while loop to fuse all the nodes of the LinkedList, untill you get the Huffman Tree.
+     * This method does a while loop to fuse all the nodes of the LinkedList, untill you get the Huffman Tree,
+     * with the total number of letters. Then, the tree representation is stored in the attribute tree.
      */
     public void constructHuffmanTree(){
         while(this.getNodes().size()>1){
             this.fuseNodes();
         }
+
+        String[] tuple = this.getNodes().get(0).split(":");
+        this.setTree(tuple[0]);
     }
 
     /**
