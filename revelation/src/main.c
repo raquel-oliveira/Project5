@@ -103,11 +103,8 @@ int main(int argc, char *argv[]){
     }
 
     fileIn = "Resources/1bitRedJOAO.png";
-    //Verifications:
-  //  setArguments();
-   /* oiutecg
-    *
-    *
+   /* setArguments();
+
     * printf("%d", patternInt);
     printf("----------Make reveal--------------------\n");
     flag = patternInt;
@@ -160,10 +157,10 @@ int main(int argc, char *argv[]){
 
         fileOut = "messageDecode.txt";
         //output = fopen("Resources/Compress/dictionaryAndMessage", "r");
-        output = fopen("Resources/Compress/7aComplete", "r");
+        //output = fopen("Resources/Compress/7aComplete", "r");
         //output = fopen("Resources/Compress/arbCompEquilibreComplete", "r");
         //output = fopen("Resources/Compress/messageTestComplete", "r");
-        //output = fopen("Resources/Compress/Adrien", "r");
+        output = fopen("Resources/Compress/Adrien", "r");
 
         Dictionary *d = malloc(sizeof(Dictionary));
         int k;

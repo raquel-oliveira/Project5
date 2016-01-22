@@ -7,12 +7,10 @@
 int decompress(FILE* afterReveal, char* fileOut, Dictionary *d){ //put file in the assignature
     printf("---- Starting create dictionary-----\n");
     int flagDictionary = createDictionary(afterReveal, d);
-    if (flagDictionary > -1 ){
-        printf("Worked dictionary \n");
-    }
-    else{
+    if (flagDictionary < 0 ){
         fprintf(stderr, "Dictionary not created or Could not open the file \n");
-        exit(EXIT_FAILURE);
+        return flagDictionary;
+        //exit(EXIT_FAILURE);
     }
     printf("---- Starting to decompres-----\n");
     //Create output file

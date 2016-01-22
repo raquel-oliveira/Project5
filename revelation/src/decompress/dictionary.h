@@ -13,6 +13,7 @@ typedef struct character {
     uchar value;
     uchar* key;
     int sizeOfKey;
+    int nbBytesKey;
 } Character;
 
 typedef struct {
@@ -40,6 +41,10 @@ void setKey(Dictionary* d, int index, uchar keey, int indexKey);
 int getSizeOfKey(Dictionary* d, int index);
 
 void setSizeOfKey(Dictionary* d, int index, int size);
+
+int getQtdByte(Dictionary* d, int index);
+
+void setQtdByte(Dictionary* d, int index, int qtd);
 
 int createDictionary(FILE* afterReveal, Dictionary* dictionary);
 
