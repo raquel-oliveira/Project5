@@ -42,6 +42,7 @@ public class MagicNumberTester {
                 };
         return hexDigit[nibble & 0xF];
 
+
     }
 
     public boolean doesFileContainMN(String filepath) throws IOException {
