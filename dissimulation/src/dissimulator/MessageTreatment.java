@@ -48,7 +48,14 @@ public class MessageTreatment {
 			temp += character + ":" + Integer.toString(count);
 			if(!message.isEmpty()) temp += ",";
 		}
-		return sortByAscendingOrder(temp);
+		String strFinal = sortByAscendingOrder(temp);
+		strFinal = strFinal.concat("}");
+		StringBuilder tmp = new StringBuilder(strFinal);
+		tmp = tmp.reverse();
+		tmp = tmp.append("{");
+		tmp = tmp.reverse();
+		strFinal = tmp.toString();
+		return strFinal;
 	}
 	 /**
 	  * Gets a string containing the return string of getNbIterations in order to order by ascending frequencies
@@ -73,7 +80,7 @@ public class MessageTreatment {
 			frequency = 20000;
 			temp += occurences.charAt(position-1) + ":" + occurences.charAt(position+1); // Ajout de x:y à temp
 			occurences = occurences.replace(occurences.charAt(position-1) + ":" + occurences.charAt(position+1), ""); // Supression de x:y dans occurences
-			if(!occurences.isEmpty()) temp += ','; // Doesn't put a comma at the end of the ordered string
+			if(!occurences.isEmpty()) temp += ", "; // Doesn't put a comma at the end of the ordered string
 		}
 		return temp;
 	}
