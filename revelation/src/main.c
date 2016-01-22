@@ -174,7 +174,7 @@ int main(int argc, char *argv[]){
         }
         if(isShow){
             printf("-----------SHOW DICTIONARY---------\n");
-            printDictionary(*d);
+            printDictionary(d);
         }
        // free(a); free(output);
     }

@@ -35,10 +35,11 @@ int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
         setSizeOfKey(dictionary, i, getc(afterReveal)); // Set size of key
         printf("Size of the key is: %d\n", getSizeOfKey(dictionary, i));
         //printf("Starting get the number of bytes of this key: -----");
-        nbBytesKey = (getSizeOfKey(dictionary, i)/8)+1; //Get Number of bytes used to the key
+        int sizeofk=getSizeOfKey(dictionary, i);
+        nbBytesKey = (sizeofk/8)+((sizeofk%8==0)?0:1); //Get Number of bytes used to the key
         //printf("The number byte of the key is %d\n", nbBytesKey);
         //printf("Doing malloc in the char* key of this element\n");
-        dictionary->elements->key = malloc(nbBytesKey*(sizeof(char)));// Malloc the number of bytes
+        (dictionary->elements)[i].key = malloc(nbBytesKey*(sizeof(char)));// Malloc the number of bytes
         if(dictionary->elements->key == NULL){
             printf("ERRO NO MALLOC\n");
         }
@@ -75,8 +76,10 @@ int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
                 }
                 /*printf("setei");
                 printf("de verdade %s \n", getKey(dictionary,i,0));*/
-                printf("Botando o valor na estrutura\n");
-               // dictionary->elements[i].key[0] = aux; //TODO: problema para acessar o elemento
+                printf("Botando o valor na estrutura %d\n",aux);
+                (dictionary->elements)[i].key[j] = aux; //TODO: problema para acessar o elemento
+                printf(" AAAAAAAAAAAAA %d\n", (dictionary->elements)[i].key[j] );
+
                 //setKey(*dictionary, i, aux, 0);
                 printf("botei\n");
                 nbBytesKey--;
@@ -87,6 +90,8 @@ int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
     }
     setQtdOfLastByte(dictionary, getc(output));
     printf("%d\n", getQtdBitsOfLastByte(dictionary));
+
+
     return 0;
 
 }
@@ -95,7 +100,7 @@ char getSize(Dictionary* d){
     return d->size;
 }
 
-void setSize(Dictionary* d, char sizee){
+void setSize(Dictionary* d, uchar sizee){
     d->size = sizee;
 }
 
@@ -106,7 +111,7 @@ int getQtdBitsOfLastByte(Dictionary* d){
 void setQtdOfLastByte(Dictionary* d, int qtd){
     d->valueLastByte = qtd;
 }
-char getValue(Dictionary* d, int index){
+uchar getValue(Dictionary* d, int index){
     return d->elements[index].value;
 }
 
@@ -114,8 +119,8 @@ void setValue(Dictionary* d, int index, char valuee){
     d->elements[index].value = valuee;
 }
 
-uchar* getKey(Dictionary* d, int index, int indexKey){
-    return &d->elements[index].key[indexKey];
+uchar* getKey(Dictionary* d, int index){
+    return (d->elements[index].key);
 }
 
 void setKey(Dictionary d, int index, uchar keey, int indexKey){
@@ -130,12 +135,15 @@ void setSizeOfKey(Dictionary* d, int index, int size){
     d->elements[index].sizeOfKey = size;
 }
 
-void printDictionary(Dictionary d){
-    for (int i = 0; i < getSize(&d); ++i) {
-        printf("0x%x : ", getValue(&d, i));
-        for(int siz = getSizeOfKey(&d, i); siz > 0; siz--){
-            printf("%d", get_bit((uchar)getKey(&d,i, 0),(9-siz)));
-        }
+void printDictionary(Dictionary* d){
+    for (int i = 0; i < getSize(d); ++i) {
+        printf("0x%x : ", getValue(d, i));
+        int oo =getSizeOfKey(d, i);
+       /* for(int j = 1; j < 9; j++){
+            printf("%d", get_bit((uchar)getKey(&d,i, 0),j));
+        }*/
+        printf("EEEEEE %d:%d", oo,getKey(d,i)[0]);
+
         printf("\n");
     }
 }

@@ -14,7 +14,7 @@ int decompress(FILE* afterReveal, char* fileOut, Dictionary *d){ //put file in t
         fprintf(stderr, "Dictionary not created or Could not open the file \n");
         exit(EXIT_FAILURE);
     }
-
+/*
     //Create output file
     FILE *outputFinal;
     printf("Create file\n");
@@ -80,7 +80,7 @@ int decompress(FILE* afterReveal, char* fileOut, Dictionary *d){ //put file in t
         buffer = setBit(buffer, 0, get_bit(currentByte, aux)); // set the next element of the byte in the last bit of the buffer
         count++;
 
-    }
+    }*/
 
     return 0;
 }

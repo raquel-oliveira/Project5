@@ -10,10 +10,9 @@
 #include <stdio.h>
 
 typedef struct character {
-    char value;
+    uchar value;
     uchar* key;
     int sizeOfKey;
-    struct Caractere *next;
 } Character;
 
 typedef struct {
@@ -24,17 +23,17 @@ typedef struct {
 
 char getSize(Dictionary* d);
 
-void setSize(Dictionary* d, char sizee);
+void setSize(Dictionary* d, uchar sizee);
 
 int getQtdBitsOfLastByte(Dictionary* d);
 
 void setQtdOfLastByte(Dictionary* d, int qtd);
 
-char getValue(Dictionary* d, int index);
+uchar getValue(Dictionary* d, int index);
 
 void setValue(Dictionary* d, int index, char valuee);
 
-uchar* getKey(Dictionary* d, int index, int indexKey);
+uchar* getKey(Dictionary* d, int index);
 
 void setKey(Dictionary d, int index, uchar keey, int indexKey);
 
@@ -44,6 +43,6 @@ void setSizeOfKey(Dictionary* d, int index, int size);
 
 int createDictionary(FILE* afterReveal, Dictionary* dictionary);
 
-void printDictionary(Dictionary d);
+void printDictionary(Dictionary* d);
 
 #endif //REVELATIONN_DICTIONARY_H
