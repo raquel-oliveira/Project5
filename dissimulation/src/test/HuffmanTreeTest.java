@@ -10,7 +10,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class HuffmanTreeTest {
     @Test
-    public void HuffmanTreeCreateTest(){
+    public void huffmanTreeCreateTest(){
         HuffmanTree htt = new HuffmanTree();
         String occ = "{c:1, b:2, d:3, e:3, a:4}";
         htt.createList(occ);
@@ -19,13 +19,21 @@ public class HuffmanTreeTest {
         assertEquals("d:3", htt.getNodes().get(2));
     }
 
-    public void HuffmanTreeAddTest(){
+    @Test
+    public void huffmanTreeAddTest(){
         HuffmanTree htt = new HuffmanTree();
-        String occ = "c:1,b:2,d:3,e:3,a:4";
+        String occ = "{c:1, b:2, d:3, e:3, a:4}";
         htt.createList(occ);
         assertEquals("d:3", htt.getNodes().get(2));
 
         htt.addNode("f:2");
         assertEquals("f:2", htt.getNodes().get(2));
+    }
+
+
+    @Test
+    public void huffmanTreeFuseTest(){
+        HuffmanTree htt = new HuffmanTree();
+        String occ = "{c:1, b:2, }"
     }
 }
