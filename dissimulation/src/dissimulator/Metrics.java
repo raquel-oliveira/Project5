@@ -90,6 +90,12 @@ public class Metrics {
 	       System.out.println("0x" + hexCode + ": " + valueDictionary);
 	    }
 		byte[] binaryMessage = messageCompressed.getBytes();
+		for(int i = 0; i < bitsetMessageCompressed.length() - 1; i++)
+		{
+			if(i%8 == 0 && i!= 0) System.out.print(" ");
+			if(bitsetMessageCompressed.get(i)) System.out.print("1");
+			else System.out.print("0");
+		}
 		System.out.print("\n");
 	}
 }

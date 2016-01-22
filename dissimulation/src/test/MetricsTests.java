@@ -34,19 +34,4 @@ public class MetricsTests {
 		double sizeSaved = met.getCompressionSavings(originalMessage, compressedMessage);
 		assertTrue(sizeSaved < 0);
 	}
-	
-	@Test
-	/**
-	 * Verify if the compression_saving calculation is right. 
-	 * Here, the compressed message is much longer than
-	 * the original one. The result must be negative.
-	 */
-	public void getDictionaryTest()
-	{
-		HashMap<String, Integer> dicoCode = new HashMap<>();
-		HashMap<String, Integer> dicoLength = new HashMap<>();
-		
-		
-	}
-
 }
