@@ -16,7 +16,7 @@ typedef struct character {
 } Character;
 
 typedef struct {
-    Character* elements; //Change this number to the number of first byte
+    Character* elements;
     int size;
     int valueLastByte;
 } Dictionary;
@@ -35,7 +35,7 @@ void setValue(Dictionary* d, int index, char valuee);
 
 uchar* getKey(Dictionary* d, int index);
 
-void setKey(Dictionary d, int index, uchar keey, int indexKey);
+void setKey(Dictionary* d, int index, uchar keey, int indexKey);
 
 int getSizeOfKey(Dictionary* d, int index);
 

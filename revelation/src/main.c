@@ -159,8 +159,8 @@ int main(int argc, char *argv[]){
         printf("----------Is compress---------------------\n");
 
         fileOut = "messageDecode.txt";
-        output = fopen("Resources/Compress/dictionaryAndMessage", "r");
-        //output = fopen("Resources/Compress/7aComplete", "r");
+        //output = fopen("Resources/Compress/dictionaryAndMessage", "r");
+        output = fopen("Resources/Compress/7aComplete", "r");
         //output = fopen("Resources/Compress/arbCompEquilibreComplete", "r");
         //output = fopen("Resources/Compress/messageTestComplete", "r");
         //output = fopen("Resources/Compress/Adrien", "r");
