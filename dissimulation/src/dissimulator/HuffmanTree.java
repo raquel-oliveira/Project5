@@ -65,11 +65,11 @@ public class HuffmanTree {
 
     /**
      * This method fuses the first 2 nodes of the nodes LinkedList.
-     * Fusing means that the character will be saved as a couple, and will look like (n1,n2):x
+     * Fusing means that the character will be saved as a couple, and will look like [n1|n2]:x
      * where n1 and n2 will be characters (or couples such as (a,b)) and x will be the addition of the two frequencies.
      */
     public void fuseNodes(){
-        StringBuilder sb = new StringBuilder("(,)");
+        StringBuilder sb = new StringBuilder("[|]");
         String n1 = this.getNodes().get(0);
         String n2 = this.getNodes().get(1);
         String[] n1split = n1.split(":");
@@ -127,11 +127,11 @@ public class HuffmanTree {
         int pos =0;
         int alt = 0;
         for(int i=0; i< s.length(); i++){
-            if(s.charAt(i)=='(')
+            if(s.charAt(i)=='[')
                 alt++;
-            else if (s.charAt(i) ==')')
+            else if (s.charAt(i) ==']')
                 alt--;
-            else if(s.charAt(i) == ',' && alt ==0)
+            else if(s.charAt(i) == '|' && alt ==0)
                 pos = i;
         }
         return pos;
