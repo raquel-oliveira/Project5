@@ -151,6 +151,10 @@ int decompress(char* pathFile, Dictionary *d){ //put file in the assignature
 
 
     }
+    if(isStandard){
+        fputc(EOF,outputFinal);
+        fclose(outputFinal);
+    }
 
     return 0;
 }

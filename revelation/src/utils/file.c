@@ -7,6 +7,7 @@
 void printFile(char* path){
     FILE* filePrint =  fopen(path, "r");
     char c;
+    fputc(EOF, filePrint);
     if (filePrint) {
         while ((c = getc(filePrint)) != EOF)
             putchar(c);

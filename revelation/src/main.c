@@ -138,7 +138,7 @@ int main(int argc, char *argv[]){
         switch (flag){
             case 0:{
                 unlink("afterReveal.txt");
-                if(isStandard){ printFile(fileOut); unlink(fileOut);}
+                if(isStandard){ printFile(fileOut); unlink(fileOut);} //TODO: PUT A '\0'in the end
                 break;
             }
             case -1:

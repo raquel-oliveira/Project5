@@ -16,14 +16,14 @@ int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
     int numberElements = c + 1; // First byte in a integer
     setSize(dictionary, (numberElements));
     if(numberElements < 0 && numberElements > 256) return -5;
-    //printf("Number of element is %d\n", numberElements);
+    printf("Number of element is %d\n", numberElements);
     dictionary->elements = malloc((numberElements)* sizeof(Character)); //Malloc to the number necessaries of elements
-    //printf("size: %d\n", getSize(dictionary));
+    printf("size: %d\n", getSize(dictionary));
     if(dictionary->elements == NULL) printf("problem malloc\n");
     for (int i = 0; i < getSize(dictionary); i++) {
         c = getc(afterReveal);
         setValue(dictionary, i, c); //Set value of the caractere
-      //  printf("The value is %c, %d. The getc is: %d\n", getValue(dictionary, i), getValue(dictionary, i), c);
+        printf("The value is %c, %d. The getc is: %d\n", getValue(dictionary, i), getValue(dictionary, i), c);
 
         c =getc(afterReveal);
         //printf("size: %d\n", c);
@@ -70,8 +70,8 @@ int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
     }
     setQtdOfLastByte(dictionary, getc(afterReveal));
     int nbBitsLastByte = getQtdBitsOfLastByte(dictionary);
-    if(nbBitsLastByte > 8 && nbBitsLastByte <0 ){
-        return -4;
+    if(nbBitsLastByte > 8 || nbBitsLastByte <= 0 ) {
+        setQtdOfLastByte(dictionary, 8);
     }
 
  //   printf("Created dictionary \n");
