@@ -5,18 +5,19 @@
 #include "dictionary.h"
 
 int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
-    printf("aaaa\n");
-    if (!afterReveal) /*printf("---- can not open the file-----\n"); */return -1;
+    if (!afterReveal) return -1;
 
-    int qtdBits;
-    int qtdBitsLeft;
-    printf("a\n");
-    uchar c = getc(output); //Taking the first byte
-    printf("b\n");
-    int numberElements = c + 1; // First byte in a integer
-    printf("Number of elements : %d\n", numberElements);
-    setSize(dictionary, (numberElements));
+
+    //Inicializing variables
+    int nbBits;
+    int nbBitsLeft;
     dictionary->maxByte = 1;
+
+    uchar c = getc(output); //Taking the first byte
+    int numberElements = c + 1; // First byte in a integer
+    setSize(dictionary, (numberElements));
+    if(numberElements < 0 && numberElements > 256) return -5;
+
     dictionary->elements = malloc((numberElements)* sizeof(Character)); //Malloc to the number necessaries of elements
 
     for (int i = 0; i < getSize(dictionary); i++) {
@@ -30,50 +31,44 @@ int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
         int nbBytesKey = getQtdByte(dictionary, i); //Variable auxiliar no number of bytes
         if(nbBytesKey > (dictionary->maxByte)) dictionary->maxByte = nbBytesKey;
 
-        //printf("0x%x : ", getValue(dictionary, i));
-        //printf("--------Qtd bytes: %d\n", nbBytesKey);
-        (dictionary->elements)[i].key = malloc(nbBytesKey*(sizeof(uchar)));// Malloc the number of bytes needed
+        (dictionary->elements)[i].key = malloc(nbBytesKey*(sizeof(uchar)));// Malloc the number of bytes needed to the key
         if(dictionary->elements[i].key == NULL) return -2;
 
-        qtdBits = (getSizeOfKey(dictionary, i));
-        //printf("Qtd bits: %d\n", qtdBits);
-        qtdBitsLeft = qtdBits;
-        int f = 0;
-        while (nbBytesKey != 0){
-         //   printf("Qtd bytes in the ? loop %d.\n", getQtdByte(dictionary, i));
-            if(nbBytesKey > 1) {
-           //     printf("Nb maior que 1\n");
-                qtdBitsLeft = qtdBits - 8;
-                qtdBits = 8;
-             //   printf("Qtd bits using now %d in the ? loop, qtd of bits left: %d.\n", qtdBits, qtdBitsLeft);
+        nbBits = (getSizeOfKey(dictionary, i));
+        nbBitsLeft = nbBits; //Inicializing the number of bits left.
+
+        int posKeyByte = 0; //Position (byte) of the key
+        while (nbBytesKey != 0){ //Loop to the complete quantity of bytes needed of the key
+
+            if(nbBytesKey > 1) { //If its >1, that means the key of this element uses more than one byte
+                nbBitsLeft = nbBits - 8;
+                nbBits = 8;
             }
-            else{
-                qtdBits = qtdBitsLeft;
-            }
+            else nbBits = nbBitsLeft;
 
             int bitToSet = 0; //variable to take the bit from the byte
-            uchar aux = 0;
+            uchar aux = 0; //Varible auxiliar to fill the byte before insert in the Key
             c = getc(afterReveal); //took first byte
 
             int k = 1; //inicial to take from the byte
 
-            while(qtdBits!=0){ //While inside of the x byte of the key
+            while(nbBits != 0){ //While inside of the x byte of the key
                 bitToSet = get_bit(c, k);
-                aux = setBit(aux, qtdBits-1, bitToSet);
-                qtdBits--;
+                aux = setBit(aux, nbBits - 1, bitToSet);
+                nbBits--;
                 k++;
             }
 
-            setKey(dictionary,i, aux,f);
-            //printf("set key %d in the byte %d\n",getKey(dictionary, i)[f], f+1);
+            setKey(dictionary, i, aux, posKeyByte); //Set the byte in the key.
             nbBytesKey--;
-            f++;
-            //printf("%d\n", getKey(dictionary,i)[f]);
-
+            posKeyByte++;
         }
-        //printf("\n\n");
     }
     setQtdOfLastByte(dictionary, getc(output));
+    int nbBitsLastByte = getQtdBitsOfLastByte(dictionary);
+    if(nbBitsLastByte > 8 && nbBitsLastByte <0 ){
+        return -4;
+    }
 
     return 0;
 

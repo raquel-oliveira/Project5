@@ -19,10 +19,10 @@ uchar setBit(uchar ch, int pos, int bit)
 
 void shift(char* message){
     int size = strlen(message);
-    printf("%s %d\n", message, message);
+    //printf("%s %d\n", message, message);
     for(int i = 0; i < size; i++){
         message[i] = message[i+1];
-        printf("coloquei o elemento %d da pos %d\n", message[i+1], i);
+        //printf("coloquei o elemento %d da pos %d\n", message[i+1], i);
     }
 
    // return 1;

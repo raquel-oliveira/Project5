@@ -13,3 +13,12 @@ void printFile(FILE* file, char* path){
         fclose(file);
     }
 }
+
+int containsMagicNumber(char* message, int messageSize, char* magic, int magicSize)
+{
+
+    if(messageSize<magicSize)  return -1;
+
+    return memcmp(&(message[messageSize-magicSize]),magic,magicSize);
+
+}

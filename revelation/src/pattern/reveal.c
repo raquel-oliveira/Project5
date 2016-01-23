@@ -7,6 +7,7 @@ int reveal(int initialRow, int finalRow, int initialWidth, int finalWidth){
     int lbit, channel, count = 7, i = 0, nbOccurences = 0, color;
     uchar letter = 1;
     char* end = NULL;
+    int hasMagic = 0;
     int size = SIZE_MESSAGE; // Size of the allocated memory for message
     int sizeMagic = strlen(magic);
     char* message = malloc(SIZE_MESSAGE * sizeof(char));
@@ -27,8 +28,8 @@ int reveal(int initialRow, int finalRow, int initialWidth, int finalWidth){
             return -3;
         }
 
-        for (int row = 0; row < img->height; row++) {
-            for (int col = 0; col < img->width; col++) {
+        for (int row = initialRow; row < finalRow; row++) {
+            for (int col = initialWidth; col < finalWidth; col++) {
                 channel = cvGet2D(img, row, col).val[color]; // Gets the red channel
 
                 lbit = get_bit(channel, (9 - nbBits)); // Access to the last bit in ascending order
@@ -49,15 +50,13 @@ int reveal(int initialRow, int finalRow, int initialWidth, int finalWidth){
                     message[i] = letter;
                     i++;
 
-                }
+                    hasMagic = containsMagicNumber(message, i, magic, sizeMagic);
+                    if (!hasMagic){
+                        fwrite (message, i-sizeMagic, sizeof(char),output); //or fputc, depend.
+                        fclose(output);
+                        return 0;
+                    }
 
-                end = strstr((char*)message, magic); // Check when "HELP" is found --> when the message ends
-
-                if (end != NULL) { //Help was found
-                    *end = '\0';
-                    fputs (message,output); //or fputc, depend.
-                    fclose(output);
-                    return 0;
                 }
             }
         }

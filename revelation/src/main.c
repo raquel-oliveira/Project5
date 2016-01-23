@@ -118,7 +118,7 @@ int main(int argc, char *argv[]){
     }
 
     if(!isCompress) {
-        if (flag == 0) { //Reveal worked fine
+        if (flag == 0) {
             if (isStandard) {
                 printFile(output, fileOut);
                 unlink(fileOut);
@@ -130,16 +130,28 @@ int main(int argc, char *argv[]){
         }
     }
     else{
+
         Dictionary *d = malloc(sizeof(Dictionary));
         flag = decompress(output, fileOut, d);
         switch (flag){
             case 0:{
                // printf("Decompress finished \n");
             }
+            case -1:
+                fprintf(stderr, "Problem to open the file\n");
+                exit(-1);
             case -2:{
-                //Problem no malloc das keys /*printf("ERRO NO MALLOC\n");*/
+                fprintf(stderr, "Problem when try to malloc the keys of elements\n");
                 exit(-2);
             }
+            case -4:
+                fprintf(stderr, "Number of bits used in the last byte incorrect\n");
+                exit(-4);
+            case -5:{
+                fprintf(stderr, "The quantity of elements in the dictionary its incorrect\n");
+                exit(-5);
+            }
+
         }
 
         if(isShow){
