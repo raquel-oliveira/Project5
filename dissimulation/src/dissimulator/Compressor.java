@@ -163,12 +163,14 @@ public class Compressor {
      */
     public int compMessageByteNb(String[] characs){
         int bytes = 0;
+        int bits =0;
         for(String c : characs){
-            int bits = codelength.get(c);
-            if (bits%8 !=0)
-                bytes += (bits/8)+1;
-            else bytes += bits/8;
+            bits+= codelength.get(c);
+
         }
+        if(bits%8!=0)
+            bytes= (bits/8)+1;
+        else bytes = bits/8;
         return bytes;
     }
 
