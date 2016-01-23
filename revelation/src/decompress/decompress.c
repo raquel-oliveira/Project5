@@ -4,7 +4,8 @@
 
 #include "decompress.h"
 
-int decompress(FILE* afterReveal, char* fileOut, Dictionary *d){ //put file in the assignature
+int decompress(char* pathFile, Dictionary *d){ //put file in the assignature
+    FILE* afterReveal = fopen(pathFile, "r");
     printf("---- Starting create dictionary-----\n");
     int flagDictionary = createDictionary(afterReveal, d);
     if (flagDictionary < 0 ){
@@ -15,8 +16,14 @@ int decompress(FILE* afterReveal, char* fileOut, Dictionary *d){ //put file in t
     printf("---- Starting to decompres-----\n");
     //Create output file
     FILE *outputFinal;
-    printf("Create file\n");
-    outputFinal = fopen(fileOut, "w+");
+    printf("Create file %s\n", fileOut);
+    if(isStandard){
+        outputFinal = fopen("output.txt", "w+");
+    }
+    else{
+        outputFinal = fopen(fileOut, "w+");
+    }
+
 
     bool end = false; //If I should stop the loop
     bool isEOF = false; //If its end of file
@@ -121,8 +128,8 @@ int decompress(FILE* afterReveal, char* fileOut, Dictionary *d){ //put file in t
             if(isEOF){
              //   printf("Is end of file\n");
                 if(aux < (max+1)){ //max or max+1? TODO: Use test to check. Exemple: QtdOfLastByte = 1;
-                    fclose(outputFinal);
-                    fclose(afterReveal);
+                    //fclose(outputFinal);
+                    //fclose(afterReveal);
                     end = true;
                     break; //This break its necessary?
                 }

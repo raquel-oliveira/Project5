@@ -11,11 +11,12 @@ int reveal(int initialRow, int finalRow, int initialWidth, int finalWidth){
     int size = SIZE_MESSAGE; // Size of the allocated memory for message
     int sizeMagic = strlen(magic);
     char* message = malloc(SIZE_MESSAGE * sizeof(char));
+    FILE* afterReveal;
     if(!isCompress){
-        output = fopen(fileOut, "w+");
+        afterReveal = fopen(fileOut, "w+");
     }
     else{
-        output = fopen("afterReveal.txt", "w=");
+        afterReveal = fopen("afterReveal.txt", "w+");
     }
 
     while(end == NULL)
@@ -24,7 +25,7 @@ int reveal(int initialRow, int finalRow, int initialWidth, int finalWidth){
         else if(nbOccurences == 1 && secondChannel != -1) color = secondChannel;
         else if(nbOccurences == 2 && thirdChannel != -1) color = thirdChannel;
         else {
-            fclose(output);
+            fclose(afterReveal);
             return -3;
         }
 
@@ -52,8 +53,8 @@ int reveal(int initialRow, int finalRow, int initialWidth, int finalWidth){
 
                     hasMagic = containsMagicNumber(message, i, magic, sizeMagic);
                     if (!hasMagic){
-                        fwrite (message, i-sizeMagic, sizeof(char),output); //or fputc, depend.
-                        fclose(output);
+                        fwrite (message, i-sizeMagic, sizeof(char),afterReveal); //or fputc, depend.
+                        fclose(afterReveal);
                         return 0;
                     }
 

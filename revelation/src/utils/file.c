@@ -4,13 +4,13 @@
 
 #include "file.h"
 
-void printFile(FILE* file, char* path){
-    file = fopen(path, "r");
+void printFile(char* path){
+    FILE* filePrint =  fopen(path, "r");
     char c;
-    if (file) {
-        while ((c = getc(file)) != EOF)
+    if (filePrint) {
+        while ((c = getc(filePrint)) != EOF)
             putchar(c);
-        fclose(file);
+        fclose(filePrint);
     }
 }
 

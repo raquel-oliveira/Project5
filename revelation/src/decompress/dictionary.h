@@ -23,9 +23,9 @@ typedef struct {
     int maxByte; //
 } Dictionary;
 
-char getSize(Dictionary* d);
+int getSize(Dictionary* d);
 
-void setSize(Dictionary* d, uchar sizee);
+void setSize(Dictionary* d, int sizee);
 
 int getQtdBitsOfLastByte(Dictionary* d);
 

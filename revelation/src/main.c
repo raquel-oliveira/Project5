@@ -120,7 +120,7 @@ int main(int argc, char *argv[]){
     if(!isCompress) {
         if (flag == 0) {
             if (isStandard) {
-                printFile(output, fileOut);
+                printFile(fileOut);
                 unlink(fileOut);
             } else {
                 printf("Reveal in the path: %s", fileOut);
@@ -130,12 +130,16 @@ int main(int argc, char *argv[]){
         }
     }
     else{
-
+        if(isStandard){
+            fileOut = "output.txt";
+        }
         Dictionary *d = malloc(sizeof(Dictionary));
-        flag = decompress(output, fileOut, d);
+        flag = decompress("afterReveal.txt", d);
         switch (flag){
             case 0:{
-               // printf("Decompress finished \n");
+                unlink("afterReveal.txt");
+                if(isStandard){ printFile(fileOut); unlink(fileOut);}
+                break;
             }
             case -1:
                 fprintf(stderr, "Problem to open the file\n");
@@ -153,13 +157,12 @@ int main(int argc, char *argv[]){
             }
 
         }
-
         if(isShow){
             printf("-----------SHOW DICTIONARY---------\n");
             printDictionary(d);
 
         }
-        unlink("afterReveal.txt");
+       // unlink("afterReveal.txt");
        // free(a); free(output);
     }
 

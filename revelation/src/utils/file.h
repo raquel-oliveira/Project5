@@ -9,7 +9,7 @@
 #include <string.h>
 #include <opencv2/hal/defs.h>
 
-void printFile(FILE* file, char* path);
+void printFile(char* path);
 
 int containsMagicNumber(char* message,int messageSize,char* magic,int magicSize);
 

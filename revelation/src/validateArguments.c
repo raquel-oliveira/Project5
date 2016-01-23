@@ -79,16 +79,11 @@ void setArguments(){
     if(fileOut != NULL){
         printf("File out not null\n");
         isStandard = false;
-        output = fopen(fileOut,"wb"); //a because 'r' needs to exist
-        printf("File created? \n");
-        fclose(output);
-        printf("Close file \n");
     }
     else {
         printf("File out null\n");
         isStandard = true;
         fileOut = "output.txt";
-        output = fopen(fileOut, "w");
     }
     printf("Path OutPut: %s\n", fileOut);
 
