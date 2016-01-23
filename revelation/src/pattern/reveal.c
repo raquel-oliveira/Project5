@@ -1,9 +1,6 @@
 #include "reveal.h"
 
 #define SIZE_MESSAGE 100
-#define RED 2
-#define GREEN 1
-#define BLUE 0
 
 
 int reveal(int initialRow, int finalRow, int initialWidth, int finalWidth){
@@ -13,8 +10,12 @@ int reveal(int initialRow, int finalRow, int initialWidth, int finalWidth){
     int size = SIZE_MESSAGE; // Size of the allocated memory for message
     int sizeMagic = strlen(magic);
     char* message = malloc(SIZE_MESSAGE * sizeof(char));
-    FILE * temp;
-    output = fopen(fileOut, "w+");
+    if(!isCompress){
+        output = fopen(fileOut, "w+");
+    }
+    else{
+        output = fopen("afterReveal.txt", "w=");
+    }
 
     while(end == NULL)
     {

@@ -3,6 +3,7 @@
 #include "arguments.h"
 #include "validateArguments.h"
 #include "pattern/direct.h"
+#include "utils/file.h"
 #include "pattern/reverse.h"
 #include "decompress/decompress.h"
 #include "decompress/dictionary.h"
@@ -53,87 +54,57 @@ int main(int argc, char *argv[]){
     while((opt = getopt_long_only(argc, argv, "" , long_options, &long_index)!= -1)){
         switch (long_index){
             case FIN:
-                printf("FIN EXE: \n");
                 formatIn = optarg;
                 printf("Format in: %s \n", formatIn);
                 break;
             case IN:
-                printf("IN EXE: \n");
                 fileIn = optarg;
                 printf("Path in: %s \n", fileIn);
                 break;
             case OUT:
-                printf("OUT EXE: \n");
                 fileOut = optarg;
                 printf("File Out: %s \n", fileOut);
                 break;
             case B:
-                //printf("B EXE: \n");
-                nbBits = atoi(optarg); //do a Try
+                nbBits = atoi(optarg); //TODO: do a Try
                 printf("Number of bits: %d \n", nbBits);
                 break;
             case C:
-                printf("CHANNELS EXE: \n");
                 channels = optarg;
                 printf("Channels: %s \n", channels);
                 break;
             case P:
-                printf("P EXE: \n");
                 pattern = optarg;
                 printf("Pattern: %s \n", pattern);
                 break;
             case MAGIC:
-                printf("MAGIC EXE: \n");
                 magicHexa = optarg;
                 printf("MAGIC number: %s \n", magicHexa);
                 break;
             case COMPRESS:
-               // printf("COMPRESS EXE: \n");
                 isCompress = true;
                 break;
             case SHOW:
-                //printf("SHOW EXE: \n");
                 isShow = true;
                 break;
             default:
-                //TODO: try to take it off the message: pattern: unrecognized option"
                 printf("Not a recognized argument\n");
                 exit(-1);
         }
     }
 
-    fileIn = "Resources/reveal/1bitBuilding.png";
     setArguments();
 
-     printf("%d", patternInt);
-    printf("----------Make reveal--------------------\n");
     flag = patternInt;
     switch (flag){
         case 1: //is direct
-            printf("STARTING REVEAL DIRECT\n");
             flag = revealDirect();
             break;
         case 2: //Is reverse
-            printf("STARTING REVEAL REVERSE\n");
             flag = revealReverse();
             break;
     }
     switch (flag) {
-        case 0:
-            printf("CASE OK\n");
-            if(isStandard){
-                output = fopen(fileOut, "r");
-                char c;
-                if (output) {
-                    while ((c = getc(output)) != EOF)
-                        putchar(c);
-                    fclose(output);
-                }
-            }else{
-                printf("Reveal in the path: %s", fileOut);
-                exit(1);
-            }
-            break;
         case -2: {
             fprintf(stderr, "Error Trying to access bit\n");
             exit(-2);
@@ -145,47 +116,42 @@ int main(int argc, char *argv[]){
             exit(-3);
         }
     }
-    printf("END REVEAL\n");
 
-    printf("----------Check if is compress---------------------\n");
     if(!isCompress) {
-        printf("----------Is not compress---------------------\n");
+        if (flag == 0) { //Reveal worked fine
+            if (isStandard) {
+                printFile(output, fileOut);
+                unlink(fileOut);
+            } else {
+                printf("Reveal in the path: %s", fileOut);
+                exit(1);
+            }
 
+        }
     }
     else{
-        printf("----------Is compress---------------------\n");
-
-        //fileOut = "messageDecode.txt";
-        //output = fopen("Resources/Compress/dictionaryAndMessage", "r");
-        //output = fopen("Resources/Compress/7aComplete", "r");
-        //output = fopen("Resources/Compress/arbCompEquilibreComplete", "r");
-        //output = fopen("Resources/Compress/messageTestComplete", "r");
-        //output = fopen("Resources/Compress/Adrien", "r");
-        //output = fopen("Resources/Compress/charly", "r");
-        //output = fopen("Resources/Compress/L1", "r");
-        //output = fopen("Resources/Compress/L2.data", "r");
-        //output = fopen("Resources/Compress/L3.data", "r");
-        //output = fopen("Resources/Compress/L4", "r");
-        //output = fopen("Resources/Compress/L5L.data", "r");
-        //output = fopen("Resources/Compress/L5_random.data", "r");
-        //output = fopen("Resources/Compress/L5_full_Table.data", "r");
-
         Dictionary *d = malloc(sizeof(Dictionary));
-        int k;
-        k = decompress(output, fileOut, d);
-        if(k == 0){
-            printf("Decompress finished \n");
-           // exit(0);
+        flag = decompress(output, fileOut, d);
+        switch (flag){
+            case 0:{
+               // printf("Decompress finished \n");
+            }
+            case -2:{
+                //Problem no malloc das keys /*printf("ERRO NO MALLOC\n");*/
+                exit(-2);
+            }
         }
+
         if(isShow){
             printf("-----------SHOW DICTIONARY---------\n");
             printDictionary(d);
+
         }
+        unlink("afterReveal.txt");
        // free(a); free(output);
     }
 
-
-    //cvReleaseImage(&img);
-    //free(message);
+    cvReleaseImage(&img);
+    free(message);
     return 0;
 }

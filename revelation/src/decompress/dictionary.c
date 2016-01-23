@@ -33,7 +33,7 @@ int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
         //printf("0x%x : ", getValue(dictionary, i));
         //printf("--------Qtd bytes: %d\n", nbBytesKey);
         (dictionary->elements)[i].key = malloc(nbBytesKey*(sizeof(uchar)));// Malloc the number of bytes needed
-        if(dictionary->elements[i].key == NULL) /*printf("ERRO NO MALLOC\n");*/ return -2;
+        if(dictionary->elements[i].key == NULL) return -2;
 
         qtdBits = (getSizeOfKey(dictionary, i));
         //printf("Qtd bits: %d\n", qtdBits);

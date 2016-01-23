@@ -229,6 +229,7 @@ CMakeFiles/reveal.dir/src/main.c.o: src/main.c
 CMakeFiles/reveal.dir/src/main.c.o: src/pattern/direct.h
 CMakeFiles/reveal.dir/src/main.c.o: src/pattern/reveal.h
 CMakeFiles/reveal.dir/src/main.c.o: src/pattern/reverse.h
+CMakeFiles/reveal.dir/src/main.c.o: src/utils/file.h
 CMakeFiles/reveal.dir/src/main.c.o: src/utils/formatDetector.h
 CMakeFiles/reveal.dir/src/main.c.o: src/utils/hexa.h
 CMakeFiles/reveal.dir/src/main.c.o: src/utils/utilBit.h
@@ -467,6 +468,9 @@ CMakeFiles/reveal.dir/src/pattern/reverse.c.o: /usr/local/include/opencv2/video/
 CMakeFiles/reveal.dir/src/pattern/reverse.c.o: /usr/local/include/opencv2/video/tracking_c.h
 CMakeFiles/reveal.dir/src/pattern/reverse.c.o: /usr/local/include/opencv2/videoio.hpp
 CMakeFiles/reveal.dir/src/pattern/reverse.c.o: /usr/local/include/opencv2/videoio/videoio_c.h
+
+CMakeFiles/reveal.dir/src/utils/file.c.o: src/utils/file.c
+CMakeFiles/reveal.dir/src/utils/file.c.o: src/utils/file.h
 
 CMakeFiles/reveal.dir/src/utils/formatDetector.c.o: src/utils/formatDetector.c
 CMakeFiles/reveal.dir/src/utils/formatDetector.c.o: src/utils/formatDetector.h
