@@ -6,17 +6,17 @@
 
 int decompress(char* pathFile, Dictionary *d){ //put file in the assignature
     FILE* afterReveal = fopen(pathFile, "r");
-    printf("---- Starting create dictionary-----\n");
+    //printf("---- Starting create dictionary-----\n");
     int flagDictionary = createDictionary(afterReveal, d);
     if (flagDictionary < 0 ){
         //fprintf(stderr, "Dictionary not created or Could not open the file \n");
         return flagDictionary;
         //exit(EXIT_FAILURE);
     }
-    printf("---- Starting to decompres-----\n");
+    //printf("---- Starting to decompres-----\n");
     //Create output file
     FILE *outputFinal;
-    printf("Create file %s\n", fileOut);
+    //printf("Create file %s\n", fileOut);
     if(isStandard){
         outputFinal = fopen("output.txt", "w+");
     }
@@ -74,7 +74,7 @@ int decompress(char* pathFile, Dictionary *d){ //put file in the assignature
                         int caract = getValue(d, i);
                         putc (caract,outputFinal);
                         //fputs(getValue(d, i),outputFinal);
-                        printf("Put in the file the caracter %c \n", caract);
+                      //  printf("Put in the file the caracter %c \n", caract);
                         //fclose(outputFinal);
                     }
                     else{

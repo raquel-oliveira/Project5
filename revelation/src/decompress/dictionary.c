@@ -5,7 +5,6 @@
 #include "dictionary.h"
 
 int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
-    afterReveal = fopen("afterReveal.txt", "r");
     if (!afterReveal) return -1;
 
     //Inicializing variables
@@ -17,20 +16,20 @@ int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
     int numberElements = c + 1; // First byte in a integer
     setSize(dictionary, (numberElements));
     if(numberElements < 0 && numberElements > 256) return -5;
-    printf("Number of element is %d\n", numberElements);
+    //printf("Number of element is %d\n", numberElements);
     dictionary->elements = malloc((numberElements)* sizeof(Character)); //Malloc to the number necessaries of elements
-    printf("size: %d\n", getSize(dictionary));
+    //printf("size: %d\n", getSize(dictionary));
     if(dictionary->elements == NULL) printf("problem malloc\n");
     for (int i = 0; i < getSize(dictionary); i++) {
         c = getc(afterReveal);
         setValue(dictionary, i, c); //Set value of the caractere
-        printf("The value is %c, %d. The getc is: %d\n", getValue(dictionary, i), getValue(dictionary, i), c);
+      //  printf("The value is %c, %d. The getc is: %d\n", getValue(dictionary, i), getValue(dictionary, i), c);
 
         c =getc(afterReveal);
-        printf("size: %d\n", c);
+        //printf("size: %d\n", c);
         setSizeOfKey(dictionary, i, c); // Set size of key
         int sizeOfKey = getSizeOfKey(dictionary, i); //Variable auxiliar to number of bits used in the key
-        printf("The size of the key is %d\n", getSizeOfKey(dictionary, i));
+        //printf("The size of the key is %d\n", getSizeOfKey(dictionary, i));
 
         setQtdByte(dictionary,i, (sizeOfKey/8)+((sizeOfKey%8==0)?0:1)); // Set the numbers of bytes takin into account the number of bits
         int nbBytesKey = getQtdByte(dictionary, i); //Variable auxiliar no number of bytes
@@ -75,7 +74,7 @@ int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
         return -4;
     }
 
-    printf("Created dictionary \n");
+ //   printf("Created dictionary \n");
     return 0;
 
 }
