@@ -102,10 +102,10 @@ int main(int argc, char *argv[]){
         }
     }
 
-    fileIn = "Resources/1bitRedJOAO.png";
-   /* setArguments();
+    fileIn = "Resources/reveal/1bitBuilding.png";
+    setArguments();
 
-    * printf("%d", patternInt);
+     printf("%d", patternInt);
     printf("----------Make reveal--------------------\n");
     flag = patternInt;
     switch (flag){
@@ -145,7 +145,7 @@ int main(int argc, char *argv[]){
             exit(-3);
         }
     }
-    printf("END REVEAL\n");*/
+    printf("END REVEAL\n");
 
     printf("----------Check if is compress---------------------\n");
     if(!isCompress) {
@@ -155,12 +155,12 @@ int main(int argc, char *argv[]){
     else{
         printf("----------Is compress---------------------\n");
 
-        fileOut = "messageDecode.txt";
+        //fileOut = "messageDecode.txt";
         //output = fopen("Resources/Compress/dictionaryAndMessage", "r");
         //output = fopen("Resources/Compress/7aComplete", "r");
         //output = fopen("Resources/Compress/arbCompEquilibreComplete", "r");
         //output = fopen("Resources/Compress/messageTestComplete", "r");
-        output = fopen("Resources/Compress/Adrien", "r");
+        //output = fopen("Resources/Compress/Adrien", "r");
         //output = fopen("Resources/Compress/charly", "r");
         //output = fopen("Resources/Compress/L1", "r");
         //output = fopen("Resources/Compress/L2.data", "r");
@@ -168,6 +168,7 @@ int main(int argc, char *argv[]){
         //output = fopen("Resources/Compress/L4", "r");
         //output = fopen("Resources/Compress/L5L.data", "r");
         //output = fopen("Resources/Compress/L5_random.data", "r");
+        //output = fopen("Resources/Compress/L5_full_Table.data", "r");
 
         Dictionary *d = malloc(sizeof(Dictionary));
         int k;

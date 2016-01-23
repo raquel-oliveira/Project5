@@ -1,18 +1,21 @@
-//
-// Created by Raquel Lopes de Oliveira on 19/01/2016.
-//
-
 #include "reveal.h"
 
-int reveal(int initialRow, int finalRow, int initialWidth, int finalWidth) {
+#define SIZE_MESSAGE 100
+#define RED 2
+#define GREEN 1
+#define BLUE 0
+
+
+int reveal(int initialRow, int finalRow, int initialWidth, int finalWidth){
     int lbit, channel, count = 7, i = 0, nbOccurences = 0, color;
-    char letter = 1;
+    uchar letter = 1;
     char* end = NULL;
+    int size = SIZE_MESSAGE; // Size of the allocated memory for message
     int sizeMagic = strlen(magic);
-    char* message = malloc(sizeMagic * sizeof(uchar));
-    char* m;
+    char* message = malloc(SIZE_MESSAGE * sizeof(char));
     FILE * temp;
     output = fopen(fileOut, "w+");
+
     while(end == NULL)
     {
         if(nbOccurences == 0) color = firstChannel;
@@ -20,49 +23,43 @@ int reveal(int initialRow, int finalRow, int initialWidth, int finalWidth) {
         else if(nbOccurences == 2 && thirdChannel != -1) color = thirdChannel;
         else {
             fclose(output);
-            return -3; // magic Number not found
+            return -3;
         }
 
-        for (int row = initialRow; row < finalRow; row++) {
-            for (int col = initialWidth; col < finalWidth; col++) {
+        for (int row = 0; row < img->height; row++) {
+            for (int col = 0; col < img->width; col++) {
                 channel = cvGet2D(img, row, col).val[color]; // Gets the red channel
 
                 lbit = get_bit(channel, (9 - nbBits)); // Access to the last bit in ascending order
                 if (lbit == -1) {
-                    fclose(output);
                     return -2;
                 }
                 letter = setBit(letter, count, lbit);
                 count--;
 
                 if (count < 0) {
+                    if (i >= size - 1) // Reallocating when the text become larger than message
+                    {
+                        size *=1.5;
+                        message = realloc(message, size);
+                        if (message == NULL) return -1; // The reallocation went wrong --> return an error code
+                    }
                     count = 7;
                     message[i] = letter;
                     i++;
-                    if(i > sizeMagic-1){
-                        //TODO: It's jumping fot multiples of size of magicNumber. Change this!!!!!!!
-                        i = 0;
-
-                        m = message;
-                        end = strstr(m, magic); // Check if magic number is found --> when the message ends
-
-                        if (end != NULL) { //Magic Number was found
-                            *end = '\0';
-                            fclose(output);
-                            return 0;
-                        }
-
-                        if (output!=NULL)
-                        {
-                            fputs (message,output);
-                        }
-                    }
 
                 }
 
+                end = strstr((char*)message, magic); // Check when "HELP" is found --> when the message ends
+
+                if (end != NULL) { //Help was found
+                    *end = '\0';
+                    fputs (message,output); //or fputc, depend.
+                    fclose(output);
+                    return 0;
+                }
             }
         }
         nbOccurences++;
     }
-    return 1;
 }
