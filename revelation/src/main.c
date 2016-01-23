@@ -161,6 +161,12 @@ int main(int argc, char *argv[]){
         //output = fopen("Resources/Compress/arbCompEquilibreComplete", "r");
         //output = fopen("Resources/Compress/messageTestComplete", "r");
         output = fopen("Resources/Compress/Adrien", "r");
+        //output = fopen("Resources/Compress/charly", "r");
+        //output = fopen("Resources/Compress/L1", "r");
+        //output = fopen("Resources/Compress/L2.data", "r");
+        //output = fopen("Resources/Compress/L3", "r");
+        //output = fopen("Resources/Compress/L4", "r");
+        //output = fopen("Resources/Compress/L5", "r");
 
         Dictionary *d = malloc(sizeof(Dictionary));
         int k;

@@ -20,6 +20,7 @@ typedef struct {
     Character* elements;
     int size;
     int valueLastByte;
+    int maxByte; //
 } Dictionary;
 
 char getSize(Dictionary* d);
@@ -45,6 +46,8 @@ void setSizeOfKey(Dictionary* d, int index, int size);
 int getQtdByte(Dictionary* d, int index);
 
 void setQtdByte(Dictionary* d, int index, int qtd);
+
+int getMaxByte(Dictionary* d);
 
 int createDictionary(FILE* afterReveal, Dictionary* dictionary);
 

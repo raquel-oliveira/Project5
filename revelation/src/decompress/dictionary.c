@@ -5,14 +5,18 @@
 #include "dictionary.h"
 
 int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
+    printf("aaaa\n");
     if (!afterReveal) /*printf("---- can not open the file-----\n"); */return -1;
 
     int qtdBits;
     int qtdBitsLeft;
+    printf("a\n");
     uchar c = getc(output); //Taking the first byte
+    printf("b\n");
     int numberElements = c + 1; // First byte in a integer
+    printf("Number of elements : %d\n", numberElements);
     setSize(dictionary, (numberElements));
-
+    dictionary->maxByte = 1;
     dictionary->elements = malloc((numberElements)* sizeof(Character)); //Malloc to the number necessaries of elements
 
     for (int i = 0; i < getSize(dictionary); i++) {
@@ -24,6 +28,8 @@ int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
 
         setQtdByte(dictionary,i, (sizeOfKey/8)+((sizeOfKey%8==0)?0:1)); // Set the numbers of bytes takin into account the number of bits
         int nbBytesKey = getQtdByte(dictionary, i); //Variable auxiliar no number of bytes
+        if(nbBytesKey > (dictionary->maxByte)) dictionary->maxByte = nbBytesKey;
+
         //printf("0x%x : ", getValue(dictionary, i));
         //printf("--------Qtd bytes: %d\n", nbBytesKey);
         (dictionary->elements)[i].key = malloc(nbBytesKey*(sizeof(uchar)));// Malloc the number of bytes needed
@@ -118,6 +124,10 @@ int getQtdByte(Dictionary* d, int index){
 
 void setQtdByte(Dictionary* d, int index, int qtd){
     d->elements[index].nbBytesKey = qtd;
+}
+
+int getMaxByte(Dictionary* d){
+    return  d->maxByte;
 }
 
 void printDictionary(Dictionary* d){
