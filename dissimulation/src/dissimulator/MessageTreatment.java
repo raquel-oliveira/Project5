@@ -73,7 +73,7 @@ public class MessageTreatment {
 		
 		while(!frequencies.isEmpty())
 		{
-			int valeurInf = 25432628;
+			int valeurInf = Integer.MAX_VALUE;
 			for(Entry<Character, Integer> entry : frequencies.entrySet()) 
 			{
 			    char cle = entry.getKey();
