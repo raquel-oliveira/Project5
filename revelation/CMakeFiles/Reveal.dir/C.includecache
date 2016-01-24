@@ -79,6 +79,8 @@ validateArguments.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/validateArguments.h
 pattern/direct.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/pattern/direct.h
+utils/file.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/file.h
 pattern/reverse.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/pattern/reverse.h
 decompress/decompress.h
@@ -115,6 +117,8 @@ opencv/highgui.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/arguments.h
 unistd.h
 -
+../utils/file.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/file.h
 
 /Users/Raquel/Desktop/NSA/private/revelation/src/pattern/reverse.c
 reverse.h
@@ -123,6 +127,18 @@ reverse.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/pattern/reverse.h
 reveal.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/pattern/reveal.h
+
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/file.c
+file.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/file.h
+
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/file.h
+stdio.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/stdio.h
+string.h
+-
+opencv2/hal/defs.h
+-
 
 /Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.c
 formatDetector.h

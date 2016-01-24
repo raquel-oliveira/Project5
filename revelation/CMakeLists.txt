@@ -24,6 +24,7 @@ add_executable(
         src/decompress/dictionary.c
         src/utils/utilBit.c
         src/utils/hexa.c
+        src/utils/file.c
         src/utils/formatDetector.c
         src/utils/validateFormat.c
         src/utils/validateChannels.c

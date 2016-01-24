@@ -10,6 +10,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/reveal.dir/src/decompress/dictionary.c.o"
   "CMakeFiles/reveal.dir/src/utils/utilBit.c.o"
   "CMakeFiles/reveal.dir/src/utils/hexa.c.o"
+  "CMakeFiles/reveal.dir/src/utils/file.c.o"
   "CMakeFiles/reveal.dir/src/utils/formatDetector.c.o"
   "CMakeFiles/reveal.dir/src/utils/validateFormat.c.o"
   "CMakeFiles/reveal.dir/src/utils/validateChannels.c.o"

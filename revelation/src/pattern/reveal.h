@@ -13,7 +13,7 @@
 #include "../utils/utilBit.h"
 #include "../arguments.h"
 #include <unistd.h>
-
+#include "../utils/file.h"
 int reveal(int initialRow, int finalRow, int initialWidth, int finalWidth);
 
 #endif //REVELATIONN_REVEAL_H

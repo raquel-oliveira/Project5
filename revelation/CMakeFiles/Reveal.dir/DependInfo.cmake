@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/Raquel/Desktop/NSA/private/revelation/src/pattern/direct.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/reveal.dir/src/pattern/direct.c.o"
   "/Users/Raquel/Desktop/NSA/private/revelation/src/pattern/reveal.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/reveal.dir/src/pattern/reveal.c.o"
   "/Users/Raquel/Desktop/NSA/private/revelation/src/pattern/reverse.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/reveal.dir/src/pattern/reverse.c.o"
+  "/Users/Raquel/Desktop/NSA/private/revelation/src/utils/file.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/reveal.dir/src/utils/file.c.o"
   "/Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/reveal.dir/src/utils/formatDetector.c.o"
   "/Users/Raquel/Desktop/NSA/private/revelation/src/utils/hexa.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/reveal.dir/src/utils/hexa.c.o"
   "/Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.c" "/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles/reveal.dir/src/utils/utilBit.c.o"

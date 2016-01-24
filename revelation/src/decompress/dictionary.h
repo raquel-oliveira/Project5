@@ -10,40 +10,47 @@
 #include <stdio.h>
 
 typedef struct character {
-    char value;
-    char key;
+    uchar value;
+    uchar* key;
     int sizeOfKey;
-    struct Caractere *next;
+    int nbBytesKey;
 } Character;
 
 typedef struct {
-    Character* elements; //Change this number to the number of first byte
+    Character* elements;
     int size;
     int valueLastByte;
+    int maxByte; //
 } Dictionary;
 
-char getSize(Dictionary* d);
+int getSize(Dictionary* d);
 
-void setSize(Dictionary* d, char sizee);
+void setSize(Dictionary* d, int sizee);
 
 int getQtdBitsOfLastByte(Dictionary* d);
 
 void setQtdOfLastByte(Dictionary* d, int qtd);
 
-char getValue(Dictionary* d, int index);
+uchar getValue(Dictionary* d, int index);
 
 void setValue(Dictionary* d, int index, char valuee);
 
-char getKey(Dictionary* d, int index);
+uchar* getKey(Dictionary* d, int index);
 
-void setKey(Dictionary* d, int index, char keey);
+void setKey(Dictionary* d, int index, uchar keey, int indexKey);
 
 int getSizeOfKey(Dictionary* d, int index);
 
 void setSizeOfKey(Dictionary* d, int index, int size);
 
+int getQtdByte(Dictionary* d, int index);
+
+void setQtdByte(Dictionary* d, int index, int qtd);
+
+int getMaxByte(Dictionary* d);
+
 int createDictionary(FILE* afterReveal, Dictionary* dictionary);
 
-void printDictionary(Dictionary d);
+void printDictionary(Dictionary* d);
 
 #endif //REVELATIONN_DICTIONARY_H

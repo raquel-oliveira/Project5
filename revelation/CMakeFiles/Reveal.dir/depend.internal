@@ -230,6 +230,7 @@ CMakeFiles/reveal.dir/src/main.c.o
  /Users/Raquel/Desktop/NSA/private/revelation/src/pattern/direct.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/pattern/reveal.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/pattern/reverse.h
+ /Users/Raquel/Desktop/NSA/private/revelation/src/utils/file.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/hexa.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.h
@@ -295,6 +296,7 @@ CMakeFiles/reveal.dir/src/pattern/direct.c.o
  /Users/Raquel/Desktop/NSA/private/revelation/src/pattern/direct.c
  /Users/Raquel/Desktop/NSA/private/revelation/src/pattern/direct.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/pattern/reveal.h
+ /Users/Raquel/Desktop/NSA/private/revelation/src/utils/file.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.h
  /usr/local/include/magic.h
@@ -354,6 +356,7 @@ CMakeFiles/reveal.dir/src/pattern/reveal.c.o
  /Users/Raquel/Desktop/NSA/private/revelation/src/image.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/pattern/reveal.c
  /Users/Raquel/Desktop/NSA/private/revelation/src/pattern/reveal.h
+ /Users/Raquel/Desktop/NSA/private/revelation/src/utils/file.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.h
  /usr/local/include/magic.h
@@ -414,6 +417,7 @@ CMakeFiles/reveal.dir/src/pattern/reverse.c.o
  /Users/Raquel/Desktop/NSA/private/revelation/src/pattern/reveal.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/pattern/reverse.c
  /Users/Raquel/Desktop/NSA/private/revelation/src/pattern/reverse.h
+ /Users/Raquel/Desktop/NSA/private/revelation/src/utils/file.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.h
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.h
  /usr/local/include/magic.h
@@ -468,6 +472,10 @@ CMakeFiles/reveal.dir/src/pattern/reverse.c.o
  /usr/local/include/opencv2/video/tracking_c.h
  /usr/local/include/opencv2/videoio.hpp
  /usr/local/include/opencv2/videoio/videoio_c.h
+CMakeFiles/reveal.dir/src/utils/file.c.o
+ /Users/Raquel/Desktop/NSA/private/revelation/src/utils/file.c
+ /Users/Raquel/Desktop/NSA/private/revelation/src/utils/file.h
+ /usr/local/include/opencv2/hal/defs.h
 CMakeFiles/reveal.dir/src/utils/formatDetector.c.o
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.c
  /Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.h

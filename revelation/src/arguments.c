@@ -9,4 +9,3 @@ bool isCompress, isStandard, isShow;
 int firstChannel, secondChannel, thirdChannel, nbBits, patternInt;
 int flag;
 IplImage *img;
-FILE * output;

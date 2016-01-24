@@ -339,6 +339,33 @@ src/pattern/reverse.c.s:
 	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/pattern/reverse.c.s
 .PHONY : src/pattern/reverse.c.s
 
+src/utils/file.o: src/utils/file.c.o
+
+.PHONY : src/utils/file.o
+
+# target to build an object file
+src/utils/file.c.o:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/file.c.o
+.PHONY : src/utils/file.c.o
+
+src/utils/file.i: src/utils/file.c.i
+
+.PHONY : src/utils/file.i
+
+# target to preprocess a source file
+src/utils/file.c.i:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/file.c.i
+.PHONY : src/utils/file.c.i
+
+src/utils/file.s: src/utils/file.c.s
+
+.PHONY : src/utils/file.s
+
+# target to generate assembly for a file
+src/utils/file.c.s:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/file.c.s
+.PHONY : src/utils/file.c.s
+
 src/utils/formatDetector.o: src/utils/formatDetector.c.o
 
 .PHONY : src/utils/formatDetector.o
@@ -561,6 +588,9 @@ help:
 	@echo "... src/pattern/reverse.o"
 	@echo "... src/pattern/reverse.i"
 	@echo "... src/pattern/reverse.s"
+	@echo "... src/utils/file.o"
+	@echo "... src/utils/file.i"
+	@echo "... src/utils/file.s"
 	@echo "... src/utils/formatDetector.o"
 	@echo "... src/utils/formatDetector.i"
 	@echo "... src/utils/formatDetector.s"
