@@ -39,6 +39,8 @@ dictionary.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.h
 stdio.h
 -
+../utils/file.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/file.h
 
 /Users/Raquel/Desktop/NSA/private/revelation/src/decompress/dictionary.c
 dictionary.h

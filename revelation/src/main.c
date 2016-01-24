@@ -132,18 +132,12 @@ int main(int argc, char *argv[]){
         switch (flag){
             case 0:{
                 unlink("afterReveal.txt");
-                if(isStandard && !isShow){
-                    printFile(fileOut);
-                    unlink(fileOut);
-                }
-                if(!isStandard && isShow){
+                if(isShow){
                     printDictionary(d);
                     printFileBinary(fileOut);
                 }
-                if(isStandard && isShow){
+                if(isStandard){
                     printFile(fileOut);
-                    printDictionary(d);
-                    printFileBinary(fileOut);
                     unlink(fileOut);
                 }
                 break;

@@ -9,6 +9,7 @@
 #include "../arguments.h"
 #include "../utils/utilBit.h"
 #include <stdio.h>
+#include "../utils/file.h"
 
 int decompress(char* pathFile, Dictionary *d);
 

@@ -58,6 +58,7 @@ CMakeFiles/reveal.dir/src/decompress/decompress.c.o: src/arguments.h
 CMakeFiles/reveal.dir/src/decompress/decompress.c.o: src/decompress/decompress.c
 CMakeFiles/reveal.dir/src/decompress/decompress.c.o: src/decompress/decompress.h
 CMakeFiles/reveal.dir/src/decompress/decompress.c.o: src/decompress/dictionary.h
+CMakeFiles/reveal.dir/src/decompress/decompress.c.o: src/utils/file.h
 CMakeFiles/reveal.dir/src/decompress/decompress.c.o: src/utils/utilBit.h
 CMakeFiles/reveal.dir/src/decompress/decompress.c.o: /usr/local/include/opencv/cxcore.h
 CMakeFiles/reveal.dir/src/decompress/decompress.c.o: /usr/local/include/opencv2/calib3d.hpp
