@@ -134,7 +134,6 @@ int main(int argc, char *argv[]){
                 unlink("afterReveal.txt");
                 if(isStandard){
                     printFile(fileOut);
-                    unlink(fileOut);
                 }
                 break;
             }
@@ -164,7 +163,11 @@ int main(int argc, char *argv[]){
         }
         if(isShow){
             printDictionary(d);
+            printFileBinary(fileOut);
+        }
 
+        if(isStandard){
+            unlink(fileOut);
         }
         // unlink("afterReveal.txt");
         // free(a); free(output);

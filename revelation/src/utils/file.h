@@ -7,10 +7,13 @@
 
 #include "stdio.h"
 #include <string.h>
+#include "utilBit.h"
 #include <opencv2/hal/defs.h>
 
 void printFile(char* path);
 
 int containsMagicNumber(char* message,int messageSize,char* magic,int magicSize);
+
+void printFileBinary(char* path);
 
 #endif //REVELATIONN_FILE_H
