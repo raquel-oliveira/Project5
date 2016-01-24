@@ -12,7 +12,7 @@ public class Main {
 		
 		Arguments arg = new Arguments(args);
 		Metrics met = new Metrics();
-		if(arg.getMetrics().equals("time"))  met.setTime();
+		if(arg.getMetrics())  met.setTime();
 		MessageTreatment msgTreatment = new MessageTreatment();
 		BitSet bitsetMessage = null;
 		
@@ -37,7 +37,6 @@ public class Main {
 		// Compression and metrics of compression
 		else
 		{
-			if(arg.getMetrics().equals("compression_time")) met.setTime();
 			HuffmanTree huff = new HuffmanTree();
 			huff.createList(msgTreatment.getNbIterations(message));
 			huff.constructHuffmanTree();
@@ -51,7 +50,7 @@ public class Main {
 			
 			bitsetMessage = compressed; // Starting from here, we have the fully compressed message
 			if(arg.getShow()) met.getDictionary(huff.getDictionnary(), huff.getCodelength(), bitsetMessage);
-			if(arg.getMetrics().equals("compression_time")) met.getTime();
+			if(arg.getMetrics()) met.getTime();
 		}
 		
         //From message to BitSet
@@ -89,10 +88,10 @@ public class Main {
 		
 		manipMat.setPixelsColor(out, arg.getFormatIn(), arg.getFormatOut());
 		
-		if(arg.getMetrics().equals("impact"))  met.nbBitsImpacted(message, nbColorsNotNull, manipMat.getImage());
-		else if(arg.getMetrics().equals("time"))  met.getTime();
-		else if(arg.getMetrics().equals("compression_savings"))
+		if(arg.getMetrics())
 		{
+			met.nbBitsImpacted(bitsetMessage, nbColorsNotNull, manipMat.getImage());
+			met.getTime();
 			double sizeSaved = met.getCompressionSavings(message, bitsetMessage);
 			if(sizeSaved > 0) System.out.println("Saved space with compression : " + sizeSaved + "%");
 			else System.out.println("The compression was a bad idea ! Saved space with compression : " + sizeSaved + " %");

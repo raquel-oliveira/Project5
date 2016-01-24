@@ -32,6 +32,7 @@ public class MessageTreatment {
 				z++;
 			}
 		}
+		bsret.set(chaine.length()*8);
 		return bsret;
 	}
 	

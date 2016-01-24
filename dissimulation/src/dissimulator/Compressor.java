@@ -181,7 +181,8 @@ public class Compressor {
      * @return the byte result of the conversion.
      */
     public Byte integerToByte(int i){
-        Byte ret = Byte.valueOf(i+"");
+    	Integer temp = new Integer(i);
+    	Byte ret = new Byte(temp.byteValue());
         return ret;
     }
 
