@@ -14,7 +14,7 @@ add_executable(
         reveal
 
         src/main.c
-        src/image.c
+        src/utils/image.c
         src/arguments.c
         src/validateArguments.c
         src/pattern/reveal.c

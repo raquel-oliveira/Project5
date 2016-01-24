@@ -63,4 +63,5 @@ int reveal(int initialRow, int finalRow, int initialWidth, int finalWidth){
         }
         nbOccurences++;
     }
+    return 0;
 }

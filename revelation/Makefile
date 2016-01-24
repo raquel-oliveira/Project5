@@ -204,33 +204,6 @@ src/decompress/dictionary.c.s:
 	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/decompress/dictionary.c.s
 .PHONY : src/decompress/dictionary.c.s
 
-src/image.o: src/image.c.o
-
-.PHONY : src/image.o
-
-# target to build an object file
-src/image.c.o:
-	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/image.c.o
-.PHONY : src/image.c.o
-
-src/image.i: src/image.c.i
-
-.PHONY : src/image.i
-
-# target to preprocess a source file
-src/image.c.i:
-	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/image.c.i
-.PHONY : src/image.c.i
-
-src/image.s: src/image.c.s
-
-.PHONY : src/image.s
-
-# target to generate assembly for a file
-src/image.c.s:
-	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/image.c.s
-.PHONY : src/image.c.s
-
 src/main.o: src/main.c.o
 
 .PHONY : src/main.o
@@ -420,6 +393,33 @@ src/utils/hexa.c.s:
 	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/hexa.c.s
 .PHONY : src/utils/hexa.c.s
 
+src/utils/image.o: src/utils/image.c.o
+
+.PHONY : src/utils/image.o
+
+# target to build an object file
+src/utils/image.c.o:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/image.c.o
+.PHONY : src/utils/image.c.o
+
+src/utils/image.i: src/utils/image.c.i
+
+.PHONY : src/utils/image.i
+
+# target to preprocess a source file
+src/utils/image.c.i:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/image.c.i
+.PHONY : src/utils/image.c.i
+
+src/utils/image.s: src/utils/image.c.s
+
+.PHONY : src/utils/image.s
+
+# target to generate assembly for a file
+src/utils/image.c.s:
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/image.c.s
+.PHONY : src/utils/image.c.s
+
 src/utils/utilBit.o: src/utils/utilBit.c.o
 
 .PHONY : src/utils/utilBit.o
@@ -573,9 +573,6 @@ help:
 	@echo "... src/decompress/dictionary.o"
 	@echo "... src/decompress/dictionary.i"
 	@echo "... src/decompress/dictionary.s"
-	@echo "... src/image.o"
-	@echo "... src/image.i"
-	@echo "... src/image.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
@@ -597,6 +594,9 @@ help:
 	@echo "... src/utils/hexa.o"
 	@echo "... src/utils/hexa.i"
 	@echo "... src/utils/hexa.s"
+	@echo "... src/utils/image.o"
+	@echo "... src/utils/image.i"
+	@echo "... src/utils/image.s"
 	@echo "... src/utils/utilBit.o"
 	@echo "... src/utils/utilBit.i"
 	@echo "... src/utils/utilBit.s"

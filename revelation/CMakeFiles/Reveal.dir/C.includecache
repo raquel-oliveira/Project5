@@ -52,22 +52,6 @@ dictionary.h
 stdio.h
 -
 
-/Users/Raquel/Desktop/NSA/private/revelation/src/image.c
-image.h
-/Users/Raquel/Desktop/NSA/private/revelation/src/image.h
-
-/Users/Raquel/Desktop/NSA/private/revelation/src/image.h
-stdio.h
--
-stdlib.h
--
-opencv/highgui.h
--
-magic.h
--
-utils/formatDetector.h
-/Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.h
-
 /Users/Raquel/Desktop/NSA/private/revelation/src/main.c
 string.h
 -
@@ -109,8 +93,8 @@ string.h
 -
 opencv/highgui.h
 -
-../image.h
-/Users/Raquel/Desktop/NSA/private/revelation/src/image.h
+../utils/image.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/image.h
 ../utils/utilBit.h
 /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.h
 ../arguments.h
@@ -159,6 +143,22 @@ stdio.h
 -
 stdlib.h
 -
+
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/image.c
+image.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/image.h
+
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/image.h
+stdio.h
+-
+stdlib.h
+-
+opencv/highgui.h
+-
+magic.h
+-
+../utils/formatDetector.h
+/Users/Raquel/Desktop/NSA/private/revelation/src/utils/formatDetector.h
 
 /Users/Raquel/Desktop/NSA/private/revelation/src/utils/utilBit.c
 utilBit.h

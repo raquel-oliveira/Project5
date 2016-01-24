@@ -12,6 +12,7 @@ void printFile(char* path){
         while ((c = getc(filePrint)) != EOF)
             putchar(c);
         fclose(filePrint);
+        printf("\n\n");
     }
 }
 

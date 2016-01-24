@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <opencv/highgui.h>
-#include "../image.h"
+#include "../utils/image.h"
 #include "../utils/utilBit.h"
 #include "../arguments.h"
 #include <unistd.h>

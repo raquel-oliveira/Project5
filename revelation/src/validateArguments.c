@@ -6,14 +6,18 @@
 
 
 void setArguments(){
-    printf("----------Veryfication file in---------------------\n");
+    /*
+     * Verification os file in
+     */
     if (fileIn == NULL){
         fprintf(stderr, "There is no input file.\n");
         exit(-1);
     }
-    printf("Path File In: %s\n", fileIn);
 
-    printf("----------Veryfication Bits---------------------\n");
+    /*
+     * Verification o number of bits.
+     * Number default: 1.
+     */
     if (nbBits == -1){
         nbBits = 1;
     }
@@ -23,9 +27,11 @@ void setArguments(){
             exit(-1);
         }
     }
-    printf("Bits: %d\n", nbBits);
 
-    printf("----------Veryfication pattern--------------------\n");
+    /*
+     * Verification of pattern
+     * Default pattern: Direct.
+     */
     if(pattern == NULL){
         pattern = "DIRECT";
         patternInt = 1;
@@ -40,7 +46,7 @@ void setArguments(){
                 patternInt = flag; //Direct Pattern
                 break;
             case 2:
-                patternInt = flag;
+                patternInt = flag; //Inverse
                 break;
             case 3:
                 fprintf(stderr, "External spiral pattern not implemented\n");
@@ -50,9 +56,11 @@ void setArguments(){
                 exit(-4);
         }
     }
-    printf("Pattern: %s\n", pattern);
 
-    printf("----------Set Channels--------------------\n");
+    /**
+     * Setting and validation os Channels
+     * Default: Red,Green,Blue
+     */
     if (channels == NULL){
         firstChannel = 2;
         secondChannel = 1;
@@ -60,54 +68,50 @@ void setArguments(){
     }else{
         setChannels();
     }
-    printf("First Channel: %d\n", firstChannel);
-    printf("Second Channel: %d\n", secondChannel);
-    printf("Third Channel: %d\n", thirdChannel);
 
-    printf("----------CheckMagicNumber--------------------\n");
+    /**
+     * Validation of Magic Number
+     * Default: 48454C50
+     */
     if(magicHexa == NULL){
-        printf("----------MagicNumber NULL-------------------\n");
         magicHexa = "48454C50";
         magic = hex_to_str(magicHexa); // magic = "HELP"
     }else{
         magic = hex_to_str(magicHexa);
     }
-    printf("Hexa Magic Number: %s \n", magicHexa);
-    printf("Magic Number: %s \n", magic);
 
-    printf("----------Veryfication Output--------------------\n");
+    /**
+     * Validation of Output
+     * Default: Standart (Console)
+     */
     if(fileOut != NULL){
-        printf("File out not null\n");
         isStandard = false;
     }
     else {
-        printf("File out null\n");
         isStandard = true;
         fileOut = "output.txt";
     }
-    printf("Path OutPut: %s\n", fileOut);
 
+    /**
+     * Validation of the format of input
+     * If there is no format, the program will detect.
+     * If the format of the image its different of the argument or it is not a format accepted,
+     * the program ends/error.
+     */
 
-    printf("----------Veryfication format--------------------\n");
     img = cvLoadImage(fileIn, 1); // Second parameter == 1 (RGB) || == 0 (GREY)
-    printf("----------Trying to load the image--------------------\n");
-    if (img){
-        printf("----------isImage--------------------\n");
+    if (img){ //Try to load the image by OpenCv
         if(formatIn == NULL){
             int format = detect_format(fileIn);
             if (format == -1){
                 fprintf(stderr, "Not possible to detect format\n");
                 exit(-1);
             }
-            else{
-                printf("Image accepted\n");
-            }
         }
         else {
             flag = validateFormat();
             switch (flag) {
-                case 0:
-                    printf("----------Format accepted--------------------");
+                case 0: //Accepted
                     break;
                 case -1:
                     fprintf(stderr, "%s is not a format accepted\n", formatIn);
@@ -121,7 +125,7 @@ void setArguments(){
             }
         }
     }else{
-        printf("Could not open the file\n");
+        fprintf(stderr, "Could not open the file\n");
         exit(-3);
     }
 }
