@@ -45,16 +45,16 @@ public class HuffmanTree {
     /**
      * This method adds a String representing a couple character:frequency while respecting the order by frequency
      *
-     * @param node String representin ga character and its frequency, expected to be "x:y" where x is the character
+     * @param node String representin ga character and its frequency, expected to be "x~y" where x is the character
      *             and y is the frequency value (integer).
      */
     public void addNode(String node){
         int index = 0;
-        String[] nodeS = node.split(":");
+        String[] nodeS = node.split("~");
         int occ = Integer.parseInt(nodeS[1]);
         if(!this.getNodes().isEmpty()){
             for (String n : this.getNodes()){
-                String[] nS = n.split(":");
+                String[] nS = n.split("~");
                 if (occ >= Integer.parseInt(nS[1]))
                     index++;
             }
@@ -65,21 +65,21 @@ public class HuffmanTree {
 
     /**
      * This method fuses the first 2 nodes of the nodes LinkedList.
-     * Fusing means that the character will be saved as a couple, and will look like [n1|n2]:x
-     * where n1 and n2 will be characters (or couples such as (a,b)) and x will be the addition of the two frequencies.
+     * Fusing means that the character will be saved as a couple, and will look like [n1|n2]~x
+     * where n1 and n2 will be characters (or couples such as [a|b]) and x will be the addition of the two frequencies.
      */
     public void fuseNodes(){
         StringBuilder sb = new StringBuilder("[|]");
         String n1 = this.getNodes().get(0);
         String n2 = this.getNodes().get(1);
-        String[] n1split = n1.split(":");
-        String[] n2split = n2.split(":");
+        String[] n1split = n1.split("~");
+        String[] n2split = n2.split("~");
 
         int occ = Integer.parseInt(n1split[1]) + Integer.parseInt(n2split[1]);
 
         sb.insert(1, n1split[0]);
         sb.insert(n1split[0].length()+2, n2split[0]);
-        sb.append(":"+occ);
+        sb.append("~"+occ);
         this.addNode(sb.toString());
         this.getNodes().remove();
         this.getNodes().remove();
@@ -94,7 +94,7 @@ public class HuffmanTree {
             this.fuseNodes();
         }
 
-        String[] tuple = this.getNodes().get(0).split(":");
+        String[] tuple = this.getNodes().get(0).split("~");
         this.setTree(tuple[0]);
     }
 

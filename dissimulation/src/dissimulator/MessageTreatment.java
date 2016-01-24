@@ -85,7 +85,7 @@ public class MessageTreatment {
 			    }
 			}
 			frequencies.remove(cleInf);
-			temp += cleInf + ":" + Integer.toString(valeurInf) + ", ";
+			temp += cleInf + "~" + Integer.toString(valeurInf) + ", ";
 		}
 		temp = temp.substring(0, temp.length()-2);
 		temp += '}';
