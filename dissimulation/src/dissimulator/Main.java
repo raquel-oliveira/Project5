@@ -33,37 +33,31 @@ public class Main {
 				throw new MagicNumberException("Ce message contient le nombre magique");
 			else message += mnt.hexStringtoString();
 		}
+		
+		// Compression and metrics of compression
 		else
 		{
 			if(arg.getMetrics().equals("compression_time")) met.setTime();
-			System.out.println(msgTreatment.getNbIterations(message));
-			PredefinedDictionnary dict = new PredefinedDictionnary();
-			Compressor compressor = new Compressor(dict.getDicoCode(), dict.getDicoLength());
+			HuffmanTree huff = new HuffmanTree();
+			huff.createList(msgTreatment.getNbIterations(message));
+			huff.constructHuffmanTree();
+			huff.getCodes();
+			Compressor compressor = new Compressor(huff.getDictionnary(), huff.getCodelength());
 			byte[] array1 = compressor.messageCompression(message);
 			byte[] array2 = mnt.mnCompressionBArray();
 			byte[] finalArray = Compressor.groupByteArray(array1, array2);
 			BitSet compressed = BitSet.valueOf(finalArray);
 			compressed.set(finalArray.length*8);
 			
-			for(int k = 0, cpt = 0; k < compressed.length(); k++, cpt++)
-			{
-				if(cpt%8 == 0 && cpt !=0) System.out.print(" ");
-				if(compressed.get(k)) System.out.print("1");
-				else System.out.print("0");
-				
-			}
-			System.out.println("\n");
-			
-			bitsetMessage = compressed;
+			bitsetMessage = compressed; // Starting from here, we have the fully compressed message
+			if(arg.getShow()) met.getDictionary(huff.getDictionnary(), huff.getCodelength(), bitsetMessage);
 			if(arg.getMetrics().equals("compression_time")) met.getTime();
 		}
 		
         //From message to BitSet
-		
 		if(!arg.getCompress()) bitsetMessage = msgTreatment.ChaintoBinary(message);
 		
 		// Colors treatment
-		
 		String channels = arg.getChannels(), temp = "";
 		
 		for(int i = 0, cpt = 0; i < channels.length(); i++)

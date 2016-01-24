@@ -162,8 +162,8 @@ int main(int argc, char *argv[]){
             printDictionary(d);
 
         }
-       // unlink("afterReveal.txt");
-       // free(a); free(output);
+        // unlink("afterReveal.txt");
+        // free(a); free(output);
     }
 
     cvReleaseImage(&img);

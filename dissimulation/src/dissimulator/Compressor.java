@@ -1,5 +1,6 @@
 package dissimulator;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -62,12 +63,26 @@ public class Compressor {
 
             byte letter = reverseByte(s.getBytes()[0]);
             byte cl = reverseByte(this.integerToByte(codelength.get(s)));
-            byte temp = (byte) (this.integerToByte(dictionnary.get(s))<<(8-codelength.get(s)));
-            byte dic = reverseByte(temp);
-
             b[i++] = letter;
             b[i++] = cl;
-            b[i++] = dic;
+            if(codelength.get(s)<=8) {
+                byte temp = (byte) (this.integerToByte(dictionnary.get(s)) << (8 - codelength.get(s)));
+                byte dic = reverseByte(temp);
+                b[i++] = dic;
+            }
+            else{
+                byte[] bytes = BigInteger.valueOf(dictionnary.get(s)).toByteArray();
+                int shifter = 8-(codelength.get(s)%8);
+                for(byte b1 : bytes){
+                    System.out.println(b1);
+                    b1 = (byte) (b1<<(shifter));
+                    System.out.println(b1);
+                    byte newby =reverseByte(b1);
+                    b[i++] = newby;
+
+                }
+            }
+
         }
 
         return b;
@@ -83,7 +98,8 @@ public class Compressor {
     public byte[] compressMessage(){
         int padd = 0;
         String[] letters  = this.msg.split("(?!^)");
-        byte[] ret = new byte[compMessageByteNb(letters)+1];
+        int nbbytes = compMessageByteNb(letters)+1;
+        byte[] ret = new byte[nbbytes];
         int bc =0;
         StringBuilder sbb = new StringBuilder();
 
@@ -146,13 +162,14 @@ public class Compressor {
      * @return a number of bytes for the compressed message.
      */
     public int compMessageByteNb(String[] characs){
-        int bits =0;
         int bytes = 0;
+        int bits =0;
         for(String c : characs){
-            bits = bits+codelength.get(c);
+            bits+= codelength.get(c);
+
         }
-        if (bits%8 !=0)
-            bytes = (bits/8)+1;
+        if(bits%8!=0)
+            bytes= (bits/8)+1;
         else bytes = bits/8;
         return bytes;
     }

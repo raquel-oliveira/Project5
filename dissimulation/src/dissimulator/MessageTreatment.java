@@ -1,9 +1,14 @@
 package dissimulator;
 import java.io.BufferedReader;
 
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.BitSet;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
 
 public class MessageTreatment {
 
@@ -27,7 +32,6 @@ public class MessageTreatment {
 				z++;
 			}
 		}
-		bsret.set(chaine.length()*8);
 		return bsret;
 	}
 	
@@ -38,44 +42,54 @@ public class MessageTreatment {
 	 */
 	public String getNbIterations(String message)
 	{
-		String temp = "";
+		HashMap<Character, Integer> frequencies = new HashMap<>();
 		char character;
 		int count = 0;
-		while(!message.isEmpty())
+		for(int i = 0; i < message.length(); i++)
 		{
-			character = message.charAt(0);
-			count = message.length() - message.replace(String.valueOf(character), "").length();
-			message = message.replace(String.valueOf(character), "");  // Erase every 'a' for example
-			temp += character + ":" + Integer.toString(count);
-			if(!message.isEmpty()) temp += ",";
+			character = message.charAt(i);
+			if(!frequencies.containsKey(character))
+			{
+				frequencies.put(character, 1);
+			}
+			else
+			{
+				int nb = frequencies.get(character);
+				frequencies.put(character, nb+1);
+			}
 		}
-		return sortByAscendingOrder(temp);
+		String strFinal = sortByAscendingOrder(frequencies);
+		return strFinal;
 	}
 	 /**
 	  * Gets a string containing the return string of getNbIterations in order to order by ascending frequencies
 	  * @param occurences
 	  * @return occurences sorted by ascending frequencies
 	  */
-	private String sortByAscendingOrder(String occurences)
+	private String sortByAscendingOrder(HashMap<Character, Integer> frequencies)
 	{
-		String temp = "";
-		int frequency = 20000, position = 0;
-		occurences = occurences.replace(",", "");
-		while(!occurences.isEmpty())
+		String temp = "{";
+		char cleInf = '0';
+		
+		while(!frequencies.isEmpty())
 		{
-			for(int i = 0; i < occurences.length(); i++) // Searching for the lowest frequency
+			int valeurInf = Integer.MAX_VALUE;
+			for(Entry<Character, Integer> entry : frequencies.entrySet()) 
 			{
-				if(occurences.charAt(i) == ':' && Character.getNumericValue(occurences.charAt(i+1)) < frequency) 
-				{
-					frequency = Character.getNumericValue(occurences.charAt(i+1));
-					position = i;
-				}
+			    char cle = entry.getKey();
+			    int valeur = entry.getValue();
+			    if(valeur < valeurInf)
+			    {
+			    	cleInf = cle;
+			    	valeurInf = valeur;
+			    }
 			}
-			frequency = 20000;
-			temp += occurences.charAt(position-1) + ":" + occurences.charAt(position+1); // Ajout de x:y à temp
-			occurences = occurences.replace(occurences.charAt(position-1) + ":" + occurences.charAt(position+1), ""); // Supression de x:y dans occurences
-			if(!occurences.isEmpty()) temp += ','; // Doesn't put a comma at the end of the ordered string
+			frequencies.remove(cleInf);
+			temp += cleInf + ":" + Integer.toString(valeurInf) + ", ";
 		}
+		temp = temp.substring(0, temp.length()-2);
+		temp += '}';
+		
 		return temp;
 	}
 	

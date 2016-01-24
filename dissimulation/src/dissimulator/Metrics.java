@@ -46,12 +46,11 @@ public class Metrics {
 	{
 		double sizeOriginal = originalMessage.length() * 8;
 		double sizeCompressed = compressedMessage.length();
-		double sizeSaved = 1 - (sizeCompressed/sizeOriginal)*100;
+		double sizeSaved = (1 - sizeCompressed/sizeOriginal)*100;
 		
 		DecimalFormat df = new DecimalFormat("########.00"); 
 		String str = df.format(sizeSaved); 
 		sizeSaved = Double.parseDouble(str.replace(',', '.'));
-		
 		return sizeSaved;
 	}
 	
@@ -61,8 +60,15 @@ public class Metrics {
 	 * @param dicoLength
 	 * @param messageCompressed
 	 */
-	public void getDictionary(HashMap<String, Integer> dicoCode, HashMap<String, Integer> dicoLength, String messageCompressed)
+	public void getDictionary(HashMap<String, Integer> dicoCode, HashMap<String, Integer> dicoLength, BitSet bitsetMessageCompressed)
 	{
+		String messageCompressed = "";
+	    for(int i = 0; i < bitsetMessageCompressed.length() - 1; i++)
+	    {
+	    	if(bitsetMessageCompressed.get(i)) messageCompressed += "1";
+	    	else messageCompressed += "0";
+	    }
+		
 		for (Map.Entry<String, Integer> mapEntry : dicoCode.entrySet()) 
 		{
 	       String valueDictionary = Integer.toBinaryString(mapEntry.getValue());
@@ -84,12 +90,12 @@ public class Metrics {
 	       System.out.println("0x" + hexCode + ": " + valueDictionary);
 	    }
 		byte[] binaryMessage = messageCompressed.getBytes();
-		for(int i = 0, cpt = 0; i < binaryMessage.length; i++, cpt++)
-	    {
-			String binaryString = String.format("%8s", Integer.toBinaryString(binaryMessage[i] & 0xFF)).replace(' ', '0');
-			System.out.print(binaryString);
-			System.out.print(" ");
-	    }
+		for(int i = 0; i < bitsetMessageCompressed.length() - 1; i++)
+		{
+			if(i%8 == 0 && i!= 0) System.out.print(" ");
+			if(bitsetMessageCompressed.get(i)) System.out.print("1");
+			else System.out.print("0");
+		}
 		System.out.print("\n");
 	}
 }
