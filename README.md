@@ -29,6 +29,16 @@ Revelation :
 - Format used : PNG
 - Revelation : acquires determined number of bits (set in the code), and prints in the console the LSb for all the color components concerned (magic number not implemented)
 
+24/01/2016 - Steganography Software Version 4:
+This version is the upgrade version of last version. With a instruct compress, compress a message in Java (dissimulation), and decompress the message in C (revelation)
+
+Dissimulation : Compress a message, dissimulate it in a image. 
+
+Revalation : Reveal message from image, then decompress it.
+
+MVP : 1 bit used when hiding message, channel RGB, direct (first pixel to last, going in rows)
+
+
 ## Maintainers ##
 ------------------
 
