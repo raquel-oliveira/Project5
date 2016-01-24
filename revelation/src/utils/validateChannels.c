@@ -15,7 +15,6 @@ void setChannels(){
         i++;
     }
 
-    //TODO: reuse the code.
     aux = strtok(channels, delimiter);
     if (aux != NULL) {
         firstChannel = numberColors(aux);

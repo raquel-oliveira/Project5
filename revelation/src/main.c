@@ -36,14 +36,13 @@ static struct option long_options[] =
         };
 
 int main(int argc, char *argv[]){
-    pattern = NULL; //"direct";
+    pattern = NULL;
     fileIn = NULL;
     fileOut = NULL;
-    channels = NULL;// "Red,Green,Blue";
-    nbBits = -1; //1;
-    uchar *message = malloc(SIZE_MESSAGE);
-    magicHexa = NULL; //"48454C50";
-    magic = NULL; //"HELP";
+    channels = NULL;
+    nbBits = -1;
+    magicHexa = NULL;
+    magic = NULL;
     img = NULL;
     isCompress = false;
     isShow = false;
@@ -55,31 +54,24 @@ int main(int argc, char *argv[]){
         switch (long_index){
             case FIN:
                 formatIn = optarg;
-                printf("Format in: %s \n", formatIn);
                 break;
             case IN:
                 fileIn = optarg;
-                printf("Path in: %s \n", fileIn);
                 break;
             case OUT:
                 fileOut = optarg;
-                printf("File Out: %s \n", fileOut);
                 break;
             case B:
                 nbBits = atoi(optarg); //TODO: do a Try
-                printf("Number of bits: %d \n", nbBits);
                 break;
             case C:
                 channels = optarg;
-                printf("Channels: %s \n", channels);
                 break;
             case P:
                 pattern = optarg;
-                printf("Pattern: %s \n", pattern);
                 break;
             case MAGIC:
                 magicHexa = optarg;
-                printf("MAGIC number: %s \n", magicHexa);
                 break;
             case COMPRESS:
                 isCompress = true;
@@ -123,7 +115,7 @@ int main(int argc, char *argv[]){
                 printFile(fileOut);
                 unlink(fileOut);
             } else {
-                printf("Reveal in the path: %s", fileOut);
+                printf("Reveal in the path: %s\n", fileOut);
                 exit(1);
             }
 
@@ -138,7 +130,10 @@ int main(int argc, char *argv[]){
         switch (flag){
             case 0:{
                 unlink("afterReveal.txt");
-                if(isStandard){ printFile(fileOut); unlink(fileOut);} //TODO: PUT A '\0'in the end
+                if(isStandard){
+                    printFile(fileOut);
+                    unlink(fileOut);
+                }
                 break;
             }
             case -1:
@@ -155,10 +150,17 @@ int main(int argc, char *argv[]){
                 fprintf(stderr, "The quantity of elements in the dictionary its incorrect\n");
                 exit(-5);
             }
+            case -6:{
+                fprintf(stderr, "Problem when try to malloc the buffer\n");
+                exit(-6);
+            }
+            case -7:{
+                fprintf(stderr, "problem to malloc elements\n");
+                exit(-7);
+            }
 
         }
         if(isShow){
-            printf("-----------SHOW DICTIONARY---------\n");
             printDictionary(d);
 
         }
@@ -167,6 +169,5 @@ int main(int argc, char *argv[]){
     }
 
     cvReleaseImage(&img);
-    free(message);
     return 0;
 }

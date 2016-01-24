@@ -81,28 +81,28 @@ CMakeFiles/reveal.dir/src/main.c.o.provides: CMakeFiles/reveal.dir/src/main.c.o.
 CMakeFiles/reveal.dir/src/main.c.o.provides.build: CMakeFiles/reveal.dir/src/main.c.o
 
 
-CMakeFiles/reveal.dir/src/image.c.o: CMakeFiles/reveal.dir/flags.make
-CMakeFiles/reveal.dir/src/image.c.o: src/image.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/reveal.dir/src/image.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/reveal.dir/src/image.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/image.c
+CMakeFiles/reveal.dir/src/utils/image.c.o: CMakeFiles/reveal.dir/flags.make
+CMakeFiles/reveal.dir/src/utils/image.c.o: src/utils/image.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/Raquel/Desktop/NSA/private/revelation/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/reveal.dir/src/utils/image.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/reveal.dir/src/utils/image.c.o   -c /Users/Raquel/Desktop/NSA/private/revelation/src/utils/image.c
 
-CMakeFiles/reveal.dir/src/image.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/reveal.dir/src/image.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/image.c > CMakeFiles/reveal.dir/src/image.c.i
+CMakeFiles/reveal.dir/src/utils/image.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/reveal.dir/src/utils/image.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/Raquel/Desktop/NSA/private/revelation/src/utils/image.c > CMakeFiles/reveal.dir/src/utils/image.c.i
 
-CMakeFiles/reveal.dir/src/image.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/reveal.dir/src/image.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/image.c -o CMakeFiles/reveal.dir/src/image.c.s
+CMakeFiles/reveal.dir/src/utils/image.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/reveal.dir/src/utils/image.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/Raquel/Desktop/NSA/private/revelation/src/utils/image.c -o CMakeFiles/reveal.dir/src/utils/image.c.s
 
-CMakeFiles/reveal.dir/src/image.c.o.requires:
+CMakeFiles/reveal.dir/src/utils/image.c.o.requires:
 
-.PHONY : CMakeFiles/reveal.dir/src/image.c.o.requires
+.PHONY : CMakeFiles/reveal.dir/src/utils/image.c.o.requires
 
-CMakeFiles/reveal.dir/src/image.c.o.provides: CMakeFiles/reveal.dir/src/image.c.o.requires
-	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/image.c.o.provides.build
-.PHONY : CMakeFiles/reveal.dir/src/image.c.o.provides
+CMakeFiles/reveal.dir/src/utils/image.c.o.provides: CMakeFiles/reveal.dir/src/utils/image.c.o.requires
+	$(MAKE) -f CMakeFiles/reveal.dir/build.make CMakeFiles/reveal.dir/src/utils/image.c.o.provides.build
+.PHONY : CMakeFiles/reveal.dir/src/utils/image.c.o.provides
 
-CMakeFiles/reveal.dir/src/image.c.o.provides.build: CMakeFiles/reveal.dir/src/image.c.o
+CMakeFiles/reveal.dir/src/utils/image.c.o.provides.build: CMakeFiles/reveal.dir/src/utils/image.c.o
 
 
 CMakeFiles/reveal.dir/src/arguments.c.o: CMakeFiles/reveal.dir/flags.make
@@ -444,7 +444,7 @@ CMakeFiles/reveal.dir/src/utils/validatePattern.c.o.provides.build: CMakeFiles/r
 # Object files for target reveal
 reveal_OBJECTS = \
 "CMakeFiles/reveal.dir/src/main.c.o" \
-"CMakeFiles/reveal.dir/src/image.c.o" \
+"CMakeFiles/reveal.dir/src/utils/image.c.o" \
 "CMakeFiles/reveal.dir/src/arguments.c.o" \
 "CMakeFiles/reveal.dir/src/validateArguments.c.o" \
 "CMakeFiles/reveal.dir/src/pattern/reveal.c.o" \
@@ -464,7 +464,7 @@ reveal_OBJECTS = \
 reveal_EXTERNAL_OBJECTS =
 
 reveal: CMakeFiles/reveal.dir/src/main.c.o
-reveal: CMakeFiles/reveal.dir/src/image.c.o
+reveal: CMakeFiles/reveal.dir/src/utils/image.c.o
 reveal: CMakeFiles/reveal.dir/src/arguments.c.o
 reveal: CMakeFiles/reveal.dir/src/validateArguments.c.o
 reveal: CMakeFiles/reveal.dir/src/pattern/reveal.c.o
@@ -509,7 +509,7 @@ CMakeFiles/reveal.dir/build: reveal
 .PHONY : CMakeFiles/reveal.dir/build
 
 CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/main.c.o.requires
-CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/image.c.o.requires
+CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/utils/image.c.o.requires
 CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/arguments.c.o.requires
 CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/validateArguments.c.o.requires
 CMakeFiles/reveal.dir/requires: CMakeFiles/reveal.dir/src/pattern/reveal.c.o.requires
