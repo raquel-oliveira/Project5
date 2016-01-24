@@ -20,7 +20,6 @@
 #define SHOW 8
 #define SIZE_MESSAGE 100
 
-//TODO: why optional argument doesn't work?
 static struct option long_options[] =
         {
                 {"Fin", required_argument, NULL, FIN},
@@ -49,7 +48,6 @@ int main(int argc, char *argv[]){
 
     int long_index=0;
     int opt = 0;
-    //TODO: fix why he goes to 0(Fin) if the option is not valid.
     while((opt = getopt_long_only(argc, argv, "" , long_options, &long_index)!= -1)){
         switch (long_index){
             case FIN:

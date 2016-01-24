@@ -4,9 +4,9 @@
 
 #include "decompress.h"
 /**
- * The decompress start trying to create a dictionary
+ * The decompress start trying to create a dictionary and after to decode the file
  * @return 0 if the decompression was made
- *
+ * @return -1 Problem to open the file
  */
 int decompress(char* pathFile, Dictionary *d){
 
@@ -14,7 +14,6 @@ int decompress(char* pathFile, Dictionary *d){
 
     int flagDictionary = createDictionary(afterReveal, d);
     if (flagDictionary < 0 ){
-        //fprintf(stderr, "Dictionary not created or Could not open the file \n");
         return flagDictionary;
     }
 

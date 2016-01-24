@@ -5,6 +5,15 @@
 #include "dictionary.h"
 #define SIZEBYTE 8
 
+/**
+ * Create the dictionary
+ *
+ * @return -2 Problem when try to malloc the keys of elements
+ * @return -4 Number of bits used in the last byte incorrect
+ * @return -5 The quantity of elements in the dictionary its incorrect
+ * @return -6 Problem when try to malloc the buffer
+ * @return -7 problem to malloc elements
+ */
 int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
     if (!afterReveal) return -1;
 
