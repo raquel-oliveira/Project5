@@ -14,6 +14,6 @@ public class FrequencyTest {
 	{
 		MessageTreatment msg = new MessageTreatment();
 		String message = "aabccdee";
-		assertEquals(msg.getNbIterations(message), "{b:1, d:1, a:2, c:2, e:2}");
+		assertEquals(msg.getNbIterations(message), "{b~1, d~1, a~2, c~2, e~2}");
 	}
 }

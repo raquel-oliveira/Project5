@@ -9,9 +9,7 @@ import java.util.BitSet;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-/**
- * Created by Paul on 1/20/16.
- */
+
 public class CompressorTest {
 	
     @Test
@@ -32,22 +30,25 @@ public class CompressorTest {
         assertEquals(6,msg.length);
     }
     
+    /**
+     * Verify if what is coming out of the compressor is what SHOULD come out.
+     * Here, we test for the input "message" with a predefined dictionary (Level 3)
+     */
     @Test 
-    public void severalBytesCompressedTest()
+    public void BytesCompressedWithPDTest() 
     {
     	String message = "all";
     	PredefinedDictionnary prd = new PredefinedDictionnary();
         Compressor compressor = new Compressor(prd.getDicoCode(),prd.getDicoLength());
-        MagicNumberTester mnt = new MagicNumberTester();
-    	byte[] array1 = compressor.messageCompression(message);
+    	byte[] array1 = compressor.messageCompression(message); // The bytes coming out are reversed, have to reverse them.
     	String stringTest = "";
     	for(int i = 0; i < array1.length; i++)
     	{
-    		array1[i] = Compressor.reverseByte(array1[i]);
+    		array1[i] = Compressor.reverseByte(array1[i]); // Reversing each byte
     		stringTest += String.format("%8s", Integer.toBinaryString(array1[i] & 0xFF)).replace(' ', '0');
     		if(i != array1.length - 1) stringTest += " ";
     	}
-    	String bits = "00000001 01100001 00000011 11100000 01101100 00000011 00100000 00000001 11100100 10000000";
+    	String bits = "00000001 01100001 00000011 11100000 01101100 00000011 00100000 00000001 11100100 10000000"; // Compressed output for "all"
     	assertTrue(stringTest.equals(bits));
     }
 }
