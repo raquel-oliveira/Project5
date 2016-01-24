@@ -46,36 +46,35 @@ public class Compressor {
      */
     public byte[] compressDictionnary(){
         int i=0;
-        String[] letters = this.msg.split("(?!^)");
-        Set<String> uniquelet = new LinkedHashSet<String>();
-        for(String s : letters){
+        char[] letters = this.msg.toCharArray();
+        Set<Character> uniquelet = new LinkedHashSet<Character>();
+        for(char s : letters){
             uniquelet.add(s);
         }
         this.mdc = uniquelet.size();
         byte symb = reverseByte(this.integerToByte(uniquelet.size()-1));
         int codebytes = 0;
-        for(String s : uniquelet){
-            codebytes+= (int) Math.ceil((double)codelength.get(s)/8);
+        for(char s : uniquelet){
+            codebytes+= (int) Math.ceil((double)codelength.get(s+"")/8);
         }
         byte[] b = new byte[this.mdc*2+codebytes+1];
         b[i++] = symb;
 
 
 
-        for(String s : uniquelet){
-
-            byte letter = reverseByte(s.getBytes()[0]);
-            byte cl = reverseByte(this.integerToByte(codelength.get(s)));
+        for(char s : uniquelet){
+            byte letter = reverseByte((byte)s);
+            byte cl = reverseByte(this.integerToByte(codelength.get(s+"")));
             b[i++] = letter;
             b[i++] = cl;
-            if(codelength.get(s)<=8) {
-                byte temp = (byte) (this.integerToByte(dictionnary.get(s)) << (8 - codelength.get(s)));
+            if(codelength.get(s+"")<=8){
+                byte temp = (byte) (this.integerToByte(dictionnary.get(s+""))<<(8-codelength.get(s+"")));
                 byte dic = reverseByte(temp);
                 b[i++] = dic;
             }
             else{
-                byte[] bytes = BigInteger.valueOf(dictionnary.get(s)).toByteArray();
-                int shifter = 8-(codelength.get(s)%8);
+                byte[] bytes = BigInteger.valueOf(dictionnary.get(s+"")).toByteArray();
+                int shifter = 8-(codelength.get(s+"")%8);
                 for(byte b1 : bytes){
                     System.out.println(b1);
                     b1 = (byte) (b1<<(shifter));
@@ -85,7 +84,6 @@ public class Compressor {
 
                 }
             }
-
         }
 
         return b;
