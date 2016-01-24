@@ -14,40 +14,40 @@ public class HuffmanTreeTest {
     @Test
     public void huffmanTreeCreateTest(){
         HuffmanTree htt = new HuffmanTree();
-        String occ = "{c:1, b:2, d:3, e:3, a:4}";
+        String occ = "{c~1, b~2, d~3, e~3, a~4}";
         htt.createList(occ);
 
-       assertEquals("c:1", htt.getNodes().get(0));
-        assertEquals("d:3", htt.getNodes().get(2));
+       assertEquals("c~1", htt.getNodes().get(0));
+        assertEquals("d~3", htt.getNodes().get(2));
     }
 
     @Test
     public void huffmanTreeAddTest(){
         HuffmanTree htt = new HuffmanTree();
-        String occ = "{c:1, b:2, d:3, e:3, a:4}";
+        String occ = "{c~1, b~2, d~3, e~3, a~4}";
         htt.createList(occ);
-        assertEquals("d:3", htt.getNodes().get(2));
+        assertEquals("d~3", htt.getNodes().get(2));
 
-        htt.addNode("f:2");
-        assertEquals("f:2", htt.getNodes().get(2));
+        htt.addNode("f~2");
+        assertEquals("f~2", htt.getNodes().get(2));
     }
 
 
     @Test
     public void huffmanTreeFuseTest(){
         HuffmanTree htt = new HuffmanTree();
-        String occ = "{c:1, b:2, d:3, e:3, a:4}";
+        String occ = "{c~1, b~2, d~3, e~3, a~4}";
         htt.createList(occ);
 
         htt.constructHuffmanTree();
 
-        assertEquals("((d,e),((c,b),a))", htt.getTree());
+        assertEquals("[[d|e]|[[c|b]|a]]", htt.getTree());
     }
 
     @Test
     public void huffmanTreeAssignementTest(){
         HuffmanTree htt = new HuffmanTree();
-        String occ = "{c:1, b:2, d:3, e:3, a:4}";
+        String occ = "{c~1, b~2, d~3, e~3, a~4}";
         htt.createList(occ);
 
         htt.constructHuffmanTree();
@@ -66,7 +66,7 @@ public class HuffmanTreeTest {
     @Test
     public void huffmanTreeSingleCharTest(){
         HuffmanTree htt = new HuffmanTree();
-        String occ = "{c:1}";
+        String occ = "{c~1}";
         htt.createList(occ);
 
         htt.constructHuffmanTree();
