@@ -46,15 +46,18 @@ public class Compressor {
      */
     public byte[] compressDictionnary(){
         int i=0;
-        String[] letters = this.getMsg().split("(?!^)");
+        String[] letters = this.msg.split("(?!^)");
         Set<String> uniquelet = new LinkedHashSet<String>();
         for(String s : letters){
             uniquelet.add(s);
         }
-        this.setMdc(uniquelet.size());
+        this.mdc = uniquelet.size();
         byte symb = reverseByte(this.integerToByte(uniquelet.size()-1));
-
-        byte[] b = new byte[this.getMdc()*3+1];
+        int codebytes = 0;
+        for(String s : uniquelet){
+            codebytes+= (int) Math.ceil((double)codelength.get(s)/8);
+        }
+        byte[] b = new byte[this.mdc*2+codebytes+1];
         b[i++] = symb;
 
 
