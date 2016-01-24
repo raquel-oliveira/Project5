@@ -18,7 +18,6 @@ void printFile(char* path){
 
 int containsMagicNumber(char* message, int messageSize, char* magic, int magicSize)
 {
-
     if(messageSize<magicSize)  return -1;
 
     return memcmp(&(message[messageSize-magicSize]),magic,magicSize);
