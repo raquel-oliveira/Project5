@@ -101,7 +101,8 @@ int decompress(char* pathFile, Dictionary *d){
     if(isStandard){
         fputc(EOF,outputFinal);
         fclose(outputFinal);
+    }else{
+        fclose(outputFinal);
     }
-
     return 0;
 }
