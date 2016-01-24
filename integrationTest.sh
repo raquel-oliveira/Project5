@@ -1,23 +1,43 @@
-#!/bin/sh
-# to run: $ . file.sh
-file="./integrationTest.sh"
+#!/bin/bash
+echo "Build dissimulation and revelation"
+cd dissimulation; ./build.sh; cd ..
+cd revelation; ./build.sh; cd ..
 
-if [ -r $file ]
-then 
-   cd dissimulation
-   ./build.sh
-   echo "--build dissimulation---"
+echo "Clean path"
+rm compressedFiles/*.out
+rm compressedFiles/*.png
 
-   echo "First test: "
-   ./dissimulate -in resources/original.jpg -msg resources/predefined_dictionnary.txt -metrics time -compress -out output/output1.png
-   
-   cd ../revelation
-   ./build.sh 
-   echo "--build revelation---"
-   ./reveal -in ../dissimulation/output/output1.png  -compress -show -out output/output1.txt
-   
-   echo "compare: "
-   sdiff -B -b -s ../dissimulation/resources/predefined_dictionnary.txt output/output1.txt | wc
+chmod 700 dissimulation/dissimulate
+chmod 700 revelation/reveal
+
+image="resources/original.jpg" 
+failList="";
+
+#for all the exemples files
+
+for f in dissimulation/output/compressedFiles/*.txt; 
+do echo "Processing $f file.."; 
+cd dissimulation;
+echo "executing ./dissimulate -in $image -msg ../$f -out ../$f.png -metrics time"
+./dissimulate -in $image -msg ../$f -out ../$f.png -metrics time -compress #1>/dev/null
+echo "dissimulate done, revealing ..."
+cd ../revelation;
+echo "./reveal -in ../$f.png -out ../$f.out -compress"
+./reveal -in ../$f.png -out ../$f.out -compress #1>/dev/null
+cd ..
+
+echo
+#echo "comparing file with original"
+original=$f
+decoded=$f".out"
+#echo "###############################################"
+echo -e "From: $original Decoded : $decoded  :"
+cmp -s $original $decoded && echo "Identical"  || failList="$failList $f"
+#echo "###############################################"
+done
+if [ -z "$failList" ]; then
+echo "################################# TEST OK #############################"; 
 else
-   echo "-- error"
+echo "################################# TEST FAIL ###########################"; 
+echo "File with problems : $failList"
 fi
