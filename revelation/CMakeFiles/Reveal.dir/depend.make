@@ -418,6 +418,7 @@ CMakeFiles/reveal.dir/src/pattern/reverse.c.o: /usr/local/include/opencv2/videoi
 
 CMakeFiles/reveal.dir/src/utils/file.c.o: src/utils/file.c
 CMakeFiles/reveal.dir/src/utils/file.c.o: src/utils/file.h
+CMakeFiles/reveal.dir/src/utils/file.c.o: src/utils/utilBit.h
 CMakeFiles/reveal.dir/src/utils/file.c.o: /usr/local/include/opencv2/hal/defs.h
 
 CMakeFiles/reveal.dir/src/utils/formatDetector.c.o: src/utils/formatDetector.c

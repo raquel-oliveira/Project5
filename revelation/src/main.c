@@ -132,8 +132,19 @@ int main(int argc, char *argv[]){
         switch (flag){
             case 0:{
                 unlink("afterReveal.txt");
-                if(isStandard){
+                if(isStandard && !isShow){
                     printFile(fileOut);
+                    unlink(fileOut);
+                }
+                if(!isStandard && isShow){
+                    printDictionary(d);
+                    printFileBinary(fileOut);
+                }
+                if(isStandard && isShow){
+                    printFile(fileOut);
+                    printDictionary(d);
+                    printFileBinary(fileOut);
+                    unlink(fileOut);
                 }
                 break;
             }
@@ -161,16 +172,7 @@ int main(int argc, char *argv[]){
             }
 
         }
-        if(isShow){
-            printDictionary(d);
-            printFileBinary(fileOut);
-        }
 
-        if(isStandard){
-            unlink(fileOut);
-        }
-        // unlink("afterReveal.txt");
-        // free(a); free(output);
     }
 
     cvReleaseImage(&img);

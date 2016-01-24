@@ -24,7 +24,6 @@ void printFileBinary(char* path){
         while ((c = getc(filePrint)) != EOF){
             for(int i = 1; i <= 8; i++){
                 printf("%d", get_bit(c, i));
-
             }
         }
 

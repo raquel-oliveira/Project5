@@ -83,9 +83,7 @@ int decompress(char* pathFile, Dictionary *d){
             lastByte = getc(afterReveal); //taking new byte
             aux = 1; //
             if(isEOF){
-                if(aux < (max+1)){ //max or max+1? TODO: Use test to check. Exemple: QtdOfLastByte = 1;
-                    //fclose(outputFinal);
-                    //fclose(afterReveal);
+                if(aux < (max+1)){
                     end = true;
                     break;
                 }
