@@ -71,10 +71,8 @@ int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
     setQtdOfLastByte(dictionary, getc(afterReveal));
     int nbBitsLastByte = getQtdBitsOfLastByte(dictionary);
     if(nbBitsLastByte > 8 || nbBitsLastByte <= 0 ) {
-        setQtdOfLastByte(dictionary, 8);
+        return -4;
     }
-
- //   printf("Created dictionary \n");
     return 0;
 
 }
