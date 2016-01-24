@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/reveal.dir/src/main.c.o"
-  "CMakeFiles/reveal.dir/src/image.c.o"
+  "CMakeFiles/reveal.dir/src/utils/image.c.o"
   "CMakeFiles/reveal.dir/src/arguments.c.o"
   "CMakeFiles/reveal.dir/src/validateArguments.c.o"
   "CMakeFiles/reveal.dir/src/pattern/reveal.c.o"

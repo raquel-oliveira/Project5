@@ -27,9 +27,9 @@ int getSize(Dictionary* d);
 
 void setSize(Dictionary* d, int sizee);
 
-int getQtdBitsOfLastByte(Dictionary* d);
+int getNbBitsOfLastByte(Dictionary *d);
 
-void setQtdOfLastByte(Dictionary* d, int qtd);
+void setNbBitsOfLastByte(Dictionary *d, int qtd);
 
 uchar getValue(Dictionary* d, int index);
 
@@ -43,9 +43,9 @@ int getSizeOfKey(Dictionary* d, int index);
 
 void setSizeOfKey(Dictionary* d, int index, int size);
 
-int getQtdByte(Dictionary* d, int index);
+int getNbByte(Dictionary *d, int index);
 
-void setQtdByte(Dictionary* d, int index, int qtd);
+void setNbByte(Dictionary *d, int index, int qtd);
 
 int getMaxByte(Dictionary* d);
 
