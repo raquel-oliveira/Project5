@@ -20,7 +20,7 @@ typedef struct {
     Character* elements;
     int size;
     int valueLastByte;
-    int maxByte; //
+    int maxByte;
 } Dictionary;
 
 int getSize(Dictionary* d);

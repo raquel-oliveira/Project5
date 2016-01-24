@@ -81,14 +81,13 @@ int decompress(char* pathFile, Dictionary *d){
         if(aux == max){ // check if he try to set in a position not allowed (two cases: or it already thought to the whole byte or want to acess the bit not allowed in the last byte)
             currentByte = lastByte; //Update currentByte
             lastByte = getc(afterReveal); //taking new byte
-            //aux++; //TODO: change the aux=0;aux++; TO aux=1; ?
             aux = 1; //
             if(isEOF){
                 if(aux < (max+1)){ //max or max+1? TODO: Use test to check. Exemple: QtdOfLastByte = 1;
                     //fclose(outputFinal);
                     //fclose(afterReveal);
                     end = true;
-                    break; //This break its necessary?
+                    break;
                 }
             }
         }
@@ -96,7 +95,7 @@ int decompress(char* pathFile, Dictionary *d){
             aux++;
         }
 
-        buffer[pos] = buffer[pos] << 1; //Decalage to set the new last bit
+        buffer[pos] = buffer[pos] << 1; //Shift to set the new last bit
         buffer[pos] = setBit(buffer[pos], 0, get_bit(currentByte, aux)); // set the next element of the byte in the last bit of the buffer
         count++;
 

@@ -3,6 +3,7 @@
 //
 
 #include "dictionary.h"
+#define SIZEBYTE 8
 
 int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
     if (!afterReveal) return -1;
@@ -26,7 +27,7 @@ int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
         setSizeOfKey(dictionary, i, c); // Set size of key
         int sizeOfKey = getSizeOfKey(dictionary, i); //Variable auxiliar to number of bits used in the key
 
-        setNbByte(dictionary, i, (sizeOfKey / 8) + ((sizeOfKey % 8 == 0) ? 0 : 1)); // Set the numbers of bytes takin into account the number of bits
+        setNbByte(dictionary, i, (sizeOfKey / SIZEBYTE) + ((sizeOfKey % SIZEBYTE == 0) ? 0 : 1)); // Set the numbers of bytes takin into account the number of bits
         int nbBytesKey = getNbByte(dictionary, i); //Variable auxiliar no number of bytes
         if(nbBytesKey > (dictionary->maxByte)) dictionary->maxByte = nbBytesKey;
 
@@ -65,7 +66,7 @@ int createDictionary(FILE* afterReveal, Dictionary* dictionary) {
     }
     setNbBitsOfLastByte(dictionary, getc(afterReveal));
     int nbBitsLastByte = getNbBitsOfLastByte(dictionary);
-    if(nbBitsLastByte > 8 || nbBitsLastByte <= 0 ) {
+    if(nbBitsLastByte > SIZEBYTE || nbBitsLastByte <= 0 ) {
         return -4;
     }
     return 0;
@@ -127,10 +128,11 @@ void printDictionary(Dictionary* d){
     for (int i = 0; i < getSize(d); i++) {
         printf("0x%x : ", getValue(d, i));
         int nbBytesKey = getNbByte(d, i);
-        int qtdBits = getSizeOfKey(d,i); int qtdBitsLeft = getSizeOfKey(d,i);
+        int qtdBits = getSizeOfKey(d,i);
+        int qtdBitsLeft = qtdBits;
             for (int k = 0; k < nbBytesKey; k++) {
                 if(k != nbBytesKey-1){
-                    qtdBitsLeft = qtdBits - 8; qtdBits = 8;
+                    qtdBitsLeft = qtdBits - SIZEBYTE; qtdBits = SIZEBYTE;
                 }
                 else  qtdBits = qtdBitsLeft;
 

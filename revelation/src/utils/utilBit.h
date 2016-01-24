@@ -10,6 +10,4 @@ int get_bit(char the_byte,int which_bit);
 
 uchar setBit(uchar ch, int pos, int bit);
 
-void shift(char* message);
-
 #endif
