@@ -98,12 +98,14 @@ int main(int argc, char *argv[]){
     }
     switch (flag) {
         case -2: {
+            if(isCompress){ unlink("afterReveal.txt");}
             fprintf(stderr, "Error Trying to access bit\n");
             exit(-2);
         }
 
         case -3: {
             unlink(fileOut);
+            if(isCompress){ unlink("afterReveal.txt");}
             fprintf(stderr, "There is no magic number\n");
             exit(-3);
         }
