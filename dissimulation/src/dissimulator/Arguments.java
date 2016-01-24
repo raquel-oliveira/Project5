@@ -11,9 +11,9 @@ public class Arguments {
 	String channels;
 	String pattern;
 	String magic;
-	String metrics;
 	boolean compress;
 	boolean show;
+	boolean metrics;
 	FormatDetector fd;
 	
 	/**
@@ -35,7 +35,7 @@ public class Arguments {
 			else if(arguments[i].equals("-c")) channels = arguments[i+1].toLowerCase();
 			else if(arguments[i].equals("-p")) pattern = arguments[i+1].toLowerCase();
 			else if(arguments[i].equals("-magic")) magic = arguments[i+1];
-			else if(arguments[i].equals("-metrics")) metrics = arguments[i+1].toLowerCase();
+			else if(arguments[i].equals("-metrics")) metrics = true;
 			else if(arguments[i].equals("-compress")) compress = true;
 			else if(arguments[i].equals("-show")) show = true;
 		}
@@ -130,13 +130,10 @@ public class Arguments {
 		if(magic == null) return "48454C50";
 		return magic;
 	}
-	public String getMetrics() throws Exception
+	public boolean getMetrics() throws Exception
 	{
-		if(metrics == null) return null;
-		if(!metrics.equals("impact") && !metrics.equals("time") && !metrics.equals("histogram")
-				&& !metrics.equals("template") && !metrics.equals("compression_savings") && !metrics.equals("compression_time"))
-			throw new InvalidArgumentException("Incorrect typing of metrics");
-		return metrics;
+		if(metrics == false) return false;
+		return true;
 	}
 	public boolean getCompress() throws Exception
 	{

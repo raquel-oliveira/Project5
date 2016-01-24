@@ -12,16 +12,17 @@ public class Metrics {
 	long beginning, ending;
 	Instant start, end;
 	MagicNumberTester mnt = new MagicNumberTester();
+	int cpt;
 
 	/**
 	 * Prints out the number of bits available for hiding. Prints out the number of bits to hide (message)
 	 * @param message The message to hide
 	 * @param image The imageRGB
 	 */
-	public void nbBitsImpacted(String message,int nbColorsNotNull, ImageRGB image)
+	public void nbBitsImpacted(BitSet message,int nbColorsNotNull, ImageRGB image)
 	{
 		System.out.println("\nMaximum number of bits available : " + (image.getWidth() * image.getHeight() * nbColorsNotNull));
-		System.out.println("Number of bits impacted : " + (message.length() * 8));
+		System.out.println("Number of bits impacted : " + (message.length()));
 	}
 	
 	public void setTime()
@@ -35,7 +36,10 @@ public class Metrics {
 	public void getTime()
 	{
 		end = Instant.now();
-		System.out.println("Time consumed by the dissimulation : " + Duration.between(start, end).toMillis());
+		
+		if(cpt == 0)System.out.println("Time consumed by the compression : " + Duration.between(start, end).toMillis());
+		else System.out.println("Time consumed by the dissimulation : " + Duration.between(start, end).toMillis());
+		cpt++;
 	}
 	
 	/**
@@ -89,8 +93,8 @@ public class Metrics {
 	       String hexCode = mnt.toHexString(array);
 	       System.out.println("0x" + hexCode + ": " + valueDictionary);
 	    }
-		byte[] binaryMessage = messageCompressed.getBytes();
-		for(int i = 0; i < bitsetMessageCompressed.length() - 1; i++)
+		int cpt = 0;
+		for(int i = 0; i < bitsetMessageCompressed.length() - 1; i++, cpt++)
 		{
 			if(i%8 == 0 && i!= 0) System.out.print(" ");
 			if(bitsetMessageCompressed.get(i)) System.out.print("1");
